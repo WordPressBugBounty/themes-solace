@@ -78,7 +78,7 @@ class WC_Custom_General_Button extends Base_Customizer {
 			new Control(
 				'solace_wc_custom_general_buttons_text_color',
 				array(
-					'default'               => '#000',
+					'default'               => '#FFFFFF',
 					'sanitize_callback'     => 'solace_sanitize_colors',
 				),
 				array(
@@ -95,7 +95,7 @@ class WC_Custom_General_Button extends Base_Customizer {
 			new Control(
 				'solace_wc_custom_general_buttons_text_color_hover',
 				array(
-					'default'               => '#000',
+					'default'               => '#FFFFFF',
 					'sanitize_callback'     => 'solace_sanitize_colors',
 				),
 				array(
@@ -112,7 +112,7 @@ class WC_Custom_General_Button extends Base_Customizer {
 			new Control(
 				'solace_wc_custom_general_buttons_bg_color',
 				array(
-					'default'               => '#FFF',
+					'default'               => '#3662FF',
 					'sanitize_callback'     => 'solace_sanitize_colors',
 				),
 				array(
@@ -129,7 +129,7 @@ class WC_Custom_General_Button extends Base_Customizer {
 			new Control(
 				'solace_wc_custom_general_buttons_bg_color_hover',
 				array(
-					'default'               => '#000',
+					'default'               => '#000F4D',
 					'sanitize_callback'     => 'solace_sanitize_colors',
 				),
 				array(
@@ -161,33 +161,13 @@ class WC_Custom_General_Button extends Base_Customizer {
 			)
 		);
 
-		$this->add_control(
-			new Control(
-				'solace_wc_custom_general_buttons_border_width',
-				array(
-					'sanitize_callback' => 'solace_sanitize_range_value',
-					'default'           => 0,
-				),
-				array(
-					'label'       => esc_html__('Border Width', 'solace'),
-					'section'     => 'solace_wc_custom_general_buttons',
-					'type'        => 'solace_range_control',
-					'input_attrs' => [
-						'min'        => 0,
-						'max'        => 5,
-						'defaultVal' => 0,
-					],
-					'priority'    => 119,
-				),
-				'Solace\Customizer\Controls\React\Range'
-			)
-		);
+		
 
         $this->add_control(
 			new Control(
 				'solace_wc_custom_general_buttons_border_color',
 				array(
-					'default'               => '#FFF',
+					'default'               => '#000F4D',
 					'sanitize_callback'     => 'solace_sanitize_colors',
 				),
 				array(
@@ -195,7 +175,7 @@ class WC_Custom_General_Button extends Base_Customizer {
 					'label'                 => __( 'Border', 'solace' ),
 					'type'                  => 'solace_color_control',
 					'section'         	    => 'solace_wc_custom_general_buttons',
-					'priority'              => 120,
+					'priority'              => 119,
 				)
 				
 			)
@@ -204,7 +184,7 @@ class WC_Custom_General_Button extends Base_Customizer {
 			new Control(
 				'solace_wc_custom_general_buttons_border_color_hover',
 				array(
-					'default'               => '#000',
+					'default'               => '#ff8c00',
 					'sanitize_callback'     => 'solace_sanitize_colors',
 				),
 				array(
@@ -212,11 +192,29 @@ class WC_Custom_General_Button extends Base_Customizer {
 					'label'                 => __( 'Border Hover', 'solace' ),
 					'type'                  => 'solace_color_control',
 					'section'         	    => 'solace_wc_custom_general_buttons',
-					'priority'              => 121,
+					'priority'              => 120,
 				)
 				
 			)
 		);	
+
+		$this->add_control(
+			new Control(
+				'solace_wc_custom_general_buttons_border_width',
+				array(
+					'default'               => $this->default_borderwidth_value,
+					'sanitize_callback'     => array( $this, 'sanitize_spacing_array' ),
+				),
+				array(
+					'transport'             => 'postMessage',
+					'label'                 => __( 'Border Width', 'solace' ),
+					'section'         	    => 'solace_wc_custom_general_buttons',
+					'priority'              => 121,
+				),
+				'\Solace\Customizer\Controls\React\Spacing',
+			)
+		);
+
 		$this->add_control(
 			new Control(
 				'solace_wc_custom_general_buttons_border_radius',
@@ -263,16 +261,16 @@ class WC_Custom_General_Button extends Base_Customizer {
 
 	protected $default_padding_value = array(
 		'mobile'       => array(
-			'top'    => 0,
-			'right'  => 0,
-			'bottom' => 0,
-			'left'   => 0,
+			'top'    => 6,
+			'right'  => 12,
+			'bottom' => 6,
+			'left'   => 12,
 		),
 		'tablet'       => array(
-			'top'    => 0,
-			'right'  => 0,
-			'bottom' => 0,
-			'left'   => 0,
+			'top'    => 6,
+			'right'  => 12,
+			'bottom' => 6,
+			'left'   => 12,
 		),
 		'desktop'      => array(
 			'top'    => 12,
@@ -287,22 +285,45 @@ class WC_Custom_General_Button extends Base_Customizer {
 
 	protected $default_radius_value = array(
 		'mobile'       => array(
-			'top'    => 0,
-			'right'  => 0,
-			'bottom' => 0,
-			'left'   => 0,
+			'top'    => 3,
+			'right'  => 3,
+			'bottom' => 3,
+			'left'   => 3,
 		),
 		'tablet'       => array(
-			'top'    => 0,
-			'right'  => 0,
-			'bottom' => 0,
-			'left'   => 0,
+			'top'    => 3,
+			'right'  => 3,
+			'bottom' => 3,
+			'left'   => 3,
 		),
 		'desktop'      => array(
 			'top'    => 3,
 			'right'  => 3,
 			'bottom' => 3,
 			'left'   => 3,
+		),
+		'mobile-unit'  => 'px',
+		'tablet-unit'  => 'px',
+		'desktop-unit' => 'px',
+	);
+	protected $default_borderwidth_value = array(
+		'mobile'       => array(
+			'top'    => 1,
+			'right'  => 1,
+			'bottom' => 1,
+			'left'   => 1,
+		),
+		'tablet'       => array(
+			'top'    => 1,
+			'right'  => 1,
+			'bottom' => 1,
+			'left'   => 1,
+		),
+		'desktop'      => array(
+			'top'    => 2,
+			'right'  => 2,
+			'bottom' => 2,
+			'left'   => 2,
 		),
 		'mobile-unit'  => 'px',
 		'tablet-unit'  => 'px',

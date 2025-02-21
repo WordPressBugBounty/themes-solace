@@ -148,28 +148,44 @@ ul.customize-pane-child.open .range-slider span {
 /* #accordion-panel-solace_wc_custom_product_pages .accordion-section-title, */
 #accordion-panel-solace_panel_wc_product_page .accordion-section-title,
 #accordion-panel-solace_wc_custom_single_product .accordion-section-title,
-#accordion-section-solace_features_scroll_to_top .accordion-section-title {
-    border-bottom: 1px solid #0F2E5F !important;
-    margin-right: 30px  !important;
-    margin-left: 30px !important;
-    padding-left: 40px !important;
-}
+#accordion-section-solace_features_scroll_to_top .accordion-section-title,
+#accordion-section-solace_typography_headings .accordion-section-title,
+#accordion-section-solace_single_page_layout .accordion-section-title,
 #accordion-panel-widgets .accordion-section-title,
 #accordion-section-solace_core_site_identity .accordion-section-title,
 #accordion-panel-nav_menus .accordion-section-title,
 #accordion-section-solace_core_homepage .accordion-section-title,
-#accordion-section-custom_css .accordion-section-title{
+#accordion-section-custom_css .accordion-section-title {
     border-bottom: 1px solid #0F2E5F !important;
     margin-right: 30px  !important;
     margin-left: 30px !important;
-    padding-left: 40px !important;
+    padding: 0 !important;
 }
 
-#accordion-section-solace_typography_headings .accordion-section-title,
-#accordion-section-solace_single_page_layout .accordion-section-title {
-    margin-right: 30px  !important;
-    margin-left: 30px !important;
-    padding-left: 40px !important;
+#accordion-section-solace_colors_background_section .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_typography_headings .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_wc_custom_general_buttons .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_single_page_layout .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_container .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_sidebar .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_blog_archive_layout .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_single_post_layout .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_single_blog-post_layout .accordion-section-title button.accordion-trigger,
+#accordion-panel-solace_wc_custom_general .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_wc_product_page .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_wc_single_product .accordion-section-title button.accordion-trigger,
+/* #accordion-panel-solace_wc_custom_product_pages .accordion-section-title button.accordion-trigger, */
+#accordion-panel-solace_panel_wc_product_page .accordion-section-title button.accordion-trigger,
+#accordion-panel-solace_wc_custom_single_product .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_features_scroll_to_top .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_typography_headings .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_single_page_layout .accordion-section-title button.accordion-trigger,
+#accordion-panel-widgets .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_core_site_identity .accordion-section-title button.accordion-trigger,
+#accordion-panel-nav_menus .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_core_homepage .accordion-section-title button.accordion-trigger,
+#accordion-section-custom_css .accordion-section-title button.accordion-trigger {
+    padding: 12px 40px !important;
 }
 
 .customize-pane-parent {

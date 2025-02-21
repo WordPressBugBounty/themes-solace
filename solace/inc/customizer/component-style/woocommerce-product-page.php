@@ -203,7 +203,7 @@ function solace_page_shop_custom_content() {
     );
 
     // Check if the current page is the shop page.
-    if ( is_shop() ) {
+    if ( is_shop() || is_product_category() || is_product_taxonomy() || is_product_tag() ) { 
         // Check if the shop layout is set to 'product-page-layout2'.
         if ( 'product-page-layout2' === $shop_layout ) {
             // Add a custom action to display variations and total orders after the product title in the shop loop.
@@ -759,18 +759,15 @@ function solace_prevent_loading_template_for_product_page_layout( $template, $sl
         Customizer_Defaults::get_default_value( Config::MODS_PRODUCT_PAGE_SHOP_SETTINGS_LAYOUT )
     );
 
-    if ( is_shop() ) {
-
+    if ( is_shop() || is_product_category() || is_product_taxonomy() || is_product_tag() ) { 
         // Prevent loading the template part if the conditions are met.
         if ( 'content' === $slug && 'product' === $name && 'product-page-layout5' === $shop_layout || 'product-page-layout-custom' === $shop_layout ) {
             return;
         }
 
     }
-    
     return $template; // Ensure the original template is returned if conditions are not met.
 }
-
 add_filter( 'wc_get_template_part', 'solace_prevent_loading_template_for_product_page_layout', 10, 3 );
 
 /**
@@ -807,7 +804,7 @@ add_action( 'pre_get_posts', 'solace_custom_woocommerce_shop_page_product_limit'
  */
 function solace_custom_shop_thumbnail_size( $size ) {
     // Check if the current page is the shop page
-    if ( is_shop() ) {
+    if ( is_shop() || is_product_category() || is_product_taxonomy() || is_product_tag() ) {     
         // Get the shop layout setting from the theme customizer
         $shop_layout = get_theme_mod(
             Customizer_Defaults::get_control_name(Config::MODS_PRODUCT_PAGE_SHOP_SETTINGS_LAYOUT), 
@@ -838,7 +835,7 @@ function solace_add_shop_layout_classes($classes) {
     );
 
     // Check if the current page is the shop page
-    if ( is_shop() ) {
+    if ( is_shop() || is_product_category() || is_product_taxonomy() || is_product_tag() ) {        
         // Append the appropriate class based on the selected shop layout
         if ( 'product-page-layout1' === $shop_layout ) {
             $classes .= ' solace-shop-layout1';

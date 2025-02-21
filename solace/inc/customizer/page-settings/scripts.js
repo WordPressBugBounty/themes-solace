@@ -210,15 +210,27 @@
             });
           });
 
+        // wp.customize('solace_wc_custom_general_buttons_elementor', function(value) {
+        //     // console.log('okeeee');
+        //     value.bind(function(newval) {
+        //         console.log('Button override toggled to:', newval ? 'ON' : 'OFF');
+                
+        //         wp.customize.previewer.send('refresh');
+        //         wp.customize.previewer.refresh(); 
+        //     });
+        // });
+
         wp.customize('solace_wc_custom_general_buttons_elementor', function(value) {
-            console.log('okeeee');
             value.bind(function(newval) {
                 console.log('Button override toggled to:', newval ? 'ON' : 'OFF');
                 
+                wp.customize.instance('solace_wc_custom_general_buttons_elementor').set(newval);
+        
                 wp.customize.previewer.send('refresh');
-                wp.customize.previewer.refresh(); 
+                wp.customize.previewer.refresh();
             });
         });
+        
 
         // Only show the color hue control when there's a custom color scheme.
         wp.customize('solace_blog_archive_layout', function (setting) {

@@ -263,6 +263,10 @@ textarea#_customize-input-woocommerce_checkout_privacy_policy_text {
   padding: 10px;
 }
 
+ul#sub-accordion-panel-nav_menus li.control-section-nav_menu h3.accordion-section-title {
+  padding: 10px 30px 11px 42px !important;
+}
+
 body.box-color-position .components-popover.components-dropdown__content.is-positioned {
   transform: translateX(25px) translateY(303px) translateY(0em) scale(1) translateZ(0px) !important;
 }
@@ -277,6 +281,13 @@ li#customize-control-solace_jump_to_container {
 
 li#customize-control-solace_jump_to_container a {
   text-decoration: none;
+}
+
+body.solace-wp-customizer-controls #customize-controls li.control-section h3.accordion-section-title button.accordion-trigger:focus,
+body.solace-wp-customizer-controls #customize-controls li.control-section.control-section-default h3.accordion-section-title button.accordion-trigger:focus,
+body.solace-wp-customizer-controls #customize-controls li.control-panel.control-panel-default h3.accordion-section-title button.accordion-trigger:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 /*==============================================================
@@ -648,6 +659,7 @@ Woocommerce - Single Product
 ==============================================================*/
 li#accordion-section-solace_wc_single_product {
   margin-left: 0;
+  margin-right: 0;
 }
 
 li#customize-control-solace_single_product_label_page_layout {

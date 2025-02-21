@@ -914,7 +914,7 @@ class Typography extends Base_Customizer
 							'letter_spacing_default' => $default_values['letterSpacing'],
 						),
 						'type'                  => 'solace_typeface_control',
-						'font_family_control'   => 'solace_headings_font_family',
+						'font_family_control'   => $mod_key2,
 						'live_refresh_selector' => $selectors[$heading_id],
 						'live_refresh_css_prop' => [
 							'cssVar' => [

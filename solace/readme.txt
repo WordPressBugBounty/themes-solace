@@ -29,6 +29,12 @@ Solace is a minimalist, and lightweight WordPress theme for creating beautiful, 
 Solace includes support for WooCommerce.
 
 == Changelog ==
+= 2.1.9 - 21 February 2025 =
+* [Fix] Layout issues in the shop settings for product categories, product taxonomies, and product tags  
+* [Fix] Issues with Customizer buttons  
+* [Fix] Issues with Customizer styles  
+* [Fix] Font weight issues for headings (H1–H6)  
+
 = 2.1.8 - 14 February 2025 =
 * [Fix] Toggle blog description issue
 * [Fix] Toggle blog title issue

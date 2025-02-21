@@ -34,3 +34,65 @@
     });
 
 })(jQuery);
+
+(function ($) {
+    function addElementorButtonClass() {
+        $('.woocommerce .button').each(function() {
+            if (!$(this).hasClass('elementor-button')) {
+                $(this).addClass('elementor-button');
+            }
+        });
+    }
+
+    function observeDOMChanges() {
+        const targetNode = document.body; 
+        const config = { childList: true, subtree: true };
+
+        const callback = function(mutationsList) {
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    addElementorButtonClass(); 
+                }
+            }
+        };
+
+        const observer = new MutationObserver(callback);
+        observer.observe(targetNode, config);
+    }
+
+    function isElementorPreview() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.has('elementor-preview') || document.body.classList.contains('elementor-editor-active');
+    }
+
+    $(document).ready(function() {
+        addElementorButtonClass(); 
+
+        if (isElementorPreview()) {
+            console.log("Elementor Preview Detected");
+
+            document.body.classList.add('is-elementor-preview'); 
+            observeDOMChanges();
+        }
+    });
+
+    // apply color to button in live preview elementor
+    jQuery(document).ready(function ($) {
+        function updateButtonColor() {
+            let buttonColor = $('.elementor-button').css('background-color'); 
+            $('.button.add_to_cart_button').css({
+                'background-color': buttonColor,
+                'border-color': buttonColor
+            });
+        }
+        
+        updateButtonColor();
+    
+        setInterval(updateButtonColor, 1000);
+    });
+    
+
+})(jQuery);
+
+
+

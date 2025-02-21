@@ -10,6 +10,7 @@
 	wp.customize.bind( 'ready', function() {
 		let body = jQuery( 'body' );
 		body.addClass( 'solace-wp-version-6-7-plus' );
+		body.addClass( 'solace-wp-customizer-controls' );
 
 		wp.customize( 'solace_container_layout', function( setting ) {
 			wp.customize.control( 'solace_container_width', function( control ) {
