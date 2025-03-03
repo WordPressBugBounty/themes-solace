@@ -32,7 +32,8 @@ body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-sidebar
 body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-sidebar-widgets-footer-two-widgets h3.accordion-section-title,
 body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-sidebar-widgets-footer-three-widgets h3.accordion-section-title,
 body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-sidebar-widgets-footer-four-widgets h3.accordion-section-title,
-body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-menu_locations h3.accordion-section-title {
+body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-menu_locations h3.accordion-section-title,
+body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-sidebar-widgets-shop-sidebar h3.accordion-section-title {
   padding: 10px 30px 11px 42px;
 }
 
@@ -261,6 +262,46 @@ li#customize-control-woocommerce_checkout_highlight_required_fields .components-
 textarea#_customize-input-woocommerce_checkout_privacy_policy_text {
   border-radius: 15px;
   padding: 10px;
+}
+
+.solace-remove-style-popover-transform {
+  transform: none !important;
+}
+
+ul#sub-accordion-section-sidebar-widgets-shop-sidebar .widget .widget-top {
+  opacity: 1;
+}
+
+li.customize-control-nav_menu_item .menu-item-handle.ui-sortable-handle {
+  background-color: var(--sol-customizer-panel-bg-color);
+  color: var(--sol-customizer-text-color);
+  border: none;
+}
+
+li.customize-control-nav_menu_item .menu-item-handle.ui-sortable-handle .item-type {
+  color: var(--sol-customizer-text-color);
+}
+
+li.customize-control-nav_menu_item .menu-item-handle.ui-sortable-handle .toggle-indicator::before {
+  color: var(--sol-customizer-text-color);
+}
+
+li.customize-control-nav_menu_item .menu-item-settings {
+  background-color: var(--sol-customizer-panel-bg-color);
+  color: var(--sol-customizer-text-color);
+  border: none;
+}
+
+li.customize-control-nav_menu_item .menu-item-settings p.description {
+  background-color: var(--sol-customizer-panel-bg-color) !important;
+}
+
+li.customize-control-nav_menu_item .menu-item-settings p.link-to-original {
+  color: var(--sol-customizer-text-color);
+}
+
+ul.menu-location-settings li.customize-control.assigned-menu-location span.theme-location-set {
+  color: var(--sol-customizer-text-color) !important;
 }
 
 ul#sub-accordion-panel-nav_menus li.control-section-nav_menu h3.accordion-section-title {

@@ -135,7 +135,6 @@ define('SELECTOR_WC_BUTTON_BG',"
 	body .woocommerce-account a.button.wc-forward,
 	.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt,
 	body .wc-block-components-totals-coupon__content button.wc-block-components-button,
-	body .wc-block-components-totals-coupon__content button.wc-block-components-button span,
 	body .wp-block-woocommerce-cart .wp-block-button__link.add_to_cart_button.ajax_add_to_cart,
 	body .wp-block-woocommerce-cart .wp-block-button__link.add_to_cart_button,
 	:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt,
@@ -168,7 +167,6 @@ define('SELECTOR_WC_BUTTON_BG_HOVER',"
 	body .woocommerce button.button:hover, .woocommerce button.button.alt:hover,
 	body .woocommerce-account a.button.wc-forward:hover,
 	body .wc-block-components-totals-coupon__content button.wc-block-components-button:hover,
-	body .wc-block-components-totals-coupon__content button.wc-block-components-button span:hover,
 	body .wp-block-woocommerce-cart .wp-block-button__link.add_to_cart_button.ajax_add_to_cart:hover,
 	body .wp-block-woocommerce-cart .wp-block-button__link.add_to_cart_button:hover,
 	:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt:hover,
@@ -2439,7 +2437,7 @@ function solace_apply_elementor_default_button_styles() {
 
 
 function solace_apply_default_button_styles() {
-	error_log('masuk default button style');
+	// error_log('masuk default button style');
 	// If plugin elementor deactive.
     if ( ! class_exists( 'Elementor\Plugin' ) ) {
         return;
@@ -2459,10 +2457,10 @@ function solace_apply_default_button_styles() {
 		$meta['button_text_color'] = null;
 
 	}
-	error_log('GlobalTC: '. $meta['__globals__']['button_text_color']);
-	error_log('SolidTC: '.$meta['button_text_color']);
-	error_log('GlobalBG: '. $meta['__globals__']['button_background_color']);
-	error_log('SolidBG: '.$meta['button_background_color']);
+	// error_log('GlobalTC: '. $meta['__globals__']['button_text_color']);
+	// error_log('SolidTC: '.$meta['button_text_color']);
+	// error_log('GlobalBG: '. $meta['__globals__']['button_background_color']);
+	// error_log('SolidBG: '.$meta['button_background_color']);
 
 	if ( isset( $meta['__globals__']['button_text_color'] ) ) {
 		$button_text_color = $meta['__globals__']['button_text_color'];
@@ -2530,7 +2528,7 @@ function solace_apply_default_button_styles() {
 		$button_default_header_footer .= "}";
 	}
 
-	error_log('style: '.$button_default_header_footer);
+	// error_log('style: '.$button_default_header_footer);
 
 	wp_add_inline_style('solace-theme', $button_default_header_footer);
 
@@ -2622,6 +2620,43 @@ add_action('wp', function () {
 	},99);
 }});
 
-add_action('customize_save_after', function() {
-    error_log('Saved Value: ' . get_theme_mod('solace_wc_custom_general_buttons_elementor', 'not set'));
-});
+
+// set default value after theme installed
+function solace_set_default_customizer_options() {
+    $defaults = array(
+        'solace_wc_custom_general_buttons_elementor'       => false,
+        'solace_wc_custom_general_buttons_text_color'      => '#FFFFFF',
+        'solace_wc_custom_general_buttons_text_color_hover'=> '#FFFFFF',
+        'solace_wc_custom_general_buttons_bg_color'        => '#3662FF',
+        'solace_wc_custom_general_buttons_bg_color_hover'  => '#000F4D',
+        'solace_wc_custom_general_buttons_border_style'    => 'none',
+        'solace_wc_custom_general_buttons_border_color'    => '#000F4D',
+        'solace_wc_custom_general_buttons_border_color_hover' => '#ff8c00',
+        'solace_wc_custom_general_buttons_border_width'    => array(
+            'mobile' => array('top' => 1, 'right' => 1, 'bottom' => 1, 'left' => 1),
+            'tablet' => array('top' => 1, 'right' => 1, 'bottom' => 1, 'left' => 1),
+            'desktop' => array('top' => 2, 'right' => 2, 'bottom' => 2, 'left' => 2),
+            'mobile-unit' => 'px', 'tablet-unit' => 'px', 'desktop-unit' => 'px',
+        ),
+        'solace_wc_custom_general_buttons_border_radius' => array(
+            'mobile' => array('top' => 3, 'right' => 3, 'bottom' => 3, 'left' => 3),
+            'tablet' => array('top' => 3, 'right' => 3, 'bottom' => 3, 'left' => 3),
+            'desktop' => array('top' => 3, 'right' => 3, 'bottom' => 3, 'left' => 3),
+            'mobile-unit' => 'px', 'tablet-unit' => 'px', 'desktop-unit' => 'px',
+        ),
+        'solace_wc_custom_general_buttons_padding' => array(
+            'mobile' => array('top' => 6, 'right' => 12, 'bottom' => 6, 'left' => 12),
+            'tablet' => array('top' => 6, 'right' => 12, 'bottom' => 6, 'left' => 12),
+            'desktop' => array('top' => 12, 'right' => 24, 'bottom' => 12, 'left' => 24),
+            'mobile-unit' => 'px', 'tablet-unit' => 'px', 'desktop-unit' => 'px',
+        ),
+    );
+
+    foreach ($defaults as $key => $value) {
+        if (get_theme_mod($key, null) === null) {
+            set_theme_mod($key, $value);
+        }
+    }
+}
+add_action('after_setup_theme', 'solace_set_default_customizer_options');
+

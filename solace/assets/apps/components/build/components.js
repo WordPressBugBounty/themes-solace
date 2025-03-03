@@ -4103,7 +4103,7 @@ const SizingControl = ({
       min: min,
       step: step
     });
-  }), hasSetValues() && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Tooltip, {
+  }), hasSetValues() ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Tooltip, {
     key: "tooltip-reset",
     text: options.length > 1 ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Reset all Values', 'solace') : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Reset Value', 'solace')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Button, {
@@ -4111,7 +4111,14 @@ const SizingControl = ({
     icon: "image-rotate",
     className: "reset",
     onClick: onReset
-  })));
+  })) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.Button, {
+    key: "reset-icon",
+    icon: "image-rotate",
+    className: "reset solace-deactive",
+    style: {
+      opacity: 0.5
+    }
+  }));
 };
 SizingControl.propTypes = {
   options: (prop_types__WEBPACK_IMPORTED_MODULE_6___default().array).isRequired,

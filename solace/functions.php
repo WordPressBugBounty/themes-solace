@@ -17,7 +17,7 @@ if (!defined('SOLACE_DEBUG')) {
 
 if (!defined('SOLACE_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('SOLACE_VERSION', '2.1.9');
+	define('SOLACE_VERSION', '2.1.10');
 }
 
 /**
@@ -174,7 +174,7 @@ if (!function_exists('solace_set_posts_per_page')) :
 		}
 
 		if ( class_exists( 'WooCommerce' ) ) {
-			if ( is_shop() ) {
+			if ( is_shop() || is_product_category() || is_product_taxonomy() || is_product_tag() ) { 
 				return;
 			}
 		}

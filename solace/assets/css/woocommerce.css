@@ -1940,6 +1940,10 @@ body.single-product .layout-gallery4 div.product div.images.woocommerce-product-
   }
 }
 
+body.single-product .solace-product-layout-custom .nv-bc-count-wrap {
+  display: none;
+}
+
 body.single-product .solace-product-layout-custom div.product div.summary {
   margin-top: 0;
 }

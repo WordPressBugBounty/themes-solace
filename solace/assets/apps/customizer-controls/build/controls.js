@@ -1057,7 +1057,8 @@ const CardOptionsCart = ({
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -1106,7 +1107,7 @@ const CardOptionsCart = ({
     })));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
-    className: "popover-card-options-add-to-cart",
+    className: "popover-card-options-add-to-cart solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -1119,7 +1120,16 @@ const CardOptionsCart = ({
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-typeface-title-control solace-white-background-control"
+    className: "solace-typeface-title-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, renderAutoHide(), renderBottomSpacing())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardOptionsCart);
@@ -1305,7 +1315,8 @@ const CardOptionsCategories = ({
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -1393,7 +1404,7 @@ const CardOptionsCategories = ({
     })));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
-    className: "popover-card-options-categories",
+    className: "popover-card-options-categories solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -1406,7 +1417,16 @@ const CardOptionsCategories = ({
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-typeface-title-control solace-white-background-control"
+    className: "solace-typeface-title-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, renderSeparator(), renderBottomSpacing())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardOptionsCategories);
@@ -1571,7 +1591,8 @@ const CardOptionsCart = ({
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -1633,7 +1654,7 @@ const CardOptionsCart = ({
     })));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
-    className: "popover-card-options-excerpt",
+    className: "popover-card-options-excerpt solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -1646,7 +1667,16 @@ const CardOptionsCart = ({
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-typeface-title-control solace-white-background-control"
+    className: "solace-typeface-title-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, renderLength(), renderBottomSpacing())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardOptionsCart);
@@ -1813,7 +1843,8 @@ const CardOptionsPrice = ({
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -1849,7 +1880,7 @@ const CardOptionsPrice = ({
     })));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
-    className: "popover-card-options-price",
+    className: "popover-card-options-price solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -1862,7 +1893,16 @@ const CardOptionsPrice = ({
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-typeface-title-control solace-white-background-control"
+    className: "solace-typeface-title-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, renderBottomSpacing())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardOptionsPrice);
@@ -2115,7 +2155,8 @@ const CardOptionsProductImageControl = ({
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -2235,7 +2276,7 @@ const CardOptionsProductImageControl = ({
     })));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
-    className: "popover-card-options-product-image",
+    className: "popover-card-options-product-image solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -2248,7 +2289,16 @@ const CardOptionsProductImageControl = ({
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-typeface-title-control solace-white-background-control"
+    className: "solace-typeface-title-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, renderImageRatio(), imageOriginal(), renderBottomSpacing())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardOptionsProductImageControl);
@@ -2349,7 +2399,8 @@ const CardOptionsStarRating = ({
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -2385,7 +2436,7 @@ const CardOptionsStarRating = ({
     })));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
-    className: "popover-card-options-star-rating",
+    className: "popover-card-options-star-rating solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -2398,7 +2449,16 @@ const CardOptionsStarRating = ({
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-typeface-title-control solace-white-background-control"
+    className: "solace-typeface-title-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, renderBottomSpacing())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardOptionsStarRating);
@@ -2560,7 +2620,8 @@ const CardOptionsTitle = ({
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -2637,7 +2698,7 @@ const CardOptionsTitle = ({
     })));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
-    className: "popover-card-options-title",
+    className: "popover-card-options-title solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -2650,7 +2711,16 @@ const CardOptionsTitle = ({
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-typeface-title-control solace-white-background-control"
+    className: "solace-typeface-title-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, renderHeadingTag(), renderBottomSpacing())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CardOptionsTitle);
@@ -3062,7 +3132,7 @@ const MergeComponents = ({
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_Row__WEBPACK_IMPORTED_MODULE_2__["default"], {
     minRow: value.minRow,
     valueRow: value.valueRow,
-    maxRow: value.maxRow,
+    maxRow: value.maxRow || 10,
     stepRow: value.stepRow,
     control: control
   })));
@@ -3867,7 +3937,8 @@ const FeaturedImageComponent = ({
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -3905,7 +3976,7 @@ const FeaturedImageComponent = ({
     .replace(/^./, char => char.toUpperCase());
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Popover, {
-    className: "popover-featured-image",
+    className: "popover-featured-image solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -3916,7 +3987,16 @@ const FeaturedImageComponent = ({
       left: popoverCoords.left
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-component-featured-image"
+    className: "solace-component-featured-image",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "solace-white-background-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -6750,10 +6830,19 @@ const PopupAdditionalInfo = ({
       const ids = [controlID, ...baseIds.map(prefix => `${prefix}-${controlID}`)];
       if (ids.includes(e.target.id)) {
         const rect = e.target.getBoundingClientRect();
-        setPopoverCoords({
-          top: rect.bottom - 500,
-          left: rect.left + 50
-        });
+        if (rect.y > 300) {
+          setPopoverCoords({
+            top: rect.bottom - 25,
+            left: rect.left + 50,
+            y: 300
+          });
+        } else {
+          setPopoverCoords({
+            top: rect.bottom - 25,
+            left: rect.left + 50,
+            y: rect.y
+          });
+        }
         setVisible(true);
       }
     };
@@ -7023,7 +7112,7 @@ const PopupAdditionalInfo = ({
     })));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Popover, {
-    className: "popover-popup-additional-info",
+    className: "popover-popup-additional-info solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -7036,7 +7125,16 @@ const PopupAdditionalInfo = ({
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-popup-additional-info-control solace-white-background-control"
+    className: "solace-popup-additional-info-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, renderTitle(), renderNewItem(), renderOrdering(), renderBottomSpacing())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PopupAdditionalInfo);
@@ -7199,7 +7297,8 @@ const PopupHeadingBottomSpacing = ({
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -7276,20 +7375,29 @@ const PopupHeadingBottomSpacing = ({
     })));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
-    className: "popover-popup-heading-bottom-spacing",
+    className: "popover-popup-heading-bottom-spacing solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
-    ref: popoverRef,
-    style: {
-      position: 'absolute',
-      top: popoverCoords.top,
-      left: popoverCoords.left
-    }
+    ref: popoverRef
+    // style={{
+    // 	position: 'absolute',
+    // 	top: popoverCoords.top,
+    // 	left: popoverCoords.left
+    // }}
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-popup-heading-bottom-spacing-control solace-white-background-control"
+    className: "solace-popup-heading-bottom-spacing-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, renderHeadingTag(), renderBottomSpacing())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PopupHeadingBottomSpacing);
@@ -7451,7 +7559,8 @@ const PopupOnlyBottomSpacing = ({
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -7487,7 +7596,7 @@ const PopupOnlyBottomSpacing = ({
     })));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
-    className: "popover-popup-only-bottom-spacing",
+    className: "popover-popup-only-bottom-spacing solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -7500,7 +7609,16 @@ const PopupOnlyBottomSpacing = ({
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-popup-only-bottom-spacing-control solace-white-background-control"
+    className: "solace-popup-only-bottom-spacing-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, renderBottomSpacing())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PopupOnlyBottomSpacing);
@@ -7668,10 +7786,21 @@ const PopupPaymentMethods = ({
       const ids = [controlID, ...baseIds.map(prefix => `${prefix}-${controlID}`)];
       if (ids.includes(e.target.id)) {
         const rect = e.target.getBoundingClientRect();
-        setPopoverCoords({
-          top: rect.bottom - 500,
-          left: rect.left + 50
-        });
+        console.log('rect : ' + JSON.stringify(rect, null, 5));
+        console.log(typeof rect.y);
+        if (rect.y > 300) {
+          setPopoverCoords({
+            top: rect.bottom - 25,
+            left: rect.left + 50,
+            y: 300
+          });
+        } else {
+          setPopoverCoords({
+            top: rect.bottom - 25,
+            left: rect.left + 50,
+            y: rect.y
+          });
+        }
         setVisible(true);
       }
     };
@@ -7879,7 +8008,7 @@ const PopupPaymentMethods = ({
     })));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Popover, {
-    className: "solace-popup-payment-methods",
+    className: "solace-popup-payment-methods solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -7892,7 +8021,16 @@ const PopupPaymentMethods = ({
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-popup-payment-methods-control solace-white-background-control"
+    className: "solace-popup-payment-methods-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, renderTitle(), renderOrdering(), renderIconSize(), renderBottomSpacing())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PopupPaymentMethods);
@@ -8139,7 +8277,8 @@ const PostMeta = props => {
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -8554,7 +8693,7 @@ const PostMeta = props => {
     });
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Popover, {
-    className: "popover-post-meta",
+    className: "popover-post-meta solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -8567,7 +8706,17 @@ const PostMeta = props => {
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-post-meta-control solace-white-background-control"
+    className: "solace-post-meta-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      // top: popoverCoords.y - 15,
+      top: 100,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "solace-container-post-meta"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -9042,10 +9191,19 @@ const ProductElementAddToCart = ({
       const ids = [controlID, ...baseIds.map(prefix => `${prefix}-${controlID}`)];
       if (ids.includes(e.target.id)) {
         const rect = e.target.getBoundingClientRect();
-        setPopoverCoords({
-          top: rect.bottom - 25,
-          left: rect.left + 50
-        });
+        if (rect.y > 300) {
+          setPopoverCoords({
+            top: rect.bottom - 25,
+            left: rect.left + 50,
+            y: rect.y - 200
+          });
+        } else {
+          setPopoverCoords({
+            top: rect.bottom - 25,
+            left: rect.left + 50,
+            y: rect.y
+          });
+        }
         setVisible(true);
       }
     };
@@ -9123,7 +9281,7 @@ const ProductElementAddToCart = ({
     })));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
-    className: "popover-product-element-add-to-cart",
+    className: "popover-product-element-add-to-cart solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -9136,7 +9294,16 @@ const ProductElementAddToCart = ({
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-product-element-add-to-cart-control solace-white-background-control"
+    className: "solace-product-element-add-to-cart-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, renderTitle(), renderButtonWidth(), bottomSpacing())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductElementAddToCart);
@@ -9803,7 +9970,8 @@ const RadioPopupComponent = ({
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -10132,7 +10300,7 @@ const RadioPopupComponent = ({
     };
   }
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
-    className: "popover-radio-popup",
+    className: "popover-radio-popup solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -10143,7 +10311,16 @@ const RadioPopupComponent = ({
       left: popoverCoords.left
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-white-background-control solace-radio-popup-control"
+    className: "solace-white-background-control solace-radio-popup-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_solace_wp_components__WEBPACK_IMPORTED_MODULE_1__.RadioIcons, {
@@ -11826,7 +12003,8 @@ const SpacingDividerComponent = ({
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -11898,7 +12076,7 @@ const SpacingDividerComponent = ({
   } = controlParams;
   const wrapClasses = classnames__WEBPACK_IMPORTED_MODULE_1___default()(['solace-white-background-control', 'solace-sizing', 'solace-spacing-divider']);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
-    className: "popover-spacing-divider",
+    className: "popover-spacing-divider solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -11909,7 +12087,16 @@ const SpacingDividerComponent = ({
       left: popoverCoords.left
     }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: wrapClasses
+    className: wrapClasses,
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "solace-control-header"
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
@@ -12439,7 +12626,8 @@ const TypefaceTitle = props => {
         const rect = e.target.getBoundingClientRect();
         setPopoverCoords({
           top: rect.bottom - 25,
-          left: rect.left + 50
+          left: rect.left + 50,
+          y: rect.y
         });
         setVisible(true);
       }
@@ -12562,7 +12750,7 @@ const TypefaceTitle = props => {
     })));
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, visible && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Popover, {
-    className: "popover-title",
+    className: "popover-title popover-typeface-title solace-remove-style-popover-transform",
     onFocusOutside: () => {
       setVisible(false);
     },
@@ -12575,7 +12763,16 @@ const TypefaceTitle = props => {
   }, label && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "customize-control-title"
   }, label), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "solace-typeface-title-control solace-white-background-control"
+    className: "solace-typeface-title-control solace-white-background-control",
+    style: {
+      position: 'absolute',
+      left: popoverCoords.left - 10,
+      top: popoverCoords.y - 15,
+      backgroundColor: 'var(--sol-customizer-panel-bg-color)',
+      color: '#fff',
+      border: '1px solid var(--sol-customizer-line-color)',
+      borderRadius: '10px'
+    }
   }, renderHeadingTag(), renderFontSize())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TypefaceTitle);

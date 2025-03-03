@@ -82,7 +82,7 @@ class WC_Custom_General_Button extends Base_Customizer {
 					'sanitize_callback'     => 'solace_sanitize_colors',
 				),
 				array(
-					'transport'             => 'postMessage',
+					// 'transport'             => 'postMessage',
 					'label'                 => __( 'Font', 'solace' ),
 					'type'                  => 'solace_color_control',
 					'section'         	    => 'solace_wc_custom_general_buttons',
@@ -99,7 +99,7 @@ class WC_Custom_General_Button extends Base_Customizer {
 					'sanitize_callback'     => 'solace_sanitize_colors',
 				),
 				array(
-					'transport'             => 'postMessage',
+					// 'transport'             => 'postMessage',
 					'label'                 => __( 'Font Hover', 'solace' ),
 					'type'                  => 'solace_color_control',
 					'section'         	    => 'solace_wc_custom_general_buttons',
@@ -116,7 +116,7 @@ class WC_Custom_General_Button extends Base_Customizer {
 					'sanitize_callback'     => 'solace_sanitize_colors',
 				),
 				array(
-					'transport'             => 'postMessage',
+					// 'transport'             => 'postMessage',
 					'label'                 => __( 'Background', 'solace' ),
 					'type'                  => 'solace_color_control',
 					'section'         	    => 'solace_wc_custom_general_buttons',
@@ -133,7 +133,7 @@ class WC_Custom_General_Button extends Base_Customizer {
 					'sanitize_callback'     => 'solace_sanitize_colors',
 				),
 				array(
-					'transport'             => 'postMessage',
+					// 'transport'             => 'postMessage',
 					'label'                 => __( 'Background Hover', 'solace' ),
 					'type'                  => 'solace_color_control',
 					'section'         	    => 'solace_wc_custom_general_buttons',
@@ -210,6 +210,7 @@ class WC_Custom_General_Button extends Base_Customizer {
 					'label'                 => __( 'Border Width', 'solace' ),
 					'section'         	    => 'solace_wc_custom_general_buttons',
 					'priority'              => 121,
+					'default'               => $this->default_borderwidth_value,
 				),
 				'\Solace\Customizer\Controls\React\Spacing',
 			)
@@ -227,6 +228,7 @@ class WC_Custom_General_Button extends Base_Customizer {
 					'label'                 => __( 'Radius', 'solace' ),
 					'section'         	    => 'solace_wc_custom_general_buttons',
 					'priority'              => 122,
+					'default'               => $this->default_radius_value,
 				),
 				'\Solace\Customizer\Controls\React\Spacing',
 				
@@ -244,6 +246,7 @@ class WC_Custom_General_Button extends Base_Customizer {
 					'label'                 => __( 'Padding', 'solace' ),
 					'section'         	    => 'solace_wc_custom_general_buttons',
 					'priority'              => 123,
+					'default'               => $this->default_padding_value,
 				),
 				'\Solace\Customizer\Controls\React\Spacing',
 				

@@ -603,7 +603,9 @@
 				'components-button link has-icon' === getClass || 
 				'components-button active link has-icon' === getClass || 
 				'dashicon dashicons dashicons-admin-links' === getClass || 
-				'dashicon dashicons dashicons-editor-unlink' === getClass 
+				'dashicon dashicons dashicons-editor-unlink' === getClass ||
+				'components-button reset has-icon' ||
+				'dashicon dashicons dashicons-image-rotate'
 			) {
 				$('.popover-spacing-divider').trigger( "focus" );
 			}
