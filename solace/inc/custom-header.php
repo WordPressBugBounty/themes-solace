@@ -54,7 +54,7 @@ function solace_content_before_woocommerce_pages() {
 	$sol_page_breadcrumb = get_theme_mod('solace_blog_page_title_breadcrumb',true);
 	$sol_page_description = get_theme_mod('solace_blog_page_title_blog_description',true);
 	$sol_page_alignment = get_theme_mod('solace_blog_page_title_horizontal_alignment',false);
-	$sol_page_font_color = get_theme_mod('solace_blog_page_title_font_color','#FFFFFF');
+	$sol_page_font_color = get_theme_mod('solace_blog_page_title_font_color','var(--blog-page-title-font-color)');
 	$sol_page_bg_color = get_theme_mod('solace_blog_page_title_area_background','var(--sol-color-page-title-background)');
 	$sol_page_vertical_spacing = get_theme_mod('solace_blog_page_title_vertical_spacing','20');
 

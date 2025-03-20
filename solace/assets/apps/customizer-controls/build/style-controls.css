@@ -1952,6 +1952,12 @@ ul[id^=sub-accordion-panel-hfg_] #accordion-section-solace_header_presets {
 .solace-component-featured-image .solace-white-background-control .toggle-container label {
   font-size: 14px;
 }
+.solace-component-featured-image .solace-white-background-control .toggle-container span.components-form-toggle__track {
+  background: var(--sol-customizer-contrast-color);
+  height: 20px;
+  width: 35px;
+  border-radius: 100px;
+}
 .solace-component-featured-image .solace-white-background-control .solace-control-device .solace-responsive-control-bar {
   display: flex;
   flex-wrap: wrap;

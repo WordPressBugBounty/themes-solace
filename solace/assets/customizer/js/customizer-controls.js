@@ -257,7 +257,10 @@
 					'header_social_icon_color_tiktok_setting',
 					'header_social_icon_color_telegram_setting',
 					'header_social_icon_color_pinterest_setting',
-					'header_social_icon_color_linkedin_setting'
+					'header_social_icon_color_linkedin_setting',
+					'header_social_icon_color_instagram_setting',
+					'header_social_icon_color_threads_setting',
+					'header_social_icon_color_whatsapp_setting'
 				];
 
 				// Iterate through each control and apply the visibility update
@@ -333,7 +336,10 @@
 					'footer_social_icon_color_tiktok_setting',
 					'footer_social_icon_color_telegram_setting',
 					'footer_social_icon_color_pinterest_setting',
-					'footer_social_icon_color_linkedin_setting'
+					'footer_social_icon_color_linkedin_setting',
+					'footer_social_icon_color_instagram_setting',
+					'footer_social_icon_color_threads_setting',
+					'footer_social_icon_color_whatsapp_setting'					
 				];
 
 				// Iterate through each control and apply the visibility update

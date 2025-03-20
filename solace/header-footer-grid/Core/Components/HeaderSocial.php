@@ -37,6 +37,9 @@ class HeaderSocial extends Abstract_Component {
 	const ICON_COLOR_TELEGRAM  = 'icon_color_telegram_setting';
 	const ICON_COLOR_PINTEREST  = 'icon_color_pinterest_setting';
 	const ICON_COLOR_LINKEDIN  = 'icon_color_linkedin_setting';
+	const ICON_COLOR_INSTAGRAM  = 'icon_color_instagram_setting';
+	const ICON_COLOR_THREADS  = 'icon_color_threads_setting';
+	const ICON_COLOR_WHATSAPP  = 'icon_color_whatsapp_setting';
 	const TOGGLE_ICON  = 'toggle_icon';
 	const TOGGLE_COLOR_PELANGI  = 'toggle_color_icon';
 	const ICON_SIZE  = 'icon_size';
@@ -284,6 +287,75 @@ class HeaderSocial extends Abstract_Component {
 				],
 			]
 		);
+
+		// Instagram
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::ICON_COLOR_INSTAGRAM,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_GENERAL,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'solace_sanitize_colors',
+				'default'               => '#c13584',
+				'label'                 => __( 'Icon Color Instagram', 'solace' ),
+				'type'                  => 'solace_color_control',
+				'section'               => $this->section,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => 'fill',
+						'selector' => '.builder-item--' . $this->get_id() . ' .component-wrap-header-social .box-social.instagram svg',
+					],
+					'selector' => '.builder-item--' . $this->get_id(),
+				],
+			]
+		);
+
+		// Threads
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::ICON_COLOR_THREADS,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_GENERAL,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'solace_sanitize_colors',
+				'default'               => '#000000',
+				'label'                 => __( 'Icon Color Threads', 'solace' ),
+				'type'                  => 'solace_color_control',
+				'section'               => $this->section,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => 'fill',
+						'selector' => '.builder-item--' . $this->get_id() . ' .component-wrap-header-social .box-social.threads svg',
+					],
+					'selector' => '.builder-item--' . $this->get_id(),
+				],
+			]
+		);		
+
+		// Whatsapp
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::ICON_COLOR_WHATSAPP,
+				'group'                 => $this->get_class_const( 'COMPONENT_ID' ),
+				'tab'                   => SettingsManager::TAB_GENERAL,
+				'transport'             => 'postMessage',
+				'sanitize_callback'     => 'solace_sanitize_colors',
+				'default'               => '#25d366',
+				'label'                 => __( 'Icon Color Whatsapp', 'solace' ),
+				'type'                  => 'solace_color_control',
+				'section'               => $this->section,
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => [
+					'cssVar' => [
+						'vars'     => 'fill',
+						'selector' => '.builder-item--' . $this->get_id() . ' .component-wrap-header-social .box-social.whatsapp svg',
+					],
+					'selector' => '.builder-item--' . $this->get_id(),
+				],
+			]
+		);		
 
 		// Toggle
 		SettingsManager::get_instance()->add(

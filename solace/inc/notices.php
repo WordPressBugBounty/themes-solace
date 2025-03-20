@@ -9,10 +9,11 @@ if ( class_exists( 'Solace_Extra_Admin' ) ) {
  * Display admin notice.
  */
 function solace_display_admin_notice() {
-	$get_cookie_disable_admin_notices = isset( $_COOKIE['solace_disable_admin_notices'] ) ? sanitize_key( $_COOKIE['solace_disable_admin_notices'] ) : '';
-	if ( 'disable' === $get_cookie_disable_admin_notices ) {
+	$active_plugins = get_option( 'active_plugins' );
+	if ( in_array( 'solace-extra/solace-extra.php', $active_plugins ) ) {
 		return;
-	}   
+	}
+
 	?>
 	<div class="notice-success notice-solace notice is-dismissible" style="width: 100%; padding: 0; background-image: url(<?php echo esc_url( SOLACE_ASSETS_URL . 'img/dashboard/solace-banner-dashboard.jpg' ); ?>); background-position: center; background-repeat: no-repeat; background-size: cover; min-height: 300px; max-height: 400px;">
 		<div class="boxes">
@@ -37,25 +38,6 @@ function solace_display_admin_notice() {
 add_action( 'admin_notices', 'solace_display_admin_notice' );
 
 /**
- * Callback function for AJAX to dismiss admin notices and set a cookie.
- */
-function solace_dismiss_notice_ajax_callback() {
-	// Security check: Ensure nonce is valid.
-	check_ajax_referer( 'solace-ajax-verification', 'mynonce' );
-
-	// Set a cookie to disable admin notices for 7 days.
-	// setcookie( 'solace_disable_admin_notices', 'disable', time() + ( 7 * 24 * 60 * 60 ) );
-
-	// Set a cookie to permanently disable admin notices.
-	setcookie( 'solace_disable_admin_notices', 'disable', time() + ( 5 * 365 * 24 * 60 * 60 ) ); // 5 Years.
-
-	// Terminate the AJAX request.
-	wp_send_json( array( 'success' => true ) );
-	wp_die();
-}
-add_action( 'wp_ajax_solace_action_dismiss_notice', 'solace_dismiss_notice_ajax_callback' );
-
-/**
  * AJAX callback to install and activate specified plugins if not already active.
  *
  * This function handles the installation and activation of plugins via an AJAX request.
@@ -74,9 +56,6 @@ function solace_ajax_install_and_activate_plugin() {
 	if ( ! current_user_can( 'install_plugins' ) ) {
 		wp_send_json_error( [ 'error' => 'Unauthorized action!' ] );
 	}
-
-	// Set a cookie to permanently disable admin notices.
-	setcookie( 'solace_disable_admin_notices', 'disable', time() + ( 5 * 365 * 24 * 60 * 60 ) ); // 5 Years.	
 
 	// Define plugins to be installed and/or activated
 	// $plugins_to_install = array( 'elementor' );

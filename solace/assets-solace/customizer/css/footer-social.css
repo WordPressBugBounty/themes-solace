@@ -248,7 +248,10 @@ li#customize-control-footer_social_icon_color_twitter_setting,
 li#customize-control-footer_social_icon_color_tiktok_setting,
 li#customize-control-footer_social_icon_color_telegram_setting,
 li#customize-control-footer_social_icon_color_pinterest_setting,
-li#customize-control-footer_social_icon_color_linkedin_setting {
+li#customize-control-footer_social_icon_color_linkedin_setting,
+li#customize-control-footer_social_icon_color_instagram_setting,
+li#customize-control-footer_social_icon_color_whatsapp_setting,
+li#customize-control-footer_social_icon_color_threads_setting {    
     background: transparent;
     position: absolute;
     margin: 0;
@@ -264,7 +267,10 @@ li#customize-control-footer_social_icon_color_twitter_setting .solace-color-cont
 li#customize-control-footer_social_icon_color_tiktok_setting .solace-color-control,
 li#customize-control-footer_social_icon_color_telegram_setting .solace-color-control,
 li#customize-control-footer_social_icon_color_pinterest_setting .solace-color-control,
-li#customize-control-footer_social_icon_color_linkedin_setting .solace-color-control {
+li#customize-control-footer_social_icon_color_linkedin_setting .solace-color-control,
+li#customize-control-footer_social_icon_color_instagram_setting .solace-color-control,
+li#customize-control-footer_social_icon_color_threads_setting .solace-color-control,
+li#customize-control-footer_social_icon_color_whatsapp_setting .solace-color-control {
     background: transparent;
 }
 
@@ -274,7 +280,10 @@ li#customize-control-footer_social_icon_color_twitter_setting span,
 li#customize-control-footer_social_icon_color_tiktok_setting span,
 li#customize-control-footer_social_icon_color_telegram_setting span,
 li#customize-control-footer_social_icon_color_pinterest_setting span,
-li#customize-control-footer_social_icon_color_linkedin_setting span {
+li#customize-control-footer_social_icon_color_linkedin_setting span,
+li#customize-control-footer_social_icon_color_instagram_setting span,
+li#customize-control-footer_social_icon_color_threads_setting span,
+li#customize-control-footer_social_icon_color_whatsapp_setting span {
     display: none;
 }
 
@@ -284,7 +293,10 @@ li#customize-control-footer_social_icon_color_twitter_setting .components-dropdo
 li#customize-control-footer_social_icon_color_tiktok_setting .components-dropdown,
 li#customize-control-footer_social_icon_color_telegram_setting .components-dropdown,
 li#customize-control-footer_social_icon_color_pinterest_setting .components-dropdown,
-li#customize-control-footer_social_icon_color_linkedin_setting .components-dropdown {
+li#customize-control-footer_social_icon_color_linkedin_setting .components-dropdown,
+li#customize-control-footer_social_icon_color_instagram_setting .components-dropdown,
+li#customize-control-footer_social_icon_color_threads_setting .components-dropdown,
+li#customize-control-footer_social_icon_color_whatsapp_setting .components-dropdown {
     position: relative;
     right: 120px;
     top: 55px;
@@ -297,7 +309,10 @@ li#customize-control-footer_social_icon_color_twitter_setting .components-dropdo
 li#customize-control-footer_social_icon_color_tiktok_setting .components-dropdown > button,
 li#customize-control-footer_social_icon_color_telegram_setting .components-dropdown > button,
 li#customize-control-footer_social_icon_color_pinterest_setting .components-dropdown > button,
-li#customize-control-footer_social_icon_color_linkedin_setting .components-dropdown > button {
+li#customize-control-footer_social_icon_color_linkedin_setting .components-dropdown > button,
+li#customize-control-footer_social_icon_color_instagram_setting .components-dropdown > button,
+li#customize-control-footer_social_icon_color_threads_setting .components-dropdown > button,
+li#customize-control-footer_social_icon_color_whatsapp_setting .components-dropdown > button {
     opacity: 0;
     display: none;
 }

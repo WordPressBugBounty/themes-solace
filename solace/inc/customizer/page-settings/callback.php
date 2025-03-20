@@ -119,6 +119,11 @@ if (!function_exists('solace_blog_page_title_layout')) :
 					.archive-header .solace-breadcrumb a:hover {
 						color: <?php echo 'var(--sol-color-link-button-hover)';?>;
 					}
+
+					.archive-header .solace-header.solace-blog-title,
+					.archive-header .solace-header.solace-description h1 {
+						color: var(--blog-page-title-font-color);
+					}
 					
 				</style>
 				<header class="archive-header callback <?php echo $sol_page_alignment;?>">
@@ -134,7 +139,7 @@ if (!function_exists('solace_blog_page_title_layout')) :
 					}
 					if ( $sol_page_title ){
 						echo !empty( $css_sol_page_title )? $css_sol_page_title:''?>
-							<h1 class='solace-header solace-blog-title 123'>
+							<h1 class='solace-header solace-blog-title' style='padding-top: 20px;'>
 								<?php
 								// $blog_title = get_the_title(get_option('page_for_posts'));
 								echo $blog_title;?>
@@ -172,7 +177,6 @@ if (!function_exists('solace_blog_page_title_layout')) :
 							<?php
 							$page_for_posts_id = get_option( 'page_for_posts' );
 							$title = get_the_title( $page_for_posts_id );
-
 							if ( $page_for_posts_id && $sol_page_title) : ?>
 								<h1><?php echo esc_html( $title ); ?></h1>
 							<?php endif; ?>

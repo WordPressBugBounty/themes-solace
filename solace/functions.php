@@ -17,7 +17,7 @@ if (!defined('SOLACE_DEBUG')) {
 
 if (!defined('SOLACE_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('SOLACE_VERSION', '2.1.10');
+	define('SOLACE_VERSION', '2.1.11');
 }
 
 /**
@@ -939,4 +939,10 @@ function solace_add_wpfc_clear_cache_to_wp_config() {
 }
 add_action( 'init', 'solace_add_wpfc_clear_cache_to_wp_config' );
 
-// remove_theme_mods();
+// Purge litespeed.
+function solace_purge_litespeed_cache() {
+    if ( defined( 'LSCWP_V' ) ) { 
+        do_action( 'litespeed_purge_all' );
+    }
+}
+add_action('customize_save_after', 'solace_purge_litespeed_cache');

@@ -58,6 +58,27 @@
             });
         });
 
+        // Instagram
+        wp.customize('header_social_icon_color_instagram_setting', function (setting) {
+            setting.bind(function (value) {
+                $('.sortable_repeater_header_social .repeater.instagram .box-info .box-color-custom .gradient').css('background', value);
+            });
+        });
+
+        // Threads
+        wp.customize('header_social_icon_color_threads_setting', function (setting) {
+            setting.bind(function (value) {
+                $('.sortable_repeater_header_social .repeater.threads .box-info .box-color-custom .gradient').css('background', value);
+            });
+        });
+
+        // Whatsapp
+        wp.customize('header_social_icon_color_whatsapp_setting', function (setting) {
+            setting.bind(function (value) {
+                $('.sortable_repeater_header_social .repeater.whatsapp .box-info .box-color-custom .gradient').css('background', value);
+            });
+        });
+
 
         // --------------------------- Footer ---------------------------
         // Facebook
@@ -106,6 +127,27 @@
         wp.customize('footer_social_icon_color_linkedin_setting', function (setting) {
             setting.bind(function (value) {
                 $('.sortable_repeater_footer_social .repeater.linkedin .box-info .box-color-custom .gradient').css('background', value);
+            });
+        });
+    
+        // Instagram
+        wp.customize('footer_social_icon_color_instagram_setting', function (setting) {
+            setting.bind(function (value) {
+                $('.sortable_repeater_footer_social .repeater.instagram .box-info .box-color-custom .gradient').css('background', value);
+            });
+        });
+
+        // Threads
+        wp.customize('footer_social_icon_color_threads_setting', function (setting) {
+            setting.bind(function (value) {
+                $('.sortable_repeater_footer_social .repeater.threads .box-info .box-color-custom .gradient').css('background', value);
+            });
+        });
+
+        // Whatsapp
+        wp.customize('footer_social_icon_color_whatsapp_setting', function (setting) {
+            setting.bind(function (value) {
+                $('.sortable_repeater_footer_social .repeater.whatsapp .box-info .box-color-custom .gradient').css('background', value);
             });
         });
     });

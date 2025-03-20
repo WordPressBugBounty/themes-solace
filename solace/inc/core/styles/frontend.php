@@ -63,6 +63,7 @@ class Frontend extends Generator {
 		$this->setup_form_fields_style();
 		$this->setup_header_style();
 		$this->setup_single_post_style();
+		$this->setup_blog_page_title_style();
 		$this->setup_wc_shop_style();
 		$this->setup_wc_single_product_style();
 		$this->setup_wc_global();
@@ -1268,6 +1269,29 @@ class Frontend extends Generator {
 		add_filter( 'solace_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_PADDING, [ $this, 'add_form_buttons' ] );
 		add_filter( 'solace_selectors_' . Config::CSS_SELECTOR_BTN_SECONDARY_HOVER, [ $this, 'add_form_buttons_hover' ] );
 	}
+
+	/**
+	 * Add css for blog page title.
+	 */
+	private function setup_blog_page_title_style() {
+		if ( ! solace_is_new_skin() ) {
+			return;
+		}
+
+		$general = [
+			'--blog-page-title-font-color'   => [
+				Dynamic_Selector::META_KEY => 'solace_blog_page_title_font_color',
+				Dynamic_Selector::META_DEFAULT  => 'var(--sol-color-page-title-text)',
+			],
+		];
+
+		$this->_subscribers[] = [
+			'selectors' => '.archive-header .solace-header.solace-blog-title,
+			.archive-header .solace-header.solace-description h1',
+			'rules'     => $general,
+		];		
+
+	}	
 
 	/**
 	 * Add css for single post.

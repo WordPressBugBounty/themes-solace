@@ -775,6 +775,9 @@ function solace_style_component_social_header()
     $telegram = get_theme_mod('header_social_icon_color_telegram_setting', '#0088cc');
     $pinterest = get_theme_mod('header_social_icon_color_pinterest_setting', '#bd081c');
     $linkedin = get_theme_mod('header_social_icon_color_linkedin_setting', '#0a66c2');
+    $instagram = get_theme_mod('header_social_icon_color_instagram_setting', '#c13584');
+    $threads = get_theme_mod('header_social_icon_color_threads_setting', '#000000');
+    $whatsapp = get_theme_mod('header_social_icon_color_whatsapp_setting', '#25d366');
     $icon_size = absint(get_theme_mod('header_social_icon_size', 22)) . 'px';
 
     $header_sosial = ".component-wrap-header-social .box-social.facebook svg {fill: $facebook;}";
@@ -784,6 +787,9 @@ function solace_style_component_social_header()
     $header_sosial .= ".component-wrap-header-social .box-social.telegram svg {fill: $telegram;}";
     $header_sosial .= ".component-wrap-header-social .box-social.pinterest svg {fill: $pinterest;}";
     $header_sosial .= ".component-wrap-header-social .box-social.linkedin svg {fill: $linkedin;}";
+    $header_sosial .= ".component-wrap-header-social .box-social.instagram svg {fill: $instagram;}";
+    $header_sosial .= ".component-wrap-header-social .box-social.threads svg {fill: $threads;}";
+    $header_sosial .= ".component-wrap-header-social .box-social.whatsapp svg {fill: $whatsapp;}";
     $header_sosial .= ".component-wrap-header-social .box-social svg {width: $icon_size; height: $icon_size;}";
 
     wp_add_inline_style('solace-theme', $header_sosial);
@@ -800,6 +806,9 @@ function solace_style_component_social_footer()
     $telegram = get_theme_mod( 'footer_social_icon_color_telegram_setting', 'var(--sol-color-base-font)' );
     $pinterest = get_theme_mod( 'footer_social_icon_color_pinterest_setting', 'var(--sol-color-base-font)' );
     $linkedin = get_theme_mod( 'footer_social_icon_color_linkedin_setting', 'var(--sol-color-base-font)' );
+    $instagram = get_theme_mod('footer_social_icon_color_instagram_setting', '#c13584');
+    $threads = get_theme_mod('footer_social_icon_color_threads_setting', '#000000');
+    $whatsapp = get_theme_mod('footer_social_icon_color_whatsapp_setting', '#25d366');	
     $icon_size = absint(get_theme_mod( 'footer_social_icon_size', 22)) . 'px';
 
     $footer_sosial = ".component-wrap-footer-social .box-social.facebook svg {fill: $facebook;}";
@@ -809,6 +818,9 @@ function solace_style_component_social_footer()
     $footer_sosial .= ".component-wrap-footer-social .box-social.telegram svg {fill: $telegram;}";
     $footer_sosial .= ".component-wrap-footer-social .box-social.pinterest svg {fill: $pinterest;}";
     $footer_sosial .= ".component-wrap-footer-social .box-social.linkedin svg {fill: $linkedin;}";
+    $footer_sosial .= ".component-wrap-footer-social .box-social.instagram svg {fill: $instagram;}";
+    $footer_sosial .= ".component-wrap-footer-social .box-social.threads svg {fill: $threads;}";
+    $footer_sosial .= ".component-wrap-footer-social .box-social.whatsapp svg {fill: $whatsapp;}";	
     $footer_sosial .= ".component-wrap-footer-social .box-social svg {width: $icon_size; height: $icon_size;}";
 
     wp_add_inline_style('solace-theme', $footer_sosial);

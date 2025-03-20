@@ -990,10 +990,7 @@ function solace_product_sorting() {
     );    
 
     if ( ! $product_sorting) {
-        if ( 'product-page-layout-custom' === $shop_layout || 'product-page-layout5' === $shop_layout ) {
-            return;
-        }
-        $style = "body.woocommerce-shop .shop-container .nv-woo-filters {display: none;}";
+        $style = "body.woocommerce-shop .shop-container .nv-woo-filters, body.woocommerce-page .shop-container .nv-woo-filters {display: none;}";
         wp_add_inline_style( 'solace-theme', $style );
     }
 }

@@ -173,7 +173,7 @@ class FooterSocial extends \WP_Customize_Control
 
             <span class="add-new-label"><?php esc_html_e('Add new', 'solace') ?></span>
 
-            <?php $socials = array('facebook', 'youtube', 'twitter', 'tiktok', 'telegram', 'pinterest', 'linkedin'); ?>
+            <?php $socials = array('facebook', 'youtube', 'twitter', 'tiktok', 'telegram', 'pinterest', 'linkedin', 'instagram', 'threads', 'whatsapp' ); ?>
             <div class="container-dropdown-footer-social">
                 <div id="box-dropdown" class="box-dropdown">
                     <span class="title-active"><?php echo esc_html($socials[0]); ?></span>

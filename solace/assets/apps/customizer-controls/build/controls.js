@@ -20602,7 +20602,7 @@ function _extends() {
 /******/ 			// return url for filenames not based on template
 /******/ 			if (chunkId === "vendors-node_modules_wordpress_icons_build-module_library_close_js-node_modules_wordpress_ico-2c346b") return "818e2d8f5c89ab4f8b69.js";
 /******/ 			if (chunkId === "assets_apps_customizer-controls_src_font-family_FontFamilySelector_js") return "ca29e9e505ec82e3d3ec.js";
-/******/ 			if (chunkId === "order") return "832eba1d5e4590205cc4.js";
+/******/ 			if (chunkId === "order") return "16c88f5a2452054a8ff6.js";
 /******/ 			if (chunkId === "assets_apps_customizer-controls_src_builder_components_Builder_tsx") return "2b4888d101eb0b23bb42.js";
 /******/ 			if (chunkId === "assets_apps_customizer-controls_src_builder_components_SidebarContent_tsx") return "a7be07b24676d83058ea.js";
 /******/ 			if (chunkId === "assets_apps_customizer-controls_src_repeater_IconsContent_js") return "d4ed0e0bdd0de3b845ef.js";

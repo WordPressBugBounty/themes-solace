@@ -370,7 +370,7 @@ class Layout_Single_Post extends Base_Layout_Single {
 						'imageSize' => [
 							'full'         			=> esc_html__( 'Full', 'solace' ),
 							'large' 	   			=> esc_html__( 'Large', 'solace' ),
-							'medium_large' 			=> esc_html__( 'Medium_large', 'solace' ),
+							'medium_large' 			=> esc_html__( 'Medium Large', 'solace' ),
 							'medium' 	   			=> esc_html__( 'Medium', 'solace' ),
 							'thumbnail'    		    => esc_html__( 'Thumbnail', 'solace' ),
 							'solace-single2'        => esc_html__( '2000x975', 'solace' ),

@@ -439,7 +439,6 @@ class Wc_Product_Page extends Base_Customizer
 					'label'           => esc_html__('Product sorting', 'solace'),
 					'section'         => $this->section,
 					'type'            => 'solace_toggle_control_flex',
-					'active_callback' => array($this, 'is_layout1_to_4_and_4_active_callback'),
 				],
 			)
 		);

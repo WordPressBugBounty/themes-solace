@@ -2560,8 +2560,8 @@ function solace_is_elementor_page_customizer() {
 
 add_action('wp_enqueue_scripts', 'solace_apply_default_button_styles');
 
-add_action('wp', function () {
-    if (!solace_is_elementor_page() && !solace_is_elementor_page_customizer()) {
+// add_action('wp', function () {
+//     if (!solace_is_elementor_page() && !solace_is_elementor_page_customizer()) {
 	add_action('wp_enqueue_scripts', function () {
 
 		if (is_customize_preview()) {
@@ -2618,7 +2618,7 @@ add_action('wp', function () {
 			}
 		}
 	},99);
-}});
+// }});
 
 
 // set default value after theme installed

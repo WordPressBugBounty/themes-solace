@@ -4,20 +4,6 @@
 		// Hide notice.
 		$( '.notice-solace' ).slideUp( 300 );
 
-		$.ajax( {
-			url: adminLocalize.ajaxUrl,
-			type: 'POST',
-			data: {
-				action: 'solace_action_dismiss_notice',
-				mynonce: adminLocalize.ajaxNonce,
-			},
-			success( response ) {
-				console.log( 'Ajax success:', response );
-			},
-			error( error ) {
-				console.error( 'Ajax error:', error );
-			},
-		} );
 	} );
 
 	// Activating.

@@ -221,7 +221,7 @@ class Layout_Blog_Page_Title extends Base_Customizer {
 			new Control(
 				'solace_blog_page_title_font_color',
 				array(
-					'default'               => '#fff',
+					'default'               => 'var(--sol-color-page-title-text)',
 					'sanitize_callback'     => 'solace_sanitize_colors',
 				),
 				array(
@@ -230,7 +230,14 @@ class Layout_Blog_Page_Title extends Base_Customizer {
 					'type'                  => 'solace_color_control',
 					'section'         		=> $this->section,
 					'priority'        		=> 5,
-
+					'live_refresh_selector' => true,
+					'live_refresh_css_prop' => [
+						'cssVar' => array(
+							'vars'     => '--blog-page-title-font-color',
+							'selector' => '.archive-header .solace-header.solace-blog-title,
+							.archive-header .solace-header.solace-description h1',
+						),
+					],
 				)
 				
 			)

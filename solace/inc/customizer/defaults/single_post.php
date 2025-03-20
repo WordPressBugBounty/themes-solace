@@ -27,19 +27,19 @@ trait Single_Post {
 			'desktop' => array(
 				'imageRatio' 	   => 'original',
 				'imageScale' 	   => 'contain',
-				'imageSize'  	   => 'full',
+				'imageSize'  	   => 'medium_large',
 				'imageVisibility'  => true,
 			),
 			'tablet' => array(
 				'imageRatio' 	   => 'original',
 				'imageScale' 	   => 'contain',
-				'imageSize'  	   => 'full',
+				'imageSize'  	   => 'medium_large',
 				'imageVisibility'  => true,
 			),			
 			'mobile' => array(
 				'imageRatio' 	   => 'original',
 				'imageScale' 	   => 'contain',
-				'imageSize'  	   => 'full',
+				'imageSize'  	   => 'medium_large',
 				'imageVisibility'  => true,
 			),			
 		);

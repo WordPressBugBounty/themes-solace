@@ -44,6 +44,12 @@ jQuery(document).ready(function ($) {
 						colorOri = '#bd081c';
 					} else if (mylabel === 'linkedin') {
 						colorOri = '#0a66c2';
+					} else if (mylabel === 'instagram') {
+						colorOri = '#c13584';
+					} else if (mylabel === 'threads') {
+						colorOri = '#000000';
+					} else if (mylabel === 'whatsapp') {
+						colorOri = '#25d366';
 					}
 
 					const sosmed = $.trim($('.sortable_repeater_footer_social').find('.repeater.'+mylabel+' .box-info .text').text());
@@ -187,6 +193,66 @@ jQuery(document).ready(function ($) {
 						if ('linkedin' === sosmed) {
 							$('.sortable_repeater_footer_social').find('.repeater.'+mylabel+' .box-info .text').next().next().find('.gradient').css('background', colorOri);
 						}
+					} else if ('instagram' === mylabel) {
+
+						let getcolor = $('li#customize-control-footer_social_icon_color_'+mylabel+'_setting .components-dropdown:eq(1) button');
+
+						let color = '';
+						color = getcolor.find('.color').attr('style');
+
+						if (color) {
+							color = color.replace('background: ', '');
+							color = color.replace(';', '');
+
+							if ('instagram' === sosmed) {
+								$('.sortable_repeater_footer_social').find('.repeater.'+mylabel+' .box-info .text').next().find('.gradient').css('background', color);
+							}
+						}
+
+						if ('instagram' === sosmed) {
+							$('.sortable_repeater_footer_social').find('.repeater.'+mylabel+' .box-info .text').next().next().find('.gradient').css('background', colorOri);
+						}
+
+					} else if ('threads' === mylabel) {
+
+						let getcolor = $('li#customize-control-footer_social_icon_color_'+mylabel+'_setting .components-dropdown:eq(1) button');
+
+						let color = '';
+						color = getcolor.find('.color').attr('style');
+
+						if (color) {
+							color = color.replace('background: ', '');
+							color = color.replace(';', '');
+
+							if ('threads' === sosmed) {
+								$('.sortable_repeater_footer_social').find('.repeater.'+mylabel+' .box-info .text').next().find('.gradient').css('background', color);
+							}
+						}
+
+						if ('threads' === sosmed) {
+							$('.sortable_repeater_footer_social').find('.repeater.'+mylabel+' .box-info .text').next().next().find('.gradient').css('background', colorOri);
+						}
+
+					} else if ('whatsapp' === mylabel) {
+
+						let getcolor = $('li#customize-control-footer_social_icon_color_'+mylabel+'_setting .components-dropdown:eq(1) button');
+
+						let color = '';
+						color = getcolor.find('.color').attr('style');
+
+						if (color) {
+							color = color.replace('background: ', '');
+							color = color.replace(';', '');
+
+							if ('whatsapp' === sosmed) {
+								$('.sortable_repeater_footer_social').find('.repeater.'+mylabel+' .box-info .text').next().find('.gradient').css('background', color);
+							}
+						}
+
+						if ('whatsapp' === sosmed) {
+							$('.sortable_repeater_footer_social').find('.repeater.'+mylabel+' .box-info .text').next().next().find('.gradient').css('background', colorOri);
+						}
+
 					}
 				}
 			}
@@ -460,6 +526,12 @@ jQuery(document).ready(function ($) {
 				colorOri = '#bd081c';
 			} else if (label === 'linkedin') {
 				colorOri = '#0a66c2';
+			} else if (label === 'instagram') {
+				colorOri = '#c13584';
+			} else if (label === 'threads') {
+				colorOri = '#000000';
+			} else if (label === 'whatsapp') {
+				colorOri = '#25d366';
 			}
 
 			const label_text = label === 'twitter' ? 'x (twitter)' : label;
@@ -525,6 +597,15 @@ jQuery(document).ready(function ($) {
 			btn.trigger('click');
 		} else if (getInfoSosmed === 'linkedin') {
 			let btn = $('li#customize-control-footer_social_icon_color_linkedin_setting .components-dropdown:eq(1) button');
+			btn.trigger('click');
+		} else if (getInfoSosmed === 'instagram') {
+			let btn = $('li#customize-control-footer_social_icon_color_instagram_setting .components-dropdown:eq(1) button');
+			btn.trigger('click');
+		} else if (getInfoSosmed === 'threads') {
+			let btn = $('li#customize-control-footer_social_icon_color_threads_setting .components-dropdown:eq(1) button');
+			btn.trigger('click');
+		} else if (getInfoSosmed === 'whatsapp') {
+			let btn = $('li#customize-control-footer_social_icon_color_whatsapp_setting .components-dropdown:eq(1) button');
 			btn.trigger('click');
 		}
 	});

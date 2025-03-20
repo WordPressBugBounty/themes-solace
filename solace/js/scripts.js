@@ -86,9 +86,9 @@
             });
         }
         
-        updateButtonColor();
+        // updateButtonColor();
     
-        setInterval(updateButtonColor, 1000);
+        // setInterval(updateButtonColor, 1000);
     });
     
 
