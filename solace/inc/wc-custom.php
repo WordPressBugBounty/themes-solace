@@ -293,3 +293,13 @@ function solace_add_wrapper_after_products() {
 add_action('woocommerce_shortcode_before_products_loop', 'solace_add_wrapper_before_products');
 
 add_action('woocommerce_shortcode_after_products_loop', 'solace_add_wrapper_after_products');
+
+add_action('init', function () {
+    $custom_setting = get_option('solace_wc_custom_general_store_notice_show', false);
+
+    if ($custom_setting) {
+        update_option('woocommerce_demo_store', 'no'); 
+    } else {
+        update_option('woocommerce_demo_store', 'yes'); 
+    }
+});

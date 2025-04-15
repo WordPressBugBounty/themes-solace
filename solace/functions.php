@@ -17,7 +17,7 @@ if (!defined('SOLACE_DEBUG')) {
 
 if (!defined('SOLACE_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('SOLACE_VERSION', '2.1.11');
+	define('SOLACE_VERSION', '2.1.12');
 }
 
 /**
@@ -242,7 +242,7 @@ function solace_enqueue_admin( $hook ) {
 	wp_enqueue_style( 'solace-admin-global-style', get_template_directory_uri() . '/assets-solace/css/admin-global.css', array(), SOLACE_VERSION );
 
 	// Enqueue script admin global.
-	wp_enqueue_script( 'solace-admin-global-script', get_template_directory_uri() . '/assets-solace/js/admin-global.js', array( 'jquery' ), SOLACE_VERSION, true );
+	wp_enqueue_script( 'solace-admin-global-script', get_template_directory_uri() . '/assets-solace/js/admin-global.js?v=' . time(), array( 'jquery' ), SOLACE_VERSION, true );
 
 	// Localize admin.
 	wp_localize_script(
@@ -946,3 +946,24 @@ function solace_purge_litespeed_cache() {
     }
 }
 add_action('customize_save_after', 'solace_purge_litespeed_cache');
+
+/**
+ * Runs after a theme has been updated, and purges the LiteSpeed cache
+ * if the updated theme is 'solace'.
+ *
+ * @param WP_Upgrader $upgrader_object WordPress upgrader instance.
+ * @param array       $options         Array containing type, action, and theme information.
+ *
+ * @return void
+ */
+add_action( 'upgrader_process_complete', function ($upgrader_object, $options) {
+    if ($options['type'] === 'theme' && $options['action'] === 'update') {
+        $updated_themes = $options['themes'] ?? [];
+
+        if (in_array('solace', $updated_themes, true)) {
+            // Run the cache purge function after theme update
+            solace_purge_litespeed_cache();
+			// error_log('[solace] Purging LiteSpeed cache after theme update.');
+        }
+    }
+}, 10, 2);

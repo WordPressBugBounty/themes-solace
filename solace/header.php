@@ -100,7 +100,7 @@ do_action( 'solace_body_start_after' );
 			</span>
 			<div class="nv-nav-search" aria-label="search">
 				<div class="form-wrap container responsive-search">
-					<form method="get" class="search-form" action="http://localhost/coding/solace/">
+					<form method="get" class="search-form" action="<?php echo esc_url( home_url() ); ?>">
 						<label>
 							<span class="screen-reader-text"><?php esc_html_e( 'Search for...', 'solace' ); ?></span>
 						</label>

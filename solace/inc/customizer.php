@@ -508,7 +508,7 @@ function solace_customize_preview_js()
 { 
 	wp_enqueue_script('solace-customizer', get_template_directory_uri() . '/js/customizer.js', array('jquery','customize-preview'), SOLACE_VERSION, true);
 
-	wp_enqueue_style('solace-style-customizer', get_template_directory_uri() . '/assets-solace/customizer/css/customizer.css', array(), '1.0', 'all');
+	wp_enqueue_style('solace-style-customizer', get_template_directory_uri() . '/assets-solace/customizer/css/customizer.css', array(), SOLACE_VERSION, 'all');
 
 }
 add_action('customize_preview_init', 'solace_customize_preview_js');
@@ -558,7 +558,7 @@ add_action( 'wp_head', 'solace_scroll_to_top_customize_css');
  * Load dynamic logic for the customizer controls area.
  */
 function solace_customizer_controls() {
-	wp_enqueue_script( 'solace-customize-controls', get_template_directory_uri() . '/assets-solace/customizer/js/customizer-controls.js', array('jquery'), '1.0.0', true );
+	wp_enqueue_script( 'solace-customize-controls', get_template_directory_uri() . '/assets-solace/customizer/js/customizer-controls.js', array('jquery'), SOLACE_VERSION, true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'solace_customizer_controls' ,9999);
 
@@ -566,8 +566,8 @@ add_action( 'customize_controls_enqueue_scripts', 'solace_customizer_controls' ,
  * Load dynamic logic for the customizer preview area.
  */
 function solace_customize_previews_js() {
-	wp_enqueue_script( 'solace-tinycolor', get_template_directory_uri() . '/assets-solace/customizer/js/tinycolor.min.js', array(), '1.4.2', true );
-	wp_enqueue_script( 'solace-customize-preview', get_template_directory_uri() . '/assets-solace/customizer/js/customizer-preview.js', array( 'customize-preview' ), '1.0.0', true );
+	wp_enqueue_script( 'solace-tinycolor', get_template_directory_uri() . '/assets-solace/customizer/js/tinycolor.min.js', array(), SOLACE_VERSION, true );
+	wp_enqueue_script( 'solace-customize-preview', get_template_directory_uri() . '/assets-solace/customizer/js/customizer-preview.js', array( 'customize-preview' ), SOLACE_VERSION, true );
 }
 add_action( 'customize_preview_init', 'solace_customize_previews_js' );
 
@@ -806,9 +806,9 @@ function solace_style_component_social_footer()
     $telegram = get_theme_mod( 'footer_social_icon_color_telegram_setting', 'var(--sol-color-base-font)' );
     $pinterest = get_theme_mod( 'footer_social_icon_color_pinterest_setting', 'var(--sol-color-base-font)' );
     $linkedin = get_theme_mod( 'footer_social_icon_color_linkedin_setting', 'var(--sol-color-base-font)' );
-    $instagram = get_theme_mod('footer_social_icon_color_instagram_setting', '#c13584');
-    $threads = get_theme_mod('footer_social_icon_color_threads_setting', '#000000');
-    $whatsapp = get_theme_mod('footer_social_icon_color_whatsapp_setting', '#25d366');	
+    $instagram = get_theme_mod('footer_social_icon_color_instagram_setting', 'var(--sol-color-base-font)' );
+    $threads = get_theme_mod('footer_social_icon_color_threads_setting', 'var(--sol-color-base-font)' );
+    $whatsapp = get_theme_mod('footer_social_icon_color_whatsapp_setting', 'var(--sol-color-base-font)' );
     $icon_size = absint(get_theme_mod( 'footer_social_icon_size', 22)) . 'px';
 
     $footer_sosial = ".component-wrap-footer-social .box-social.facebook svg {fill: $facebook;}";

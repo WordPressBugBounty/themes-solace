@@ -57,7 +57,7 @@ class WC_Custom_General_Store_Notice extends Base_Customizer {
 				'solace_wc_custom_general_store_notice_show',
 				[
 					'sanitize_callback' => 'solace_sanitize_checkbox',
-					'default'           => true,
+					'default'           => false,
 				],
 				[
 					'label'           => esc_html__('Store Notice', 'solace'),

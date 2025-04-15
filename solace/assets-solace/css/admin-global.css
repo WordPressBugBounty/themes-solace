@@ -101,6 +101,12 @@
 	background: transparent;
 }
 
+.solace-col-left a.error {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 16px;
+}
+
 .notice-solace p.sub-notice-description {
     color: #475569;
     font-size: 13px;
