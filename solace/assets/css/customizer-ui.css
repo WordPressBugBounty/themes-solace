@@ -107,6 +107,10 @@
   border-color: var(--sol-customizer-border-color);
 }
 
+#customize-controls .customize-info .preview-notice {
+  color: var(--sol-customizer-text-color);
+}
+
 #customize-controls .customize-info .accordion-section-title {
   background: var(--sol-customizer-panel-bg-color);
   color: var(--sol-customizer-text-color);

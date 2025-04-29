@@ -17,7 +17,7 @@ if (!defined('SOLACE_DEBUG')) {
 
 if (!defined('SOLACE_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('SOLACE_VERSION', '2.1.12');
+	define('SOLACE_VERSION', '2.1.13');
 }
 
 /**
@@ -562,24 +562,6 @@ function my_theme_custom_colors() {
     );
 }
 add_action( 'after_setup_theme', 'my_theme_custom_colors' );
-
-add_theme_support( 'editor-color-palette', array(
-    array(
-        'name'  => __( 'Custom Color 1', 'solace' ),
-        'slug'  => 'custom-color-1',
-        'color' => '#ff0000',
-    ),
-    array(
-        'name'  => __( 'Custom Color 2', 'solace' ),
-        'slug'  => 'custom-color-2',
-        'color' => '#00ff00',
-    ),
-    array(
-        'name'  => __( 'Custom Color 3', 'solace' ),
-        'slug'  => 'custom-color-3',
-        'color' => '#0000ff',
-    ),
-) );
 
 function solace_activate_elementor_features_on_plugin_activation( $plugin ) {
     if ( $plugin === 'elementor/elementor.php' ) {

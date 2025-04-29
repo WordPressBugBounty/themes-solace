@@ -42,16 +42,16 @@ class Layout_Sidebar extends Base_Customizer {
 	 * Layout_Sidebar constructor.
 	 */
 	public function __construct() {
-		$this->new_skin = solace_is_new_skin();
+		// $this->new_skin = solace_is_new_skin();
 
-		$this->advanced_controls = [
-			'blog_archive' => __( 'Blog / Archive', 'solace' ),
-			'single_post'  => __( 'Single Post', 'solace' ),
-		];
+		// $this->advanced_controls = [
+		// 	'blog_archive' => __( 'Blog / Archive', 'solace' ),
+		// 	'single_post'  => __( 'Single Post', 'solace' ),
+		// ];
 
-		$this->add_woocommerce_controls();
+		// $this->add_woocommerce_controls();
 
-		$this->advanced_controls['other_pages'] = __( 'Others', 'solace' );
+		// $this->advanced_controls['other_pages'] = __( 'Others', 'solace' );
 	}
 
 	/**

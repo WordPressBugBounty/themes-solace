@@ -48,6 +48,10 @@
   width: 17px;
   fill: #9c9c9c;
 }
+
+.solace-typeface-control .solace-font-family-control button.font-family-selector-toggle:hover {
+  background: var(--sol-customizer-contrast-color);
+}
 @keyframes solace-spin {
   100% {
     transform: rotate(360deg);

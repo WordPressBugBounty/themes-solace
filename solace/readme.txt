@@ -30,6 +30,9 @@ Solace includes support for WooCommerce.
 
 == Changelog ==
 
+= 2.1.13 - 29 April 2025 =
+* [Fix] : Issue with incorrect usage of the _load_textdomain_just_in_time function
+
 = 2.1.12 - 15 April 2025 =
 * [Fix] : Starter Templates banner installation issue
 * [Feat] : Automatically purge LiteSpeed cache after theme update

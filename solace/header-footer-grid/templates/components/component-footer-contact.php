@@ -30,7 +30,7 @@ if (!empty($text)) {
 		<?php if (!empty($data[$i + $length + $length])): ?>
 			<a class="content" href="<?php echo esc_url($data[$i + $length + $length]); ?>">
 		<?php else: ?>
-			<a class="content" href="">
+			<div class="content">
 		<?php endif; ?>
 			<div class="box-contact">
 				<div class="box-icon">
@@ -64,7 +64,11 @@ if (!empty($text)) {
 					</div>
 				</div>
 			</div>
-		</a>
+		<?php if (!empty($data[$i + $length + $length])): ?>
+			</a>
+		<?php else: ?>
+			</div>
+		<?php endif; ?>
 <?php
 	}
 	echo '</div>';
