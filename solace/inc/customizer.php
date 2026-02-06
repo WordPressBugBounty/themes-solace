@@ -16,27 +16,8 @@ use Solace\Core\Settings\Mods;
  */
 function solace_customize_register($wp_customize)
 {
-	// $wp_customize->get_setting('blogname')->transport         = 'postMessage';
-	// $wp_customize->get_setting('blogdescription')->transport  = 'postMessage';
-	// $wp_customize->get_setting('header_textcolor')->transport = 'postMessage';
 
-	// if (isset($wp_customize->selective_refresh)) {
-	// 	$wp_customize->selective_refresh->add_partial(
-	// 		'blogname',
-	// 		array(
-	// 			'selector'        => '.site-title a',
-	// 			'render_callback' => 'solace_customize_partial_blogname',
-	// 		)
-	// 	);
-	// 	$wp_customize->selective_refresh->add_partial(
-	// 		'blogdescription',
-	// 		array(
-	// 			'selector'        => '.site-description',
-	// 			'render_callback' => 'solace_customize_partial_blogdescription',
-	// 		)
-	// 	);
-	// }
-	// $wp_customize->remove_panel("woocommerce");
+	$wp_customize->remove_control( 'woocommerce_checkout_address_2_field' );
 	$wp_customize->remove_section("colors");
 	$wp_customize->remove_section("header_image");
 	// $wp_customize->remove_section("sidebar-widgets-blog-sidebar");
@@ -448,6 +429,9 @@ function solace_customize_render_section() {
         'solace_single_post_layout',
         'solace_features_scroll_to_top',
         'solace_wc_product_page',
+        'solace_wc_single_product',
+        'solace_wc_custom_general_cart_pages',
+        'solace_wc_custom_general_checkout',
         'solace_container',
         'solace_core_homepage',
         'custom_css',
@@ -506,9 +490,9 @@ function solace_customize_partial_blogdescription()
  */
 function solace_customize_preview_js()
 { 
-	wp_enqueue_script('solace-customizer', get_template_directory_uri() . '/js/customizer.js', array('jquery','customize-preview'), SOLACE_VERSION, true);
+	wp_enqueue_script('solace-customizer', get_template_directory_uri() . '/js/customizer.js?v=' . time(), array('jquery','customize-preview'), SOLACE_VERSION, true);
 
-	wp_enqueue_style('solace-style-customizer', get_template_directory_uri() . '/assets-solace/customizer/css/customizer.css', array(), SOLACE_VERSION, 'all');
+	wp_enqueue_style('solace-style-customizer', get_template_directory_uri() . '/assets-solace/customizer/css/customizer.css?v=' . time(), array(), SOLACE_VERSION, 'all');
 
 }
 add_action('customize_preview_init', 'solace_customize_preview_js');
@@ -516,19 +500,19 @@ add_action('customize_preview_init', 'solace_customize_preview_js');
 function my_scripts_method() {
 	wp_enqueue_script(
 		  'custom-script',
-		  get_stylesheet_directory_uri() . '/js/topbutton.js',
+		  get_stylesheet_directory_uri() . '/js/topbutton.js?v=' . time(),
 		  array( 'jquery' )
 	);
 
 	wp_enqueue_script(
 		  'solace-js-script',
-		  get_stylesheet_directory_uri() . '/js/scripts.js',
+		  get_stylesheet_directory_uri() . '/js/scripts.js?v=' . time(),
 		  array( 'jquery' )
 	);
 
 	wp_enqueue_script(
 		'solace-global-elementor-script',
-		get_stylesheet_directory_uri() . '/js/elementor.js',
+		get_stylesheet_directory_uri() . '/js/elementor.js?v=' . time(),
 		array( 'jquery' )
   	);
 
@@ -558,7 +542,10 @@ add_action( 'wp_head', 'solace_scroll_to_top_customize_css');
  * Load dynamic logic for the customizer controls area.
  */
 function solace_customizer_controls() {
-	wp_enqueue_script( 'solace-customize-controls', get_template_directory_uri() . '/assets-solace/customizer/js/customizer-controls.js', array('jquery'), SOLACE_VERSION, true );
+	wp_enqueue_script( 'solace-customize-controls', get_template_directory_uri() . '/assets-solace/customizer/js/customizer-controls.js?v=' . time(), array('jquery'), SOLACE_VERSION, true );
+	if ( class_exists( 'WooCommerce' ) ) {
+		wp_enqueue_script( 'solace-customize-woocommerce-controls', get_template_directory_uri() . '/assets-solace/customizer/js/customizer-woocommerce-controls.js?v=' . time(), array('jquery'), SOLACE_VERSION, true );
+	}
 }
 add_action( 'customize_controls_enqueue_scripts', 'solace_customizer_controls' ,9999);
 
@@ -566,8 +553,15 @@ add_action( 'customize_controls_enqueue_scripts', 'solace_customizer_controls' ,
  * Load dynamic logic for the customizer preview area.
  */
 function solace_customize_previews_js() {
-	wp_enqueue_script( 'solace-tinycolor', get_template_directory_uri() . '/assets-solace/customizer/js/tinycolor.min.js', array(), SOLACE_VERSION, true );
-	wp_enqueue_script( 'solace-customize-preview', get_template_directory_uri() . '/assets-solace/customizer/js/customizer-preview.js', array( 'customize-preview' ), SOLACE_VERSION, true );
+	wp_enqueue_script( 'solace-tinycolor', get_template_directory_uri() . '/assets-solace/customizer/js/tinycolor.min.js?v=' . time(), array(), SOLACE_VERSION, true );
+	wp_enqueue_script( 'solace-customize-preview', get_template_directory_uri() . '/assets-solace/customizer/js/customizer-preview.js?v=' . time(), array( 'customize-preview' ), SOLACE_VERSION, true );
+	wp_enqueue_script(
+        'solace-customizer-fonts',
+        get_template_directory_uri() . '/assets-solace/customizer/js/customizer-fonts.js?v=' . time(),
+        array( 'jquery', 'customize-preview' ),
+        false,
+        true
+    );
 }
 add_action( 'customize_preview_init', 'solace_customize_previews_js' );
 
@@ -895,11 +889,11 @@ function solace_block_editor_styles() {
 		'Verdana, Geneva, sans-serif',
 		'Paratina Linotype',
 		'Trebuchet MS',
-		'Manrope, sans-serif'
+		// 'Manrope, sans-serif'
 	);
 
 	if ( !in_array($body, $fonts) ) {
-		wp_enqueue_style('google-fonts-' . $body, 'https://fonts.googleapis.com/css2?family='.$body.'&display=swap');
+		wp_enqueue_style('google-fonts-' . $body, 'https://fonts.googleapis.com/css2?family='.$body.'&display=swap&v=' . time());
 	}
 
 	for ($i = 1; $i <= 6; $i++) {
@@ -907,12 +901,12 @@ function solace_block_editor_styles() {
 		$fontVariable = 'h' . $i;
 		
 		if (!in_array($$fontVariable, $fonts)) {
-			wp_enqueue_style('google-fonts-' . $heading, 'https://fonts.googleapis.com/css?family=' . $$fontVariable . '&display=swap');
+			wp_enqueue_style('google-fonts-' . $heading, 'https://fonts.googleapis.com/css?family=' . $$fontVariable . '&display=swap&v=' . time());
 		}
 	}
 	
 	// Block styles.
-	wp_enqueue_style( 'solace-block-editor-style', get_template_directory_uri() . '/assets/css/editor-block.min.css', array(), '1.0.0' );
+	wp_enqueue_style( 'solace-block-editor-style', get_template_directory_uri() . '/assets/css/editor-block.min.css&v=' . time(), array(), '1.0.0' );
 }
 add_action( 'enqueue_block_editor_assets', 'solace_block_editor_styles' );
 
@@ -1230,7 +1224,7 @@ function solace_style_button()
 			.close-responsive-search svg:hover,
 			.menu-item-nav-search.canvas .close-responsive-search svg:hover,
 			.editor-styles-wrapper .wp-block.wp-block-button .wp-block-button__link:hover,
-			body:not(.woocommerce-page) #review_form #respond input#submit:hover,
+			body:not(.woocommerce-page) #tab-description:not(.solace-woocommerce-tabs-panel) #review_form #respond input#submit:hover,
 			.initdark:hover
 		`;
 
@@ -1729,6 +1723,15 @@ function solace_add_style_inline641() {
 			box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
 		}
 
+		button.popover-item.active {
+			opacity: .5;
+		}
+
+		button.popover-item.active:focus:not(:disabled) {
+			box-shadow: none;
+			outline: none;
+		}
+
 		button.popover-item:hover span.name {
 			color: #545d66;
 		}
@@ -1802,7 +1805,7 @@ function solace_element_menu_font() {
 		'Verdana, Geneva, sans-serif',
 		'Paratina Linotype',
 		'Trebuchet MS',
-		'Manrope, sans-serif'
+		// 'Manrope, sans-serif'
 	);
 
 	$header_menu_one = esc_html( get_theme_mod( 'primary-menu_font_family', $default_menu_font_family ) );
@@ -1810,15 +1813,35 @@ function solace_element_menu_font() {
 	$footer_menu_one = esc_html( get_theme_mod( 'footer-menu_font_family', $default_menu_font_family ) );	
 
 	if ( ! in_array( $header_menu_one, $fonts ) ) {
-		wp_enqueue_style('google-fonts-' . $header_menu_one, 'https://fonts.googleapis.com/css2?family='.$header_menu_one.'&display=swap');
+		wp_enqueue_style('google-fonts-' . $header_menu_one, 'https://fonts.googleapis.com/css2?family='.$header_menu_one.'&display=swap&v=' . time());
 	}
 
 	if ( ! in_array( $header_menu_two, $fonts ) ) {
-		wp_enqueue_style('google-fonts-' . $header_menu_two, 'https://fonts.googleapis.com/css2?family='.$header_menu_two.'&display=swap');
+		wp_enqueue_style('google-fonts-' . $header_menu_two, 'https://fonts.googleapis.com/css2?family='.$header_menu_two.'&display=swap&v=' . time());
 	}
 
 	if ( ! in_array( $footer_menu_one, $fonts ) ) {
-		wp_enqueue_style('google-fonts-' . $footer_menu_one, 'https://fonts.googleapis.com/css2?family='.$footer_menu_one.'&display=swap');
+		wp_enqueue_style('google-fonts-' . $footer_menu_one, 'https://fonts.googleapis.com/css2?family='.$footer_menu_one.'&display=swap&v=' . time());
 	}
 }
 add_action( 'wp_enqueue_scripts', 'solace_element_menu_font' );
+
+/**
+ * Filter the excerpt length using the Customizer setting.
+ *
+ * @param int $length Default excerpt length.
+ * @return int Modified excerpt length based on Customizer setting.
+ */
+function solace_filter_excerpt_length( $length ) {
+	// Get the Customizer setting
+	$custom_length = get_theme_mod( 'solace_archive_maximum_excerpt_length', 55 );
+
+	// If it's a number and >= 0, return it as integer
+	if ( is_numeric( $custom_length ) && $custom_length >= 0 ) {
+		return (int) $custom_length;
+	}
+
+	// Fallback to default 55 if not valid
+	return 55;
+}
+add_filter( 'excerpt_length', 'solace_filter_excerpt_length' );

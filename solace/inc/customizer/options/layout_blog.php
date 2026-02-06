@@ -334,6 +334,28 @@ class Layout_Blog extends Base_Customizer
 
 		$this->add_control(
 			new Control(
+				'solace_archive_maximum_excerpt_length',
+				array(
+					'sanitize_callback' => 'absint',
+					'default'           => 55,
+				),
+				array(
+					'label'       => esc_html__('Maximum Excerpt Length', 'solace'),
+					'section'  => $this->section,
+					'priority'    => 36,
+					'type'        => 'solace_range_control',
+					'input_attrs' => [
+						'min'        => 0,
+						'max'        => 300,
+						'defaultVal' => 55,
+					],
+				),
+				'Solace\Customizer\Controls\React\Range'
+			)
+		);		
+
+		$this->add_control(
+			new Control(
 				'solace_blog_post_navigation',
 				array(
 					'sanitize_callback' => array( $this, 'sanitize_post_navigation_layout' ),

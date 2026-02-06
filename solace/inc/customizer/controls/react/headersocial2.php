@@ -60,7 +60,7 @@ class HeaderSocial2 extends \WP_Customize_Control
      */
     public function enqueue()
     {
-        wp_enqueue_style('solace-header-social2-css', get_template_directory_uri() . '/assets-solace/customizer/css/header-social2.css', array(), '1.0', 'all');
+        wp_enqueue_style('solace-header-social2-css', get_template_directory_uri() . '/assets-solace/customizer/css/header-social2.css?v=' . time(), array(), '1.0', 'all');
     }
 
     /**

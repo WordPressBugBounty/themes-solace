@@ -31,27 +31,21 @@ use Solace\Core\Settings\Mods;
     // Single Inherit
     if ( $single_list_layout === 'inherit' && !empty( $single_templates ) && $metabox_sidebar_layout === 'inherit' ) {
 		if ( $container_list_layout === 'left' || $container_list_layout === 'right' ) {
-			if (!has_blocks(get_the_ID())) {
-				$is_active_sidebar = true;
-			}
+			$is_active_sidebar = true;
 		}
     }
 
 	// Single Single_templates
 	if ( $single_list_layout !== 'inherit' && !empty( $single_templates ) && $metabox_sidebar_layout === 'inherit' ) {
 		if ( $single_list_layout === 'left' || $single_list_layout === 'right' ) {
-			if (!has_blocks(get_the_ID())) {
-				$is_active_sidebar = true;
-			}
+			$is_active_sidebar = true;
 		}
     }
 
 	// Single metabox_templates
 	if ( !empty( $single_templates ) && $metabox_sidebar_layout !== 'inherit' ) {
 		if ( $metabox_sidebar_layout === 'left' || $metabox_sidebar_layout === 'right' ) {
-			if (!has_blocks(get_the_ID())) {
-				$is_active_sidebar = true;
-			}
+			$is_active_sidebar = true;
 		}
     }
 

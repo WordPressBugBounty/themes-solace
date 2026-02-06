@@ -73,8 +73,9 @@ add_action('customize_register', 'solace_blog_layout_custom_btn');
 
 function solace_customizer_custom_class_btn()
 {
-    wp_enqueue_style('solace-customizer-custom-class-btn-style', get_theme_file_uri('/inc/customizer/page-settings/style.css'), array(), '1.0.0', 'all');
 
-    wp_enqueue_script('solace-customizer-custom-class-btn-script', get_theme_file_uri('/inc/customizer/page-settings/scripts.js'), array('jquery'), '1.0.0', true);
+	wp_enqueue_style( 'solace-customizer-custom-class-btn-style', get_template_directory_uri() . '/inc/customizer/page-settings/style.css?v=' . time(), array(), SOLACE_VERSION, 'all' );    
+
+	wp_enqueue_script( 'solace-customizer-custom-class-btn-script', get_template_directory_uri() . '/inc/customizer/page-settings/scripts.js?v=' . time(), array( 'jquery' ), SOLACE_VERSION, true );    
 }
 add_action('customize_controls_enqueue_scripts', 'solace_customizer_custom_class_btn', 99);

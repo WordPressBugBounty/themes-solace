@@ -68,27 +68,26 @@
     $(document).ready(function() {
         addElementorButtonClass(); 
 
-        if (isElementorPreview()) {
-            console.log("Elementor Preview Detected");
+        // if (isElementorPreview()) {
+        //     console.log("Elementor Preview Detected");
 
-            document.body.classList.add('is-elementor-preview'); 
-            observeDOMChanges();
-        }
-    });
+        //     document.body.classList.add('is-elementor-preview'); 
+        //     observeDOMChanges();
 
-    // apply color to button in live preview elementor
-    jQuery(document).ready(function ($) {
-        function updateButtonColor() {
-            let buttonColor = $('.elementor-button').css('background-color'); 
-            $('.button.add_to_cart_button').css({
-                'background-color': buttonColor,
-                'border-color': buttonColor
-            });
-        }
+        //     // apply color to button in live preview elementor
+        //     function updateButtonColor() {
+        //         let buttonColor = $('.elementor-button').css('background-color'); 
+                
+        //         $('.button.add_to_cart_button').not('.solace-extra-add-to-cart .add_to_cart_button').css({
+        //             'background-color': buttonColor,
+        //             'border-color': buttonColor
+        //         });
+        //     }
+            
+        //     updateButtonColor();
         
-        // updateButtonColor();
-    
-        // setInterval(updateButtonColor, 1000);
+        //     setInterval(updateButtonColor, 1000);
+        // }
     });
     
 

@@ -52,9 +52,9 @@ class Builder extends \WP_Customize_Control {
     public function enqueue()
     {
 
-        wp_enqueue_script('solace-customizer', get_template_directory_uri() . '/assets-solace/customizer/js/customizer.js', array('jquery', 'jquery-ui-core'), '1.0', true);
+        wp_enqueue_script('solace-customizer', get_template_directory_uri() . '/assets-solace/customizer/js/customizer.js?v=' . time(), array('jquery', 'jquery-ui-core'), SOLACE_VERSION, true);
 
-        wp_enqueue_style('solace-style-customizer', get_template_directory_uri() . '/assets-solace/customizer/css/customizer.css', array(), '1.0', 'all');
+        wp_enqueue_style('solace-style-customizer', get_template_directory_uri() . '/assets-solace/customizer/css/customizer.css?v=' . time(), array(), SOLACE_VERSION, 'all');
     }
 
 	/**

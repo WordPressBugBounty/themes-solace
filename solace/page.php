@@ -24,13 +24,13 @@ if (class_exists('WooCommerce') && (is_cart() || is_checkout() || is_account_pag
 		<div class="myrow row1">
 			<div class="content">
 				<?php
-				while (have_posts()) :
-					the_post();
-
-					get_template_part('template-parts/content', 'page');
-
-				endwhile; // End of the loop.
-				?>
+                if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_location( 'single' ) ) :
+                else :
+                    while ( have_posts() ) : the_post();
+						get_template_part('template-parts/content', 'page');
+                    endwhile;
+                endif;
+                ?>
 			</div>
 		</div>
 	</section>

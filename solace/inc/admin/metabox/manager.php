@@ -220,7 +220,7 @@ final class Manager {
 			return false;
 		}
 
-		wp_register_script( 'solace-metabox', SOLACE_ASSETS_URL . 'js/build/all/metabox.js', array( 'jquery' ), SOLACE_VERSION, true );
+		wp_register_script( 'solace-metabox', SOLACE_ASSETS_URL . 'js/build/all/metabox.js?v=' . time(), array( 'jquery' ), SOLACE_VERSION, true );
 
 		wp_localize_script( 'solace-metabox', 'solaceMetabox', $this->get_localization() );
 
@@ -345,7 +345,7 @@ final class Manager {
 
 		wp_enqueue_script(
 			'solace-meta-sidebar',
-			trailingslashit( get_template_directory_uri() ) . 'assets/apps/metabox/build/index.js',
+			trailingslashit( get_template_directory_uri() ) . 'assets/apps/metabox/build/index.js?v=' . time(),
 			$dependencies['dependencies'],
 			$dependencies['version'],
 			true
@@ -395,7 +395,7 @@ final class Manager {
 
 		wp_enqueue_style(
 			'solace-meta-sidebar-css', // Handle.
-			trailingslashit( get_template_directory_uri() ) . 'assets/apps/metabox/build/index.css',
+			trailingslashit( get_template_directory_uri() ) . 'assets/apps/metabox/build/index.css?v=' . time(),
 			array( 'wp-edit-blocks' ),
 			SOLACE_VERSION
 		);

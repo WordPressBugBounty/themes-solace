@@ -125,14 +125,14 @@ class Customizer {
 
 		wp_enqueue_style(
 			'hfg-customizer-control',
-			esc_url( Config::get_url() ) . '/assets/css/admin/customizer/customizer.css',
+			esc_url( Config::get_url() ) . '/assets/css/admin/customizer/customizer.css?v=' . time(),
 			array(),
 			Main::VERSION
 		);
 
 		wp_register_script(
 			'hfg-layout-builder',
-			esc_url( Config::get_url() ) . '/assets/js/customizer/builder.js',
+			esc_url( Config::get_url() ) . '/assets/js/customizer/builder.js?v=' . time(),
 			array(
 				'customize-controls',
 				'jquery-ui-resizable',
@@ -214,7 +214,7 @@ class Customizer {
 
 		wp_enqueue_script(
 			'hfg-customizer',
-			esc_url( Config::get_url() ) . '/assets/js/customizer/customizer.js',
+			esc_url( Config::get_url() ) . '/assets/js/customizer/customizer.js?v=' . time(),
 			array(
 				'customize-preview',
 				'customize-selective-refresh',

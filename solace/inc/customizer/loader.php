@@ -100,6 +100,7 @@ class Loader {
 				'Customizer\Options\WC_Custom_General_Product_Badges',
 				'Customizer\Options\WC_Custom_General_Cart_Pages',
 				'Customizer\Options\WC_Custom_General_Checkout',
+				'Customizer\Options\WC_Custom_General_Account',
 				'Customizer\Options\WC_Custom_General_Button',
 				'Customizer\Options\WC_Custom_General_Store_Notice',
 				'Customizer\Options\Typography',
@@ -126,7 +127,7 @@ class Loader {
 		if ( 'post.php' === $hook || 'post-new.php' === $hook) {
 			return;
 		}
-		wp_register_style( self::CUSTOMIZER_SOLACE_STYLE_HANDLE, SOLACE_ASSETS_URL . 'css/customizer-solace' . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css', array(), SOLACE_VERSION );
+		wp_register_style( self::CUSTOMIZER_SOLACE_STYLE_HANDLE, SOLACE_ASSETS_URL . 'css/customizer-solace' . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css?v=' . time(), array(), SOLACE_VERSION );
 		wp_style_add_data( self::CUSTOMIZER_SOLACE_STYLE_HANDLE, 'rtl', 'replace' );
 		wp_style_add_data( self::CUSTOMIZER_SOLACE_STYLE_HANDLE, 'suffix', '.min' );
 		wp_enqueue_style( self::CUSTOMIZER_SOLACE_STYLE_HANDLE );
@@ -137,7 +138,7 @@ class Loader {
 	 * Enqueue customizer UI.
 	 */
 	public function enqueue_customizer_ui() {
-		wp_register_style( self::CUSTOMIZER_UI_STYLE_HANDLE, SOLACE_ASSETS_URL . 'css/customizer-ui' . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css', array(), SOLACE_VERSION );
+		wp_register_style( self::CUSTOMIZER_UI_STYLE_HANDLE, SOLACE_ASSETS_URL . 'css/customizer-ui' . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css?v=' . time(), array(), SOLACE_VERSION );
 		wp_style_add_data( self::CUSTOMIZER_UI_STYLE_HANDLE, 'rtl', 'replace' );
 		wp_style_add_data( self::CUSTOMIZER_UI_STYLE_HANDLE, 'suffix', '.min' );
 		wp_enqueue_style( self::CUSTOMIZER_UI_STYLE_HANDLE );
@@ -147,14 +148,14 @@ class Loader {
 	 * Enqueue customizer controls script.
 	 */
 	public function enqueue_customizer_controls() {
-		wp_register_style( self::CUSTOMIZER_STYLE_HANDLE, SOLACE_ASSETS_URL . 'css/customizer-style' . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css', array(), SOLACE_VERSION );
+		wp_register_style( self::CUSTOMIZER_STYLE_HANDLE, SOLACE_ASSETS_URL . 'css/customizer-style' . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css?v=' . time(), array(), SOLACE_VERSION );
 		wp_style_add_data( self::CUSTOMIZER_STYLE_HANDLE, 'rtl', 'replace' );
 		wp_style_add_data( self::CUSTOMIZER_STYLE_HANDLE, 'suffix', '.min' );
 		wp_enqueue_style( self::CUSTOMIZER_STYLE_HANDLE );
 
 		wp_enqueue_script(
 			'solace-customizer-controls',
-			SOLACE_ASSETS_URL . 'js/build/all/customizer-controls.js',
+			SOLACE_ASSETS_URL . 'js/build/all/customizer-controls.js?v=' . time(),
 			array(
 				'jquery',
 				'wp-color-picker',
@@ -220,7 +221,7 @@ class Loader {
 		foreach ( $chunks as $index => $fonts_chunk ) {
 			wp_enqueue_style(
 				'solace-fonts-control-google-fonts-' . $index,
-				'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=AbcTtheigrownfoxJumpsvlazydg"',
+				'https://fonts.googleapis.com/css?family=' . join( '|', $fonts_chunk ) . '&text=AbcTtheigrownfoxJumpsvlazydg"&v=' . time(),
 				[],
 				SOLACE_VERSION
 			);
@@ -233,13 +234,13 @@ class Loader {
 	public function enqueue_customizer_preview() {
 		wp_enqueue_style(
 			'solace-customizer-preview-style',
-			SOLACE_ASSETS_URL . 'css/customizer-preview' . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css',
+			SOLACE_ASSETS_URL . 'css/customizer-preview' . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css?v=' . time(),
 			array(),
 			SOLACE_VERSION
 		);
 		wp_register_script(
 			'solace-customizer-preview',
-			SOLACE_ASSETS_URL . 'js/build/all/customizer-preview.js',
+			SOLACE_ASSETS_URL . 'js/build/all/customizer-preview.js?v=' . time(),
 			array(),
 			SOLACE_VERSION,
 			true

@@ -49,8 +49,8 @@ class Checkout extends Base_Customizer {
 
 		$changes = [
 			'woocommerce_checkout_company_field'       => [ 
-				'priority' => 110,
-				'default' => 'hidden',
+				'priority' => 25,
+				'default' => 'optional',
 			],
 			'woocommerce_checkout_address_2_field'     => [ 'priority' => 120 ],
 			'woocommerce_checkout_phone_field'         => [ 

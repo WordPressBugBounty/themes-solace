@@ -31,13 +31,13 @@ if ($post_header_layout === 'layout 1') {
 		<div class="myrow row1">
 			<div class="mycol">
 				<?php
-				while (have_posts()) :
-					the_post();
-
-					get_template_part("template-parts/single/$part_single", get_post_type());
-
-				endwhile; // End of the loop.
-				?>
+                if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_location( 'single' ) ) :
+                else :
+                    while ( have_posts() ) : the_post();
+                        get_template_part("template-parts/single/$part_single", get_post_type());
+                    endwhile;
+                endif;
+                ?>
 				<?php $related_posts = get_theme_mod( 'solace_show_single_related_posts', true ); ?>		
 				<?php if ( $related_posts && 'single-custom' !== $part_single ): ?>
 					<div class="related-posts">

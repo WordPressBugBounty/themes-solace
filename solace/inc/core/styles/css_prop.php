@@ -237,12 +237,7 @@ class Css_Prop {
 				}
 			
 				$suffix = self::get_suffix($meta, $device, $value, $css_prop);
-			
-				if ($css_prop === '--logotitlelineheight' || $css_prop === '--logotitleletterspacing') {
-					$value_array = explode(' ', $value);
-					$value = $value_array;
-				}
-			
+						
 				if (is_array($value)) {
 					
 					$value_string = '';

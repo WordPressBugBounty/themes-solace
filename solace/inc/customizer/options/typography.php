@@ -189,7 +189,7 @@ class Typography extends Base_Customizer
 					'priority'              => 2,
 					'section'               => 'solace_typography_headings',
 					'input_attrs'           => array(
-						'size_units'             => ['px'],
+						'size_units'             => ['em', 'px'],
 						'weight_default'         => 400,
 						'size_default'           => $defaults['fontSize'],
 						'line_height_default'    => $defaults['lineHeight'],
@@ -315,7 +315,7 @@ class Typography extends Base_Customizer
 					'priority'              => 5,
 					'section'               => 'solace_typography_headings',
 					'input_attrs'           => array(
-						'size_units'             => ['px'],
+						'size_units'             => ['em', 'px'],
 						'weight_default'         => 400,
 						'size_default'           => $defaults['fontSize'],
 						'line_height_default'    => $defaults['lineHeight'],
@@ -442,7 +442,7 @@ class Typography extends Base_Customizer
 					'priority'              => 11,
 					'section'               => 'solace_typography_headings',
 					'input_attrs'           => array(
-						'size_units'             => ['px'],
+						'size_units'             => ['em', 'px'],
 						'weight_default'         => 400,
 						'size_default'           => $defaults['fontSize'],
 						'line_height_default'    => $defaults['lineHeight'],
@@ -568,7 +568,7 @@ class Typography extends Base_Customizer
 					'priority'              => 8,
 					'section'               => 'solace_typography_headings',
 					'input_attrs'           => array(
-						'size_units'             => ['px'],
+						'size_units'             => ['em', 'px'],
 						'weight_default'         => 400,
 						'size_default'           => $defaults['fontSize'],
 						'line_height_default'    => $defaults['lineHeight'],

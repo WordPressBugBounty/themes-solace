@@ -313,14 +313,33 @@
         }
         
         let smallerFontSize = $('li#customize-control-solace_typeface_smaller .solace-responsive-sizing input').val();
-        let getSmallerFont = '<span class="dropdown-smaller-font" fonts="' + getSmallerFontFamily + '">' + getSmallerFontFamily + ' | ' + smallerFontSize + ' px' + '</span>';
+        let smallerSuffix = 'px';
+        wp.customize('solace_typeface_smaller', function (setting) {
+            var v = setting.get();
+            if (v && v.fontSize && v.fontSize.suffix) {
+                smallerSuffix = v.fontSize.suffix.desktop || v.fontSize.suffix || smallerSuffix;
+            }
+        });
+        let getSmallerFont = '<span class="dropdown-smaller-font" fonts="' + getSmallerFontFamily + '">' + getSmallerFontFamily + ' | ' + smallerFontSize + ' ' + smallerSuffix + '</span>';
 
         $('li#customize-control-solace_smaller_font_family > .customize-control-title').after(getSmallerFont);
 
-        $('li#customize-control-solace_smaller_font_family  span.dropdown-smaller-font').click(function () {
-            $('li#customize-control-solace_smaller_font_family .solace-typeface-control').toggle();
-            $('li#customize-control-solace_typeface_smaller .solace-typeface-control').toggle();
+        // $('li#customize-control-solace_smaller_font_family  span.dropdown-smaller-font').click(function () {
+        //     $('li#customize-control-solace_smaller_font_family .solace-typeface-control').toggle();
+        //     $('li#customize-control-solace_typeface_smaller .solace-typeface-control').toggle();
+        // });
+
+        $('li#customize-control-solace_smaller_font_family span.dropdown-smaller-font').on('click', function () {
+            var isVisible = $('li#customize-control-solace_smaller_font_family .solace-typeface-control').is(':visible');
+
+            $('li[id^="customize-control-solace_"] .solace-typeface-control').hide();
+
+            if (!isVisible) {
+                $('li#customize-control-solace_smaller_font_family .solace-typeface-control').show();
+                $('li#customize-control-solace_typeface_smaller .solace-typeface-control').show();
+            }
         });
+
 
         // Apend dropdown Logotitle Fonts
         let getLogotitleFontFamily = $('li#customize-control-solace_logotitle_font_family .solace-typeface-control').attr('fonts');
@@ -343,14 +362,33 @@
         }
         
         let logotitleFontSize = $('li#customize-control-solace_typeface_logotitle .solace-responsive-sizing input').val();
-        let getLogotitleFont = '<span class="dropdown-logotitle-font" fonts="' + getLogotitleFontFamily + '">' + getLogotitleFontFamily + ' | ' + logotitleFontSize + ' px' + '</span>';
+        let logotitleSuffix = 'px';
+        wp.customize('solace_typeface_logotitle', function (setting) {
+            var v = setting.get();
+            if (v && v.fontSize && v.fontSize.suffix) {
+                logotitleSuffix = v.fontSize.suffix.desktop || v.fontSize.suffix || logotitleSuffix;
+            }
+        });
+        let getLogotitleFont = '<span class="dropdown-logotitle-font" fonts="' + getLogotitleFontFamily + '">' + getLogotitleFontFamily + ' | ' + logotitleFontSize + ' ' + logotitleSuffix + '</span>';
 
         $('li#customize-control-solace_logotitle_font_family > .customize-control-title').after(getLogotitleFont);
 
-        $('li#customize-control-solace_logotitle_font_family  span.dropdown-logotitle-font').click(function () {
-            $('li#customize-control-solace_logotitle_font_family .solace-typeface-control').toggle();
-            $('li#customize-control-solace_typeface_logotitle .solace-typeface-control').toggle();
+        // $('li#customize-control-solace_logotitle_font_family  span.dropdown-logotitle-font').click(function () {
+        //     $('li#customize-control-solace_logotitle_font_family .solace-typeface-control').toggle();
+        //     $('li#customize-control-solace_typeface_logotitle .solace-typeface-control').toggle();
+        // });
+
+        $('li#customize-control-solace_logotitle_font_family span.dropdown-logotitle-font').on('click', function () {
+            var isVisible = $('li#customize-control-solace_logotitle_font_family .solace-typeface-control').is(':visible');
+
+            $('li[id^="customize-control-solace_"] .solace-typeface-control').hide();
+
+            if (!isVisible) {
+                $('li#customize-control-solace_logotitle_font_family .solace-typeface-control').show();
+                $('li#customize-control-solace_typeface_logotitle .solace-typeface-control').show();
+            }
         });
+
 
         // Apend dropdown Button Fonts
         let getButtonFontFamily = $('li#customize-control-solace_button_font_family .solace-typeface-control').attr('fonts');
@@ -373,13 +411,30 @@
         }
         
         let buttonFontSize = $('li#customize-control-solace_typeface_button .solace-responsive-sizing input').val();
-        let getButtonFont = '<span class="dropdown-button-font" fonts="' + getButtonFontFamily + '">' + getButtonFontFamily + ' | ' + buttonFontSize + ' px' + '</span>';
+        let buttonSuffix = 'px';
+        wp.customize('solace_typeface_button', function (setting) {
+            var v = setting.get();
+            if (v && v.fontSize && v.fontSize.suffix) {
+                buttonSuffix = v.fontSize.suffix.desktop || v.fontSize.suffix || buttonSuffix;
+            }
+        });
+        let getButtonFont = '<span class="dropdown-button-font" fonts="' + getButtonFontFamily + '">' + getButtonFontFamily + ' | ' + buttonFontSize + ' ' + buttonSuffix + '</span>';
 
         $('li#customize-control-solace_button_font_family > .customize-control-title').after(getButtonFont);
 
-        $('li#customize-control-solace_button_font_family  span.dropdown-button-font').click(function () {
-            $('li#customize-control-solace_button_font_family .solace-typeface-control').toggle();
-            $('li#customize-control-solace_typeface_button .solace-typeface-control').toggle();
+        // $('li#customize-control-solace_button_font_family  span.dropdown-button-font').click(function () {
+        //     $('li#customize-control-solace_button_font_family .solace-typeface-control').toggle();
+        //     $('li#customize-control-solace_typeface_button .solace-typeface-control').toggle();
+        // });
+        $('li#customize-control-solace_button_font_family span.dropdown-button-font').on('click', function () {
+            var isVisible = $('li#customize-control-solace_button_font_family .solace-typeface-control').is(':visible');
+
+            $('li[id^="customize-control-solace_"] .solace-typeface-control').hide();
+
+            if (!isVisible) {
+                $('li#customize-control-solace_button_font_family .solace-typeface-control').show();
+                $('li#customize-control-solace_typeface_button .solace-typeface-control').show();
+            }
         });
 
 
@@ -404,14 +459,33 @@
         }
         
         let fontSize = $('li#customize-control-solace_typeface_general .solace-responsive-sizing input').val();
-        let getFont = '<span class="dropdown-base-font" fonts="' + getFontFamily + '">' + getFontFamily + ' | ' + fontSize + ' px' + '</span>';
+        let baseSuffix = 'px';
+        wp.customize('solace_typeface_general', function (setting) {
+            var v = setting.get();
+            if (v && v.fontSize && v.fontSize.suffix) {
+                baseSuffix = v.fontSize.suffix.desktop || v.fontSize.suffix || baseSuffix;
+            }
+        });
+        let getFont = '<span class="dropdown-base-font" fonts="' + getFontFamily + '">' + getFontFamily + ' | ' + fontSize + ' ' + baseSuffix + '</span>';
 
         $('li#customize-control-solace_body_font_family > .customize-control-title').after(getFont);
 
-        $('li#customize-control-solace_body_font_family  span.dropdown-base-font').click(function () {
-            $('li#customize-control-solace_body_font_family .solace-typeface-control').toggle();
-            $('li#customize-control-solace_typeface_general .solace-typeface-control').toggle();
+        // $('li#customize-control-solace_body_font_family  span.dropdown-base-font').click(function () {
+        //     $('li#customize-control-solace_body_font_family .solace-typeface-control').toggle();
+        //     $('li#customize-control-solace_typeface_general .solace-typeface-control').toggle();
+        // });
+
+        $('li#customize-control-solace_body_font_family span.dropdown-base-font').on('click', function () {
+            var isVisible = $('li#customize-control-solace_body_font_family .solace-typeface-control').is(':visible');
+
+            $('li[id^="customize-control-solace_"] .solace-typeface-control').hide();
+
+            if (!isVisible) {
+                $('li#customize-control-solace_body_font_family .solace-typeface-control').show();
+                $('li#customize-control-solace_typeface_general .solace-typeface-control').show();
+            }
         });
+
 
         // Apend heading title
         const headings = [
@@ -475,6 +549,30 @@
                 elemen.text(label_heading);
             });
         }
+
+        function solaceRegisterFontToggle(headingSelector, familySelector, typefaceSelector) {
+            $('li[id^="customize-control-solace_"] .solace-typeface-control').hide();
+            $(headingSelector).on('click', function () {
+                var $fontFamilyElem = $(familySelector + ' .solace-typeface-control');
+                var $typefaceElem   = $(typefaceSelector + ' .solace-typeface-control');
+                var isSelfVisible   = $fontFamilyElem.is(':visible');
+
+                $('li[id^="customize-control-solace_"] .solace-typeface-control').hide();
+
+                if (!isSelfVisible) {
+                    $fontFamilyElem.show();
+                    $typefaceElem.show();
+                }
+            });
+        }
+
+        ['h1','h2','h3','h4','h5','h6'].forEach(function(tag) {
+            solaceRegisterFontToggle(
+                'li#customize-control-solace_' + tag + '_accordion_wrap .solace-customizer-heading',
+                'li#customize-control-solace_' + tag + '_font_family_general',
+                'li#customize-control-solace_' + tag + '_typeface_general'
+            );
+        });
 
         // Execure on Update Heading
         $(function () {
@@ -890,6 +988,7 @@
             });
         });
     });
+
 
     // ------------- Button Font -------------
     // Change Button Font (Font-Text) Trigger Dropdown
@@ -2088,7 +2187,14 @@
         }
         
         let fontSize = $('li#customize-control-primary-menu_typeface_general .solace-responsive-sizing input').val();
-        let getFont = '<span class="dropdown-font" fonts="' + getFontFamily + '">' + getFontFamily + ' | ' + fontSize + ' px' + '</span>';
+        let primaryMenuSuffix = 'px';
+        wp.customize('menu_typeface_general', function (setting) {
+            var v = setting.get();
+            if (v && v.fontSize && v.fontSize.suffix) {
+                primaryMenuSuffix = v.fontSize.suffix.desktop || v.fontSize.suffix || primaryMenuSuffix;
+            }
+        });
+        let getFont = '<span class="dropdown-font" fonts="' + getFontFamily + '">' + getFontFamily + ' | ' + fontSize + ' ' + primaryMenuSuffix + '</span>';
 
         $('li#customize-control-primary-menu_font_family > .customize-control-title').after(getFont);
 
@@ -2245,7 +2351,14 @@
         }
         
         let fontSize = $('li#customize-control-secondary-menu_typeface_general .solace-responsive-sizing input').val();
-        let getFont = '<span class="dropdown-font" fonts="' + getFontFamily + '">' + getFontFamily + ' | ' + fontSize + ' px' + '</span>';
+        let secondaryMenuSuffix = 'px';
+        wp.customize('secondary-menu_typeface_general', function (setting) {
+            var v = setting.get();
+            if (v && v.fontSize && v.fontSize.suffix) {
+                secondaryMenuSuffix = v.fontSize.suffix.desktop || v.fontSize.suffix || secondaryMenuSuffix;
+            }
+        });
+        let getFont = '<span class="dropdown-font" fonts="' + getFontFamily + '">' + getFontFamily + ' | ' + fontSize + ' ' + secondaryMenuSuffix + '</span>';
 
         $('li#customize-control-secondary-menu_font_family > .customize-control-title').after(getFont);
 
@@ -2402,7 +2515,14 @@
         }
         
         let fontSize = $('li#customize-control-footer-menu_typeface_general .solace-responsive-sizing input').val();
-        let getFont = '<span class="dropdown-font" fonts="' + getFontFamily + '">' + getFontFamily + ' | ' + fontSize + ' px' + '</span>';
+        let footerMenuSuffix = 'px';
+        wp.customize('footer-menu_typeface_general', function (setting) {
+            var v = setting.get();
+            if (v && v.fontSize && v.fontSize.suffix) {
+                footerMenuSuffix = v.fontSize.suffix.desktop || v.fontSize.suffix || footerMenuSuffix;
+            }
+        });
+        let getFont = '<span class="dropdown-font" fonts="' + getFontFamily + '">' + getFontFamily + ' | ' + fontSize + ' ' + footerMenuSuffix + '</span>';
 
         $('li#customize-control-footer-menu_font_family > .customize-control-title').after(getFont);
 

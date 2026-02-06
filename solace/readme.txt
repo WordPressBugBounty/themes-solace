@@ -30,6 +30,30 @@ Solace includes support for WooCommerce.
 
 == Changelog ==
 
+= 2.1.16 - 24 November 2025 =
+* [Fix] : Fixed issues on the shop page for product variants.
+* [Fix] : Fixed issues on templates built with Elementor Pro.
+
+= 2.1.15 - 23 October 2025 =
+* [Fix] : Added em unit support to the font size option in the Customizer font dropdown control.
+* [Fix] : Fixed CSS conflicts in the Customizer font dropdown control with the Hostinger AI, Hostinger Tools, and Hostinger Easy Onboarding plugins.
+* [Refactor] : Improved the appearance of the starter content.
+
+= 2.1.14 - 15 October 2025 =
+* [Feat] : Added optional/hidden/required options for checkout fields
+* [Feat] : Added starter content to the theme
+* [Refactor] : Improved UX of the Customizer font dropdown
+* [Fix] : Fixed the sidebar layout option issue on the single post layout
+* [Refactor] : Optimized the theme size
+* [Refactor] : Removed Manrope font TTF files
+* [Fix] : Accessibility issues flagged by the WAVE browser extension
+* [Fix] : Global button background color and disable script for Elementor preview
+* [Fix] : Customizer logo title Line height and letter spacing values issue
+* [Refactor] : Removed search feature from component list in Header Builder and Footer Builder
+* [Fix] : Clickable issue with contact components in the header and footer builder
+* [Fix] : Styling issues in Customizer menus and search settings
+* [Feat] : Added new style customization options for Cart, Checkout, and My Account pages
+
 = 2.1.13 - 29 April 2025 =
 * [Fix] : Issue with incorrect usage of the _load_textdomain_just_in_time function
 

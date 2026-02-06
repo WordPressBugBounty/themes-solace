@@ -343,7 +343,7 @@ class Front_End {
 		if ( class_exists( 'WooCommerce', false ) ) {
 			$style_path = solace_is_new_skin() ? 'css/woocommerce' : 'css/woocommerce-legacy';
 
-			wp_register_style( 'solace-woocommerce', SOLACE_ASSETS_URL . $style_path . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'solace_version_filter', SOLACE_VERSION ) );
+			wp_register_style( 'solace-woocommerce', SOLACE_ASSETS_URL . $style_path . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css?v=' . time(), array(), apply_filters( 'solace_version_filter', SOLACE_VERSION ) );
 			wp_style_add_data( 'solace-woocommerce', 'rtl', 'replace' );
 			wp_style_add_data( 'solace-woocommerce', 'suffix', '.min' );
 			wp_enqueue_style( 'solace-woocommerce' );
@@ -351,14 +351,14 @@ class Front_End {
 
 		$style_path = solace_is_new_skin() ? '/style-main-new' : '/assets/css/style-legacy';
 
-		wp_register_style( 'solace-style', get_template_directory_uri() . $style_path . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'solace_version_filter', SOLACE_VERSION ) );
+		wp_register_style( 'solace-style', get_template_directory_uri() . $style_path . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css?v=' . time(), array(), apply_filters( 'solace_version_filter', SOLACE_VERSION ) );
 		wp_style_add_data( 'solace-style', 'rtl', 'replace' );
 		wp_style_add_data( 'solace-style', 'suffix', '.min' );
 		wp_enqueue_style( 'solace-style' );
 
 		$mm_path = solace_is_new_skin() ? 'mega-menu' : 'mega-menu-legacy';
 
-		wp_register_style( 'solace-mega-menu', get_template_directory_uri() . '/assets/css/' . $mm_path . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'solace_version_filter', SOLACE_VERSION ) );
+		wp_register_style( 'solace-mega-menu', get_template_directory_uri() . '/assets/css/' . $mm_path . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css?v=' . time(), array(), apply_filters( 'solace_version_filter', SOLACE_VERSION ) );
 		wp_style_add_data( 'solace-mega-menu', 'rtl', 'replace' );
 		wp_style_add_data( 'solace-mega-menu', 'suffix', '.min' );
 	}
@@ -371,7 +371,7 @@ class Front_End {
 			return;
 		}
 
-		wp_register_script( 'solace-script', SOLACE_ASSETS_URL . 'js/build/modern/frontend.js', apply_filters( 'solace_filter_main_script_dependencies', array() ), SOLACE_VERSION, true );
+		wp_register_script( 'solace-script', SOLACE_ASSETS_URL . 'js/build/modern/frontend.js?v=' . time(), apply_filters( 'solace_filter_main_script_dependencies', array() ), SOLACE_VERSION, true );
 
 		wp_localize_script(
 			'solace-script',
@@ -394,7 +394,7 @@ class Front_End {
 		}
 
 		if ( class_exists( 'WooCommerce', false ) && is_woocommerce() ) {
-			wp_register_script( 'solace-shop-script', SOLACE_ASSETS_URL . 'js/build/modern/shop.js', array(), SOLACE_VERSION, true );
+			wp_register_script( 'solace-shop-script', SOLACE_ASSETS_URL . 'js/build/modern/shop.js?v=' . time(), array(), SOLACE_VERSION, true );
 			wp_enqueue_script( 'solace-shop-script' );
 			wp_script_add_data( 'solace-shop-script', 'async', true );
 		}

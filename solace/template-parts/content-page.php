@@ -28,27 +28,21 @@
     // Page Inherit
     if ( $page_list_layout === 'inherit' && $metabox_sidebar_layout === 'inherit' ) {
 		if ( $container_list_layout === 'left' || $container_list_layout === 'right' ) {
-			if (!has_blocks(get_the_ID())) {
-				$is_active_sidebar = true;
-			}
+			$is_active_sidebar = true;
 		}
     }
 
 	// Page Page_templates
 	if ( $page_list_layout !== 'inherit' && $metabox_sidebar_layout === 'inherit' ) {
 		if ( $page_list_layout === 'left' || $page_list_layout === 'right' ) {
-			if (!has_blocks(get_the_ID())) {
-				$is_active_sidebar = true;
-			}
+			$is_active_sidebar = true;
 		}
     }
 
 	// Page metabox_templates
 	if ( $metabox_sidebar_layout !== 'inherit' ) {
 		if ( $metabox_sidebar_layout === 'left' || $metabox_sidebar_layout === 'right' ) {
-			if (!has_blocks(get_the_ID())) {
-				$is_active_sidebar = true;
-			}
+			$is_active_sidebar = true;
 		}
     }
 

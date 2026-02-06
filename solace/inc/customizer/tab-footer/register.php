@@ -93,7 +93,7 @@ final class Solace_Register_Tab_Footer
 	 */
 	public function enqueue_control_scripts()
 	{
-		wp_enqueue_script('solace-customize-controls-footer-script', get_theme_file_uri('/inc/customizer/tab-footer/scripts.js'), array('jquery'), '1.0.1', true);
+		wp_enqueue_script( 'solace-customize-controls-footer-script', get_template_directory_uri() . '/inc/customizer/tab-footer/scripts.js?v=' . time(), array( 'jquery' ), SOLACE_VERSION, true );
 	}
 }
 

@@ -1,3 +1,8 @@
+body.customize-partial-edit-shortcuts-shown .customize-partial-edit-shortcut button {
+  border-radius: 0;
+  box-shadow: none;
+}
+
 /* Customize Preview */
 .edit-row-action {
   top: 0;

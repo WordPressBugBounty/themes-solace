@@ -94,7 +94,7 @@ class Heading extends \WP_Customize_Control {
 	/**
 	 * Print the style for the accordion.
 	 */
-	protected function print_style() {
+	protected function print_stylex() {
 		$style = '';
 		for ( $i = 1; $i <= $this->controls_to_wrap; $i ++ ) {
 			$style .= '.accordion.' . $this->class . ':not(.expanded)';
@@ -105,10 +105,45 @@ class Heading extends \WP_Customize_Control {
 				$style .= ',';
 			}
 		}
+		
 		$style .= '{max-height: 0;opacity: 0;margin: 0; overflow: hidden; padding:0 !important;}';
+		// $style .= '{max-height: 0;opacity: 1;margin: 0; overflow: visible; padding:0 !important;}';
 
 		return $style;
 	}
+
+	protected function print_style() {
+		$style  = '';
+		$style .= '<style>';
+
+		for ( $i = 1; $i <= $this->controls_to_wrap; $i++ ) {
+			$selector = '.accordion.' . $this->class . ':not(.expanded)';
+
+			for ( $j = 1; $j <= $i; $j++ ) {
+				$selector .= ' + li';
+			}
+
+			if (
+				$this->class === 'advanced-sidebar-accordion-h2' &&
+				preg_match('/h[1-6]/i', $selector)
+			) {
+				continue; 
+			}
+
+			$style .= $selector;
+
+			if ( $i !== $this->controls_to_wrap ) {
+				$style .= ',';
+			}
+		}
+
+		$style .= '{max-height: 0; opacity: 0; margin: 0; overflow: hidden; padding: 0 !important;}';
+
+		$style .= '</style>';
+
+		return $style;
+	}
+
 
 	/**
 	 * This method overrides the default render

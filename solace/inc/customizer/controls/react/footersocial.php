@@ -79,9 +79,9 @@ class FooterSocial extends \WP_Customize_Control
     public function enqueue()
     {
 
-        wp_enqueue_script('solace-custom-js-footer-social', get_template_directory_uri() . '/assets-solace/customizer/js/footer-social.js', array('jquery', 'jquery-ui-core'), '1.0', true);
+        wp_enqueue_script('solace-custom-js-footer-social', get_template_directory_uri() . '/assets-solace/customizer/js/footer-social.js?v=' . time(), array('jquery', 'jquery-ui-core'), '1.0', true);
 
-        wp_enqueue_style('solace-custom-css-footer-social', get_template_directory_uri() . '/assets-solace/customizer/css/footer-social.css', array(), '1.0', 'all');
+        wp_enqueue_style('solace-custom-css-footer-social', get_template_directory_uri() . '/assets-solace/customizer/css/footer-social.css?v=' . time(), array(), '1.0', 'all');
     }
 
     /**

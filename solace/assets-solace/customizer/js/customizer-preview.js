@@ -304,3 +304,139 @@
 
 
 })(jQuery);
+
+
+(function ($) {
+    wp.customize('solace_wc_custom_general_cart_title_color', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-cart-title-color', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_cart_title_color_hover', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-cart-title-color-hover', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_cart_description_color', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-cart-description-color', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_cart_description_color_hover', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-cart-description-color-hover', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_cart_price_color', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-cart-price-color', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_cart_button_color', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-cart-button-color', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_cart_button_color_hover', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-cart-button-color-hover', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_cart_button_color_bg', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-cart-button-color-bg', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_cart_button_color_bg_hover', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-cart-button-color-bg-hover', newval);
+        });
+    });
+	// CHECKOUT === 
+    wp.customize('solace_wc_custom_general_checkout_title_color', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-checkout-title-color', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_checkout_description_color', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-checkout-description-color', newval);
+        });
+    });
+
+	wp.customize('solace_wc_custom_general_checkout_button_color', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-checkout-button-color', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_checkout_button_color_hover', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-checkout-button-color-hover', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_checkout_button_color_bg', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-checkout-button-color-bg', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_checkout_button_color_bg_hover', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-checkout-button-color-bg-hover', newval);
+        });
+    });
+	//ACCOUNT
+	wp.customize('solace_wc_custom_general_account_title_color', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-account-title-color', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_account_description_color', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-account-description-color', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_account_price_color', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-account-price-color', newval);
+        });
+    });
+
+	wp.customize('solace_wc_custom_general_account_button_color', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-account-button-color', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_account_button_color_hover', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-account-button-color-hover', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_account_button_color_bg', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-account-button-color-bg', newval);
+        });
+    });
+
+    wp.customize('solace_wc_custom_general_account_button_color_bg_hover', function (value) {
+        value.bind(function (newval) {
+            document.documentElement.style.setProperty('--sol-account-button-color-bg-hover', newval);
+        });
+    });
+})(jQuery);
+

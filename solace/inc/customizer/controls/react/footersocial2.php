@@ -60,7 +60,7 @@ class FooterSocial2 extends \WP_Customize_Control
      */
     public function enqueue()
     {
-        wp_enqueue_style('solace-footer-social2-css', get_template_directory_uri() . '/assets-solace/customizer/css/footer-social2.css', array(), '1.0', 'all');
+        wp_enqueue_style('solace-footer-social2-css', get_template_directory_uri() . '/assets-solace/customizer/css/footer-social2.css?v=' . time(), array(), '1.0', 'all');
     }
 
     /**

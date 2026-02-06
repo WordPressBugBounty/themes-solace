@@ -48,19 +48,21 @@ All
   overflow-y: hidden;
 }
 
+li#customize-control-solace_wc_custom_general_cart_tab .solace-customizer-tab,
+li#customize-control-solace_wc_custom_general_account_tab .solace-customizer-tab,
+li#customize-control-solace_wc_custom_general_checkout_tab .solace-customizer-tab {
+  width: calc(43% - 15px);
+}
+
 li#accordion-section-solace_wc_custom_general_star_rating,
 li#accordion-section-solace_wc_custom_general_product_badges,
-li#accordion-section-solace_wc_custom_general_cart_pages,
-li#accordion-section-solace_wc_custom_general_store_notice,
-li#accordion-section-solace_wc_custom_general_checkout {
+li#accordion-section-solace_wc_custom_general_store_notice {
   position: relative;
 }
 
 li#accordion-section-solace_wc_custom_general_star_rating .accordion-section-title,
 li#accordion-section-solace_wc_custom_general_product_badges .accordion-section-title,
-li#accordion-section-solace_wc_custom_general_cart_pages .accordion-section-title,
-li#accordion-section-solace_wc_custom_general_store_notice .accordion-section-title,
-li#accordion-section-solace_wc_custom_general_checkout .accordion-section-title {
+li#accordion-section-solace_wc_custom_general_store_notice .accordion-section-title {
   border: none;
   border-radius: 6px;
   margin: 12px;
@@ -69,9 +71,7 @@ li#accordion-section-solace_wc_custom_general_checkout .accordion-section-title 
 
 li#accordion-section-solace_wc_custom_general_star_rating::after,
 li#accordion-section-solace_wc_custom_general_product_badges::after,
-li#accordion-section-solace_wc_custom_general_cart_pages::after,
-li#accordion-section-solace_wc_custom_general_store_notice::after,
-li#accordion-section-solace_wc_custom_general_checkout::after {
+li#accordion-section-solace_wc_custom_general_store_notice::after {
   content: '\f345';
   font: normal 20px / 1 'dashicons';
   color: #fff;
@@ -91,9 +91,7 @@ li#accordion-section-solace_wc_custom_general_checkout::after {
 
 li#accordion-section-solace_wc_custom_general_star_rating:active,
 li#accordion-section-solace_wc_custom_general_product_badges:active,
-li#accordion-section-solace_wc_custom_general_cart_pages:active,
-li#accordion-section-solace_wc_custom_general_store_notice:active,
-li#accordion-section-solace_wc_custom_general_checkout:active {
+li#accordion-section-solace_wc_custom_general_store_notice:active {
   color: #0f2e5f;
 }
 
@@ -101,24 +99,16 @@ li#accordion-section-solace_wc_custom_general_star_rating:hover::after, li#accor
 li#accordion-section-solace_wc_custom_general_product_badges:hover::after,
 li#accordion-section-solace_wc_custom_general_product_badges:focus::after,
 li#accordion-section-solace_wc_custom_general_product_badges:active::after,
-li#accordion-section-solace_wc_custom_general_cart_pages:hover::after,
-li#accordion-section-solace_wc_custom_general_cart_pages:focus::after,
-li#accordion-section-solace_wc_custom_general_cart_pages:active::after,
 li#accordion-section-solace_wc_custom_general_store_notice:hover::after,
 li#accordion-section-solace_wc_custom_general_store_notice:focus::after,
-li#accordion-section-solace_wc_custom_general_store_notice:active::after,
-li#accordion-section-solace_wc_custom_general_checkout:hover::after,
-li#accordion-section-solace_wc_custom_general_checkout:focus::after,
-li#accordion-section-solace_wc_custom_general_checkout:active::after {
+li#accordion-section-solace_wc_custom_general_store_notice:active::after {
   color: #0f2e5f;
 }
 
 li#customize-control-solace_wc_custom_general_product_badges,
 li#customize-control-solace_wc_custom_general_product_badges_color,
 li#customize-control-solace_wc_custom_general_product_badges_background_color,
-li#customize-control-solace_wc_custom_general_cart_coupon,
-li#customize-control-solace_wc_custom_general_buttons,
-li#customize-control-solace_wc_custom_general_checkout_coupon {
+li#customize-control-solace_wc_custom_general_buttons {
   display: list-item !important;
 }
 
@@ -252,7 +242,7 @@ li#customize-control-woocommerce_demo_store {
 
 #sub-accordion-section-solace_wc_custom_general_checkout select {
   border-radius: 50px;
-  padding: 8px 15px 8px 15px;
+  padding: 3px 15px 8px 15px;
 }
 
 li#customize-control-woocommerce_checkout_highlight_required_fields .components-flex {
@@ -262,6 +252,1231 @@ li#customize-control-woocommerce_checkout_highlight_required_fields .components-
 textarea#_customize-input-woocommerce_checkout_privacy_policy_text {
   border-radius: 15px;
   padding: 10px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_font_family {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_font_family span.dropdown-cart-title-font {
+  all: unset;
+  flex-basis: 100%;
+  color: #001944;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 25px;
+  margin: 0 0 0 14px;
+  height: 30px;
+  font-weight: 700;
+  border-left: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  line-height: 2;
+  position: relative;
+  max-width: 164px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_font_family span.dropdown-cart-title-font::after {
+  content: "";
+  display: block;
+  background-image: url(../img/customizer/arrow-bottom.svg);
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_label,
+li#customize-control-solace_wc_custom_general_cart_description_label,
+li#customize-control-solace_wc_custom_general_cart_price_label,
+li#customize-control-solace_wc_custom_general_cart_button_label {
+  margin-bottom: 20px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_font_family:has(.solace-multiselect) ~ li#customize-control-solace_typeface_logotitle .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_font_family,
+li#customize-control-solace_wc_custom_general_cart_title_typeface {
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_font_family .solace-typeface-control,
+li#customize-control-solace_wc_custom_general_cart_title_typeface .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
+  display: none;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  background: var(--sol-customizer-panel-bg-color);
+  z-index: 5;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_font_family {
+  margin-bottom: 12px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_font_family .solace-typeface-control button .components-popover {
+  width: 90% !important;
+  transform: none !important;
+  left: 5% !important;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_font_family .solace-typeface-control button .components-popover .components-popover__content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header .search {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_typeface .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_description_font_family {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li#customize-control-solace_wc_custom_general_cart_description_font_family span.dropdown-cart-description-font {
+  all: unset;
+  flex-basis: 100%;
+  color: #001944;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 25px;
+  margin: 0 0 0 14px;
+  height: 30px;
+  font-weight: 700;
+  border-left: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  line-height: 2;
+  position: relative;
+  max-width: 164px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_description_font_family span.dropdown-cart-description-font::after {
+  content: "";
+  display: block;
+  background-image: url(../img/customizer/arrow-bottom.svg);
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+}
+
+li#customize-control-solace_wc_custom_general_cart_description_font_family:has(.solace-multiselect) ~ li#customize-control-solace_typeface_logotitle .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_description_font_family,
+li#customize-control-solace_wc_custom_general_cart_description_typeface {
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+li#customize-control-solace_wc_custom_general_cart_description_font_family .solace-typeface-control,
+li#customize-control-solace_wc_custom_general_cart_description_typeface .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
+  display: none;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  background: var(--sol-customizer-panel-bg-color);
+  z-index: 5;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_description_font_family {
+  margin-bottom: 12px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_description_font_family .solace-typeface-control button .components-popover {
+  width: 90% !important;
+  transform: none !important;
+  left: 5% !important;
+}
+
+li#customize-control-solace_wc_custom_general_cart_description_font_family .solace-typeface-control button .components-popover .components-popover__content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_cart_description_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_cart_description_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_cart_description_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header .search {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_cart_description_typeface .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_price_font_family {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li#customize-control-solace_wc_custom_general_cart_price_font_family span.dropdown-cart-price-font {
+  all: unset;
+  flex-basis: 100%;
+  color: #001944;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 25px;
+  margin: 0 0 0 14px;
+  height: 30px;
+  font-weight: 700;
+  border-left: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  line-height: 2;
+  position: relative;
+  max-width: 164px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_price_font_family span.dropdown-cart-price-font::after {
+  content: "";
+  display: block;
+  background-image: url(../img/customizer/arrow-bottom.svg);
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+}
+
+li#customize-control-solace_wc_custom_general_cart_price_font_family:has(.solace-multiselect) ~ li#customize-control-solace_typeface_logotitle .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_price_font_family,
+li#customize-control-solace_wc_custom_general_cart_price_typeface {
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+li#customize-control-solace_wc_custom_general_cart_price_font_family .solace-typeface-control,
+li#customize-control-solace_wc_custom_general_cart_price_typeface .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
+  display: none;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  background: var(--sol-customizer-panel-bg-color);
+  z-index: 5;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_price_font_family {
+  margin-bottom: 12px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_price_font_family .solace-typeface-control button .components-popover {
+  width: 90% !important;
+  transform: none !important;
+  left: 5% !important;
+}
+
+li#customize-control-solace_wc_custom_general_cart_price_font_family .solace-typeface-control button .components-popover .components-popover__content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_cart_price_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_cart_price_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_cart_price_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header .search {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_cart_price_typeface .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_button_font_family {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li#customize-control-solace_wc_custom_general_cart_button_font_family span.dropdown-cart-button-font {
+  all: unset;
+  flex-basis: 100%;
+  color: #001944;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 25px;
+  margin: 0 0 0 14px;
+  height: 30px;
+  font-weight: 700;
+  border-left: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  line-height: 2;
+  position: relative;
+  max-width: 164px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_button_font_family span.dropdown-cart-button-font::after {
+  content: "";
+  display: block;
+  background-image: url(../img/customizer/arrow-bottom.svg);
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+}
+
+li#customize-control-solace_wc_custom_general_cart_button_font_family:has(.solace-multiselect) ~ li#customize-control-solace_typeface_logotitle .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_button_font_family,
+li#customize-control-solace_wc_custom_general_cart_button_typeface {
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+li#customize-control-solace_wc_custom_general_cart_button_font_family .solace-typeface-control,
+li#customize-control-solace_wc_custom_general_cart_button_typeface .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
+  display: none;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  background: var(--sol-customizer-panel-bg-color);
+  z-index: 5;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_button_font_family {
+  margin-bottom: 12px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_button_font_family .solace-typeface-control button .components-popover {
+  width: 90% !important;
+  transform: none !important;
+  left: 5% !important;
+}
+
+li#customize-control-solace_wc_custom_general_cart_button_font_family .solace-typeface-control button .components-popover .components-popover__content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_cart_button_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_cart_button_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_cart_button_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header .search {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_cart_button_typeface .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_font_family {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_font_family span.dropdown-checkout-title-font {
+  all: unset;
+  flex-basis: 100%;
+  color: #001944;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 25px;
+  margin: 0 0 0 14px;
+  height: 30px;
+  font-weight: 700;
+  border-left: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  line-height: 2;
+  position: relative;
+  max-width: 164px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_font_family span.dropdown-checkout-title-font::after {
+  content: "";
+  display: block;
+  background-image: url(../img/customizer/arrow-bottom.svg);
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_label,
+li#customize-control-solace_wc_custom_general_checkout_description_label,
+li#customize-control-solace_wc_custom_general_checkout_price_label,
+li#customize-control-solace_wc_custom_general_checkout_button_label {
+  margin-bottom: 20px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_font_family:has(.solace-multiselect) ~ li#customize-control-solace_typeface_logotitle .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_font_family,
+li#customize-control-solace_wc_custom_general_checkout_title_typeface {
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_font_family .solace-typeface-control,
+li#customize-control-solace_wc_custom_general_checkout_title_typeface .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
+  display: none;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  background: var(--sol-customizer-panel-bg-color);
+  z-index: 5;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_font_family {
+  margin-bottom: 12px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_font_family .solace-typeface-control button .components-popover {
+  width: 90% !important;
+  transform: none !important;
+  left: 5% !important;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_font_family .solace-typeface-control button .components-popover .components-popover__content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header .search {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_title_typeface .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_description_font_family {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_description_font_family span.dropdown-checkout-description-font {
+  all: unset;
+  flex-basis: 100%;
+  color: #001944;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 25px;
+  margin: 0 0 0 14px;
+  height: 30px;
+  font-weight: 700;
+  border-left: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  line-height: 2;
+  position: relative;
+  max-width: 164px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_description_font_family span.dropdown-checkout-description-font::after {
+  content: "";
+  display: block;
+  background-image: url(../img/customizer/arrow-bottom.svg);
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_description_font_family:has(.solace-multiselect) ~ li#customize-control-solace_typeface_logotitle .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_description_font_family,
+li#customize-control-solace_wc_custom_general_checkout_description_typeface {
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_description_font_family .solace-typeface-control,
+li#customize-control-solace_wc_custom_general_checkout_description_typeface .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
+  display: none;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  background: var(--sol-customizer-panel-bg-color);
+  z-index: 5;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_description_font_family {
+  margin-bottom: 12px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_description_font_family .solace-typeface-control button .components-popover {
+  width: 90% !important;
+  transform: none !important;
+  left: 5% !important;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_description_font_family .solace-typeface-control button .components-popover .components-popover__content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_description_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_description_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_description_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header .search {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_description_typeface .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_price_font_family {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_price_font_family span.dropdown-checkout-price-font {
+  all: unset;
+  flex-basis: 100%;
+  color: #001944;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 25px;
+  margin: 0 0 0 14px;
+  height: 30px;
+  font-weight: 700;
+  border-left: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  line-height: 2;
+  position: relative;
+  max-width: 164px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_price_font_family span.dropdown-checkout-price-font::after {
+  content: "";
+  display: block;
+  background-image: url(../img/customizer/arrow-bottom.svg);
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_price_font_family:has(.solace-multiselect) ~ li#customize-control-solace_typeface_logotitle .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_price_font_family,
+li#customize-control-solace_wc_custom_general_checkout_price_typeface {
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_price_font_family .solace-typeface-control,
+li#customize-control-solace_wc_custom_general_checkout_price_typeface .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
+  display: none;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  background: var(--sol-customizer-panel-bg-color);
+  z-index: 5;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_price_font_family {
+  margin-bottom: 12px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_price_font_family .solace-typeface-control button .components-popover {
+  width: 90% !important;
+  transform: none !important;
+  left: 5% !important;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_price_font_family .solace-typeface-control button .components-popover .components-popover__content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_price_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_price_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_price_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header .search {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_price_typeface .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_button_font_family {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_button_font_family span.dropdown-checkout-button-font {
+  all: unset;
+  flex-basis: 100%;
+  color: #001944;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 25px;
+  margin: 0 0 0 14px;
+  height: 30px;
+  font-weight: 700;
+  border-left: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  line-height: 2;
+  position: relative;
+  max-width: 164px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_button_font_family span.dropdown-checkout-button-font::after {
+  content: "";
+  display: block;
+  background-image: url(../img/customizer/arrow-bottom.svg);
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_button_font_family:has(.solace-multiselect) ~ li#customize-control-solace_typeface_logotitle .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_button_font_family,
+li#customize-control-solace_wc_custom_general_checkout_button_typeface {
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_button_font_family .solace-typeface-control,
+li#customize-control-solace_wc_custom_general_checkout_button_typeface .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
+  display: none;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  background: var(--sol-customizer-panel-bg-color);
+  z-index: 5;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_button_font_family {
+  margin-bottom: 12px;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_button_font_family .solace-typeface-control button .components-popover {
+  width: 90% !important;
+  transform: none !important;
+  left: 5% !important;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_button_font_family .solace-typeface-control button .components-popover .components-popover__content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_button_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_button_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_button_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header .search {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_checkout_button_typeface .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_font_family {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_font_family span.dropdown-account-title-font {
+  all: unset;
+  flex-basis: 100%;
+  color: #001944;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 25px;
+  margin: 0 0 0 14px;
+  height: 30px;
+  font-weight: 700;
+  border-left: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  line-height: 2;
+  position: relative;
+  max-width: 164px;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_font_family span.dropdown-account-title-font::after {
+  content: "";
+  display: block;
+  background-image: url(../img/customizer/arrow-bottom.svg);
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_label,
+li#customize-control-solace_wc_custom_general_account_description_label,
+li#customize-control-solace_wc_custom_general_account_price_label,
+li#customize-control-solace_wc_custom_general_account_button_label {
+  margin-bottom: 20px;
+}
+
+li#customize-control-solace_wc_custom_general_cart_title_color, li#customize-control-solace_wc_custom_general_cart_button_color, li#customize-control-solace_wc_custom_general_cart_button_color_hover, li#customize-control-solace_wc_custom_general_cart_button_color_bg, li#customize-control-solace_wc_custom_general_cart_button_color_bg_hover {
+  border-bottom: 0;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_font_family:has(.solace-multiselect) ~ li#customize-control-solace_typeface_logotitle .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_font_family,
+li#customize-control-solace_wc_custom_general_account_title_typeface {
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_font_family .solace-typeface-control,
+li#customize-control-solace_wc_custom_general_account_title_typeface .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
+  display: none;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  background: var(--sol-customizer-panel-bg-color);
+  z-index: 5;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_font_family {
+  margin-bottom: 12px;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_font_family .solace-typeface-control button .components-popover {
+  width: 90% !important;
+  transform: none !important;
+  left: 5% !important;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_font_family .solace-typeface-control button .components-popover .components-popover__content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header .search {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_account_title_typeface .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_account_description_font_family {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li#customize-control-solace_wc_custom_general_account_description_font_family span.dropdown-account-description-font {
+  all: unset;
+  flex-basis: 100%;
+  color: #001944;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 25px;
+  margin: 0 0 0 14px;
+  height: 30px;
+  font-weight: 700;
+  border-left: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  line-height: 2;
+  position: relative;
+  max-width: 164px;
+}
+
+li#customize-control-solace_wc_custom_general_account_description_font_family span.dropdown-account-description-font::after {
+  content: "";
+  display: block;
+  background-image: url(../img/customizer/arrow-bottom.svg);
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+}
+
+li#customize-control-solace_wc_custom_general_account_description_font_family:has(.solace-multiselect) ~ li#customize-control-solace_typeface_logotitle .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_account_description_font_family,
+li#customize-control-solace_wc_custom_general_account_description_typeface {
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+li#customize-control-solace_wc_custom_general_account_description_font_family .solace-typeface-control,
+li#customize-control-solace_wc_custom_general_account_description_typeface .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
+  display: none;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  background: var(--sol-customizer-panel-bg-color);
+  z-index: 5;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+li#customize-control-solace_wc_custom_general_account_description_font_family {
+  margin-bottom: 12px;
+}
+
+li#customize-control-solace_wc_custom_general_account_description_font_family .solace-typeface-control button .components-popover {
+  width: 90% !important;
+  transform: none !important;
+  left: 5% !important;
+}
+
+li#customize-control-solace_wc_custom_general_account_description_font_family .solace-typeface-control button .components-popover .components-popover__content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_account_description_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_account_description_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_account_description_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header .search {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_account_description_typeface .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_account_price_font_family {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li#customize-control-solace_wc_custom_general_account_price_font_family span.dropdown-account-price-font {
+  all: unset;
+  flex-basis: 100%;
+  color: #001944;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 25px;
+  margin: 0 0 0 14px;
+  height: 30px;
+  font-weight: 700;
+  border-left: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  line-height: 2;
+  position: relative;
+  max-width: 164px;
+}
+
+li#customize-control-solace_wc_custom_general_account_price_font_family span.dropdown-account-price-font::after {
+  content: "";
+  display: block;
+  background-image: url(../img/customizer/arrow-bottom.svg);
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+}
+
+li#customize-control-solace_wc_custom_general_account_price_font_family:has(.solace-multiselect) ~ li#customize-control-solace_typeface_logotitle .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_account_price_font_family,
+li#customize-control-solace_wc_custom_general_account_price_typeface {
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+li#customize-control-solace_wc_custom_general_account_price_font_family .solace-typeface-control,
+li#customize-control-solace_wc_custom_general_account_price_typeface .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
+  display: none;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  background: var(--sol-customizer-panel-bg-color);
+  z-index: 5;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+li#customize-control-solace_wc_custom_general_account_price_font_family {
+  margin-bottom: 12px;
+}
+
+li#customize-control-solace_wc_custom_general_account_price_font_family .solace-typeface-control button .components-popover {
+  width: 90% !important;
+  transform: none !important;
+  left: 5% !important;
+}
+
+li#customize-control-solace_wc_custom_general_account_price_font_family .solace-typeface-control button .components-popover .components-popover__content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_account_price_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_account_price_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_account_price_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header .search {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_account_price_typeface .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_account_button_font_family {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li#customize-control-solace_wc_custom_general_account_button_font_family span.dropdown-account-button-font {
+  all: unset;
+  flex-basis: 100%;
+  color: #001944;
+  font-size: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #fff;
+  border-radius: 25px;
+  margin: 0 0 0 14px;
+  height: 30px;
+  font-weight: 700;
+  border-left: none;
+  cursor: pointer;
+  text-transform: capitalize;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  line-height: 2;
+  position: relative;
+  max-width: 164px;
+}
+
+li#customize-control-solace_wc_custom_general_account_button_font_family span.dropdown-account-button-font::after {
+  content: "";
+  display: block;
+  background-image: url(../img/customizer/arrow-bottom.svg);
+  position: absolute;
+  top: 13px;
+  right: 8px;
+  width: 25px;
+  height: 25px;
+  background-repeat: no-repeat;
+}
+
+li#customize-control-solace_wc_custom_general_account_button_font_family:has(.solace-multiselect) ~ li#customize-control-solace_typeface_logotitle .solace-typeface-control {
+  top: 40px;
+}
+
+li#customize-control-solace_wc_custom_general_account_button_font_family,
+li#customize-control-solace_wc_custom_general_account_button_typeface {
+  border: none;
+  position: relative;
+  padding: 0;
+}
+
+li#customize-control-solace_wc_custom_general_account_button_font_family .solace-typeface-control,
+li#customize-control-solace_wc_custom_general_account_button_typeface .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
+  display: none;
+  margin-bottom: 30px;
+  position: absolute;
+  top: 46px;
+  width: 100%;
+  background: var(--sol-customizer-panel-bg-color);
+  z-index: 5;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+li#customize-control-solace_wc_custom_general_account_button_font_family {
+  margin-bottom: 12px;
+}
+
+li#customize-control-solace_wc_custom_general_account_button_font_family .solace-typeface-control button .components-popover {
+  width: 90% !important;
+  transform: none !important;
+  left: 5% !important;
+}
+
+li#customize-control-solace_wc_custom_general_account_button_font_family .solace-typeface-control button .components-popover .components-popover__content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_account_button_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content {
+  width: 100% !important;
+}
+
+li#customize-control-solace_wc_custom_general_account_button_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_account_button_font_family .solace-typeface-control button .components-popover .components-popover__content .popover-content .popover-header .search {
+  width: 100%;
+}
+
+li#customize-control-solace_wc_custom_general_account_button_typeface .solace-typeface-control {
+  top: 40px;
 }
 
 .solace-remove-style-popover-transform {
@@ -338,6 +1553,7 @@ body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-solace_
 body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-solace_wc_custom_general_product_badges h3,
 body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-solace_wc_custom_general_cart_pages h3,
 body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-solace_wc_custom_general_checkout h3,
+body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-solace_wc_custom_general_account h3,
 body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-solace_wc_custom_general_store_notice h3 {
   margin: 0;
 }
@@ -346,6 +1562,7 @@ body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-solace_
 body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-solace_wc_custom_general_product_badges h3 button.accordion-trigger,
 body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-solace_wc_custom_general_cart_pages h3 button.accordion-trigger,
 body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-solace_wc_custom_general_checkout h3 button.accordion-trigger,
+body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-solace_wc_custom_general_account h3 button.accordion-trigger,
 body.solace-wp-version-6-7-plus #customize-controls li#accordion-section-solace_wc_custom_general_store_notice h3 button.accordion-trigger {
   border-radius: 6px;
   padding: 12px 25px;
@@ -699,6 +1916,21 @@ li#customize-control-solace_product_page_card_options_product_image {
 Woocommerce - Single Product
 ==============================================================*/
 li#accordion-section-solace_wc_single_product {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+li#accordion-section-solace_wc_custom_general_cart_pages {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+li#accordion-section-solace_wc_custom_general_checkout {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+li#accordion-section-solace_wc_custom_general_account {
   margin-left: 0;
   margin-right: 0;
 }
@@ -1274,6 +2506,7 @@ li#customize-control-solace_global_colors span .components-popover .components-p
 }
 
 li#customize-control-solace_smaller_font_family span.dropdown-smaller-font {
+  all: unset;
   color: #001944;
   font-size: 15px;
   display: flex;
@@ -1320,6 +2553,9 @@ li#customize-control-solace_typeface_smaller {
 
 li#customize-control-solace_smaller_font_family .solace-typeface-control,
 li#customize-control-solace_typeface_smaller .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
   display: none;
   margin-bottom: 30px;
   position: absolute;
@@ -1362,6 +2598,7 @@ li#customize-control-solace_typeface_smaller .solace-typeface-control {
 }
 
 li#customize-control-solace_logotitle_font_family span.dropdown-logotitle-font {
+  all: unset;
   color: #001944;
   font-size: 15px;
   display: flex;
@@ -1408,6 +2645,9 @@ li#customize-control-solace_typeface_logotitle {
 
 li#customize-control-solace_logotitle_font_family .solace-typeface-control,
 li#customize-control-solace_typeface_logotitle .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
   display: none;
   margin-bottom: 30px;
   position: absolute;
@@ -1450,6 +2690,7 @@ li#customize-control-solace_typeface_logotitle .solace-typeface-control {
 }
 
 li#customize-control-solace_button_font_family span.dropdown-button-font {
+  all: unset;
   color: #001944;
   font-size: 15px;
   display: flex;
@@ -1496,6 +2737,9 @@ li#customize-control-solace_typeface_button {
 
 li#customize-control-solace_button_font_family .solace-typeface-control,
 li#customize-control-solace_typeface_button .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
   display: none;
   margin-bottom: 30px;
   position: absolute;
@@ -1542,6 +2786,7 @@ li#customize-control-solace_headings_font_family {
 }
 
 li#customize-control-solace_body_font_family span.dropdown-base-font {
+  all: unset;
   color: #001944;
   font-size: 15px;
   display: flex;
@@ -1588,6 +2833,9 @@ li#customize-control-solace_typeface_general {
 
 li#customize-control-solace_body_font_family .solace-typeface-control,
 li#customize-control-solace_typeface_general .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
   display: none;
   margin-bottom: 30px;
   position: absolute;
@@ -1660,6 +2908,8 @@ li#customize-control-solace_h3_accordion_wrap .solace-customizer-heading,
 li#customize-control-solace_h4_accordion_wrap .solace-customizer-heading,
 li#customize-control-solace_h5_accordion_wrap .solace-customizer-heading,
 li#customize-control-solace_h6_accordion_wrap .solace-customizer-heading {
+  all: unset;
+  cursor: pointer;
   color: #001944;
   font-size: 15px;
   display: flex;
@@ -1675,6 +2925,7 @@ li#customize-control-solace_h6_accordion_wrap .solace-customizer-heading {
   font-weight: 700;
   border-left: none;
   text-transform: capitalize;
+  position: relative;
 }
 
 li#customize-control-solace_h1_accordion_wrap .solace-customizer-heading span.accordion-heading::after,
@@ -1732,6 +2983,9 @@ li#customize-control-solace_h3_font_family_general .solace-typeface-control,
 li#customize-control-solace_h4_font_family_general .solace-typeface-control,
 li#customize-control-solace_h5_font_family_general .solace-typeface-control,
 li#customize-control-solace_h6_font_family_general .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
   margin-top: 9px;
   margin-bottom: 30px;
   position: absolute;
@@ -1809,6 +3063,9 @@ li#customize-control-solace_h3_typeface_general .solace-typeface-control,
 li#customize-control-solace_h4_typeface_general .solace-typeface-control,
 li#customize-control-solace_h5_typeface_general .solace-typeface-control,
 li#customize-control-solace_h6_typeface_general .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
   margin-bottom: 30px;
   position: absolute;
   top: 46px;
@@ -1994,6 +3251,7 @@ li#customize-control-primary-menu_font_family > .customize-control-title {
 }
 
 li#customize-control-primary-menu_font_family span.dropdown-font {
+  all: unset;
   color: #001944;
   font-size: 15px;
   display: flex;
@@ -2040,6 +3298,9 @@ li#customize-control-primary-menu_typeface_general {
 
 li#customize-control-primary-menu_font_family .solace-typeface-control,
 li#customize-control-primary-menu_typeface_general .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
   display: none;
   margin-bottom: 30px;
   position: absolute;
@@ -2176,6 +3437,7 @@ li#customize-control-secondary-menu_font_family > .customize-control-title {
 }
 
 li#customize-control-secondary-menu_font_family span.dropdown-font {
+  all: unset;
   color: #001944;
   font-size: 15px;
   display: flex;
@@ -2222,6 +3484,9 @@ li#customize-control-secondary-menu_typeface_general {
 
 li#customize-control-secondary-menu_font_family .solace-typeface-control,
 li#customize-control-secondary-menu_typeface_general .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
   display: none;
   margin-bottom: 30px;
   position: absolute;
@@ -2321,6 +3586,7 @@ li#customize-control-footer-menu_font_family > .customize-control-title {
 }
 
 li#customize-control-footer-menu_font_family span.dropdown-font {
+  all: unset;
   color: #001944;
   font-size: 15px;
   display: flex;
@@ -2367,6 +3633,9 @@ li#customize-control-footer-menu_typeface_general {
 
 li#customize-control-footer-menu_font_family .solace-typeface-control,
 li#customize-control-footer-menu_typeface_general .solace-typeface-control {
+  all: unset;
+  padding: 10px 15px;
+  margin: 0 -15px;
   display: none;
   margin-bottom: 30px;
   position: absolute;
@@ -2854,6 +4123,7 @@ li#accordion-section-solace_wc_custom_general_star_rating,
 li#accordion-section-solace_wc_custom_general_product_badges,
 li#accordion-section-solace_wc_custom_general_cart_pages,
 li#accordion-section-solace_wc_custom_general_checkout,
+li#accordion-section-solace_wc_custom_general_account,
 li#accordion-section-solace_wc_custom_general_buttons,
 li#accordion-section-solace_wc_custom_general_store_notice {
   display: list-item !important;
@@ -5287,6 +6557,11 @@ li#customize-control-hfg_footer_layout_top_layout,
 li#customize-control-hfg_footer_layout_main_layout,
 li#customize-control-hfg_footer_layout_bottom_layout {
   display: block !important;
+}
+
+.customize-partial-edit-shortcut button {
+  border-radius: 50%;
+  padding: 3px;
 }
 
 /*# sourceMappingURL=customizer-solace.css.map */

@@ -213,18 +213,6 @@ function solace_page_shop_custom_content() {
                 // Check if the current product is a variable product.
                 if ( $product && $product->is_type( 'variable' ) ) {
                     $variations = $product->get_available_variations();
-                    
-                    // If there are variations, display them in a list.
-                    if ( ! empty( $variations ) ) {
-                        echo '<ul class="solace-product-variations">';
-                        foreach ( $variations as $variation ) {
-                            $variation_id = $variation['variation_id'];
-                            $variation_product = wc_get_product( $variation_id );
-                            $variation_name = $variation_product->get_name();
-                            echo '<li><span>' . esc_html($variation_name) . '</span></li>';
-                        }
-                        echo '</ul>';
-                    }
                 }
             }, 11 );
         } else if ( 'product-page-layout3' === $shop_layout ) {
@@ -235,18 +223,6 @@ function solace_page_shop_custom_content() {
                 // Check if the current product is a variable product.
                 if ( $product && $product->is_type( 'variable' ) ) {
                     $variations = $product->get_available_variations();
-                    
-                    // If there are variations, display them in a list.
-                    if ( ! empty( $variations ) ) {
-                        echo '<ul class="solace-product-variations">';
-                        foreach ( $variations as $variation ) {
-                            $variation_id = $variation['variation_id'];
-                            $variation_product = wc_get_product( $variation_id );
-                            $variation_name = $variation_product->get_name();
-                            echo '<li><span>' . esc_html($variation_name) . '</span></li>';
-                        }
-                        echo '</ul>';
-                    }
                 }
             }, 9 );
 

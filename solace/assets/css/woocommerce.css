@@ -226,6 +226,27 @@ main .nv-shop {
 
 .woocommerce ul.products li.product a.woocommerce-loop-product__link > h2.woocommerce-loop-product__title {
   font-size: var(--h2fontsize);
+  display: none;
+}
+
+.woocommerce ul.products li.product a.woocommerce-loop-product__link > h3.woocommerce-loop-product__title {
+  font-size: var(--h3fontsize);
+}
+
+.woocommerce ul.products li.product a.woocommerce-loop-product__link > h4.woocommerce-loop-product__title {
+  font-size: var(--h4fontsize);
+}
+
+.woocommerce ul.products li.product a.woocommerce-loop-product__link > h5.woocommerce-loop-product__title {
+  font-size: var(--h5fontsize);
+}
+
+.woocommerce ul.products li.product a.woocommerce-loop-product__link > h6.woocommerce-loop-product__title {
+  font-size: var(--h6fontsize);
+}
+
+.woocommerce ul.products li.product a.woocommerce-loop-product__link > h5.woocommerce-loop-product__title {
+  font-size: var(--e-global-typography-solace_h5_font_family_general-font-size, var(--h5fontsize));
 }
 
 .woocommerce-NoticeGroup > ul {
@@ -2302,6 +2323,113 @@ body.woocommerce-cart .wc-block-components-sidebar .wc-block-cart__submit span {
   font-size: var(--h4fontsize);
 }
 
+.woocommerce-cart .wc-block-cart .wc-block-components-sidebar .wc-block-components-totals-coupon {
+  flex: 1;
+}
+
+:root {
+  --sol-cart-title-color: var(--sol-color-heading);
+  --sol-cart-title-color-hover: var(--sol-color-heading);
+  --sol-cart-description-color: var(--sol-color-base-font);
+  --sol-cart-price-color: var(--sol-color-base-font);
+  --sol-cart-button-color: var(--sol-color-page-title-text);
+  --sol-cart-button-color-hover: var(--sol-color-page-title-text);
+  --sol-cart-button-color-bg: var(--sol-color-button-initial);
+  --sol-cart-button-color-bg-hover: var(--sol-color-button-hover);
+}
+
+body.woocommerce-cart .wc-block-components-totals-coupon__content input#wc-block-components-totals-coupon__input-coupon,
+body.woocommerce-checkout .wc-block-components-totals-coupon__content input#wc-block-components-totals-coupon__input-coupon {
+  min-height: 40px;
+}
+
+body.woocommerce-cart .wc-block-cart-items .wc-block-components-product-name,
+body.woocommerce-cart .cross-sells-product .wc-block-components-product-name,
+.woocommerce-cart .wc-block-cart table th span,
+.woocommerce-cart .wc-block-cart .wp-block-woocommerce-cart-cross-sells-block h2,
+.woocommerce-cart .wc-block-cart .wc-block-cart__totals-title,
+.woocommerce-cart .wc-block-cart .wc-block-components-totals-item__label,
+body.woocommerce-cart .wc-block-components-totals-coupon .wc-block-components-panel__button,
+body.woocommerce-cart .is-large.wc-block-cart .wc-block-cart__totals-title {
+  color: var(--sol-cart-title-color) !important;
+}
+
+body.woocommerce-cart .wc-block-cart-items .wc-block-components-product-name:hover, body.woocommerce-cart .cross-sells-product .wc-block-components-product-name:hover,
+body.woocommerce-cart .woocommerce-cart-form .shop_table td.product-name a:hover {
+  color: var(--sol-cart-title-color-hover) !important;
+}
+
+body.woocommerce-cart .wc-block-components-product-metadata__description > p {
+  color: var(--sol-cart-description-color) !important;
+}
+
+body.woocommerce-cart .wc-block-components-product-price__regular,
+body.woocommerce-cart .wc-block-components-product-price__value.is-discounted,
+body.woocommerce-cart .wc-block-components-product-price__value, body.woocommerce-cart .cross-sells-product .wc-block-components-product-price__value, body.woocommerce-cart .wc-block-components-sale-badge, body.woocommerce-cart .cross-sells-product .wc-block-components-quantity-selector input, body.woocommerce-cart .wc-block-cart-items .wc-block-cart-item__total .wc-block-components-formatted-money-amount,
+body.woocommerce-cart .woocommerce-cart-form .shop_table .product-price .woocommerce-Price-amount,
+body.woocommerce-cart .woocommerce-cart-form .shop_table .product-subtotal .woocommerce-Price-amount,
+body.woocommerce-cart .cart-collaterals .cross-sells ul.products li.product .price .woocommerce-Price-amount,
+body.woocommerce-cart .wc-block-components-formatted-money-amount,
+body.woocommerce-cart .woocommerce-Price-amount.amount,
+body.woocommerce-cart .woocommerce-cart-form .shop_table .product-price del {
+  color: var(--sol-cart-price-color) !important;
+}
+
+body.woocommerce-cart:not(body.has-solace-cart-widget) .cross-sells-product button.add_to_cart_button,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained:hover span,
+body.woocommerce-cart .wc-block-components-totals-coupon__content button.wc-block-components-button span,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .coupon .button,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .button,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce table.cart td.actions .coupon .input-text#coupon_code + .button,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce a.button:not(header a.button):not(footer a.button),
+body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce .button:not(header .button):not(footer .button),
+body.woocommerce-cart:not(body.has-solace-cart-widget) table.cart td.actions .button:disabled,
+body.woocommerce-cart:not(body.has-solace-cart-widget) ul.products li.product .button,
+body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce ul.products li.product .button {
+  color: var(--sol-cart-button-color) !important;
+}
+
+body.woocommerce-cart:not(body.has-solace-cart-widget) .cross-sells-product button.add_to_cart_button:hover,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained span:hover,
+body.woocommerce-cart .wc-block-components-totals-coupon__content button.wc-block-components-button:hover span,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .coupon .button:hover,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .button:hover,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button:hover,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce table.cart td.actions .coupon .input-text#coupon_code + .button:hover,
+body.woocommerce-cart:not(body.has-solace-cart-widget) a.button:hover,
+body.woocommerce-cart:not(body.has-solace-cart-widget) table.cart td.actions .button:disabled:hover {
+  color: var(--sol-cart-button-color-hover) !important;
+}
+
+body.woocommerce-cart .cross-sells-product button.add_to_cart_button,
+body.woocommerce-cart .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained,
+body.woocommerce-cart .wc-block-components-totals-coupon__content button.wc-block-components-button,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .coupon .button,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .button,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce table.cart td.actions .coupon .input-text#coupon_code + .button,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce a.button,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce .button,
+body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce ul.products li.product .button,
+body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce a.button {
+  background-color: var(--sol-cart-button-color-bg) !important;
+}
+
+body.woocommerce-cart .cross-sells-product button.add_to_cart_button:hover,
+body.woocommerce-cart .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained:hover,
+body.woocommerce-cart .wc-block-components-totals-coupon__content button.wc-block-components-button:hover,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .coupon .button:hover,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .button:hover,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button:hover,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce table.cart td.actions .coupon .input-text#coupon_code + .button:hover,
+body.woocommerce-cart:not(body.has-solace-cart-widget) a.button:hover,
+body.woocommerce-cart:not(body.has-solace-cart-widget) .button:hover,
+body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce ul.products li.product .button:hover,
+body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce a.button:hover {
+  background-color: var(--sol-cart-button-color-bg-hover) !important;
+}
+
 .woocommerce-checkout .addresses .woocommerce-column {
   margin-bottom: 40px;
 }
@@ -2331,6 +2459,7 @@ body.woocommerce-cart .wc-block-components-sidebar .wc-block-cart__submit span {
 }
 
 .woocommerce-checkout .checkout_coupon p:first-child {
+  display: block;
   width: 100%;
   margin-bottom: 15px;
 }
@@ -2463,6 +2592,57 @@ body.woocommerce-cart .wc-block-components-sidebar .wc-block-cart__submit span {
 
 .nv-pay-kco form.checkout {
   display: block;
+}
+
+:root {
+  --sol-checkout-title-color: var(--sol-color-heading);
+  --sol-checkout-description-color: var(--sol-color-base-font);
+  --sol-checkout-button-color: var(--sol-color-page-title-text);
+  --sol-checkout-button-color-hover: var(--sol-color-page-title-text);
+  --sol-checkout-button-color-bg: var(--sol-color-button-initial);
+  --sol-checkout-button-color-bg-hover: var(--sol-color-button-hover);
+}
+
+body.woocommerce-checkout h2,
+body.woocommerce-checkout form.checkout .nv-customer-details h3 {
+  color: var(--sol-checkout-title-color) !important;
+}
+
+body.woocommerce-checkout p.wc-block-components-checkout-step__description,
+body.woocommerce-checkout .wc-block-checkout__terms span {
+  color: var(--sol-checkout-description-color) !important;
+}
+
+body.woocommerce-checkout .wc-block-components-product-name {
+  font-size: 1em;
+}
+
+body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained .wc-block-components-checkout-place-order-button__text,
+body .wc-block-components-totals-coupon__content button.wc-block-components-button span,
+body.woocommerce-checkout:not(body.has-solace-checkout-widget):not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button,
+body.woocommerce-checkout:not(body.has-solace-checkout-widget):not(.elementor-page) .woocommerce-checkout-payment button {
+  color: var(--sol-checkout-button-color) !important;
+}
+
+body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained:hover .wc-block-components-checkout-place-order-button__text,
+body .wc-block-components-totals-coupon__content button.wc-block-components-button:hover span,
+body.woocommerce-checkout:not(body.has-solace-checkout-widget) .woocommerce-billing-fields .checkout_coupon button:hover,
+body.woocommerce-checkout:not(body.has-solace-checkout-widget) .woocommerce-checkout-payment button:hover {
+  color: var(--sol-checkout-button-color-hover) !important;
+}
+
+body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained,
+body .wc-block-components-totals-coupon__content button.wc-block-components-button,
+body.woocommerce-checkout:not(body.has-solace-checkout-widget):not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button,
+body.woocommerce-checkout:not(body.has-solace-checkout-widget):not(.elementor-page) .woocommerce-checkout-payment button {
+  background-color: var(--sol-checkout-button-color-bg) !important;
+}
+
+body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained:hover,
+body .wc-block-components-totals-coupon__content button.wc-block-components-button:hover,
+body.woocommerce-checkout:not(body.has-solace-checkout-widget):not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button:hover,
+body.woocommerce-checkout:not(body.has-solace-checkout-widget):not(.elementor-page) .woocommerce-checkout-payment button:hover {
+  background-color: var(--sol-checkout-button-color-bg-hover) !important;
 }
 
 .shop-sidebar {
@@ -2758,7 +2938,7 @@ body.woocommerce-account table {
 }
 
 body.woocommerce-account table td {
-  border: 0 !important;
+  border: 0;
 }
 
 body.woocommerce-account table th,
@@ -2779,6 +2959,66 @@ body.woocommerce-account table thead th {
 body.woocommerce-account table.order_details tfoot th,
 body.woocommerce-account table.order_details td {
   border: 0;
+}
+
+body.woocommerce-account button.show-password-input {
+  background-color: transparent;
+}
+
+:root {
+  --sol-account-title-color: var(--sol-color-heading);
+  --sol-account-title-color-hover: var(--sol-color-heading);
+  --sol-account-description-color: var(--sol-color-base-font);
+  --sol-account-price-color: var(--sol-color-base-font);
+  --sol-account-button-color: var(--sol-color-page-title-text);
+  --sol-account-button-color-hover: var(--sol-color-page-title-text);
+  --sol-account-button-color-bg: var(--sol-color-button-initial);
+  --sol-account-button-color-bg-hover: var(--sol-color-button-hover);
+}
+
+body.woocommerce-account .woocommerce:not(.solex-myaccount) th,
+body.woocommerce-account .woocommerce:not(.solex-myaccount) h2,
+body.woocommerce-account .woocommerce:not(.solex-myaccount) p label {
+  color: var(--sol-account-title-color) !important;
+}
+
+body.woocommerce-account .woocommerce:not(.solex-myaccount) td,
+body.woocommerce-account .woocommerce:not(.solex-myaccount) p {
+  color: var(--sol-account-description-color) !important;
+}
+
+body.woocommerce-account .woocommerce:not(.solex-myaccount) td.woocommerce-table__product-total.product-total,
+body.woocommerce-account .woocommerce:not(.solex-myaccount) td span.woocommerce-Price-amount.amount,
+body.woocommerce-account .woocommerce:not(.solex-myaccount) .woocommerce-orders-table__cell-order-total span.woocommerce-Price-amount.amount {
+  color: var(--sol-account-price-color) !important;
+}
+
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) button,
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) form.woocommerce-EditAccountForm button[type=submit],
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) a.button,
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) .button {
+  color: var(--sol-account-button-color) !important;
+}
+
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) button:hover,
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) form.woocommerce-EditAccountForm button[type=submit]:hover,
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) a.button:hover,
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) .button:hover {
+  color: var(--sol-account-button-color-hover) !important;
+}
+
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) button:not(.show-password-input),
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) form.woocommerce-EditAccountForm button[type=submit],
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) a.button,
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) .button {
+  background-color: var(--sol-account-button-color-bg) !important;
+}
+
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) button:hover:not(.show-password-input),
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) form.woocommerce-EditAccountForm button[type=submit]:hover,
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) a.button:hover,
+body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccount) .button:hover {
+  background-color: var(--sol-account-button-color-bg-hover) !important;
 }
 
 .woocommerce .woocommerce-breadcrumb {
@@ -2960,7 +3200,6 @@ body.woocommerce-account table.order_details td {
     margin-bottom: 80px;
   }
   .woocommerce-checkout form.checkout {
-    grid-template-columns: 3fr 2fr;
     grid-column-gap: 60px;
   }
 }

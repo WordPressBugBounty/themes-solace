@@ -6,7 +6,7 @@ jQuery(document).ready(function($) {
 	$( "#accordion-section-solace_features" ).addClass( "down" );
 	$( "#accordion-panel-solace_wc_custom" ).addClass( "down" );
 	$( "#accordion-section-solace_core_options" ).addClass( "down" );
-
+	
 	$( "#accordion-section-solace_test_2" ).addClass( "hide" );
 	$( "#accordion-section-solace_colors_background_section" ).addClass( "hide" );
 	$( "#accordion-section-solace_typography_headings" ).addClass( "hide" );
@@ -20,6 +20,9 @@ jQuery(document).ready(function($) {
 	$( "#accordion-section-solace_single_page_layout" ).addClass( "hide" );
 	$( "#accordion-section-solace_features_scroll_to_top" ).addClass( "hide" );
 	$( "#accordion-panel-solace_wc_custom_general" ).addClass( "hide" );
+	$( "#accordion-section-solace_wc_custom_general_cart_pages" ).addClass( "hide" );
+	$( "#accordion-section-solace_wc_custom_general_checkout" ).addClass( "hide" );
+	$( "#accordion-section-solace_wc_custom_general_account" ).addClass( "hide" );
 	$( "#accordion-section-solace_wc_product_page" ).addClass( "hide" );
 	$( "#accordion-section-solace_wc_single_product" ).addClass( "hide" );
 	// $( "#accordion-panel-solace_wc_custom_product_pages" ).addClass( "hide" );
@@ -33,6 +36,12 @@ jQuery(document).ready(function($) {
 	$( "#accordion-section-solace_core_homepage" ).addClass( "hide" );
 	$( "#accordion-section-custom_css" ).addClass( "hide" );
 
+	// GROUP WOOCOMMERCE CHECKOUT
+	$( "#customize-control-solace_wc_custom_general_checkout_title_font" ).addClass( "hide" );
+	$( "#customize-control-solace_wc_custom_general_checkout_title_typography" ).addClass( "hide" );
+	$( "#customize-control-solace_wc_custom_general_checkout_title_color" ).addClass( "hide" );
+	$( "#customize-control-solace_wc_custom_general_checkout_title_color_hover" ).addClass( "hide" );
+	
 	$('.customize-pane-toggle').on('click', function(e) {
 		e.preventDefault();
 		e.stopPropagation();
@@ -67,18 +76,22 @@ jQuery(document).ready(function($) {
 			$( "#accordion-panel-solace_wc_custom_general" ).removeClass( "hide" );
 			$( "#accordion-section-solace_wc_product_page" ).removeClass( "hide" );
 			$( "#accordion-section-solace_wc_single_product" ).removeClass( "hide" );
-			// $( "#accordion-panel-solace_wc_custom_product_pages" ).removeClass( "hide" );
 			$( "#accordion-panel-solace_panel_wc_product_page" ).removeClass( "hide" );
 			$( "#accordion-panel-solace_wc_custom_single_product" ).removeClass( "hide" );
+			$( "#accordion-section-solace_wc_custom_general_cart_pages" ).removeClass( "hide" );
+			$( "#accordion-section-solace_wc_custom_general_checkout" ).removeClass( "hide" );
+			$( "#accordion-section-solace_wc_custom_general_account" ).removeClass( "hide" );
 			$( "#accordion-panel-solace_wc_custom" ).addClass( "up" );
 			
 		} else {
-			// $( "#accordion-panel-solace_wc_custom_product_pages" ).addClass( "hide" );
 			$( "#accordion-panel-solace_panel_wc_product_page" ).addClass( "hide" );
 			$( "#accordion-panel-solace_wc_custom_single_product" ).addClass( "hide" );
 			$( "#accordion-panel-solace_wc_custom_general" ).addClass( "hide" );
 			$( "#accordion-section-solace_wc_product_page" ).addClass( "hide" );
 			$( "#accordion-section-solace_wc_single_product" ).addClass( "hide" );
+			$( "#accordion-section-solace_wc_custom_general_cart_pages" ).addClass( "hide" );
+			$( "#accordion-section-solace_wc_custom_general_checkout" ).addClass( "hide" );
+			$( "#accordion-section-solace_wc_custom_general_account" ).addClass( "hide" );
 			$( "#accordion-panel-solace_wc_custom" ).removeClass( "up" );
 			$( "#accordion-panel-solace_wc_custom" ).addClass( "down" );
 		}
@@ -209,6 +222,7 @@ jQuery(document).ready(function($) {
 		return false;
 
 	});
+
 
 	
 	var $controlToggle = $('#customize-control-solace_wc_custom_general_buttons_elementor .components-form-toggle');

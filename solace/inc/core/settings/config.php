@@ -182,6 +182,7 @@ class Config {
 	const MODS_SINGLE_PRODUCT_PRODUCT_ELEMENTS_PAYMENT_METHODS   = 'solace_single_product_product_elements_payment_methods';
 	const MODS_SINGLE_PRODUCT_PRODUCT_ELEMENTS_ADDITIONAL_INFO   = 'solace_single_product_product_elements_additional_info';
 	const MODS_SINGLE_PRODUCT_PRODUCT_STICKY_CONTAINER   		 = 'solace_single_product_sticky_container';
+	const MODS_TYPEFACE_CHECKOUT_TITLE                           = 'solace_typeface_checkout_title';
 
 	const MODS_POST_COMMENTS_PADDING               = 'solace_comments_boxed_padding';
 	const MODS_POST_COMMENTS_BACKGROUND_COLOR      = 'solace_comments_boxed_background_color';

@@ -579,7 +579,7 @@ class Admin {
 		}
 		wp_enqueue_script(
 			'solace-gutenberg-script',
-			SOLACE_ASSETS_URL . 'js/build/all/gutenberg.js',
+			SOLACE_ASSETS_URL . 'js/build/all/gutenberg.js?v=' . time(),
 			array( 'wp-blocks', 'wp-dom' ),
 			SOLACE_VERSION,
 			true
@@ -587,7 +587,7 @@ class Admin {
 
 		$path = solace_is_new_skin() ? 'gutenberg-editor-style' : 'gutenberg-editor-legacy-style';
 
-		wp_enqueue_style( 'solace-gutenberg-style', SOLACE_ASSETS_URL . 'css/' . $path . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css', array(), SOLACE_VERSION );
+		wp_enqueue_style( 'solace-gutenberg-style', SOLACE_ASSETS_URL . 'css/' . $path . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css?v=' . time(), array(), SOLACE_VERSION );
 	}
 
 	/**

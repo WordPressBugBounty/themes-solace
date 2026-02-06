@@ -58,6 +58,391 @@ function solace_customizer_css() {
     $notice_status = get_theme_mod('solace_wc_custom_general_store_notice_show', false);
     $notice_font_color = get_theme_mod('solace_wc_custom_general_store_notice_font_color', 'var(--sol-color-selection-initial)');
     $notice_bg_color = get_theme_mod('solace_wc_custom_general_store_notice_background_color', 'var(--sol-color-selection-high)');
+    
+    $cart_title_color = get_theme_mod('solace_wc_custom_general_cart_title_color', 'var(--sol-color-base-font)');
+    $cart_title_color_hover = get_theme_mod('solace_wc_custom_general_cart_title_color_hover', 'var(--sol-color-base-font)');
+    $cart_description_color = get_theme_mod('solace_wc_custom_general_cart_description_color', 'var(--sol-color-base-font)');
+    $cart_price_color = get_theme_mod('solace_wc_custom_general_cart_price_color', 'var(--sol-color-base-font)');
+    $cart_button_color = get_theme_mod('solace_wc_custom_general_cart_button_color', 'var(--sol-color-page-title-text)');
+    $cart_button_color_hover = get_theme_mod('solace_wc_custom_general_cart_button_color_hover', 'var(--sol-color-page-title-text)');
+    $cart_button_color_bg = get_theme_mod('solace_wc_custom_general_cart_button_color_bg', 'var(--sol-color-button-initial)');
+    $cart_button_color_bg_hover = get_theme_mod('solace_wc_custom_general_cart_button_color_bg_hover', 'var(--sol-color-button-hover)');
+    
+    $checkout_title_color = get_theme_mod('solace_wc_custom_general_checkout_title_color', 'var(--sol-color-base-font)');
+    $checkout_description_color = get_theme_mod('solace_wc_custom_general_checkout_description_color', 'var(--sol-color-base-font)');
+    $checkout_button_color = get_theme_mod('solace_wc_custom_general_checkout_button_color', 'var(--sol-color-page-title-text)');
+    $checkout_button_color_hover = get_theme_mod('solace_wc_custom_general_checkout_button_color_hover', 'var(--sol-color-page-title-text)');
+    $checkout_button_color_bg = get_theme_mod('solace_wc_custom_general_checkout_button_color_bg', 'var(--sol-color-button-initial)');
+    $checkout_button_color_bg_hover = get_theme_mod('solace_wc_custom_general_checkout_button_color_bg_hover', 'var(--sol-color-button-hover)');
+    
+    $account_title_color = get_theme_mod('solace_wc_custom_general_account_title_color', 'var(--sol-color-base-font)');
+    $account_description_color = get_theme_mod('solace_wc_custom_general_account_description_color', 'var(--sol-color-base-font)');
+    $account_price_color = get_theme_mod('solace_wc_custom_general_account_price_color', 'var(--sol-color-base-font)');
+    $account_button_color = get_theme_mod('solace_wc_custom_general_account_button_color', 'var(--sol-color-page-title-text)');
+    $account_button_color_hover = get_theme_mod('solace_wc_custom_general_account_button_color_hover', 'var(--sol-color-page-title-text)');
+    $account_button_color_bg = get_theme_mod('solace_wc_custom_general_account_button_color_bg', 'var(--sol-color-button-initial)');
+    $account_button_color_bg_hover = get_theme_mod('solace_wc_custom_general_account_button_color_bg_hover', 'var(--sol-color-button-hover)');
+    
+
+    $cart_title_font_family = get_theme_mod('solace_wc_custom_general_cart_title_font_family', 'Arial, sans-serif');
+    $cart_title_google_font = str_replace(' ', '+', $cart_title_font_family);
+    if ($cart_title_font_family && !in_array($cart_title_font_family, ['Arial', 'sans-serif', 'Times New Roman', 'Georgia', 'Tahoma', 'Verdana'])) {
+        wp_enqueue_style(
+            'solace-cart-title-fonts',
+            "https://fonts.googleapis.com/css2?family={$cart_title_google_font}:wght@300;400;500;600;700&display=swap&v=" . time(),
+            [],
+            null
+        );
+    }
+
+    $cart_title_styles = [
+        'font-size' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['fontSize']['mobile'] ?? '16') . (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['fontSize']['suffix']['mobile'] ?? 'px'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['fontSize']['tablet'] ?? '16') . (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['fontSize']['suffix']['tablet'] ?? 'px'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['fontSize']['desktop'] ?? '16') . (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['fontSize']['suffix']['desktop'] ?? 'px'),
+        ],
+        'line-height' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['lineHeight']['mobile'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['lineHeight']['suffix']['mobile'] ?? 'em'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['lineHeight']['tablet'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['lineHeight']['suffix']['tablet'] ?? 'em'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['lineHeight']['desktop'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['lineHeight']['suffix']['desktop'] ?? 'em'),
+        ],
+        'letter-spacing' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['letterSpacing']['mobile'] ?? '0') . 'px',
+            'tablet' => (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['letterSpacing']['tablet'] ?? '0') . 'px',
+            'desktop' => (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['letterSpacing']['desktop'] ?? '0') . 'px',
+        ],
+        'text-transform' => (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['textTransform'] ?? 'none'),
+        'font-weight' => (get_theme_mod('solace_wc_custom_general_cart_title_typeface')['fontWeight'] ?? '400'),
+    ];
+    
+   
+    $cart_description_font_family = get_theme_mod('solace_wc_custom_general_cart_description_font_family', 'Arial, sans-serif');
+    $cart_description_google_font = str_replace(' ', '+', $cart_description_font_family);
+    if ($cart_description_google_font && !in_array($cart_description_font_family, ['Arial', 'sans-serif', 'Times New Roman', 'Georgia', 'Tahoma', 'Verdana'])) {
+        wp_enqueue_style(
+            'solace-cart-description-fonts',
+            "https://fonts.googleapis.com/css2?family={$cart_description_google_font}:wght@300;400;500;600;700&display=swap&v=" . time(),
+            [],
+            null
+        );
+    }
+
+    $cart_description_styles = [
+        'font-size' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['fontSize']['mobile'] ?? '16') . (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['fontSize']['suffix']['mobile'] ?? 'px'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['fontSize']['tablet'] ?? '16') . (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['fontSize']['suffix']['tablet'] ?? 'px'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['fontSize']['desktop'] ?? '16') . (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['fontSize']['suffix']['desktop'] ?? 'px'),
+        ],
+        'line-height' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['lineHeight']['mobile'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['lineHeight']['suffix']['mobile'] ?? 'em'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['lineHeight']['tablet'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['lineHeight']['suffix']['tablet'] ?? 'em'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['lineHeight']['desktop'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['lineHeight']['suffix']['desktop'] ?? 'em'),
+        ],
+        'letter-spacing' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['letterSpacing']['mobile'] ?? '0') . 'px',
+            'tablet' => (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['letterSpacing']['tablet'] ?? '0') . 'px',
+            'desktop' => (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['letterSpacing']['desktop'] ?? '0') . 'px',
+        ],
+        'text-transform' => (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['textTransform'] ?? 'none'),
+        'font-weight' => (get_theme_mod('solace_wc_custom_general_cart_description_typeface')['fontWeight'] ?? '400'),
+    ];
+    
+    $cart_price_font_family = get_theme_mod('solace_wc_custom_general_cart_price_font_family', 'Arial, sans-serif');
+    $cart_price_google_font = str_replace(' ', '+', $cart_price_font_family);
+    if ($cart_price_google_font && !in_array($cart_price_font_family, ['Arial', 'sans-serif', 'Times New Roman', 'Georgia', 'Tahoma', 'Verdana'])) {
+        wp_enqueue_style(
+            'solace-cart-price-fonts',
+            "https://fonts.googleapis.com/css2?family={$cart_price_google_font}:wght@300;400;500;600;700&display=swap&v=" . time(),
+            [],
+            null
+        );
+    }
+
+
+    $cart_price_styles = [
+        'font-size' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['fontSize']['mobile'] ?? '16') . (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['fontSize']['suffix']['mobile'] ?? 'px'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['fontSize']['tablet'] ?? '16') . (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['fontSize']['suffix']['tablet'] ?? 'px'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['fontSize']['desktop'] ?? '16') . (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['fontSize']['suffix']['desktop'] ?? 'px'),
+        ],
+        'line-height' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['lineHeight']['mobile'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['lineHeight']['suffix']['mobile'] ?? 'em'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['lineHeight']['tablet'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['lineHeight']['suffix']['tablet'] ?? 'em'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['lineHeight']['desktop'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['lineHeight']['suffix']['desktop'] ?? 'em'),
+        ],
+        'letter-spacing' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['letterSpacing']['mobile'] ?? '0') . 'px',
+            'tablet' => (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['letterSpacing']['tablet'] ?? '0') . 'px',
+            'desktop' => (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['letterSpacing']['desktop'] ?? '0') . 'px',
+        ],
+        'text-transform' => (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['textTransform'] ?? 'none'),
+        'font-weight' => (get_theme_mod('solace_wc_custom_general_cart_price_typeface')['fontWeight'] ?? '400'),
+    ];
+
+
+    $cart_price_line_height = get_theme_mod('solace_wc_custom_general_cart_price_typeface')['lineHeight'] ?? '1.5';
+    $cart_price_letter_spacing = get_theme_mod('solace_wc_custom_general_cart_price_typeface')['letterSpacing'] ?? '0px';
+    
+    $default = get_theme_mod('solace_button_font_family', 'Arial, sans-serif');
+    $cart_button_font_family = get_theme_mod('solace_wc_custom_general_cart_button_font_family', $default);
+    $cart_button_google_font = str_replace(' ', '+', $cart_button_font_family);
+    if ($cart_button_google_font && !in_array($cart_button_font_family, ['Arial', 'sans-serif', 'Times New Roman', 'Georgia', 'Tahoma', 'Verdana'])) {
+        wp_enqueue_style(
+            'solace-cart-button-fonts',
+            "https://fonts.googleapis.com/css2?family={$cart_button_google_font}:wght@300;400;500;600;700&display=swap&v=" . time(),
+            [],
+            null
+        );
+    }
+
+    $cart_button_styles = [
+        'font-size' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['fontSize']['mobile'] ?? '16') . (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['fontSize']['suffix']['mobile'] ?? 'px'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['fontSize']['tablet'] ?? '16') . (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['fontSize']['suffix']['tablet'] ?? 'px'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['fontSize']['desktop'] ?? '16') . (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['fontSize']['suffix']['desktop'] ?? 'px'),
+        ],
+        'line-height' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['lineHeight']['mobile'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['lineHeight']['suffix']['mobile'] ?? 'em'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['lineHeight']['tablet'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['lineHeight']['suffix']['tablet'] ?? 'em'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['lineHeight']['desktop'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['lineHeight']['suffix']['desktop'] ?? 'em'),
+        ],
+        'letter-spacing' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['letterSpacing']['mobile'] ?? '0') . 'px',
+            'tablet' => (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['letterSpacing']['tablet'] ?? '0') . 'px',
+            'desktop' => (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['letterSpacing']['desktop'] ?? '0') . 'px',
+        ],
+        'text-transform' => (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['textTransform'] ?? 'none'),
+        'font-weight' => (get_theme_mod('solace_wc_custom_general_cart_button_typeface')['fontWeight'] ?? '400'),
+    ];
+
+    $checkout_title_font_family = get_theme_mod('solace_wc_custom_general_checkout_title_font_family', 'Arial, sans-serif');
+    $checkout_title_google_font = str_replace(' ', '+', $checkout_title_font_family);
+    if ($checkout_title_font_family && !in_array($checkout_title_font_family, ['Arial', 'sans-serif', 'Times New Roman', 'Georgia', 'Tahoma', 'Verdana'])) {
+        wp_enqueue_style(
+            'solace-checkout-title-fonts',
+            "https://fonts.googleapis.com/css2?family={$checkout_title_google_font}:wght@300;400;500;600;700&display=swap&v=" . time(),
+            [],
+            null
+        );
+    }
+
+    $checkout_title_styles = [
+        'font-size' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['fontSize']['mobile'] ?? '21') . (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['fontSize']['suffix']['mobile'] ?? 'px'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['fontSize']['tablet'] ?? '28') . (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['fontSize']['suffix']['tablet'] ?? 'px'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['fontSize']['desktop'] ?? '38') . (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['fontSize']['suffix']['desktop'] ?? 'px'),
+        ],
+        'line-height' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['lineHeight']['mobile'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['lineHeight']['suffix']['mobile'] ?? 'em'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['lineHeight']['tablet'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['lineHeight']['suffix']['tablet'] ?? 'em'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['lineHeight']['desktop'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['lineHeight']['suffix']['desktop'] ?? 'em'),
+        ],
+        'letter-spacing' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['letterSpacing']['mobile'] ?? '0') . 'px',
+            'tablet' => (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['letterSpacing']['tablet'] ?? '0') . 'px',
+            'desktop' => (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['letterSpacing']['desktop'] ?? '0') . 'px',
+        ],
+        'text-transform' => (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['textTransform'] ?? 'uppercase'),
+        'font-weight' => (get_theme_mod('solace_wc_custom_general_checkout_title_typeface')['fontWeight'] ?? '600'),
+    ];
+   
+    $checkout_description_font_family = get_theme_mod('solace_wc_custom_general_checkout_description_font_family', 'Arial, sans-serif');
+    $checkout_description_google_font = str_replace(' ', '+', $checkout_description_font_family);
+    if ($checkout_description_google_font && !in_array($checkout_description_font_family, ['Arial', 'sans-serif', 'Times New Roman', 'Georgia', 'Tahoma', 'Verdana'])) {
+        wp_enqueue_style(
+            'solace-checkout-description-fonts',
+            "https://fonts.googleapis.com/css2?family={$checkout_description_google_font}:wght@300;400;500;600;700&display=swap&v=" . time(),
+            [],
+            null
+        );
+    }
+    $checkout_description_styles = [
+        'font-size' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['fontSize']['mobile'] ?? '16') . (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['fontSize']['suffix']['mobile'] ?? 'px'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['fontSize']['tablet'] ?? '16') . (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['fontSize']['suffix']['tablet'] ?? 'px'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['fontSize']['desktop'] ?? '16') . (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['fontSize']['suffix']['desktop'] ?? 'px'),
+        ],
+        'line-height' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['lineHeight']['mobile'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['lineHeight']['suffix']['mobile'] ?? 'em'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['lineHeight']['tablet'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['lineHeight']['suffix']['tablet'] ?? 'em'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['lineHeight']['desktop'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['lineHeight']['suffix']['desktop'] ?? 'em'),
+        ],
+        'letter-spacing' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['letterSpacing']['mobile'] ?? '0') . 'px',
+            'tablet' => (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['letterSpacing']['tablet'] ?? '0') . 'px',
+            'desktop' => (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['letterSpacing']['desktop'] ?? '0') . 'px',
+        ],
+        'text-transform' => (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['textTransform'] ?? 'none'),
+        'font-weight' => (get_theme_mod('solace_wc_custom_general_checkout_description_typeface')['fontWeight'] ?? '400'),
+    ];
+    
+    $checkout_button_font_family = get_theme_mod('solace_wc_custom_general_checkout_button_font_family', 'Arial, sans-serif');
+    $checkout_button_google_font = str_replace(' ', '+', $checkout_button_font_family);
+    if ($checkout_button_google_font && !in_array($checkout_button_font_family, ['Arial', 'sans-serif', 'Times New Roman', 'Georgia', 'Tahoma', 'Verdana'])) {
+        wp_enqueue_style(
+            'solace-checkout-button-fonts',
+            "https://fonts.googleapis.com/css2?family={$checkout_button_google_font}:wght@300;400;500;600;700&display=swap&v=" . time(),
+            [],
+            null
+        );
+    }
+    $checkout_button_styles = [
+        'font-size' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['fontSize']['mobile'] ?? '16') . (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['fontSize']['suffix']['mobile'] ?? 'px'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['fontSize']['tablet'] ?? '16') . (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['fontSize']['suffix']['tablet'] ?? 'px'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['fontSize']['desktop'] ?? '16') . (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['fontSize']['suffix']['desktop'] ?? 'px'),
+        ],
+        'line-height' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['lineHeight']['mobile'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['lineHeight']['suffix']['mobile'] ?? 'em'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['lineHeight']['tablet'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['lineHeight']['suffix']['tablet'] ?? 'em'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['lineHeight']['desktop'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['lineHeight']['suffix']['desktop'] ?? 'em'),
+        ],
+        'letter-spacing' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['letterSpacing']['mobile'] ?? '0') . 'px',
+            'tablet' => (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['letterSpacing']['tablet'] ?? '0') . 'px',
+            'desktop' => (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['letterSpacing']['desktop'] ?? '0') . 'px',
+        ],
+        'text-transform' => (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['textTransform'] ?? 'none'),
+        'font-weight' => (get_theme_mod('solace_wc_custom_general_checkout_button_typeface')['fontWeight'] ?? '400'),
+    ];
+
+
+    $account_title_font_family = get_theme_mod('solace_wc_custom_general_account_title_font_family', 'Arial, sans-serif');
+    $account_title_google_font = str_replace(' ', '+', $account_title_font_family);
+    if ($account_title_font_family && !in_array($account_title_font_family, ['Arial', 'sans-serif', 'Times New Roman', 'Georgia', 'Tahoma', 'Verdana'])) {
+        wp_enqueue_style(
+            'solace-account-title-fonts',
+            "https://fonts.googleapis.com/css2?family={$account_title_google_font}:wght@300;400;500;600;700&display=swap&v=" . time(),
+            [],
+            null
+        );
+    }
+    $account_title_styles = [
+        'font-size' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_account_title_typeface')['fontSize']['mobile'] ?? '16') . (get_theme_mod('solace_wc_custom_general_account_title_typeface')['fontSize']['suffix']['mobile'] ?? 'px'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_account_title_typeface')['fontSize']['tablet'] ?? '16') . (get_theme_mod('solace_wc_custom_general_account_title_typeface')['fontSize']['suffix']['tablet'] ?? 'px'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_account_title_typeface')['fontSize']['desktop'] ?? '16') . (get_theme_mod('solace_wc_custom_general_account_title_typeface')['fontSize']['suffix']['desktop'] ?? 'px'),
+        ],
+        'line-height' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_account_title_typeface')['lineHeight']['mobile'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_account_title_typeface')['lineHeight']['suffix']['mobile'] ?? 'em'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_account_title_typeface')['lineHeight']['tablet'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_account_title_typeface')['lineHeight']['suffix']['tablet'] ?? 'em'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_account_title_typeface')['lineHeight']['desktop'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_account_title_typeface')['lineHeight']['suffix']['desktop'] ?? 'em'),
+        ],
+        'letter-spacing' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_account_title_typeface')['letterSpacing']['mobile'] ?? '0') . 'px',
+            'tablet' => (get_theme_mod('solace_wc_custom_general_account_title_typeface')['letterSpacing']['tablet'] ?? '0') . 'px',
+            'desktop' => (get_theme_mod('solace_wc_custom_general_account_title_typeface')['letterSpacing']['desktop'] ?? '0') . 'px',
+        ],
+        'text-transform' => (get_theme_mod('solace_wc_custom_general_account_title_typeface')['textTransform'] ?? 'none'),
+        'font-weight' => (get_theme_mod('solace_wc_custom_general_account_title_typeface')['fontWeight'] ?? '400'),
+    ];
+   
+    $account_description_font_family = get_theme_mod('solace_wc_custom_general_account_description_font_family', 'Arial, sans-serif');
+    $account_description_google_font = str_replace(' ', '+', $account_description_font_family);
+    if ($account_description_google_font && !in_array($account_description_font_family, ['Arial', 'sans-serif', 'Times New Roman', 'Georgia', 'Tahoma', 'Verdana'])) {
+        wp_enqueue_style(
+            'solace-account-description-fonts',
+            "https://fonts.googleapis.com/css2?family={$account_description_google_font}:wght@300;400;500;600;700&display=swap&v=" . time(),
+            [],
+            null
+        );
+    }
+    $account_description_styles = [
+        'font-size' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_account_description_typeface')['fontSize']['mobile'] ?? '16') . (get_theme_mod('solace_wc_custom_general_account_description_typeface')['fontSize']['suffix']['mobile'] ?? 'px'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_account_description_typeface')['fontSize']['tablet'] ?? '16') . (get_theme_mod('solace_wc_custom_general_account_description_typeface')['fontSize']['suffix']['tablet'] ?? 'px'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_account_description_typeface')['fontSize']['desktop'] ?? '16') . (get_theme_mod('solace_wc_custom_general_account_description_typeface')['fontSize']['suffix']['desktop'] ?? 'px'),
+        ],
+        'line-height' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_account_description_typeface')['lineHeight']['mobile'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_account_description_typeface')['lineHeight']['suffix']['mobile'] ?? 'em'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_account_description_typeface')['lineHeight']['tablet'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_account_description_typeface')['lineHeight']['suffix']['tablet'] ?? 'em'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_account_description_typeface')['lineHeight']['desktop'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_account_description_typeface')['lineHeight']['suffix']['desktop'] ?? 'em'),
+        ],
+        'letter-spacing' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_account_description_typeface')['letterSpacing']['mobile'] ?? '0') . 'px',
+            'tablet' => (get_theme_mod('solace_wc_custom_general_account_description_typeface')['letterSpacing']['tablet'] ?? '0') . 'px',
+            'desktop' => (get_theme_mod('solace_wc_custom_general_account_description_typeface')['letterSpacing']['desktop'] ?? '0') . 'px',
+        ],
+        'text-transform' => (get_theme_mod('solace_wc_custom_general_account_description_typeface')['textTransform'] ?? 'none'),
+        'font-weight' => (get_theme_mod('solace_wc_custom_general_account_description_typeface')['fontWeight'] ?? '400'),
+    ];
+    
+    $account_price_font_family = get_theme_mod('solace_wc_custom_general_account_price_font_family', 'Arial, sans-serif');
+    $account_price_google_font = str_replace(' ', '+', $account_price_font_family);
+    if ($account_price_google_font && !in_array($account_price_font_family, ['Arial', 'sans-serif', 'Times New Roman', 'Georgia', 'Tahoma', 'Verdana'])) {
+        wp_enqueue_style(
+            'solace-account-price-fonts',
+            "https://fonts.googleapis.com/css2?family={$account_price_google_font}:wght@300;400;500;600;700&display=swap&v=" . time(),
+            [],
+            null
+        );
+    }
+    $account_price_styles = [
+        'font-size' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_account_price_typeface')['fontSize']['mobile'] ?? '16') . (get_theme_mod('solace_wc_custom_general_account_price_typeface')['fontSize']['suffix']['mobile'] ?? 'px'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_account_price_typeface')['fontSize']['tablet'] ?? '16') . (get_theme_mod('solace_wc_custom_general_account_price_typeface')['fontSize']['suffix']['tablet'] ?? 'px'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_account_price_typeface')['fontSize']['desktop'] ?? '16') . (get_theme_mod('solace_wc_custom_general_account_price_typeface')['fontSize']['suffix']['desktop'] ?? 'px'),
+        ],
+        'line-height' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_account_price_typeface')['lineHeight']['mobile'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_account_price_typeface')['lineHeight']['suffix']['mobile'] ?? 'em'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_account_price_typeface')['lineHeight']['tablet'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_account_price_typeface')['lineHeight']['suffix']['tablet'] ?? 'em'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_account_price_typeface')['lineHeight']['desktop'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_account_price_typeface')['lineHeight']['suffix']['desktop'] ?? 'em'),
+        ],
+        'letter-spacing' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_account_price_typeface')['letterSpacing']['mobile'] ?? '0') . 'px',
+            'tablet' => (get_theme_mod('solace_wc_custom_general_account_price_typeface')['letterSpacing']['tablet'] ?? '0') . 'px',
+            'desktop' => (get_theme_mod('solace_wc_custom_general_account_price_typeface')['letterSpacing']['desktop'] ?? '0') . 'px',
+        ],
+        'text-transform' => (get_theme_mod('solace_wc_custom_general_account_price_typeface')['textTransform'] ?? 'none'),
+        'font-weight' => (get_theme_mod('solace_wc_custom_general_account_price_typeface')['fontWeight'] ?? '400'),
+    ];
+    
+    $account_button_font_family = get_theme_mod('solace_wc_custom_general_account_button_font_family', 'Arial, sans-serif');
+    $account_button_google_font = str_replace(' ', '+', $account_button_font_family);
+    if ($account_button_google_font && !in_array($account_button_font_family, ['Arial', 'sans-serif', 'Times New Roman', 'Georgia', 'Tahoma', 'Verdana'])) {
+        wp_enqueue_style(
+            'solace-account-button-fonts',
+            "https://fonts.googleapis.com/css2?family={$account_button_google_font}:wght@300;400;500;600;700&display=swap&v=" . time(),
+            [],
+            null
+        );
+    }
+    $account_button_styles = [
+        'font-size' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_account_button_typeface')['fontSize']['mobile'] ?? '16') . (get_theme_mod('solace_wc_custom_general_account_button_typeface')['fontSize']['suffix']['mobile'] ?? 'px'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_account_button_typeface')['fontSize']['tablet'] ?? '16') . (get_theme_mod('solace_wc_custom_general_account_button_typeface')['fontSize']['suffix']['tablet'] ?? 'px'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_account_button_typeface')['fontSize']['desktop'] ?? '16') . (get_theme_mod('solace_wc_custom_general_account_button_typeface')['fontSize']['suffix']['desktop'] ?? 'px'),
+        ],
+        'line-height' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_account_button_typeface')['lineHeight']['mobile'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_account_button_typeface')['lineHeight']['suffix']['mobile'] ?? 'em'),
+            'tablet' => (get_theme_mod('solace_wc_custom_general_account_button_typeface')['lineHeight']['tablet'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_account_button_typeface')['lineHeight']['suffix']['tablet'] ?? 'em'),
+            'desktop' => (get_theme_mod('solace_wc_custom_general_account_button_typeface')['lineHeight']['desktop'] ?? '1.5') . (get_theme_mod('solace_wc_custom_general_account_button_typeface')['lineHeight']['suffix']['desktop'] ?? 'em'),
+        ],
+        'letter-spacing' => [
+            'mobile' => (get_theme_mod('solace_wc_custom_general_account_button_typeface')['letterSpacing']['mobile'] ?? '0') . 'px',
+            'tablet' => (get_theme_mod('solace_wc_custom_general_account_button_typeface')['letterSpacing']['tablet'] ?? '0') . 'px',
+            'desktop' => (get_theme_mod('solace_wc_custom_general_account_button_typeface')['letterSpacing']['desktop'] ?? '0') . 'px',
+        ],
+        'text-transform' => (get_theme_mod('solace_wc_custom_general_account_button_typeface')['textTransform'] ?? 'none'),
+        'font-weight' => (get_theme_mod('solace_wc_custom_general_account_button_typeface')['fontWeight'] ?? '400'),
+    ];
+
+    // body.woocommerce-cart:not(.elementor-page) .wc-block-components-totals-coupon__content label
+    // body.woocommerce-cart:not(.elementor-page) .wc-block-components-totals-coupon__content input#wc-block-components-totals-coupon__input-coupon,
+
+    $SELECTOR_CART_TITLE = "body.woocommerce-cart:not(.elementor-page) .wc-block-cart-items .wc-block-components-product-name,  .woocommerce-cart .cross-sells-product .wc-block-components-product-name, .woocommerce-cart .wc-block-cart table th span, .woocommerce-cart .wc-block-cart .wp-block-woocommerce-cart-cross-sells-block h2, .woocommerce-cart .wc-block-cart .wc-block-cart__totals-title, .woocommerce-cart .wc-block-cart .wc-block-components-totals-item__label, body.woocommerce-cart .wc-block-components-totals-coupon .wc-block-components-panel__button, body.woocommerce-cart:not(.elementor-page) .is-large.wc-block-cart .wc-block-cart__totals-title, body.woocommerce-cart:not(.elementor-page) .woocommerce .woocommerce-cart-form .shop_table th, body.woocommerce-cart:not(.elementor-page) .woocommerce-cart-form .shop_table td.product-name a, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cross-sells h2, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cross-sells ul.products li.product a.woocommerce-loop-product__link>h2, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cart_totals h2, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cart_totals th";
+    $SELECTOR_CART_DESCRIPTION = "body.woocommerce-cart:not(.elementor-page) .wc-block-components-product-metadata__description>p";
+    $SELECTOR_CART_PRICE = "body.woocommerce-cart:not(.elementor-page) .wc-block-components-product-price__regular, body.woocommerce-cart:not(.elementor-page) .wc-block-components-product-price__value.is-discounted, body.woocommerce-cart:not(.elementor-page) .wc-block-components-product-price__value, body.woocommerce-cart:not(.elementor-page) .cross-sells-product .wc-block-components-product-price__value, body.woocommerce-cart:not(.elementor-page) .wc-block-components-sale-badge, body.woocommerce-cart:not(.elementor-page) .cross-sells-product .wc-block-components-quantity-selector input,body.woocommerce-cart:not(.elementor-page) .wc-block-cart-items .wc-block-cart-item__total .wc-block-components-formatted-money-amount, body.woocommerce-cart:not(.elementor-page) .woocommerce-cart-form .shop_table .product-price .woocommerce-Price-amount, body.woocommerce-cart:not(.elementor-page) .woocommerce-cart-form .shop_table .product-subtotal .woocommerce-Price-amount, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cross-sells ul.products li.product .price .woocommerce-Price-amount, body.woocommerce-cart:not(.elementor-page) .wc-block-components-formatted-money-amount, body.woocommerce-cart:not(.elementor-page) .woocommerce-Price-amount.amount";
+    $SELECTOR_CART_BUTTON = "body.woocommerce-cart:not(.elementor-page) .cross-sells-product button.add_to_cart_button, body.woocommerce-cart:not(.elementor-page) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained span, body.woocommerce-cart:not(.elementor-page) .wc-block-components-totals-coupon__content button.wc-block-components-button span, body.woocommerce-cart:not(.elementor-page) .shop_table .coupon .button, body.woocommerce-cart:not(.elementor-page) .shop_table .button, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cart_totals .checkout-button, body.woocommerce-cart:not(.elementor-page) .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button, body.woocommerce-cart:not(.elementor-page) a.button:not(header a.button):not(footer a.button),body.woocommerce-cart:not(.elementor-page) .button:not(header .button):not(footer .button),body.woocommerce-cart:not(.elementor-page) table.cart td.actions .button:disabled, body.woocommerce-cart:not(.elementor-page) ul.products li.product .button, body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace) .woocommerce ul.products li.product .button";
+
+    $SELECTOR_CHECKOUT_TITLE = "body.woocommerce-checkout h2, body.woocommerce-checkout form.checkout .nv-customer-details h3, body.woocommerce-checkout .nv-order-review h3";
+    $SELECTOR_CHECKOUT_DESCRIPTION = "body.woocommerce-checkout p.wc-block-components-checkout-step__description, body.woocommerce-checkout .wc-block-checkout__terms span";
+    $SELECTOR_CHECKOUT_BUTTON = "body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained .wc-block-components-checkout-place-order-button__text,body.woocommerce-checkout:not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button, body.woocommerce-checkout:not(body.has-solace-checkout-widget) #payment #place_order, body.woocommerce-checkout:not(.elementor-page) .woocommerce-billing-fields form.checkout_coupon button";
+
+    $SELECTOR_ACCOUNT_TITLE = "body.woocommerce-account .woocommerce th, body.woocommerce-account .woocommerce h2, body.woocommerce-account .woocommerce p label";
+    $SELECTOR_ACCOUNT_DESCRIPTION = "body.woocommerce-account .woocommerce td, body.woocommerce-account .woocommerce p";
+    $SELECTOR_ACCOUNT_PRICE = "body.woocommerce-account .woocommerce td.woocommerce-table__product-total.product-total, body.woocommerce-account .woocommerce td span.woocommerce-Price-amount.amount, body.woocommerce-account .woocommerce .woocommerce-orders-table__cell-order-total span.woocommerce-Price-amount.amount";
+    $SELECTOR_ACCOUNT_BUTTON = "body.woocommerce-account .woocommerce button, body.woocommerce-account:not(.elementor-default) .woocommerce form.woocommerce-EditAccountForm button[type=submit], body.woocommerce-account:not(.elementor-default) .woocommerce a.button:not(header a.button):not(footer a.button), body.woocommerce-account:not(.elementor-default) .woocommerce .button:not(header .button):not(footer .button)";
 
     ?>
     <style type="text/css">
@@ -67,18 +452,23 @@ function solace_customizer_css() {
             }
         <?php endif; ?>
 
-        <?php if (get_theme_mod('solace_wc_custom_general_store_notice_show', true) === true) { ?>
+        <?php if (get_theme_mod('solace_wc_custom_general_store_notice_show', false)) { ?>
+            p.woocommerce-store-notice.demo_store:first-child {
+                display: none !important;
+            }
             p.woocommerce-store-notice.demo_store, .rico_store_true {
                 display: block !important;
             }
         <?php 
         } else {?>
+            p.woocommerce-store-notice.demo_store:first-child {
+                display: none !important;
+            }
             p.woocommerce-store-notice.demo_store,.rico_store_false {
                 display: none !important;
             }
         <?php } ?>
-	
-
+        
         body.woocommerce.woocommerce-shop ul.products .star-rating,.rico_custom {
             color: <?php echo $rating_color;?>;
         }
@@ -86,8 +476,464 @@ function solace_customizer_css() {
         body.woocommerce.woocommerce-shop ul.products .img-wrap span.onsale {
             color: <?php echo $badge_color;?>;
         }
+        :root {
+            --sol-cart-title-color: <?php echo $cart_title_color;?>;
+            --sol-cart-title-color-hover: <?php echo $cart_title_color_hover;?>;
+            --sol-cart-description-color: <?php echo $cart_description_color;?>;
+            --sol-cart-price-color: <?php echo $cart_price_color;?>;
+            --sol-cart-button-color: <?php echo $cart_button_color;?>;
+            --sol-cart-button-color-hover: <?php echo $cart_button_color_hover;?>;
+            --sol-cart-button-color-bg: <?php echo $cart_button_color_bg;?>;
+            --sol-cart-button-color-bg-hover : <?php echo $cart_button_color_bg_hover;?>;
+            --sol-checkout-title-color: <?php echo $checkout_title_color;?>;
+            --sol-checkout-description-color: <?php echo $checkout_description_color;?>;
+            --sol-checkout-button-color: <?php echo $checkout_button_color;?>;
+            --sol-checkout-button-color-hover: <?php echo $checkout_button_color_hover;?>;
+            --sol-checkout-button-color-bg: <?php echo $checkout_button_color_bg;?>;
+            --sol-checkout-button-color-bg-hover : <?php echo $checkout_button_color_bg_hover;?>;
+            --sol-account-title-color: <?php echo $account_title_color;?>;
+            --sol-account-description-color: <?php echo $account_description_color;?>;
+            --sol-account-price-color: <?php echo $account_price_color;?>;
+            --sol-account-button-color: <?php echo $account_button_color;?>;
+            --sol-account-button-color-hover: <?php echo $account_button_color_hover;?>;
+            --sol-account-button-color-bg:  <?php echo $account_button_color_bg;?>;
+            --sol-account-button-color-bg-hover : <?php echo $account_button_color_bg_hover;?>;
 
+            --sol-cart-title-fontsize-mobile : <?php echo $cart_title_styles['font-size']['mobile']; ?>;
+            --sol-cart-title-fontsize-tablet : <?php echo $cart_title_styles['font-size']['tablet']; ?>;
+            --sol-cart-title-fontsize-desktop : <?php echo $cart_title_styles['font-size']['desktop']; ?>;
+
+            --sol-cart-title-lineheight-mobile : <?php echo $cart_title_styles['line-height']['mobile']; ?>;
+            --sol-cart-title-lineheight-tablet : <?php echo $cart_title_styles['line-height']['tablet']; ?>;
+            --sol-cart-title-lineheight-desktop : <?php echo $cart_title_styles['line-height']['desktop']; ?>;
+
+            --sol-cart-title-letterspacing-mobile : <?php echo $cart_title_styles['letter-spacing']['mobile']; ?>;
+            --sol-cart-title-letterspacing-tablet : <?php echo $cart_title_styles['letter-spacing']['tablet']; ?>;
+            --sol-cart-title-letterspacing-desktop : <?php echo $cart_title_styles['letter-spacing']['desktop']; ?>;
+
+            --sol-cart-title-texttransform : <?php echo $cart_title_styles['text-transform']; ?>;
+            --sol-cart-title-fontweight : <?php echo $cart_title_styles['font-weight']; ?>;
+
+            --sol-cart-description-fontsize-mobile : <?php echo $cart_description_styles['font-size']['mobile']; ?>;
+            --sol-cart-description-fontsize-tablet : <?php echo $cart_description_styles['font-size']['tablet']; ?>;
+            --sol-cart-description-fontsize-desktop : <?php echo $cart_description_styles['font-size']['desktop']; ?>;
+
+            --sol-cart-description-lineheight-mobile : <?php echo $cart_description_styles['line-height']['mobile']; ?>;
+            --sol-cart-description-lineheight-tablet : <?php echo $cart_description_styles['line-height']['tablet']; ?>;
+            --sol-cart-description-lineheight-desktop : <?php echo $cart_description_styles['line-height']['desktop']; ?>;
+
+            --sol-cart-description-letterspacing-mobile : <?php echo $cart_description_styles['letter-spacing']['mobile']; ?>;
+            --sol-cart-description-letterspacing-tablet : <?php echo $cart_description_styles['letter-spacing']['tablet']; ?>;
+            --sol-cart-description-letterspacing-desktop : <?php echo $cart_description_styles['letter-spacing']['desktop']; ?>;
+
+            --sol-cart-description-texttransform : <?php echo $cart_description_styles['text-transform']; ?>;
+            --sol-cart-description-fontweight : <?php echo $cart_description_styles['font-weight']; ?>;
+
+            --sol-cart-price-fontsize-mobile : <?php echo $cart_price_styles['font-size']['mobile']; ?>;
+            --sol-cart-price-fontsize-tablet : <?php echo $cart_price_styles['font-size']['tablet']; ?>;
+            --sol-cart-price-fontsize-desktop : <?php echo $cart_price_styles['font-size']['desktop']; ?>;
+
+            --sol-cart-price-lineheight-mobile : <?php echo $cart_price_styles['line-height']['mobile']; ?>;
+            --sol-cart-price-lineheight-tablet : <?php echo $cart_price_styles['line-height']['tablet']; ?>;
+            --sol-cart-price-lineheight-desktop : <?php echo $cart_price_styles['line-height']['desktop']; ?>;
+
+            --sol-cart-price-letterspacing-mobile : <?php echo $cart_price_styles['letter-spacing']['mobile']; ?>;
+            --sol-cart-price-letterspacing-tablet : <?php echo $cart_price_styles['letter-spacing']['tablet']; ?>;
+            --sol-cart-price-letterspacing-desktop : <?php echo $cart_price_styles['letter-spacing']['desktop']; ?>;
+
+            --sol-cart-price-texttransform : <?php echo $cart_price_styles['text-transform']; ?>;
+            --sol-cart-price-fontweight : <?php echo $cart_price_styles['font-weight']; ?>;
+
+
+            --sol-cart-button-fontsize-mobile : <?php echo $cart_button_styles['font-size']['mobile']; ?>;
+            --sol-cart-button-fontsize-tablet : <?php echo $cart_button_styles['font-size']['tablet']; ?>;
+            --sol-cart-button-fontsize-desktop : <?php echo $cart_button_styles['font-size']['desktop']; ?>;
+
+            --sol-cart-button-lineheight-mobile : <?php echo $cart_button_styles['line-height']['mobile']; ?>;
+            --sol-cart-button-lineheight-tablet : <?php echo $cart_button_styles['line-height']['tablet']; ?>;
+            --sol-cart-button-lineheight-desktop : <?php echo $cart_button_styles['line-height']['desktop']; ?>;
+
+            --sol-cart-button-letterspacing-mobile : <?php echo $cart_button_styles['letter-spacing']['mobile']; ?>;
+            --sol-cart-button-letterspacing-tablet : <?php echo $cart_button_styles['letter-spacing']['tablet']; ?>;
+            --sol-cart-button-letterspacing-desktop : <?php echo $cart_button_styles['letter-spacing']['desktop']; ?>;
+
+            --sol-cart-button-texttransform : <?php echo $cart_button_styles['text-transform']; ?>;
+            --sol-cart-button-fontweight : <?php echo $cart_button_styles['font-weight']; ?>;
+
+            
+            --sol-checkout-title-fontsize-mobile : <?php echo $checkout_title_styles['font-size']['mobile']; ?>;
+            --sol-checkout-title-fontsize-tablet : <?php echo $checkout_title_styles['font-size']['tablet']; ?>;
+            --sol-checkout-title-fontsize-desktop : <?php echo $checkout_title_styles['font-size']['desktop']; ?>;
+
+            --sol-checkout-title-lineheight-mobile : <?php echo $checkout_title_styles['line-height']['mobile']; ?>;
+            --sol-checkout-title-lineheight-tablet : <?php echo $checkout_title_styles['line-height']['tablet']; ?>;
+            --sol-checkout-title-lineheight-desktop : <?php echo $checkout_title_styles['line-height']['desktop']; ?>;
+
+            --sol-checkout-title-letterspacing-mobile : <?php echo $checkout_title_styles['letter-spacing']['mobile']; ?>;
+            --sol-checkout-title-letterspacing-tablet : <?php echo $checkout_title_styles['letter-spacing']['tablet']; ?>;
+            --sol-checkout-title-letterspacing-desktop : <?php echo $checkout_title_styles['letter-spacing']['desktop']; ?>;
+
+            --sol-checkout-title-texttransform : <?php echo $checkout_title_styles['text-transform']; ?>;
+            --sol-checkout-title-fontweight : <?php echo $checkout_title_styles['font-weight']; ?>;
+
+
+            --sol-checkout-description-fontsize-mobile : <?php echo $checkout_description_styles['font-size']['mobile']; ?>;
+            --sol-checkout-description-fontsize-tablet : <?php echo $checkout_description_styles['font-size']['tablet']; ?>;
+            --sol-checkout-description-fontsize-desktop : <?php echo $checkout_description_styles['font-size']['desktop']; ?>;
+
+            --sol-checkout-description-lineheight-mobile : <?php echo $checkout_description_styles['line-height']['mobile']; ?>;
+            --sol-checkout-description-lineheight-tablet : <?php echo $checkout_description_styles['line-height']['tablet']; ?>;
+            --sol-checkout-description-lineheight-desktop : <?php echo $checkout_description_styles['line-height']['desktop']; ?>;
+
+            --sol-checkout-description-letterspacing-mobile : <?php echo $checkout_description_styles['letter-spacing']['mobile']; ?>;
+            --sol-checkout-description-letterspacing-tablet : <?php echo $checkout_description_styles['letter-spacing']['tablet']; ?>;
+            --sol-checkout-description-letterspacing-desktop : <?php echo $checkout_description_styles['letter-spacing']['desktop']; ?>;
+
+            --sol-checkout-description-texttransform : <?php echo $checkout_description_styles['text-transform']; ?>;
+            --sol-checkout-description-fontweight : <?php echo $checkout_description_styles['font-weight']; ?>;
+
+
+            --sol-checkout-button-fontsize-mobile : <?php echo $checkout_button_styles['font-size']['mobile']; ?>;
+            --sol-checkout-button-fontsize-tablet : <?php echo $checkout_button_styles['font-size']['tablet']; ?>;
+            --sol-checkout-button-fontsize-desktop : <?php echo $checkout_button_styles['font-size']['desktop']; ?>;
+
+            --sol-checkout-button-lineheight-mobile : <?php echo $checkout_button_styles['line-height']['mobile']; ?>;
+            --sol-checkout-button-lineheight-tablet : <?php echo $checkout_button_styles['line-height']['tablet']; ?>;
+            --sol-checkout-button-lineheight-desktop : <?php echo $checkout_button_styles['line-height']['desktop']; ?>;
+
+            --sol-checkout-button-letterspacing-mobile : <?php echo $checkout_button_styles['letter-spacing']['mobile']; ?>;
+            --sol-checkout-button-letterspacing-tablet : <?php echo $checkout_button_styles['letter-spacing']['tablet']; ?>;
+            --sol-checkout-button-letterspacing-desktop : <?php echo $checkout_button_styles['letter-spacing']['desktop']; ?>;
+
+            --sol-checkout-button-texttransform : <?php echo $checkout_button_styles['text-transform']; ?>;
+            --sol-checkout-button-fontweight : <?php echo $checkout_button_styles['font-weight']; ?>;
+
+
+            --sol-account-title-fontsize-mobile : <?php echo $account_title_styles['font-size']['mobile']; ?>;
+            --sol-account-title-fontsize-tablet : <?php echo $account_title_styles['font-size']['tablet']; ?>;
+            --sol-account-title-fontsize-desktop : <?php echo $account_title_styles['font-size']['desktop']; ?>;
+
+            --sol-account-title-lineheight-mobile : <?php echo $account_title_styles['line-height']['mobile']; ?>;
+            --sol-account-title-lineheight-tablet : <?php echo $account_title_styles['line-height']['tablet']; ?>;
+            --sol-account-title-lineheight-desktop : <?php echo $account_title_styles['line-height']['desktop']; ?>;
+
+            --sol-account-title-letterspacing-mobile : <?php echo $account_title_styles['letter-spacing']['mobile']; ?>;
+            --sol-account-title-letterspacing-tablet : <?php echo $account_title_styles['letter-spacing']['tablet']; ?>;
+            --sol-account-title-letterspacing-desktop : <?php echo $account_title_styles['letter-spacing']['desktop']; ?>;
+
+            --sol-account-title-texttransform : <?php echo $account_title_styles['text-transform']; ?>;
+            --sol-account-title-fontweight : <?php echo $account_title_styles['font-weight']; ?>;
+
+
+            --sol-account-description-fontsize-mobile : <?php echo $account_description_styles['font-size']['mobile']; ?>;
+            --sol-account-description-fontsize-tablet : <?php echo $account_description_styles['font-size']['tablet']; ?>;
+            --sol-account-description-fontsize-desktop : <?php echo $account_description_styles['font-size']['desktop']; ?>;
+
+            --sol-account-description-lineheight-mobile : <?php echo $account_description_styles['line-height']['mobile']; ?>;
+            --sol-account-description-lineheight-tablet : <?php echo $account_description_styles['line-height']['tablet']; ?>;
+            --sol-account-description-lineheight-desktop : <?php echo $account_description_styles['line-height']['desktop']; ?>;
+
+            --sol-account-description-letterspacing-mobile : <?php echo $account_description_styles['letter-spacing']['mobile']; ?>;
+            --sol-account-description-letterspacing-tablet : <?php echo $account_description_styles['letter-spacing']['tablet']; ?>;
+            --sol-account-description-letterspacing-desktop : <?php echo $account_description_styles['letter-spacing']['desktop']; ?>;
+
+            --sol-account-description-texttransform : <?php echo $account_description_styles['text-transform']; ?>;
+            --sol-account-description-fontweight : <?php echo $account_description_styles['font-weight']; ?>;
+
+
+            --sol-account-price-fontsize-mobile : <?php echo $account_price_styles['font-size']['mobile']; ?>;
+            --sol-account-price-fontsize-tablet : <?php echo $account_price_styles['font-size']['tablet']; ?>;
+            --sol-account-price-fontsize-desktop : <?php echo $account_price_styles['font-size']['desktop']; ?>;
+
+            --sol-account-price-lineheight-mobile : <?php echo $account_price_styles['line-height']['mobile']; ?>;
+            --sol-account-price-lineheight-tablet : <?php echo $account_price_styles['line-height']['tablet']; ?>;
+            --sol-account-price-lineheight-desktop : <?php echo $account_price_styles['line-height']['desktop']; ?>;
+
+            --sol-account-price-letterspacing-mobile : <?php echo $account_price_styles['letter-spacing']['mobile']; ?>;
+            --sol-account-price-letterspacing-tablet : <?php echo $account_price_styles['letter-spacing']['tablet']; ?>;
+            --sol-account-price-letterspacing-desktop : <?php echo $account_price_styles['letter-spacing']['desktop']; ?>;
+
+            --sol-account-price-texttransform : <?php echo $account_price_styles['text-transform']; ?>;
+            --sol-account-price-fontweight : <?php echo $account_price_styles['font-weight']; ?>;
+
+
+            --sol-account-button-fontsize-mobile : <?php echo $account_button_styles['font-size']['mobile']; ?>;
+            --sol-account-button-fontsize-tablet : <?php echo $account_button_styles['font-size']['tablet']; ?>;
+            --sol-account-button-fontsize-desktop : <?php echo $account_button_styles['font-size']['desktop']; ?>;
+
+            --sol-account-button-lineheight-mobile : <?php echo $account_button_styles['line-height']['mobile']; ?>;
+            --sol-account-button-lineheight-tablet : <?php echo $account_button_styles['line-height']['tablet']; ?>;
+            --sol-account-button-lineheight-desktop : <?php echo $account_button_styles['line-height']['desktop']; ?>;
+
+            --sol-account-button-letterspacing-mobile : <?php echo $account_button_styles['letter-spacing']['mobile']; ?>;
+            --sol-account-button-letterspacing-tablet : <?php echo $account_button_styles['letter-spacing']['tablet']; ?>;
+            --sol-account-button-letterspacing-desktop : <?php echo $account_button_styles['letter-spacing']['desktop']; ?>;
+
+            --sol-account-button-texttransform : <?php echo $account_button_styles['text-transform']; ?>;
+            --sol-account-button-fontweight : <?php echo $account_button_styles['font-weight']; ?>;
+
+
+        }
         
+
+        <?php echo $SELECTOR_CART_TITLE;?> {
+            color: var(--sol-cart-title-color);
+            font-family: <?php echo $cart_title_font_family; ?>;
+            font-size: var(--sol-cart-title-fontsize-desktop);  /* Desktop default */
+            font-weight: var(--sol-cart-title-fontweight);
+            line-height: var(--sol-cart-title-lineheight-desktop);
+            letter-spacing: var(--sol-cart-title-letterspacing-desktop);
+            text-transform: var(--sol-cart-title-texttransform);
+        }
+        <?php echo $SELECTOR_CART_DESCRIPTION;?> {
+            color: var(--sol-cart-description-color);
+            font-family: <?php echo $cart_description_font_family; ?>;
+            /* width: 100%; */
+            font-size: var(--sol-cart-description-fontsize-desktop);  /* Desktop default */
+            font-weight: var(--sol-cart-description-fontweight);
+            line-height: var(--sol-cart-description-lineheight-desktop);
+            letter-spacing: var(--sol-cart-description-letterspacing-desktop);
+            text-transform: var(--sol-cart-description-texttransform);
+        }
+        <?php echo $SELECTOR_CART_PRICE;?> {
+            color: var(--sol-cart-price-color);
+            font-family: <?php echo $cart_price_font_family; ?>;
+            font-size: var(--sol-cart-price-fontsize-desktop);  /* Desktop default */
+            font-weight: var(--sol-cart-price-fontweight);
+            line-height: var(--sol-cart-price-lineheight-desktop);
+            letter-spacing: var(--sol-cart-price-letterspacing-desktop);
+            text-transform: var(--sol-cart-price-texttransform);
+        }
+        <?php echo $SELECTOR_CART_BUTTON;?> {
+            color: var(--sol-cart-button-color);
+            font-family: <?php echo $cart_button_font_family; ?>;
+            font-size: var(--sol-cart-button-fontsize-desktop);  /* Desktop default */
+            font-weight: var(--sol-cart-button-fontweight);
+            line-height: var(--sol-cart-button-lineheight-desktop);
+            letter-spacing: var(--sol-cart-button-letterspacing-desktop);
+            text-transform: var(--sol-cart-button-texttransform);
+        }
+        <?php echo $SELECTOR_CHECKOUT_TITLE;?> {
+            color: var(--sol-checkout-title-color);
+            font-family: <?php echo $checkout_title_font_family; ?>;
+            font-size: var(--sol-checkout-title-fontsize-desktop) !important;  /* Desktop default */
+            font-weight: var(--sol-checkout-title-fontweight);
+            line-height: var(--sol-checkout-title-lineheight-desktop);
+            letter-spacing: var(--sol-checkout-title-letterspacing-desktop);
+            text-transform: var(--sol-checkout-title-texttransform);
+        }
+        <?php echo $SELECTOR_CHECKOUT_DESCRIPTION;?> {
+            color: var(--sol-checkout-description-color);
+            font-family: <?php echo $checkout_description_font_family; ?>;
+            font-size: var(--sol-checkout-description-fontsize-desktop);  /* Desktop default */
+            font-weight: var(--sol-checkout-description-fontweight);
+            line-height: var(--sol-checkout-description-lineheight-desktop);
+            letter-spacing: var(--sol-checkout-description-letterspacing-desktop);
+            text-transform: var(--sol-checkout-description-texttransform);
+        }
+        <?php echo $SELECTOR_CHECKOUT_BUTTON;?> {
+            color: var(--sol-checkout-button-color);
+            font-family: <?php echo $checkout_button_font_family; ?>;
+            font-size: var(--sol-checkout-button-fontsize-desktop);  /* Desktop default */
+            font-weight: var(--sol-checkout-button-fontweight);
+            line-height: var(--sol-checkout-button-lineheight-desktop);
+            letter-spacing: var(--sol-checkout-button-letterspacing-desktop);
+            text-transform: var(--sol-checkout-button-texttransform);
+        }
+        <?php echo $SELECTOR_ACCOUNT_TITLE;?> {
+            color: var(--sol-account-title-color);
+            font-family: <?php echo $account_title_font_family; ?>;
+            font-size: var(--sol-account-title-fontsize-desktop);  /* Desktop default */
+            font-weight: var(--sol-account-title-fontweight);
+            line-height: var(--sol-account-title-lineheight-desktop);
+            letter-spacing: var(--sol-account-title-letterspacing-desktop);
+            text-transform: var(--sol-account-title-texttransform);
+        }
+        <?php echo $SELECTOR_ACCOUNT_DESCRIPTION;?> {
+            color: var(--sol-account-description-color);
+            font-family: <?php echo $account_description_font_family; ?>;
+            font-size: var(--sol-account-description-fontsize-desktop);  /* Desktop default */
+            font-weight: var(--sol-account-description-fontweight);
+            line-height: var(--sol-account-description-lineheight-desktop);
+            letter-spacing: var(--sol-account-description-letterspacing-desktop);
+            text-transform: var(--sol-account-description-texttransform);
+        }
+        <?php echo $SELECTOR_ACCOUNT_PRICE;?> {
+            color: var(--sol-account-price-color);
+            font-family: <?php echo $account_price_font_family; ?>;
+            font-size: var(--sol-account-price-fontsize-desktop);  /* Desktop default */
+            font-weight: var(--sol-account-price-fontweight);
+            line-height: var(--sol-account-price-lineheight-desktop);
+            letter-spacing: var(--sol-account-price-letterspacing-desktop);
+            text-transform: var(--sol-account-price-texttransform);
+        }
+        <?php echo $SELECTOR_ACCOUNT_BUTTON;?> {
+            color: var(--sol-account-button-color);
+            font-family: <?php echo $account_button_font_family; ?>;
+            font-size: var(--sol-account-button-fontsize-desktop);  /* Desktop default */
+            font-weight: var(--sol-account-button-fontweight);
+            line-height: var(--sol-account-button-lineheight-desktop);
+            letter-spacing: var(--sol-account-button-letterspacing-desktop);
+            text-transform: var(--sol-account-button-texttransform);
+        }
+
+        /* Tablet Styles */
+        @media (max-width: 1024px) {
+            <?php echo $SELECTOR_CART_TITLE;?> {
+                font-size: var(--sol-cart-title-fontsize-tablet);
+                line-height: var(--sol-cart-title-lineheight-tablet);
+                letter-spacing: var(--sol-cart-title-letterspacing-tablet);
+            }
+            <?php echo $SELECTOR_CART_DESCRIPTION;?> {
+                font-size: var(--sol-cart-description-fontsize-tablet);
+                line-height: var(--sol-cart-description-lineheight-tablet);
+                letter-spacing: var(--sol-cart-description-letterspacing-tablet);
+            }
+            <?php echo $SELECTOR_CART_PRICE;?> {
+                font-size: var(--sol-cart-price-fontsize-tablet);
+                line-height: var(--sol-cart-price-lineheight-tablet);
+                letter-spacing: var(--sol-cart-price-letterspacing-tablet);
+            }
+            <?php echo $SELECTOR_CART_BUTTON;?> {
+                font-size: var(--sol-cart-button-fontsize-tablet);
+                line-height: var(--sol-cart-button-lineheight-tablet);
+                letter-spacing: var(--sol-cart-button-letterspacing-tablet);
+            }
+
+            <?php echo $SELECTOR_CHECKOUT_TITLE;?> {
+                font-size: var(--sol-checkout-title-fontsize-tablet)  !important;
+                line-height: var(--sol-checkout-title-lineheight-tablet)  !important;
+                letter-spacing: var(--sol-checkout-title-letterspacing-tablet);
+            }
+            <?php echo $SELECTOR_CHECKOUT_DESCRIPTION;?> {
+                font-size: var(--sol-checkout-description-fontsize-tablet);
+                line-height: var(--sol-checkout-description-lineheight-tablet);
+                letter-spacing: var(--sol-checkout-description-letterspacing-tablet);
+            }
+            <?php echo $SELECTOR_CHECKOUT_BUTTON;?> {
+                font-size: var(--sol-checkout-button-fontsize-tablet);
+                line-height: var(--sol-checkout-button-lineheight-tablet);
+                letter-spacing: var(--sol-checkout-button-letterspacing-tablet);
+            }
+
+            <?php echo $SELECTOR_ACCOUNT_TITLE;?> {
+                font-size: var(--sol-account-title-fontsize-tablet);
+                line-height: var(--sol-account-title-lineheight-tablet);
+                letter-spacing: var(--sol-account-title-letterspacing-tablet);
+            }
+            <?php echo $SELECTOR_ACCOUNT_DESCRIPTION;?> {
+                font-size: var(--sol-account-description-fontsize-tablet);
+                line-height: var(--sol-account-description-lineheight-tablet);
+                letter-spacing: var(--sol-account-description-letterspacing-tablet);
+            }
+            <?php echo $SELECTOR_ACCOUNT_PRICE;?> {
+                font-size: var(--sol-account-price-fontsize-tablet);
+                line-height: var(--sol-account-price-lineheight-tablet);
+                letter-spacing: var(--sol-account-price-letterspacing-tablet);
+            }
+            <?php echo $SELECTOR_ACCOUNT_BUTTON;?> {
+                font-size: var(--sol-account-button-fontsize-tablet);
+                line-height: var(--sol-account-button-lineheight-tablet);
+                letter-spacing: var(--sol-account-button-letterspacing-tablet);
+            }
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 425px) {
+            <?php echo $SELECTOR_CART_TITLE;?> {
+                font-size: var(--sol-cart-title-fontsize-mobile);
+                line-height: var(--sol-cart-title-lineheight-mobile);
+                letter-spacing: var(--sol-cart-title-letterspacing-mobile);
+            }
+            <?php echo $SELECTOR_CART_DESCRIPTION;?> {
+                font-size: var(--sol-cart-description-fontsize-mobile);
+                line-height: var(--sol-cart-description-lineheight-mobile);
+                letter-spacing: var(--sol-cart-description-letterspacing-mobile);
+            }
+            <?php echo $SELECTOR_CART_PRICE;?> {
+                font-size: var(--sol-cart-price-fontsize-mobile);
+                line-height: var(--sol-cart-price-lineheight-mobile);
+                letter-spacing: var(--sol-cart-price-letterspacing-mobile);
+            }
+            <?php echo $SELECTOR_CART_BUTTON;?> {
+                font-size: var(--sol-cart-button-fontsize-mobile);
+                line-height: var(--sol-cart-button-lineheight-mobile);
+                letter-spacing: var(--sol-cart-button-letterspacing-mobile);
+            }
+
+            <?php echo $SELECTOR_CHECKOUT_TITLE;?> {
+                font-size: var(--sol-checkout-title-fontsize-mobile)  !important;
+                line-height: var(--sol-checkout-title-lineheight-mobile)  !important;
+                letter-spacing: var(--sol-checkout-title-letterspacing-mobile);
+            }
+            <?php echo $SELECTOR_CHECKOUT_DESCRIPTION;?> {
+                font-size: var(--sol-checkout-description-fontsize-mobile);
+                line-height: var(--sol-checkout-description-lineheight-mobile);
+                letter-spacing: var(--sol-checkout-description-letterspacing-mobile);
+            }
+            <?php echo $SELECTOR_CHECKOUT_BUTTON;?> {
+                font-size: var(--sol-checkout-button-fontsize-mobile);
+                line-height: var(--sol-checkout-button-lineheight-mobile);
+                letter-spacing: var(--sol-checkout-button-letterspacing-mobile);
+            }
+
+            <?php echo $SELECTOR_ACCOUNT_TITLE;?> {
+                font-size: var(--sol-account-title-fontsize-mobile);
+                line-height: var(--sol-account-title-lineheight-mobile);
+                letter-spacing: var(--sol-account-title-letterspacing-mobile);
+            }
+            <?php echo $SELECTOR_ACCOUNT_DESCRIPTION;?> {
+                font-size: var(--sol-account-description-fontsize-mobile);
+                line-height: var(--sol-account-description-lineheight-mobile);
+                letter-spacing: var(--sol-account-description-letterspacing-mobile);
+            }
+            <?php echo $SELECTOR_ACCOUNT_PRICE;?> {
+                font-size: var(--sol-account-price-fontsize-mobile);
+                line-height: var(--sol-account-price-lineheight-mobile);
+                letter-spacing: var(--sol-account-price-letterspacing-mobile);
+            }
+            <?php echo $SELECTOR_ACCOUNT_BUTTON;?> {
+                font-size: var(--sol-account-button-fontsize-mobile);
+                line-height: var(--sol-account-button-lineheight-mobile);
+                letter-spacing: var(--sol-account-button-letterspacing-mobile);
+            }
+        }
+
+        body.woocommerce-cart:not(.elementor-page) .wc-block-cart-items .wc-block-components-product-name:hover,body.woocommerce-cart:not(.elementor-page) .cross-sells-product .wc-block-components-product-name:hover,
+        body.woocommerce-cart:not(.elementor-page) .woocommerce-cart-form .shop_table td.product-name a:hover {
+            color: <?php echo $cart_title_color_hover;?>;
+        }
+        
+        
+        body.woocommerce-cart:not(.elementor-page) .cross-sells-product button.add_to_cart_button:hover, body.woocommerce-cart:not(.elementor-page) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained:hover span, body.woocommerce-cart:not(.elementor-page) .wc-block-components-totals-coupon__content button.wc-block-components-button:hover span, body.woocommerce-cart:not(.elementor-page) .shop_table .coupon .button:hover, body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .button:hover, body.woocommerce-cart:not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button:hover, body.woocommerce-cart:not(.elementor-page) .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button:hover, body.woocommerce-cart:not(body.has-solace-cart-widget) a.button:not(header a.button):not(footer a.button):hover, body.woocommerce-cart:not(body.has-solace-cart-widget) table.cart td.actions .button:disabled:hover {
+            color: <?php echo "var(--sol-cart-button-color-hover)";?> !important;
+        }
+        body.woocommerce-cart:not(.elementor-page) .cross-sells-product button.add_to_cart_button, body.woocommerce-cart:not(.elementor-page) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained, body.woocommerce-cart:not(.elementor-page) .wc-block-components-totals-coupon__content button.wc-block-components-button, body.woocommerce-cart:not(.elementor-page) .shop_table .coupon .button, body.woocommerce-cart:not(.elementor-page) .shop_table .button, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cart_totals .checkout-button, body.woocommerce-cart:not(.elementor-page)  .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button, body.woocommerce-cart:not(.elementor-page)  a.button:not(header a.button):not(footer a.button), body.woocommerce-cart:not(.elementor-page) .button:not(header .button):not(footer .button), body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace) .woocommerce ul.products li.product .button, body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace) .woocommerce a.button {
+            background-color: <?php echo $cart_button_color_bg;?>;
+        }
+        body.woocommerce-cart:not(.elementor-page) .cross-sells-product button.add_to_cart_button:hover, body.woocommerce-cart:not(.elementor-page) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained:hover, body.woocommerce-cart:not(.elementor-page) .wc-block-components-totals-coupon__content button.wc-block-components-button:hover, body.woocommerce-cart:not(.elementor-page) .shop_table .coupon .button:hover, body.woocommerce-cart:not(.elementor-page) .shop_table .button:hover, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cart_totals .checkout-button:hover, body.woocommerce-cart:not(.elementor-page)  .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button:hover, body.woocommerce-cart:not(.elementor-page)  a.button:not(header a.button):not(footer a.button):hover, body.woocommerce-cart:not(.elementor-page) .button:not(header .button):not(footer .button):hover, body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace) .woocommerce ul.products li.product .button:hover, body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace) .woocommerce a.button:hover {
+            background-color: <?php echo $cart_button_color_bg_hover;?>;
+        }
+
+        body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained:hover .wc-block-components-checkout-place-order-button__text,body.woocommerce-cart:not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button:hover,body.woocommerce-checkout:not(.elementor-page) .woocommerce-checkout-payment button:hover {
+            color: <?php echo "var(--sol-checkout-button-color-hover);"?>;
+        }
+        body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained,body.woocommerce-checkout:not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button,body.woocommerce-checkout:not(.elementor-page) .woocommerce-checkout-payment button {
+            background-color: <?php echo "var(--sol-checkout-button-color-bg);"?>;
+        }
+        body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained:hover,body.woocommerce-cart:not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button:hover,body.woocommerce-checkout:not(.elementor-page) .woocommerce-checkout-payment button:hover {
+            background-color: <?php echo "var(--sol-checkout-button-color-bg-hover);"?>;
+        }
+
+        body.woocommerce-account .woocommerce button:hover, body.woocommerce-account .woocommerce form.woocommerce-EditAccountForm button[type=submit]:hover, body.woocommerce-account:not(.elementor-default) .woocommerce a.button:not(header a.button):not(footer a.button):hover, body.woocommerce-account:not(.elementor-default) .woocommerce .button:not(header .button):not(footer .button):hover {
+            color: <?php echo "var(--sol-account-button-color-hover);"?>;
+        }
+        body.woocommerce-account:not(.elementor-default) .woocommerce button:not(.show-password-input), body.woocommerce-account:not(.elementor-default) .woocommerce form.woocommerce-EditAccountForm button[type=submit], body.woocommerce-account:not(.elementor-default) .woocommerce a.button:not(header a.button):not(footer a.button), body.woocommerce-account:not(.elementor-default) .woocommerce .button:not(header .button):not(footer .button) {
+            background-color: <?php echo "var(--sol-account-button-color-bg);"?>;
+        }
+        body.woocommerce-account .woocommerce button:hover:not(.show-password-input), body.woocommerce-account .woocommerce form.woocommerce-EditAccountForm button[type=submit]:hover, body.woocommerce-account:not(.elementor-default) .woocommerce a.button:not(header a.button):not(footer a.button):hover, body.woocommerce-account:not(.elementor-default) .woocommerce .button:not(header .button):not(footer .button):hover {
+            background-color: <?php echo "var(--sol-account-button-color-bg-hover);"?>;
+        }
 
         <?php 
 
@@ -119,8 +965,11 @@ function solace_customizer_css() {
         } ?>
 
         <?php
-        $field_option = get_option('woocommerce_checkout_company_field');?>
-        <?php if ( $field_option === 'required' ) : ?>
+        $field_option = get_theme_mod('woocommerce_checkout_company_field', 'optional');
+
+        $default = 'optional';
+        $field_option = $field_option ?: $default;
+        if ( $field_option === 'required' ) : ?>
             .wc-block-components-address-form__company label::after {
                 content: none !important;
             }
@@ -163,6 +1012,26 @@ function solace_customizer_css() {
     <?php
 }
 add_action('wp_head', 'solace_customizer_css');
+
+function solace_enqueue_custom_fonts() {
+    $font_family = get_theme_mod('solace_wc_custom_general_cart_title_font_family', 'Arial, sans-serif');
+    $font_size   = get_theme_mod('solace_wc_custom_general_cart_title_typeface')['fontSize'] ?? '16px';
+    $line_height = get_theme_mod('solace_wc_custom_general_cart_title_typeface')['lineHeight'] ?? '1.5';
+    $letter_spacing = get_theme_mod('solace_wc_custom_general_cart_title_typeface')['letterSpacing'] ?? '0px';
+
+    $custom_css = "
+        .wc-block-components-product-name {
+            font-family: {$font_family};
+            font-size: {$font_size};
+            line-height: {$line_height};
+            letter-spacing: {$letter_spacing};
+        }
+    ";
+
+    wp_add_inline_style('solace-style', $custom_css);
+}
+// add_action('wp_enqueue_scripts', 'solace_enqueue_custom_fonts');
+
 
 function solace_custom_product_badge_text() {
     $badge_label = get_theme_mod('solace_wc_custom_general_product_badges_label', 'Sale!');
@@ -258,7 +1127,7 @@ function solace_enqueue_dokan_style() {
         );
         wp_enqueue_script(
             'solace-dokan-script',
-            get_stylesheet_directory_uri() . '/js/dokan.js',
+            get_stylesheet_directory_uri() . '/js/dokan.js&v=' . time(),
             array( 'jquery' )
         );
     }
@@ -303,3 +1172,195 @@ add_action('init', function () {
         update_option('woocommerce_demo_store', 'yes'); 
     }
 });
+
+add_filter( 'woocommerce_checkout_fields', 'solace_filter_checkout_fields', 20 );
+function solace_filter_checkout_fields( $fields ) {
+
+    $map = [
+        'woocommerce_checkout_company_field'      => [ 'billing_company' ],
+        'woocommerce_checkout_main_address_field' => [
+            'billing_address_1',
+            'billing_address_2',
+            'billing_city',
+            'billing_state',
+            'billing_postcode',
+            'billing_country',
+        ],
+        // 'woocommerce_checkout_address_2_field'    => [ 'billing_address_2' ],
+        'woocommerce_checkout_phone_field'        => [ 'billing_phone' ],
+    ];
+
+    foreach ( $map as $control_key => $wc_fields ) {
+        $status = get_theme_mod( $control_key, 'optional' );
+
+        foreach ($wc_fields as $wc_field_key) {
+            if (!isset($fields['billing'][$wc_field_key])) {
+                $fields['billing'][$wc_field_key] = [
+                    'label'       => ucfirst(str_replace('billing_', '', $wc_field_key)),
+                    'required'    => false,
+                    'class'       => ['form-row-wide'],
+                    'clear'       => true,
+                    'type'        => 'text',
+                ];
+            }
+
+            if ('hidden' === $status) {
+                unset($fields['billing'][$wc_field_key]);
+            } elseif ('required' === $status) {
+                $fields['billing'][$wc_field_key]['required'] = true;
+                $fields['billing'][$wc_field_key]['class'][]  = 'validate-required';
+            } else {
+                $fields['billing'][$wc_field_key]['required'] = false;
+                $fields['billing'][$wc_field_key]['class']    = array_diff(
+                    $fields['billing'][$wc_field_key]['class'],
+                    ['validate-required']
+                );
+            }
+        }
+
+    }
+
+    return $fields;
+}
+
+
+add_filter( 'woocommerce_checkout_fields', function( $fields ) {
+    if ( isset( $fields['billing']['billing_company'] ) ) {
+        $fields['billing']['billing_company']['priority'] = 25; 
+    }
+
+    return $fields;
+}, 20 );
+
+
+add_action( 'wp_head', 'solace_checkout_field_assets' );
+function solace_checkout_field_assets() {
+    if ( ! is_checkout() ) {
+        return;
+    }
+
+    $map = [
+        'woocommerce_checkout_company_field'      => [ 'billing_company' ],
+        'woocommerce_checkout_main_address_field' => [
+            'billing_address_1',
+            'billing_address_2',
+            'billing_city',
+            'billing_state',
+            'billing_postcode',
+            'billing_country',
+        ],
+        // 'woocommerce_checkout_address_2_field'    => [ 'billing_address_2' ],
+        'woocommerce_checkout_phone_field'        => [ 'billing_phone' ],
+    ];
+
+    $css = '<style>';
+    $js  = 'jQuery(function($){ $(document.body).on("updated_checkout", function(){';
+
+    foreach ( $map as $control_key => $wc_fields ) {
+        $status = get_theme_mod( $control_key, 'optional' );
+        if ( 'hidden' !== $status ) {
+            continue;
+        }
+
+        foreach ( $wc_fields as $wc_field_key ) {
+            $css .= '#' . esc_attr( $wc_field_key ) . '_field { display:none !important; }';
+
+            $js .= '
+                $("#' . esc_js( $wc_field_key ) . '_field").removeClass("validate-required");
+                $("#' . esc_js( $wc_field_key ) . '_field .required").remove();
+            ';
+        }
+    }
+
+    $css .= '</style>';
+    $js  .= '}); });';
+
+    echo $css;
+    echo '<script>' . $js . '</script>';
+}
+
+add_filter( 'woocommerce_checkout_fields', 'solace_disable_main_address_validation', 100, 1 );
+function solace_disable_main_address_validation( $fields ) {
+    $main_address_setting = get_theme_mod( 'woocommerce_checkout_main_address_field', 'optional' );
+
+    if ( 'hidden' === $main_address_setting ) {
+        $keys = [ 'billing_address_1', 'billing_address_2', 'billing_city', 'billing_state', 'billing_postcode', 'billing_country' ];
+
+        foreach ( $keys as $key ) {
+            if ( isset( $fields['billing'][ $key ] ) ) {
+                unset( $fields['billing'][ $key ] );
+            }
+        }
+    }
+
+    return $fields;
+}
+
+add_action( 'woocommerce_after_checkout_validation', 'solace_cleanup_main_address_validation', 10, 2 );
+
+function solace_cleanup_main_address_validation( $data, $errors ) {
+    $main_address_setting = get_theme_mod( 'woocommerce_checkout_main_address_field', 'optional' );
+
+    if ( 'hidden' === $main_address_setting ) {
+        $remove_errors_for = [
+            'billing_address_1',
+            'billing_address_2',
+            'billing_city',
+            'billing_state',
+            'billing_postcode',
+            'billing_country',
+        ];
+
+        foreach ( $remove_errors_for as $field ) {
+            if ( isset( $errors->errors[ $field ] ) ) {
+                unset( $errors->errors[ $field ] );
+            }
+        }
+    }
+}
+
+add_action( 'woocommerce_after_checkout_validation', 'solace_skip_shipping_validation', 20, 2 );
+
+function solace_skip_shipping_validation( $data, $errors ) {
+    $main_address_status = get_theme_mod( 'woocommerce_checkout_main_address_field', 'optional' );
+
+    if ( $main_address_status === 'hidden' ) {
+        if ( isset( $errors->errors['shipping'] ) ) {
+            unset( $errors->errors['shipping'] );
+        }
+    }
+}
+
+add_action( 'wp_head', 'hide_billing_required_asterisk_conditionally' );
+function hide_billing_required_asterisk_conditionally() {
+    $main_address_option = get_theme_mod( 'woocommerce_checkout_main_address_field', 'optional' );
+    
+    if ( $main_address_option === 'optional' ) {
+        ?>
+        <style>
+            #billing_address_1_field .required,
+            #billing_address_2_field .required,
+            #billing_city_field .required,
+            #billing_state_field .required,
+            #billing_postcode_field .required,
+            #billing_country_field .required {
+                display: none !important;
+            }
+        </style>
+        <?php
+    }
+}
+
+// add_filter( 'woocommerce_billing_fields', 'customize_billing_address_2_placeholder', 20, 1 );
+// function customize_billing_address_2_placeholder( $fields ) {
+//     $address_2_control = get_theme_mod( 'woocommerce_checkout_address_2_field', 'optional' );
+
+//     if ( isset( $fields['billing_address_2'] ) ) {
+//         if ( $address_2_control === 'required' ) {
+//             $fields['billing_address_2']['placeholder'] = 'Apartment, suite, unit, etc. (required)';
+//             $fields['billing_address_2']['required']    = true;
+//         }
+//     }
+
+//     return $fields;
+// }

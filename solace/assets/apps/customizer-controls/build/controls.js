@@ -18946,11 +18946,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/utils */ "./assets/apps/customizer-controls/src/builder/common/utils.ts");
-/* harmony import */ var _BuilderContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./BuilderContext */ "./assets/apps/customizer-controls/src/builder/BuilderContext.tsx");
-
+/* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/utils */ "./assets/apps/customizer-controls/src/builder/common/utils.ts");
+/* harmony import */ var _BuilderContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BuilderContext */ "./assets/apps/customizer-controls/src/builder/BuilderContext.tsx");
 
 
 
@@ -18966,7 +18963,7 @@ const HFGBuilder = ({ hasColumns, builder, onChange, value, hidden, portalMount,
         const usedValue = explicitValue || value;
         const allItems = window.SolaceReactCustomize.HFG[builder].items;
         const usedItems = usedValue && usedValue[device]
-            ? (0,_common_utils__WEBPACK_IMPORTED_MODULE_3__.getUsedItemsFromItems)(usedValue[device])
+            ? (0,_common_utils__WEBPACK_IMPORTED_MODULE_2__.getUsedItemsFromItems)(usedValue[device])
             : Object.keys(allItems);
         return Object.keys(allItems)
             .filter((key) => !usedItems.includes(key))
@@ -18977,12 +18974,34 @@ const HFGBuilder = ({ hasColumns, builder, onChange, value, hidden, portalMount,
             return a.id < b.id ? -1 : 1;
         });
     };
+    const getUsedSidebarItems = (explicitValue = null) => {
+        const usedValue = explicitValue || value;
+        const allItems = window.SolaceReactCustomize.HFG[builder].items;
+        const usedItems = usedValue && usedValue[device]
+            ? (0,_common_utils__WEBPACK_IMPORTED_MODULE_2__.getUsedItemsFromItems)(usedValue[device])
+            : Object.keys(allItems);
+        return Object.keys(allItems)
+            .filter((key) => usedItems.includes(key))
+            .map((itemId) => {
+            return { id: itemId };
+        })
+            .sort((a, b) => {
+            return a.id < b.id ? -1 : 1;
+        });
+    };
     const [sidebarItems, setSidebarItems] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(getSidebarItems());
+    const [usedSidebarItems, setUsedSidebarItems] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useState)(getUsedSidebarItems());
     const updateSidebarItems = () => {
         setSidebarItems([...getSidebarItems()]);
     };
+    const updateUsedSidebarItems = () => {
+        setUsedSidebarItems([...getUsedSidebarItems()]);
+    };
     const explicitlyUpdateSidebarItemsWithThisValue = (explicitVal) => {
         setSidebarItems([...getSidebarItems(explicitVal)]);
+    };
+    const explicitlyUpdateUsedSidebarItemsWithThisValue = (explicitVal) => {
+        setUsedSidebarItems([...getUsedSidebarItems(explicitVal)]);
     };
     const onDragStart = () => {
         setDragging(true);
@@ -18995,7 +19014,7 @@ const HFGBuilder = ({ hasColumns, builder, onChange, value, hidden, portalMount,
         const nextItems = { ...value[device] };
         const updateItems = [...items];
         if (row === 'sidebar') {
-            if ((0,_common_utils__WEBPACK_IMPORTED_MODULE_3__.arraysAreIdentical)(items, nextItems[row])) {
+            if ((0,_common_utils__WEBPACK_IMPORTED_MODULE_2__.arraysAreIdentical)(items, nextItems[row])) {
                 return false;
             }
             nextItems[row] = updateItems;
@@ -19005,9 +19024,9 @@ const HFGBuilder = ({ hasColumns, builder, onChange, value, hidden, portalMount,
         else {
             // Make sure row exists and has slots.
             if (!nextItems[row]) {
-                nextItems[row] = _common_utils__WEBPACK_IMPORTED_MODULE_3__.ROW_SCHEMA;
+                nextItems[row] = _common_utils__WEBPACK_IMPORTED_MODULE_2__.ROW_SCHEMA;
             }
-            if ((0,_common_utils__WEBPACK_IMPORTED_MODULE_3__.arraysAreIdentical)(items, nextItems[row][slot])) {
+            if ((0,_common_utils__WEBPACK_IMPORTED_MODULE_2__.arraysAreIdentical)(items, nextItems[row][slot])) {
                 return false;
             }
             const update = nextItems[row];
@@ -19097,6 +19116,12 @@ const HFGBuilder = ({ hasColumns, builder, onChange, value, hidden, portalMount,
     (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
         updateSidebarItems();
     }, [device]);
+    /*
+     * Make sure we update the sidebar.
+     */
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
+        updateUsedSidebarItems();
+    }, [device]);
     const bindDeviceSwitching = () => {
         window.wp.customize.bind('ready', () => {
             window.wp.customize.previewedDevice.bind((newDevice) => {
@@ -19137,9 +19162,10 @@ const HFGBuilder = ({ hasColumns, builder, onChange, value, hidden, portalMount,
             }
             if (!id || id !== builder)
                 return false;
-            const parsed = (0,_common_utils__WEBPACK_IMPORTED_MODULE_3__.maybeParseJson)(actualValue);
+            const parsed = (0,_common_utils__WEBPACK_IMPORTED_MODULE_2__.maybeParseJson)(actualValue);
             onChange(parsed);
             explicitlyUpdateSidebarItemsWithThisValue(parsed);
+            explicitlyUpdateUsedSidebarItemsWithThisValue(parsed);
             return false;
         });
     };
@@ -19150,12 +19176,15 @@ const HFGBuilder = ({ hasColumns, builder, onChange, value, hidden, portalMount,
         removeItem,
         setDevice,
         setSidebarItems,
+        setUsedSidebarItems,
         togglePreviewSidebar,
         updateSidebarItems,
+        updateUsedSidebarItems,
     };
-    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_BuilderContext__WEBPACK_IMPORTED_MODULE_4__["default"].Provider, { value: {
+    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_BuilderContext__WEBPACK_IMPORTED_MODULE_3__["default"].Provider, { value: {
             actions,
             sidebarItems,
+            usedSidebarItems,
             dragging,
             currentSection,
             builder,
@@ -19164,9 +19193,9 @@ const HFGBuilder = ({ hasColumns, builder, onChange, value, hidden, portalMount,
             previewSidebar,
         } },
         react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null,
-            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Suspense, { fallback: react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Spinner, null) }, mounted && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
+            react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Suspense, { fallback: react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", { className: "components-spinner is-active" }) }, mounted && (react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null,
                 react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", { className: `solace-hfg-builder` },
-                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(SidebarContent, { items: sidebarItems })),
+                    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(SidebarContent, { items: sidebarItems, usedItems: usedSidebarItems })),
                 (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createPortal)(react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Builder, { hidden: hidden, value: value, portalMount: portalMount }), portalMount)))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HFGBuilder);
@@ -20603,8 +20632,8 @@ function _extends() {
 /******/ 			if (chunkId === "vendors-node_modules_wordpress_icons_build-module_library_close_js-node_modules_wordpress_ico-2c346b") return "818e2d8f5c89ab4f8b69.js";
 /******/ 			if (chunkId === "assets_apps_customizer-controls_src_font-family_FontFamilySelector_js") return "ca29e9e505ec82e3d3ec.js";
 /******/ 			if (chunkId === "order") return "16c88f5a2452054a8ff6.js";
-/******/ 			if (chunkId === "assets_apps_customizer-controls_src_builder_components_Builder_tsx") return "2b4888d101eb0b23bb42.js";
-/******/ 			if (chunkId === "assets_apps_customizer-controls_src_builder_components_SidebarContent_tsx") return "a7be07b24676d83058ea.js";
+/******/ 			if (chunkId === "assets_apps_customizer-controls_src_builder_components_Builder_tsx") return "917c4258c538145c5d2b.js";
+/******/ 			if (chunkId === "assets_apps_customizer-controls_src_builder_components_SidebarContent_tsx") return "ed78f16e5c0af7fd30ce.js";
 /******/ 			if (chunkId === "assets_apps_customizer-controls_src_repeater_IconsContent_js") return "d4ed0e0bdd0de3b845ef.js";
 /******/ 			if (chunkId === "assets_apps_customizer-controls_src_rich-text_RichText_js") return "14b55e7046b4f8e4c7e8.js";
 /******/ 			// return url for filenames based on template

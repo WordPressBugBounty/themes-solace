@@ -81,12 +81,15 @@ ul.customize-pane-child.open .range-slider span {
 #accordion-section-solace_single_blog-post_layout.hide,
 #accordion-section-solace_single_page_layout.hide,
 #accordion-panel-solace_wc_custom_general.hide,
+#accordion-section-solace_wc_custom_general_cart_pages.hide,
+#accordion-section-solace_wc_custom_general_checkout.hide,
+#accordion-section-solace_wc_custom_general_account.hide,
 #accordion-section-solace_wc_product_page.hide,
 #accordion-section-solace_wc_single_product.hide,
-/* #accordion-panel-solace_wc_custom_product_pages.hide, */
 #accordion-panel-solace_panel_wc_product_page.hide,
 #accordion-panel-solace_wc_custom_single_product.hide,
-#accordion-section-solace_features_scroll_to_top.hide {
+#accordion-section-solace_features_scroll_to_top.hide
+ {
    
     overflow: hidden;
     transition: visibility 0s, opacity 0.5s linear;
@@ -113,9 +116,11 @@ ul.customize-pane-child.open .range-slider span {
 #accordion-section-solace_single_blog-post_layout,
 #accordion-section-solace_single_page_layout,
 #accordion-panel-solace_wc_custom_general,
+#accordion-section-solace_wc_custom_general_cart_pages,
+#accordion-section-solace_wc_custom_general_checkout,
+#accordion-section-solace_wc_custom_general_account,
 #accordion-section-solace_wc_product_page,
 #accordion-section-solace_wc_single_product,
-/* #accordion-panel-solace_wc_custom_product_pages, */
 #accordion-panel-solace_panel_wc_product_page,
 #accordion-panel-solace_wc_custom_single_product,
 #accordion-section-solace_features_scroll_to_top {
@@ -123,6 +128,31 @@ ul.customize-pane-child.open .range-slider span {
     display: list-item !important;
     
 }
+#solace-customize-search-results .accordion-section {
+    background: var(--sol-customizer-panel-bg-color) !important;
+}
+
+.accordion-section-title #solace-customize-search {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    right: 33px;
+    width: 28px;
+    height: 28px;
+    background: var(--sol-customizer-panel-bg-color);
+    border-radius: 100%;
+}
+
+#solace-customize-search-results .accordion-section h3.accordion-section-title {
+    color: #fff;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+#solace-customize-search-results .accordion-section h3 {
+    background-color: var(--sol-customizer-line-color);
+}
+
 
 #accordion-panel-widgets,
 #accordion-section-solace_core_site_identity,
@@ -143,9 +173,11 @@ ul.customize-pane-child.open .range-slider span {
 #accordion-section-solace_single_post_layout .accordion-section-title,
 #accordion-section-solace_single_blog-post_layout .accordion-section-title,
 #accordion-panel-solace_wc_custom_general .accordion-section-title,
+#accordion-section-solace_wc_custom_general_cart_pages .accordion-section-title,
+#accordion-section-solace_wc_custom_general_checkout .accordion-section-title,
+#accordion-section-solace_wc_custom_general_account .accordion-section-title,
 #accordion-section-solace_wc_product_page .accordion-section-title,
 #accordion-section-solace_wc_single_product .accordion-section-title,
-/* #accordion-panel-solace_wc_custom_product_pages .accordion-section-title, */
 #accordion-panel-solace_panel_wc_product_page .accordion-section-title,
 #accordion-panel-solace_wc_custom_single_product .accordion-section-title,
 #accordion-section-solace_features_scroll_to_top .accordion-section-title,
@@ -174,7 +206,9 @@ ul.customize-pane-child.open .range-slider span {
 #accordion-panel-solace_wc_custom_general .accordion-section-title button.accordion-trigger,
 #accordion-section-solace_wc_product_page .accordion-section-title button.accordion-trigger,
 #accordion-section-solace_wc_single_product .accordion-section-title button.accordion-trigger,
-/* #accordion-panel-solace_wc_custom_product_pages .accordion-section-title button.accordion-trigger, */
+#accordion-section-solace_wc_custom_general_cart_pages .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_wc_custom_general_checkout .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_wc_custom_general_account .accordion-section-title button.accordion-trigger,
 #accordion-panel-solace_panel_wc_product_page .accordion-section-title button.accordion-trigger,
 #accordion-panel-solace_wc_custom_single_product .accordion-section-title button.accordion-trigger,
 #accordion-section-solace_features_scroll_to_top .accordion-section-title button.accordion-trigger,
@@ -244,6 +278,7 @@ li#accordion-section-solace_features {
 #customize-controls #accordion-section-solace_general_options.down:hover::after,
 #customize-controls #accordion-section-solace_page_settings.down:hover::after,
 #customize-controls #accordion-section-solace_core_options.down:hover::after,
+#customize-controls #accordion-panel-solace_wc_custom.up:hover::after,
 #customize-controls #accordion-panel-solace_wc_custom.down:hover::after,
 #customize-controls #accordion-section-solace_features.down:hover::after {
     color: var(--sol-customizer-panel-bg-color);
@@ -252,6 +287,8 @@ li#accordion-section-solace_features {
 #customize-controls #accordion-section-solace_general_options.up::after,
 #customize-controls #accordion-section-solace_page_settings.up::after,
 #customize-controls #accordion-panel-solace_wc_custom.up::after,
+#customize-controls #accordion-panel-solace_wc_custom.up::after,
+#customize-controls #accordion-section-solace_features.up::after,
 #customize-controls #accordion-panel-solace_wc_custom.up::after,
 #customize-controls #accordion-section-solace_core_options.up::after {
     content: '\f343';
@@ -279,14 +316,14 @@ li#accordion-section-solace_features {
     margin-bottom: 15px;
 }
 
-
-#customize-controls #accordion-section-solace_general_options.down::after,
+#customize-controls #accordion-section-solace_general_options::after,
 #customize-controls #accordion-section-solace_page_settings::after,
 #customize-controls #accordion-panel-solace_wc_custom::after,
 #customize-controls #accordion-section-solace_core_options::after,
 #customize-controls #accordion-section-solace_features::after {
 	/* content: '\f140'; */
     /* content: '\f345'; */
+    all: unset;
     content: '\f347';
 	font: normal 20px/1 'dashicons';
 	color: #fff;
@@ -324,12 +361,14 @@ li#accordion-section-solace_features {
 #accordion-section-solace_single_blog-post_layout .accordion-section-title::before,
 #accordion-section-solace_single_page_layout .accordion-section-title::before,
 #accordion-panel-solace_wc_custom_general .accordion-section-title::before,
+#accordion-section-solace_wc_custom_general_cart_pages .accordion-section-title::before,
+#accordion-section-solace_wc_custom_general_checkout .accordion-section-title::before,
+#accordion-section-solace_wc_custom_general_account .accordion-section-title::before,
 #accordion-section-solace_wc_product_page .accordion-section-title::before,
 #accordion-section-solace_wc_single_product .accordion-section-title::before,
-/* #accordion-panel-solace_wc_custom_product_pages .accordion-section-title::before, */
 #accordion-panel-solace_panel_wc_product_page .accordion-section-title::before,
-#accordion-panel-solace_wc_custom_single_product .accordion-section-title::before,
-#accordion-section-solace_features_scroll_to_top .accordion-section-title::before{
+#accordion-section-solace_features_scroll_to_top .accordion-section-title::before,
+#accordion-panel-solace_wc_custom_single_product .accordion-section-title::before{
     content: "" !important;
 }
 
@@ -352,9 +391,11 @@ li#accordion-section-solace_features {
 #accordion-section-solace_single_blog-post_layout.accordion-section-title,
 #accordion-section-solace_single_page_layout .accordion-section-title,
 #accordion-panel-solace_wc_custom_general .accordion-section-title,
+#accordion-section-solace_wc_custom_general_cart_pages .accordion-section-title,
+#accordion-section-solace_wc_custom_general_checkout .accordion-section-title,
+#accordion-section-solace_wc_custom_general_account .accordion-section-title,
 #accordion-section-solace_wc_product_page .accordion-section-title,
 #accordion-section-solace_wc_single_product .accordion-section-title,
-/* #accordion-panel-solace_wc_custom_product_pages .accordion-section-title, */
 #accordion-panel-solace_panel_wc_product_page .accordion-section-title,
 #accordion-panel-solace_wc_custom_single_product .accordion-section-title,
 #accordion-section-solace_features_scroll_to_top .accordion-section-title {
@@ -685,4 +726,34 @@ li#customize-control-solace_layout_single_post_social_order .solace-sortable-ite
 
 li#customize-control-solace_archive_hide_title {
     display: none;
+}
+
+li#customize-control-woocommerce_checkout_company_field button,
+li#customize-control-woocommerce_checkout_address_2_field button,
+li#customize-control-woocommerce_checkout_main_address_field button,
+li#customize-control-woocommerce_checkout_phone_field button {
+    display: none;
+}
+
+li#customize-control-woocommerce_checkout_company_field span,
+li#customize-control-woocommerce_checkout_address_2_field span,
+li#customize-control-woocommerce_checkout_main_address_field span,
+li#customize-control-woocommerce_checkout_phone_field span {
+    background-color: var(--sol-builder-row-tab-color);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    display: block;
+    cursor: pointer;
+}
+
+li#customize-control-woocommerce_checkout_company_field label.active span,
+li#customize-control-woocommerce_checkout_address_2_field label.active span,
+li#customize-control-woocommerce_checkout_main_address_field label.active span,
+li#customize-control-woocommerce_checkout_phone_field label.active span,
+li#customize-control-woocommerce_checkout_company_field label span:hover,
+li#customize-control-woocommerce_checkout_address_2_field label span:hover,
+li#customize-control-woocommerce_checkout_main_address_field label span:hover,
+li#customize-control-woocommerce_checkout_phone_field label span:hover {
+   background-color: var(--sol-builder-active-color);
 }

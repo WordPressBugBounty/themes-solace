@@ -2,6 +2,7 @@
 
 define('SOLACE_ASSETS_URL', trailingslashit(get_template_directory_uri()) . 'assets/');
 define('SOLACE_MAIN_DIR', get_template_directory() . '/');
+define( 'SOLACE_THEME_DIR', trailingslashit( get_template_directory() ) );
 
 if (!defined('SOLACE_DEBUG')) {
 	define('SOLACE_DEBUG', false);
@@ -17,8 +18,10 @@ if (!defined('SOLACE_DEBUG')) {
 
 if (!defined('SOLACE_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('SOLACE_VERSION', '2.1.13');
+	define('SOLACE_VERSION', '2.1.16');
 }
+
+require_once 'inc/compatibility/class-solace-starter-content.php';
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -124,6 +127,12 @@ function solace_setup()
 	);
 
 	remove_theme_support('widgets-block-editor');
+
+	// Add support for starter content ( wp preview ).
+	if ( class_exists( 'Solace_Starter_Content', false ) ) {
+		$solace_starter_content = new Solace_Starter_Content();
+		add_theme_support( 'starter-content', $solace_starter_content->get() );
+	}
 }
 add_action('after_setup_theme', 'solace_setup');
 
@@ -239,7 +248,7 @@ endif;
  */
 function solace_enqueue_admin( $hook ) {
 	// Enqueue styles admin global.
-	wp_enqueue_style( 'solace-admin-global-style', get_template_directory_uri() . '/assets-solace/css/admin-global.css', array(), SOLACE_VERSION );
+	wp_enqueue_style( 'solace-admin-global-style', get_template_directory_uri() . '/assets-solace/css/admin-global.css?v=' . time(), array(), SOLACE_VERSION );
 
 	// Enqueue script admin global.
 	wp_enqueue_script( 'solace-admin-global-script', get_template_directory_uri() . '/assets-solace/js/admin-global.js?v=' . time(), array( 'jquery' ), SOLACE_VERSION, true );
@@ -258,18 +267,63 @@ function solace_enqueue_admin( $hook ) {
 add_action( 'admin_enqueue_scripts', 'solace_enqueue_admin' );
 
 /**
+ * Load Google Fonts for the Solace theme
+ * 
+ * This function enqueues the DM Sans font family from Google Fonts
+ * to be used throughout the theme. The font is loaded with all
+ * available weights (100-1000) and styles (normal and italic).
+ * 
+ * @since 1.0.0
+ * @return void
+ */
+function solace_load_fonts() {
+    // Load DM Sans font to front-end and Gutenberg editor
+    wp_enqueue_style(
+        'solace-dm-sans',
+        'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap',
+        array(),
+        null
+    );
+}
+add_action( 'wp_enqueue_scripts', 'solace_load_fonts' );
+add_action( 'enqueue_block_editor_assets', 'solace_load_fonts' );
+
+/**
+ * Enqueue styles used by "Additional CSS class(es)" on both frontend and editor.
+ *
+ * Loads a single stylesheet in both contexts so custom utility classes
+ * work consistently in Gutenberg and on the public site.
+ */
+function solace_enqueue_additional_class_styles() {
+	// Unique handle for this stylesheet
+	$handle = 'solace-additional-classes';
+
+	// Path to shared CSS for Additional CSS classes
+	$src = get_template_directory_uri() . '/assets/css/additional-class.css';
+
+	// Use theme version for cache busting
+	wp_enqueue_style( $handle, $src, array(), SOLACE_VERSION );
+}
+
+// Frontend
+add_action( 'wp_enqueue_scripts', 'solace_enqueue_additional_class_styles' );
+
+// Gutenberg editor
+add_action( 'enqueue_block_editor_assets', 'solace_enqueue_additional_class_styles' );
+
+/**
  * Enqueue scripts and styles.
  */
 function solace_scripts()
 {
 
-	wp_enqueue_style('solace-theme', get_template_directory_uri() . '/assets-solace/css/theme.min.css', array(), SOLACE_VERSION);
+	wp_enqueue_style('solace-theme', get_template_directory_uri() . '/assets-solace/css/theme.min.css?v=' . time(), array(), SOLACE_VERSION);
 	wp_style_add_data('solace-theme', 'rtl', 'replace');
 
 	// Font Awesome
-	wp_enqueue_style('solace-fontawesome', get_template_directory_uri() . '/assets-solace/fontawesome/css/all.min.css', array(), '5.15.4', 'all');
+	wp_enqueue_style('solace-fontawesome', get_template_directory_uri() . '/assets-solace/fontawesome/css/all.min.css?v=' . time(), array(), '5.15.4', 'all');
 
-	wp_enqueue_script('solace-navigation', get_template_directory_uri() . '/js/navigation.js', array(), SOLACE_VERSION, true);
+	wp_enqueue_script('solace-navigation', get_template_directory_uri() . '/js/navigation.js?v=' . time(), array(), SOLACE_VERSION, true);
 	
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
@@ -302,14 +356,14 @@ function solace_scripts()
 		'Verdana, Geneva, sans-serif',
 		'Paratina Linotype',
 		'Trebuchet MS',
-		'Manrope, sans-serif'
+		// 'Manrope, sans-serif'
 	);
 	for ($i = 1; $i <= 6; $i++) {
 		$heading = 'h' . $i;
 		$fontVariable = 'h' . $i;
 		
 		if (!in_array($$fontVariable, $fonts)) {
-			wp_enqueue_style('google-fonts-' . $heading, 'https://fonts.googleapis.com/css?family=' . $$fontVariable . '&display=swap');
+			wp_enqueue_style('google-fonts-' . $heading, 'https://fonts.googleapis.com/css?family=' . $$fontVariable . '&display=swap&v=' . time());
 		}
 	}
 }

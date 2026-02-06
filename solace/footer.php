@@ -71,7 +71,7 @@ do_action( 'solace_body_end_before' );
 
 ?>
 <div class="box-scroll-to-top">
-	<a href="#" class="topbutton">
+	<button type="button" class="topbutton" style="background: none; cursor: pointer;">
 	<?php 
 	//echo get_theme_mod('solace_scroll_to_top','up_arrow1'); 
 	$icon_type = get_theme_mod('solace_scroll_to_top','up_arrow1');
@@ -109,8 +109,8 @@ do_action( 'solace_body_end_before' );
 
 
 	?>
-
-	</a>
+		<span style="display: none;"><?php esc_html_e( 'scroll to top', 'solace' ); ?></span>
+	</button>
 </div>
 </body>
 

@@ -105,10 +105,19 @@ class Woocommerce {
 	 * Initialize the module.
 	 */
 	public function init() {
+		remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
+		add_action( 'woocommerce_shop_loop_item_title', array( $this, 'solace_template_loop_product_title' ) );
 		add_filter( 'body_class', array( $this, 'add_payment_method_class' ) );
 		add_action( 'wp', array( $this, 'register_hooks' ), 11 );
 		add_action( 'solace_react_controls_localization', array( $this, 'add_customizer_options' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'payment_style' ), 100 );
+	}
+
+	/**
+	 * Show the product title in the product loop. By default this is an H3.
+	 */
+	public function solace_template_loop_product_title() {
+		echo sprintf( '<h5 class="%s">%s</h5>', esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ), get_the_title() );
 	}
 
 	/**
@@ -318,21 +327,21 @@ class Woocommerce {
 		add_action( 'wp', [ $this, 'setup_form_buttons' ] );
 
 		if ( solace_is_new_skin() ) {
-			add_action(
-				'woocommerce_checkout_before_customer_details',
-				function () {
-					echo '<div class="nv-customer-details">';
-				},
-				0
-			);
-			add_action( 'woocommerce_checkout_after_customer_details', [ $this, 'close_div' ], PHP_INT_MAX );
-			add_action(
-				'woocommerce_checkout_before_order_review_heading',
-				function () {
-					echo '<div class="nv-order-review">';
-				}
-			);
-			add_action( 'woocommerce_checkout_after_order_review', [ $this, 'close_div' ] );
+			// add_action(
+			// 	'woocommerce_checkout_before_customer_details',
+			// 	function () {
+			// 		echo '<div class="nv-customer-details">';
+			// 	},
+			// 	0
+			// );
+			// add_action( 'woocommerce_checkout_after_customer_details', [ $this, 'close_div' ], PHP_INT_MAX );
+			// add_action(
+			// 	'woocommerce_checkout_before_order_review_heading',
+			// 	function () {
+			// 		echo '<div class="nv-order-review">';
+			// 	}
+			// );
+			// add_action( 'woocommerce_checkout_after_order_review', [ $this, 'close_div' ] );
 
 			add_action(
 				'woocommerce_before_single_product_summary',

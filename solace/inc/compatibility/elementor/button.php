@@ -41,16 +41,27 @@ define('SELECTOR_DEFAULT_BUTTON_BG',"
 	.SELECTOR_DEFAULT_BUTTON_BG
 ");
 
+// define('SELECTOR_DEFAULT_BUTTON_BG_HOVER',"
+// 	body .button:not(header .button):not(footer .button):hover,
+// 	body .button-primary:not(header .button-primary):not(footer .button-primary):hover,
+// 	body .button-secondary:not(header .button-secondary):not(footer .button-secondary):hover,
+// 	body .button-link:hover,
+// 	body .comments-area .form-submit .submit:hover,
+// 	input[type='submit']:not(.solace-mc-embedded-subscribe):hover,
+// 	body.single a.wp-block-button__link:hover,
+// 	body .solaceform-form-button:hover,
+// 	.SELECTOR_DEFAULT_BUTTON_BG_HOVER
+// ");
 define('SELECTOR_DEFAULT_BUTTON_BG_HOVER',"
-	body .button:not(header .button):not(footer .button):hover,
-	body .button-primary:not(header .button-primary):not(footer .button-primary):hover,
-	body .button-secondary:not(header .button-secondary):not(footer .button-secondary):hover,
-	body .button-link:hover,
-	body .comments-area .form-submit .submit:hover,
-	input[type='submit']:not(.solace-mc-embedded-subscribe):hover,
-	body.single a.wp-block-button__link:hover,
-	body .solaceform-form-button:hover,
-	.SELECTOR_DEFAULT_BUTTON_BG_HOVER
+	body:not(.single-solace-sitebuilder) .button:not(header .button):not(footer .button):hover,
+	body:not(.single-solace-sitebuilder) .button-primary:not(header .button-primary):not(footer .button-primary):hover,
+	body:not(.single-solace-sitebuilder) .button-secondary:not(header .button-secondary):not(footer .button-secondary):hover,
+	body:not(.single-solace-sitebuilder) .button-link:hover,
+	body:not(.single-solace-sitebuilder) .comments-area .form-submit .submit:hover,
+	body:not(.single-solace-sitebuilder) input[type='submit']:not(.solace-mc-embedded-subscribe):hover,
+	body:not(.single-solace-sitebuilder).single a.wp-block-button__link:hover,
+	body:not(.single-solace-sitebuilder) .solaceform-form-button:hover,
+	body:not(.single-solace-sitebuilder) .SELECTOR_DEFAULT_BUTTON_BG_HOVER
 ");
 
 define('SELECTOR_WC_BUTTON_TEXT',"
@@ -58,15 +69,15 @@ define('SELECTOR_WC_BUTTON_TEXT',"
 	body.woocommerce a.button:not(header a.button):not(footer a.button),
 	body:not(.dokan-theme-solace) .woocommerce a.button,
 	body .woocommerce a.button.alt,
-	body.woocommerce-cart table.cart td.actions .button:disabled,
+	body.woocommerce-cart:not(.elementor-page) table.cart td.actions .button:disabled,
 	body.woocommerce ul.products li.product .button,
 	body:not(.dokan-theme-solace) .woocommerce ul.products li.product .button,
 	body .woocommerce div.product form.cart .button,
 	body .woocommerce .woocommerce-message .button,
-	body .woocommerce .cart .button,
+	body:not(.woocommerce-cart) .woocommerce .cart .button,
 	body .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button,
 	body .woocommerce-page .woocommerce-info a,
-	body .woocommerce button.button,
+	body:not(.elementor-page) .woocommerce button.button,
 	body .woocommerce button.button.alt,
 	body .woocommerce-account a.button.wc-forward,
 	.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt,
@@ -74,11 +85,10 @@ define('SELECTOR_WC_BUTTON_TEXT',"
 	body .wc-block-components-totals-coupon__content button.wc-block-components-button span,
 	body .wp-block-woocommerce-cart .wp-block-button__link.add_to_cart_button.ajax_add_to_cart,
 	body .wp-block-woocommerce-cart .wp-block-button__link.add_to_cart_button,
-	body.woocommerce-account .woocommerce form.woocommerce-EditAccountForm button[type=submit],
-	:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt,
+	body.woocommerce-account:not(.elementor-default) .woocommerce form.woocommerce-EditAccountForm button[type=submit],
+	:where(body:not(.woocommerce-block-theme-has-button-styles):not(.elementor-page) .woocommerce a.button.alt,
 	.wp-block-add-to-cart-form form button.single_add_to_cart_button.button.alt,
 	button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained span,
-	.woocommerce .woocommerce-info a.showcoupon,
 	.woocommerce #review_form #respond input#submit,
 	.woocommerce-page a.wp-block-button__link,
 	.wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained span,
@@ -96,7 +106,7 @@ define('SELECTOR_WC_BUTTON_TEXT_HOVER',"
 	body.woocommerce ul.products li.product .button:hover,
 	body .woocommerce div.product form.cart .button:hover,
 	body .woocommerce .woocommerce-message .button:hover,
-	body.woocommerce-cart table.cart td.actions .button:disabled:hover,
+	body.woocommerce-cart:not(.elementor-page) table.cart td.actions .button:disabled:hover,
 	body .woocommerce .cart .button:hover,
 	body .woocommerce-page .woocommerce-info a,
 	body.woocommerce-account .woocommerce form.woocommerce-EditAccountForm button[type=submit]:hover,
@@ -111,7 +121,6 @@ define('SELECTOR_WC_BUTTON_TEXT_HOVER',"
 	body .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button:hover,
 	.wp-block-add-to-cart-form form button.single_add_to_cart_button.button.alt:hover,
 	button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained span:hover,
-	.woocommerce .woocommerce-info a.showcoupon:hover,
 	.woocommerce #review_form #respond input#submit:hover,
 	.woocommerce-page a.wp-block-button__link:hover,
 	.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) a.button:not(header a.button):not(footer a.button):hover,
@@ -123,26 +132,25 @@ define('SELECTOR_WC_BUTTON_BG',"
 	body:not(.is-elementor-preview) .add_to_cart_button,
 	body:not(.dokan-theme-solace) .woocommerce ul.products li.product .button,
 	body:not(.dokan-theme-solace) .woocommerce a.button,
-	:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt,
+	:where(body:not(.woocommerce-block-theme-has-button-styles):not(.elementor-page)) .woocommerce a.button.alt,
 	body .woocommerce div.product form.cart .button,
 	body .woocommerce .woocommerce-message .button,
-	body .woocommerce .cart .button,
+	body:not(.woocommerce-cart) .woocommerce .cart .button,
 	body.woocommerce a.button:not(header a.button):not(footer a.button),
 	body .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button,
 	body .woocommerce-page .woocommerce-info a,
-	body .woocommerce button.button,
+	body:not(.elementor-page) .woocommerce button.button,
 	body .woocommerce button.button.alt,
 	body .woocommerce-account a.button.wc-forward,
 	.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt,
 	body .wc-block-components-totals-coupon__content button.wc-block-components-button,
 	body .wp-block-woocommerce-cart .wp-block-button__link.add_to_cart_button.ajax_add_to_cart,
 	body .wp-block-woocommerce-cart .wp-block-button__link.add_to_cart_button,
-	:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt,
+	:where(body:not(.woocommerce-block-theme-has-button-styles):not(.elementor-page)) .woocommerce a.button.alt,
 	body .woocommerce-account .woocommerce form.woocommerce-EditAccountForm button[type=submit],
 	body.woocommerce ul.products li.product .button,
 	.wp-block-add-to-cart-form form button.single_add_to_cart_button.button.alt,
 	button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained,
-	.woocommerce .woocommerce-info a.showcoupon,
 	.woocommerce #review_form #respond input#submit,
 	.woocommerce-page a.wp-block-button__link,
 	.wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained,
@@ -171,10 +179,9 @@ define('SELECTOR_WC_BUTTON_BG_HOVER',"
 	body .wp-block-woocommerce-cart .wp-block-button__link.add_to_cart_button:hover,
 	:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt:hover,
 	body .woocommerce-account .woocommerce form.woocommerce-EditAccountForm button[type=submit]:hover,
-	body.woocommerce-cart .wc-proceed-to-checkout a.checkout-button:hover,
+	body.woocommerce-cart:not(.elementor-page) .wc-proceed-to-checkout a.checkout-button:hover,
 	.wp-block-add-to-cart-form form button.single_add_to_cart_button.button.alt:hover,
 	button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained:hover,
-	.woocommerce .woocommerce-info a.showcoupon:hover,
 	.woocommerce #review_form #respond input#submit:hover,
 	.woocommerce-page a.wp-block-button__link:hover,
 	.wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained:hover,
@@ -1085,8 +1092,13 @@ function solace_apply_elementor_woocommerce_button_styles() {
 			// wp_add_inline_style( 'solace-theme', $style );
 		}	
 		// Style button background color.
-		if ( isset( $meta['button_background_color'] ) && !empty( $meta['button_background_color']) ) {
-
+		if ( isset( $meta['__globals__']['button_background_color'] )  && !empty( $meta['__globals__']['button_background_color']) ) {
+			$button_background_color = $meta['__globals__']['button_background_color'];
+			$button_background_color = str_replace( 'globals/colors?id=', '', $button_background_color );
+			$style .= SELECTOR_WC_BUTTON_BG . "{";
+			$style .= "background-color: var(--e-global-color-$button_background_color);";
+			$style .= "}";
+		} else { 
 			$bg = $meta['button_background_color'];
 			$style .= ":root {";
 			$style .= "--solel-color-button-initial: {$bg};";
@@ -1096,13 +1108,8 @@ function solace_apply_elementor_woocommerce_button_styles() {
 			$style .= "}";
 
 			// wp_add_inline_style( 'solace-theme', $style );
-		} else {
-			$style .= SELECTOR_WC_BUTTON_BG . "{";
-			$style .= "background: var(--sol-color-button-initial);";
-			$style .= "}";
-			// wp_add_inline_style( 'solace-theme', $style );
-		}
-
+		} 
+		
 		// Style button hover background color.
 		if ( isset( $meta['button_hover_background_color'] ) && !empty( $meta['button_hover_background_color']) ) {
 

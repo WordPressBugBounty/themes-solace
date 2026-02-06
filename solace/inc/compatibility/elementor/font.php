@@ -43,6 +43,9 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 			$base_font_size 		= $system_typography[2]['typography_font_size']['size'];
 			$base_font_size_tablet 	= $system_typography[2]['typography_font_size_tablet']['size'];
 			$base_font_size_mobile 	= $system_typography[2]['typography_font_size_mobile']['size'];
+			$base_font_size_unit 	= $system_typography[2]['typography_font_size']['unit'];
+			$base_font_size_tablet_unit = $system_typography[2]['typography_font_size_tablet']['unit'];
+			$base_font_size_mobile_unit = $system_typography[2]['typography_font_size_mobile']['unit'];
 			$font_weights 			= $system_typography[2]['typography_font_weight'];
 			$font_transform 		= $system_typography[2]['typography_text_transform'];
 			$font_line_height		= $system_typography[2]['typography_line_height']['size'];
@@ -129,9 +132,9 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 			$current_values['fontSize']['desktop'] = isset($base_font_size)?$base_font_size:$defaults_base['fontSize']['desktop'];
 
 			// Update fontSize suffix values
-			$current_values['fontSize']['suffix']['mobile'] = $defaults_base['fontSize']['suffix']['mobile'];
-			$current_values['fontSize']['suffix']['tablet'] = $defaults_base['fontSize']['suffix']['tablet'];
-			$current_values['fontSize']['suffix']['desktop'] = $defaults_base['fontSize']['suffix']['desktop'];
+			$current_values['fontSize']['suffix']['mobile'] = isset($base_font_size_mobile_unit)?$base_font_size_mobile_unit:$defaults_base['fontSize']['suffix']['mobile'];
+			$current_values['fontSize']['suffix']['tablet'] = isset($base_font_size_tablet_unit)?$base_font_size_tablet_unit:$defaults_base['fontSize']['suffix']['tablet'];
+			$current_values['fontSize']['suffix']['desktop'] = isset($base_font_size_unit)?$base_font_size_unit:$defaults_base['fontSize']['suffix']['desktop'];
 
 			// Update fontWeight and textTransform
 			$current_values['fontWeight'] = isset($font_weights)?$font_weights:$defaults_base['fontWeight'];
@@ -500,8 +503,11 @@ function solace_typography_elementor_add_custom() {
 		$defaults_h1 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H1 );
 		$h1_font = get_theme_mod('solace_h1_typeface_general');
 		$h1_font_size_desktop = isset($h1_font['fontSize']['desktop'])?$h1_font['fontSize']['desktop']:$defaults_h1['fontSize']['desktop'];
+		$h1_font_size_desktop_unit = isset($h1_font['fontSize']['suffix']['desktop'])?$h1_font['fontSize']['suffix']['desktop']:$defaults_h1['fontSize']['suffix']['desktop'];
 		$h1_font_size_tablet = isset($h1_font['fontSize']['tablet'])?$h1_font['fontSize']['tablet']:$defaults_h1['fontSize']['tablet'];
+		$h1_font_size_tablet_unit = isset($h1_font['fontSize']['suffix']['tablet'])?$h1_font['fontSize']['suffix']['tablet']:$defaults_h1['fontSize']['suffix']['tablet'];
 		$h1_font_size_mobile = isset($h1_font['fontSize']['mobile'])?$h1_font['fontSize']['mobile']:$defaults_h1['fontSize']['mobile'];
+		$h1_font_size_mobile_unit = isset($h1_font['fontSize']['suffix']['mobile'])?$h1_font['fontSize']['suffix']['mobile']:$defaults_h1['fontSize']['suffix']['mobile'];
 		
 		$h1_font_lineHeight_desktop = isset($h1_font['lineHeight']['desktop'])?$h1_font['lineHeight']['desktop']:$defaults_h1['lineHeight']['desktop'];
 		$h1_font_lineHeight_tablet = isset($h1_font['lineHeight']['tablet'])?$h1_font['lineHeight']['tablet']:$defaults_h1['lineHeight']['tablet'];
@@ -521,8 +527,11 @@ function solace_typography_elementor_add_custom() {
 		$defaults_h2 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H2 );
 		$h2_font = get_theme_mod('solace_h2_typeface_general');
 		$h2_font_size_desktop = isset($h2_font['fontSize']['desktop'])?$h2_font['fontSize']['desktop']:$defaults_h2['fontSize']['desktop'];
+		$h2_font_size_desktop_unit = isset($h2_font['fontSize']['suffix']['desktop'])?$h2_font['fontSize']['suffix']['desktop']:$defaults_h2['fontSize']['suffix']['desktop'];
 		$h2_font_size_tablet = isset($h2_font['fontSize']['tablet'])?$h2_font['fontSize']['tablet']:$defaults_h2['fontSize']['tablet'];
+		$h2_font_size_tablet_unit = isset($h2_font['fontSize']['suffix']['tablet'])?$h2_font['fontSize']['suffix']['tablet']:$defaults_h2['fontSize']['suffix']['tablet'];
 		$h2_font_size_mobile = isset($h2_font['fontSize']['mobile'])?$h2_font['fontSize']['mobile']:$defaults_h2['fontSize']['mobile'];
+		$h2_font_size_mobile_unit = isset($h2_font['fontSize']['suffix']['mobile'])?$h2_font['fontSize']['suffix']['mobile']:$defaults_h2['fontSize']['suffix']['mobile'];
 		
 		$h2_font_lineHeight_desktop = isset($h2_font['lineHeight']['desktop'])?$h2_font['lineHeight']['desktop']:$defaults_h2['lineHeight']['desktop'];
 		$h2_font_lineHeight_tablet = isset($h2_font['lineHeight']['tablet'])?$h2_font['lineHeight']['tablet']:$defaults_h2['lineHeight']['tablet'];
@@ -542,8 +551,11 @@ function solace_typography_elementor_add_custom() {
 		$defaults_h3 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H3 );
 		$h3_font = get_theme_mod('solace_h3_typeface_general');
 		$h3_font_size_desktop = isset($h3_font['fontSize']['desktop'])?$h3_font['fontSize']['desktop']:$defaults_h3['fontSize']['desktop'];
+		$h3_font_size_desktop_unit = isset($h3_font['fontSize']['suffix']['desktop'])?$h3_font['fontSize']['suffix']['desktop']:$defaults_h3['fontSize']['suffix']['desktop'];
 		$h3_font_size_tablet = isset($h3_font['fontSize']['tablet'])?$h3_font['fontSize']['tablet']:$defaults_h3['fontSize']['tablet'];
+		$h3_font_size_tablet_unit = isset($h3_font['fontSize']['suffix']['tablet'])?$h3_font['fontSize']['suffix']['tablet']:$defaults_h3['fontSize']['suffix']['tablet'];
 		$h3_font_size_mobile = isset($h3_font['fontSize']['mobile'])?$h3_font['fontSize']['mobile']:$defaults_h3['fontSize']['mobile'];
+		$h3_font_size_mobile_unit = isset($h3_font['fontSize']['suffix']['mobile'])?$h3_font['fontSize']['suffix']['mobile']:$defaults_h3['fontSize']['suffix']['mobile'];
 		
 		$h3_font_lineHeight_desktop = isset($h3_font['lineHeight']['desktop'])?$h3_font['lineHeight']['desktop']:$defaults_h3['lineHeight']['desktop'];
 		$h3_font_lineHeight_tablet = isset($h3_font['lineHeight']['tablet'])?$h3_font['lineHeight']['tablet']:$defaults_h3['lineHeight']['tablet'];
@@ -564,8 +576,11 @@ function solace_typography_elementor_add_custom() {
 
 		$h4_font = get_theme_mod('solace_h4_typeface_general');
 		$h4_font_size_desktop = isset($h4_font['fontSize']['desktop'])?$h4_font['fontSize']['desktop']:$defaults_h4['fontSize']['desktop'];
+		$h4_font_size_desktop_unit = isset($h4_font['fontSize']['suffix']['desktop'])?$h4_font['fontSize']['suffix']['desktop']:$defaults_h4['fontSize']['suffix']['desktop'];
 		$h4_font_size_tablet = isset($h4_font['fontSize']['tablet'])?$h4_font['fontSize']['tablet']:$defaults_h4['fontSize']['tablet'];
+		$h4_font_size_tablet_unit = isset($h4_font['fontSize']['suffix']['tablet'])?$h4_font['fontSize']['suffix']['tablet']:$defaults_h4['fontSize']['suffix']['tablet'];
 		$h4_font_size_mobile = isset($h4_font['fontSize']['mobile'])?$h4_font['fontSize']['mobile']:$defaults_h4['fontSize']['mobile'];
+		$h4_font_size_mobile_unit = isset($h4_font['fontSize']['suffix']['mobile'])?$h4_font['fontSize']['suffix']['mobile']:$defaults_h4['fontSize']['suffix']['mobile'];
 		
 		$h4_font_lineHeight_desktop = isset($h4_font['lineHeight']['desktop'])?$h4_font['lineHeight']['desktop']:$defaults_h4['lineHeight']['desktop'];
 		$h4_font_lineHeight_tablet = isset($h4_font['lineHeight']['tablet'])?$h4_font['lineHeight']['tablet']:$defaults_h4['lineHeight']['tablet'];
@@ -585,8 +600,11 @@ function solace_typography_elementor_add_custom() {
 		$defaults_h5 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H5 );
 		$h5_font = get_theme_mod('solace_h5_typeface_general');
 		$h5_font_size_desktop = isset($h5_font['fontSize']['desktop'])?$h5_font['fontSize']['desktop']:$defaults_h5['fontSize']['desktop'];
+		$h5_font_size_desktop_unit = isset($h5_font['fontSize']['suffix']['desktop'])?$h5_font['fontSize']['suffix']['desktop']:$defaults_h5['fontSize']['suffix']['desktop'];
 		$h5_font_size_tablet = isset($h5_font['fontSize']['tablet'])?$h5_font['fontSize']['tablet']:$defaults_h5['fontSize']['tablet'];
+		$h5_font_size_tablet_unit = isset($h5_font['fontSize']['suffix']['tablet'])?$h5_font['fontSize']['suffix']['tablet']:$defaults_h5['fontSize']['suffix']['tablet'];
 		$h5_font_size_mobile = isset($h5_font['fontSize']['mobile'])?$h5_font['fontSize']['mobile']:$defaults_h5['fontSize']['mobile'];
+		$h5_font_size_mobile_unit = isset($h5_font['fontSize']['suffix']['mobile'])?$h5_font['fontSize']['suffix']['mobile']:$defaults_h5['fontSize']['suffix']['mobile'];
 		
 		$h5_font_lineHeight_desktop = isset($h5_font['lineHeight']['desktop'])?$h5_font['lineHeight']['desktop']:$defaults_h5['lineHeight']['desktop'];
 		$h5_font_lineHeight_tablet = isset($h5_font['lineHeight']['tablet'])?$h5_font['lineHeight']['tablet']:$defaults_h5['lineHeight']['tablet'];
@@ -606,8 +624,11 @@ function solace_typography_elementor_add_custom() {
 		$defaults_h6 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H6 );
 		$h6_font = get_theme_mod('solace_h6_typeface_general');
 		$h6_font_size_desktop = isset($h6_font['fontSize']['desktop'])?$h6_font['fontSize']['desktop']:$defaults_h6['fontSize']['desktop'];
+		$h6_font_size_desktop_unit = isset($h6_font['fontSize']['suffix']['desktop'])?$h6_font['fontSize']['suffix']['desktop']:$defaults_h6['fontSize']['suffix']['desktop'];
 		$h6_font_size_tablet = isset($h6_font['fontSize']['tablet'])?$h6_font['fontSize']['tablet']:$defaults_h6['fontSize']['tablet'];
+		$h6_font_size_tablet_unit = isset($h6_font['fontSize']['suffix']['tablet'])?$h6_font['fontSize']['suffix']['tablet']:$defaults_h6['fontSize']['suffix']['tablet'];
 		$h6_font_size_mobile = isset($h6_font['fontSize']['mobile'])?$h6_font['fontSize']['mobile']:$defaults_h6['fontSize']['mobile'];
+		$h6_font_size_mobile_unit = isset($h6_font['fontSize']['suffix']['mobile'])?$h6_font['fontSize']['suffix']['mobile']:$defaults_h6['fontSize']['suffix']['mobile'];
 		
 		$h6_font_lineHeight_desktop = isset($h6_font['lineHeight']['desktop'])?$h6_font['lineHeight']['desktop']:$defaults_h6['lineHeight']['desktop'];
 		$h6_font_lineHeight_tablet = isset($h6_font['lineHeight']['tablet'])?$h6_font['lineHeight']['tablet']:$defaults_h6['lineHeight']['tablet'];
@@ -629,8 +650,11 @@ function solace_typography_elementor_add_custom() {
 		$defaults_smaller = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_SMALLER );
 
 		$smaller_font_size_desktop = isset($smaller_font['fontSize']['desktop'])?$smaller_font['fontSize']['desktop']:$defaults_smaller['fontSize']['desktop'];
+		$smaller_font_size_desktop_unit = isset($smaller_font['fontSize']['suffix']['desktop'])?$smaller_font['fontSize']['suffix']['desktop']:$defaults_smaller['fontSize']['suffix']['desktop'];
 		$smaller_font_size_tablet = isset($smaller_font['fontSize']['tablet'])?$smaller_font['fontSize']['tablet']:$defaults_smaller['fontSize']['tablet'];
+		$smaller_font_size_tablet_unit = isset($smaller_font['fontSize']['suffix']['tablet'])?$smaller_font['fontSize']['suffix']['tablet']:$defaults_smaller['fontSize']['suffix']['tablet'];
 		$smaller_font_size_mobile = isset($smaller_font['fontSize']['mobile'])?$smaller_font['fontSize']['mobile']:$defaults_smaller['fontSize']['mobile'];
+		$smaller_font_size_mobile_unit = isset($smaller_font['fontSize']['suffix']['mobile'])?$smaller_font['fontSize']['suffix']['mobile']:$defaults_smaller['fontSize']['suffix']['mobile'];
 		
 		$smaller_font_lineHeight_desktop = isset($smaller_font['lineHeight']['desktop'])?$smaller_font['lineHeight']['desktop']:$defaults_smaller['lineHeight']['desktop'];
 		$smaller_font_lineHeight_tablet = isset($smaller_font['lineHeight']['tablet'])?$smaller_font['lineHeight']['tablet']:$defaults_smaller['lineHeight']['tablet'];
@@ -650,8 +674,11 @@ function solace_typography_elementor_add_custom() {
 		$defaults_logotitle = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_LOGOTITLE );
 
 		$logotitle_font_size_desktop = isset($logotitle_font['fontSize']['desktop'])?$logotitle_font['fontSize']['desktop']:$defaults_logotitle['fontSize']['desktop'];
+		$logotitle_font_size_desktop_unit = isset($logotitle_font['fontSize']['suffix']['desktop'])?$logotitle_font['fontSize']['suffix']['desktop']:$defaults_logotitle['fontSize']['suffix']['desktop'];
 		$logotitle_font_size_tablet = isset($logotitle_font['fontSize']['tablet'])?$logotitle_font['fontSize']['tablet']:$defaults_logotitle['fontSize']['tablet'];
+		$logotitle_font_size_tablet_unit = isset($logotitle_font['fontSize']['suffix']['tablet'])?$logotitle_font['fontSize']['suffix']['tablet']:$defaults_logotitle['fontSize']['suffix']['tablet'];
 		$logotitle_font_size_mobile = isset($logotitle_font['fontSize']['mobile'])?$logotitle_font['fontSize']['mobile']:$defaults_logotitle['fontSize']['mobile'];
+		$logotitle_font_size_mobile_unit = isset($logotitle_font['fontSize']['suffix']['mobile'])?$logotitle_font['fontSize']['suffix']['mobile']:$defaults_logotitle['fontSize']['suffix']['mobile'];
 		
 		$logotitle_font_lineHeight_desktop = isset($logotitle_font['lineHeight']['desktop'])?$logotitle_font['lineHeight']['desktop']:$defaults_logotitle['lineHeight']['desktop'];
 		$logotitle_font_lineHeight_tablet = isset($logotitle_font['lineHeight']['tablet'])?$logotitle_font['lineHeight']['tablet']:$defaults_logotitle['lineHeight']['tablet'];
@@ -670,8 +697,11 @@ function solace_typography_elementor_add_custom() {
 		$button_font = get_theme_mod('solace_typeface_button');
 		$defaults_button = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_BUTTON );
 		$button_font_size_desktop = isset($button_font['fontSize']['desktop'])?$button_font['fontSize']['desktop']:$defaults_button['fontSize']['desktop'];
+		$button_font_size_desktop_unit = isset($button_font['fontSize']['suffix']['desktop'])?$button_font['fontSize']['suffix']['desktop']:$defaults_button['fontSize']['suffix']['desktop'];
 		$button_font_size_tablet = isset($button_font['fontSize']['tablet'])?$button_font['fontSize']['tablet']:$defaults_button['fontSize']['tablet'];
+		$button_font_size_tablet_unit = isset($button_font['fontSize']['suffix']['tablet'])?$button_font['fontSize']['suffix']['tablet']:$defaults_button['fontSize']['suffix']['tablet'];
 		$button_font_size_mobile = isset($button_font['fontSize']['mobile'])?$button_font['fontSize']['mobile']:$defaults_button['fontSize']['mobile'];
+		$button_font_size_mobile_unit = isset($button_font['fontSize']['suffix']['mobile'])?$button_font['fontSize']['suffix']['mobile']:$defaults_button['fontSize']['suffix']['mobile'];
 		
 		$button_font_lineHeight_desktop = isset($button_font['lineHeight']['desktop'])?$button_font['lineHeight']['desktop']:$defaults_button['lineHeight']['desktop'];
 		$button_font_lineHeight_tablet = isset($button_font['lineHeight']['tablet'])?$button_font['lineHeight']['tablet']:$defaults_button['lineHeight']['tablet'];
@@ -695,7 +725,7 @@ function solace_typography_elementor_add_custom() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $primary,
 				'typography_font_size' => [
-					'unit' => 'px',
+					'unit' => $smaller_font_size_desktop_unit,
 					'size' => isset($smaller_font_size_desktop)?$smaller_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -712,12 +742,12 @@ function solace_typography_elementor_add_custom() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+					'unit' => $smaller_font_size_tablet_unit,
 					'size' => $smaller_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $smaller_font_size_mobile_unit,
 					'size' => $smaller_font_size_mobile,
 					'sizes' => []
 				],
@@ -748,7 +778,7 @@ function solace_typography_elementor_add_custom() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $secondary,
 				'typography_font_size' => [
-					'unit' => 'px',
+					'unit' => $logotitle_font_size_desktop_unit,
 					'size' => isset($logotitle_font_size_desktop)?$logotitle_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -765,12 +795,12 @@ function solace_typography_elementor_add_custom() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+					'unit' => $logotitle_font_size_tablet_unit,
 					'size' => $logotitle_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $logotitle_font_size_mobile_unit,
 					'size' => $logotitle_font_size_mobile,
 					'sizes' => []
 				],
@@ -854,7 +884,7 @@ function solace_typography_elementor_add_custom() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $accent,
 				'typography_font_size' => [
-					'unit' => 'px',
+					'unit' => $button_font_size_desktop_unit,
 					'size' => isset($button_font_size_desktop)?$button_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -871,12 +901,12 @@ function solace_typography_elementor_add_custom() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+					'unit' => $button_font_size_tablet_unit,
 					'size' => $button_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $button_font_size_mobile_unit,
 					'size' => $button_font_size_mobile,
 					'sizes' => []
 				],
@@ -960,7 +990,7 @@ function solace_typography_elementor_add_custom() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_h1_font_family_general,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $h1_font_size_desktop_unit,
 					'size' => isset($h1_font_size_desktop)?$h1_font_size_desktop:'68',
 					'sizes' => []
 				],
@@ -977,12 +1007,12 @@ function solace_typography_elementor_add_custom() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+				'unit' => $h1_font_size_tablet_unit,
 					'size' => $h1_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $h1_font_size_mobile_unit,
 					'size' => $h1_font_size_mobile,
 					'sizes' => []
 				],
@@ -1013,7 +1043,7 @@ function solace_typography_elementor_add_custom() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_h2_font_family_general,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $h2_font_size_desktop_unit,
 					'size' => isset($h2_font_size_desktop)?$h2_font_size_desktop:'50',
 					'sizes' => []
 				],
@@ -1030,12 +1060,12 @@ function solace_typography_elementor_add_custom() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+				'unit' => $h2_font_size_tablet_unit,
 					'size' => $h2_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $h2_font_size_mobile_unit,
 					'size' => $h2_font_size_mobile,
 					'sizes' => []
 				],
@@ -1066,7 +1096,7 @@ function solace_typography_elementor_add_custom() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_h3_font_family_general,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $h3_font_size_desktop_unit,
 					'size' => isset($h3_font_size_desktop)?$h3_font_size_desktop:'38',
 					'sizes' => []
 				],
@@ -1083,12 +1113,12 @@ function solace_typography_elementor_add_custom() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+				'unit' => $h3_font_size_tablet_unit,
 					'size' => $h3_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $h3_font_size_mobile_unit,
 					'size' => $h3_font_size_mobile,
 					'sizes' => []
 				],
@@ -1119,7 +1149,7 @@ function solace_typography_elementor_add_custom() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_h4_font_family_general,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $h4_font_size_desktop_unit,
 					'size' => isset($h4_font_size_desktop)?$h4_font_size_desktop:'28',
 					'sizes' => []
 				],
@@ -1136,12 +1166,12 @@ function solace_typography_elementor_add_custom() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+				'unit' => $h4_font_size_tablet_unit,
 					'size' => $h4_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $h4_font_size_mobile_unit,
 					'size' => $h4_font_size_mobile,
 					'sizes' => []
 				],
@@ -1172,7 +1202,7 @@ function solace_typography_elementor_add_custom() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_h5_font_family_general,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $h5_font_size_desktop_unit,
 					'size' => isset($h5_font_size_desktop)?$h5_font_size_desktop:'21',
 					'sizes' => []
 				],
@@ -1189,12 +1219,12 @@ function solace_typography_elementor_add_custom() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+				'unit' => $h5_font_size_tablet_unit,
 					'size' => $h5_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $h5_font_size_mobile_unit,
 					'size' => $h5_font_size_mobile,
 					'sizes' => []
 				],
@@ -1225,7 +1255,7 @@ function solace_typography_elementor_add_custom() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_h6_font_family_general,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $h6_font_size_desktop_unit,
 					'size' => isset($h6_font_size_desktop)?$h6_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -1242,12 +1272,12 @@ function solace_typography_elementor_add_custom() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+				'unit' => $h6_font_size_tablet_unit,
 					'size' => $h6_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $h6_font_size_mobile_unit,
 					'size' => $h6_font_size_mobile,
 					'sizes' => []
 				],
@@ -1278,7 +1308,7 @@ function solace_typography_elementor_add_custom() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_smaller_font_family,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $smaller_font_size_desktop_unit,
 					'size' => isset($smaller_font_size_desktop)?$smaller_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -1295,12 +1325,12 @@ function solace_typography_elementor_add_custom() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+					'unit' => $smaller_font_size_tablet_unit,
 					'size' => $smaller_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $smaller_font_size_mobile_unit,
 					'size' => $smaller_font_size_mobile,
 					'sizes' => []
 				],
@@ -1331,7 +1361,7 @@ function solace_typography_elementor_add_custom() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_logotitle_font_family,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $logotitle_font_size_desktop_unit,
 					'size' => isset($logotitle_font_size_desktop)?$logotitle_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -1348,12 +1378,12 @@ function solace_typography_elementor_add_custom() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+					'unit' => $logotitle_font_size_tablet_unit,
 					'size' => $logotitle_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $logotitle_font_size_mobile_unit,
 					'size' => $logotitle_font_size_mobile,
 					'sizes' => []
 				],
@@ -1384,7 +1414,7 @@ function solace_typography_elementor_add_custom() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_button_font_family,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $button_font_size_desktop_unit,
 					'size' => isset($button_font_size_desktop)?$button_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -1401,12 +1431,12 @@ function solace_typography_elementor_add_custom() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+					'unit' => $button_font_size_tablet_unit,
 					'size' => $button_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $button_font_size_mobile_unit,
 					'size' => $button_font_size_mobile,
 					'sizes' => []
 				],
@@ -1488,8 +1518,11 @@ function solace_font_save_customizer_settings() {
 		$defaults_h1 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H1 );
 		$h1_font = get_theme_mod('solace_h1_typeface_general');
 		$h1_font_size_desktop = isset($h1_font['fontSize']['desktop'])?$h1_font['fontSize']['desktop']:$defaults_h1['fontSize']['desktop'];
+		$h1_font_size_desktop_unit = isset($h1_font['fontSize']['suffix']['desktop'])?$h1_font['fontSize']['suffix']['desktop']:$defaults_h1['fontSize']['suffix']['desktop'];
 		$h1_font_size_tablet = isset($h1_font['fontSize']['tablet'])?$h1_font['fontSize']['tablet']:$defaults_h1['fontSize']['tablet'];
+		$h1_font_size_tablet_unit = isset($h1_font['fontSize']['suffix']['tablet'])?$h1_font['fontSize']['suffix']['tablet']:$defaults_h1['fontSize']['suffix']['tablet'];
 		$h1_font_size_mobile = isset($h1_font['fontSize']['mobile'])?$h1_font['fontSize']['mobile']:$defaults_h1['fontSize']['mobile'];
+		$h1_font_size_mobile_unit = isset($h1_font['fontSize']['suffix']['mobile'])?$h1_font['fontSize']['suffix']['mobile']:$defaults_h1['fontSize']['suffix']['mobile'];
 		
 		$h1_font_lineHeight_desktop = isset($h1_font['lineHeight']['desktop'])?$h1_font['lineHeight']['desktop']:$defaults_h1['lineHeight']['desktop'];
 		$h1_font_lineHeight_tablet = isset($h1_font['lineHeight']['tablet'])?$h1_font['lineHeight']['tablet']:$defaults_h1['lineHeight']['tablet'];
@@ -1509,8 +1542,11 @@ function solace_font_save_customizer_settings() {
 		$defaults_h2 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H2 );
 		$h2_font = get_theme_mod('solace_h2_typeface_general');
 		$h2_font_size_desktop = isset($h2_font['fontSize']['desktop'])?$h2_font['fontSize']['desktop']:$defaults_h2['fontSize']['desktop'];
+		$h2_font_size_desktop_unit = isset($h2_font['fontSize']['suffix']['desktop'])?$h2_font['fontSize']['suffix']['desktop']:$defaults_h2['fontSize']['suffix']['desktop'];
 		$h2_font_size_tablet = isset($h2_font['fontSize']['tablet'])?$h2_font['fontSize']['tablet']:$defaults_h2['fontSize']['tablet'];
+		$h2_font_size_tablet_unit = isset($h2_font['fontSize']['suffix']['tablet'])?$h2_font['fontSize']['suffix']['tablet']:$defaults_h2['fontSize']['suffix']['tablet'];
 		$h2_font_size_mobile = isset($h2_font['fontSize']['mobile'])?$h2_font['fontSize']['mobile']:$defaults_h2['fontSize']['mobile'];
+		$h2_font_size_mobile_unit = isset($h2_font['fontSize']['suffix']['mobile'])?$h2_font['fontSize']['suffix']['mobile']:$defaults_h2['fontSize']['suffix']['mobile'];
 		
 		$h2_font_lineHeight_desktop = isset($h2_font['lineHeight']['desktop'])?$h2_font['lineHeight']['desktop']:$defaults_h2['lineHeight']['desktop'];
 		$h2_font_lineHeight_tablet = isset($h2_font['lineHeight']['tablet'])?$h2_font['lineHeight']['tablet']:$defaults_h2['lineHeight']['tablet'];
@@ -1530,8 +1566,11 @@ function solace_font_save_customizer_settings() {
 		$defaults_h3 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H3 );
 		$h3_font = get_theme_mod('solace_h3_typeface_general');
 		$h3_font_size_desktop = isset($h3_font['fontSize']['desktop'])?$h3_font['fontSize']['desktop']:$defaults_h3['fontSize']['desktop'];
+		$h3_font_size_desktop_unit = isset($h3_font['fontSize']['suffix']['desktop'])?$h3_font['fontSize']['suffix']['desktop']:$defaults_h3['fontSize']['suffix']['desktop'];
 		$h3_font_size_tablet = isset($h3_font['fontSize']['tablet'])?$h3_font['fontSize']['tablet']:$defaults_h3['fontSize']['tablet'];
+		$h3_font_size_tablet_unit = isset($h3_font['fontSize']['suffix']['tablet'])?$h3_font['fontSize']['suffix']['tablet']:$defaults_h3['fontSize']['suffix']['tablet'];
 		$h3_font_size_mobile = isset($h3_font['fontSize']['mobile'])?$h3_font['fontSize']['mobile']:$defaults_h3['fontSize']['mobile'];
+		$h3_font_size_mobile_unit = isset($h3_font['fontSize']['suffix']['mobile'])?$h3_font['fontSize']['suffix']['mobile']:$defaults_h3['fontSize']['suffix']['mobile'];
 		
 		$h3_font_lineHeight_desktop = isset($h3_font['lineHeight']['desktop'])?$h3_font['lineHeight']['desktop']:$defaults_h3['lineHeight']['desktop'];
 		$h3_font_lineHeight_tablet = isset($h3_font['lineHeight']['tablet'])?$h3_font['lineHeight']['tablet']:$defaults_h3['lineHeight']['tablet'];
@@ -1552,8 +1591,11 @@ function solace_font_save_customizer_settings() {
 
 		$h4_font = get_theme_mod('solace_h4_typeface_general');
 		$h4_font_size_desktop = isset($h4_font['fontSize']['desktop'])?$h4_font['fontSize']['desktop']:$defaults_h4['fontSize']['desktop'];
+		$h4_font_size_desktop_unit = isset($h4_font['fontSize']['suffix']['desktop'])?$h4_font['fontSize']['suffix']['desktop']:$defaults_h4['fontSize']['suffix']['desktop'];
 		$h4_font_size_tablet = isset($h4_font['fontSize']['tablet'])?$h4_font['fontSize']['tablet']:$defaults_h4['fontSize']['tablet'];
+		$h4_font_size_tablet_unit = isset($h4_font['fontSize']['suffix']['tablet'])?$h4_font['fontSize']['suffix']['tablet']:$defaults_h4['fontSize']['suffix']['tablet'];
 		$h4_font_size_mobile = isset($h4_font['fontSize']['mobile'])?$h4_font['fontSize']['mobile']:$defaults_h4['fontSize']['mobile'];
+		$h4_font_size_mobile_unit = isset($h4_font['fontSize']['suffix']['mobile'])?$h4_font['fontSize']['suffix']['mobile']:$defaults_h4['fontSize']['suffix']['mobile'];
 		
 		$h4_font_lineHeight_desktop = isset($h4_font['lineHeight']['desktop'])?$h4_font['lineHeight']['desktop']:$defaults_h4['lineHeight']['desktop'];
 		$h4_font_lineHeight_tablet = isset($h4_font['lineHeight']['tablet'])?$h4_font['lineHeight']['tablet']:$defaults_h4['lineHeight']['tablet'];
@@ -1573,8 +1615,11 @@ function solace_font_save_customizer_settings() {
 		$defaults_h5 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H5 );
 		$h5_font = get_theme_mod('solace_h5_typeface_general');
 		$h5_font_size_desktop = isset($h5_font['fontSize']['desktop'])?$h5_font['fontSize']['desktop']:$defaults_h5['fontSize']['desktop'];
+		$h5_font_size_desktop_unit = isset($h5_font['fontSize']['suffix']['desktop'])?$h5_font['fontSize']['suffix']['desktop']:$defaults_h5['fontSize']['suffix']['desktop'];
 		$h5_font_size_tablet = isset($h5_font['fontSize']['tablet'])?$h5_font['fontSize']['tablet']:$defaults_h5['fontSize']['tablet'];
+		$h5_font_size_tablet_unit = isset($h5_font['fontSize']['suffix']['tablet'])?$h5_font['fontSize']['suffix']['tablet']:$defaults_h5['fontSize']['suffix']['tablet'];
 		$h5_font_size_mobile = isset($h5_font['fontSize']['mobile'])?$h5_font['fontSize']['mobile']:$defaults_h5['fontSize']['mobile'];
+		$h5_font_size_mobile_unit = isset($h5_font['fontSize']['suffix']['mobile'])?$h5_font['fontSize']['suffix']['mobile']:$defaults_h5['fontSize']['suffix']['mobile'];
 		
 		$h5_font_lineHeight_desktop = isset($h5_font['lineHeight']['desktop'])?$h5_font['lineHeight']['desktop']:$defaults_h5['lineHeight']['desktop'];
 		$h5_font_lineHeight_tablet = isset($h5_font['lineHeight']['tablet'])?$h5_font['lineHeight']['tablet']:$defaults_h5['lineHeight']['tablet'];
@@ -1594,8 +1639,11 @@ function solace_font_save_customizer_settings() {
 		$defaults_h6 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H6 );
 		$h6_font = get_theme_mod('solace_h6_typeface_general');
 		$h6_font_size_desktop = isset($h6_font['fontSize']['desktop'])?$h6_font['fontSize']['desktop']:$defaults_h6['fontSize']['desktop'];
+		$h6_font_size_desktop_unit = isset($h6_font['fontSize']['suffix']['desktop'])?$h6_font['fontSize']['suffix']['desktop']:$defaults_h6['fontSize']['suffix']['desktop'];
 		$h6_font_size_tablet = isset($h6_font['fontSize']['tablet'])?$h6_font['fontSize']['tablet']:$defaults_h6['fontSize']['tablet'];
+		$h6_font_size_tablet_unit = isset($h6_font['fontSize']['suffix']['tablet'])?$h6_font['fontSize']['suffix']['tablet']:$defaults_h6['fontSize']['suffix']['tablet'];
 		$h6_font_size_mobile = isset($h6_font['fontSize']['mobile'])?$h6_font['fontSize']['mobile']:$defaults_h6['fontSize']['mobile'];
+		$h6_font_size_mobile_unit = isset($h6_font['fontSize']['suffix']['mobile'])?$h6_font['fontSize']['suffix']['mobile']:$defaults_h6['fontSize']['suffix']['mobile'];
 		
 		$h6_font_lineHeight_desktop = isset($h6_font['lineHeight']['desktop'])?$h6_font['lineHeight']['desktop']:$defaults_h6['lineHeight']['desktop'];
 		$h6_font_lineHeight_tablet = isset($h6_font['lineHeight']['tablet'])?$h6_font['lineHeight']['tablet']:$defaults_h6['lineHeight']['tablet'];
@@ -1613,9 +1661,13 @@ function solace_font_save_customizer_settings() {
 
 		// $smaller_font = get_theme_mod('solace_smaller_typeface_general');
 		$smaller_font = get_theme_mod('solace_typeface_smaller');
+		$defaults_smaller = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_SMALLER );
 		$smaller_font_size_desktop = isset($smaller_font['fontSize']['desktop'])?$smaller_font['fontSize']['desktop']:$defaults_smaller['fontSize']['desktop'];
+		$smaller_font_size_desktop_unit = isset($smaller_font['fontSize']['suffix']['desktop'])?$smaller_font['fontSize']['suffix']['desktop']:$defaults_smaller['fontSize']['suffix']['desktop'];
 		$smaller_font_size_tablet = isset($smaller_font['fontSize']['tablet'])?$smaller_font['fontSize']['tablet']:$defaults_smaller['fontSize']['tablet'];
+		$smaller_font_size_tablet_unit = isset($smaller_font['fontSize']['suffix']['tablet'])?$smaller_font['fontSize']['suffix']['tablet']:$defaults_smaller['fontSize']['suffix']['tablet'];
 		$smaller_font_size_mobile = isset($smaller_font['fontSize']['mobile'])?$smaller_font['fontSize']['mobile']:$defaults_smaller['fontSize']['mobile'];
+		$smaller_font_size_mobile_unit = isset($smaller_font['fontSize']['suffix']['mobile'])?$smaller_font['fontSize']['suffix']['mobile']:$defaults_smaller['fontSize']['suffix']['mobile'];
 		
 		$smaller_font_lineHeight_desktop = isset($smaller_font['lineHeight']['desktop'])?$smaller_font['lineHeight']['desktop']:$defaults_smaller['lineHeight']['desktop'];
 		$smaller_font_lineHeight_tablet = isset($smaller_font['lineHeight']['tablet'])?$smaller_font['lineHeight']['tablet']:$defaults_smaller['lineHeight']['tablet'];
@@ -1632,9 +1684,13 @@ function solace_font_save_customizer_settings() {
 		$smaller_font_textTransform = isset($smaller_font['textTransform'])?$smaller_font['textTransform']:'';
 
 		$logotitle_font = get_theme_mod('solace_typeface_logotitle');
+		$defaults_logotitle = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_LOGOTITLE );
 		$logotitle_font_size_desktop = isset($logotitle_font['fontSize']['desktop'])?$logotitle_font['fontSize']['desktop']:$defaults_logotitle['fontSize']['desktop'];
+		$logotitle_font_size_desktop_unit = isset($logotitle_font['fontSize']['suffix']['desktop'])?$logotitle_font['fontSize']['suffix']['desktop']:$defaults_logotitle['fontSize']['suffix']['desktop'];
 		$logotitle_font_size_tablet = isset($logotitle_font['fontSize']['tablet'])?$logotitle_font['fontSize']['tablet']:$defaults_logotitle['fontSize']['tablet'];
+		$logotitle_font_size_tablet_unit = isset($logotitle_font['fontSize']['suffix']['tablet'])?$logotitle_font['fontSize']['suffix']['tablet']:$defaults_logotitle['fontSize']['suffix']['tablet'];
 		$logotitle_font_size_mobile = isset($logotitle_font['fontSize']['mobile'])?$logotitle_font['fontSize']['mobile']:$defaults_logotitle['fontSize']['mobile'];
+		$logotitle_font_size_mobile_unit = isset($logotitle_font['fontSize']['suffix']['mobile'])?$logotitle_font['fontSize']['suffix']['mobile']:$defaults_logotitle['fontSize']['suffix']['mobile'];
 		
 		$logotitle_font_lineHeight_desktop = isset($logotitle_font['lineHeight']['desktop'])?$logotitle_font['lineHeight']['desktop']:$defaults_logotitle['lineHeight']['desktop'];
 		$logotitle_font_lineHeight_tablet = isset($logotitle_font['lineHeight']['tablet'])?$logotitle_font['lineHeight']['tablet']:$defaults_logotitle['lineHeight']['tablet'];
@@ -1651,9 +1707,13 @@ function solace_font_save_customizer_settings() {
 		$logotitle_font_textTransform = isset($logotitle_font['textTransform'])?$logotitle_font['textTransform']:'';
 
 		$button_font = get_theme_mod('solace_typeface_button');
+		$defaults_button = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_BUTTON );
 		$button_font_size_desktop = isset($button_font['fontSize']['desktop'])?$button_font['fontSize']['desktop']:$defaults_button['fontSize']['desktop'];
+		$button_font_size_desktop_unit = isset($button_font['fontSize']['suffix']['desktop'])?$button_font['fontSize']['suffix']['desktop']:$defaults_button['fontSize']['suffix']['desktop'];
 		$button_font_size_tablet = isset($button_font['fontSize']['tablet'])?$button_font['fontSize']['tablet']:$defaults_button['fontSize']['tablet'];
+		$button_font_size_tablet_unit = isset($button_font['fontSize']['suffix']['tablet'])?$button_font['fontSize']['suffix']['tablet']:$defaults_button['fontSize']['suffix']['tablet'];
 		$button_font_size_mobile = isset($button_font['fontSize']['mobile'])?$button_font['fontSize']['mobile']:$defaults_button['fontSize']['mobile'];
+		$button_font_size_mobile_unit = isset($button_font['fontSize']['suffix']['mobile'])?$button_font['fontSize']['suffix']['mobile']:$defaults_button['fontSize']['suffix']['mobile'];
 		
 		$button_font_lineHeight_desktop = isset($button_font['lineHeight']['desktop'])?$button_font['lineHeight']['desktop']:$defaults_button['lineHeight']['desktop'];
 		$button_font_lineHeight_tablet = isset($button_font['lineHeight']['tablet'])?$button_font['lineHeight']['tablet']:$defaults_button['lineHeight']['tablet'];
@@ -1677,7 +1737,7 @@ function solace_font_save_customizer_settings() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $primary,
 				'typography_font_size' => [
-					'unit' => 'px',
+					'unit' => $smaller_font_size_desktop_unit,
 					'size' => isset($smaller_font_size_desktop)?$smaller_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -1694,12 +1754,12 @@ function solace_font_save_customizer_settings() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+					'unit' => $smaller_font_size_tablet_unit,
 					'size' => $smaller_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $smaller_font_size_mobile_unit,
 					'size' => $smaller_font_size_mobile,
 					'sizes' => []
 				],
@@ -1730,7 +1790,7 @@ function solace_font_save_customizer_settings() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $secondary,
 				'typography_font_size' => [
-					'unit' => 'px',
+					'unit' => $logotitle_font_size_desktop_unit,
 					'size' => isset($logotitle_font_size_desktop)?$logotitle_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -1747,12 +1807,12 @@ function solace_font_save_customizer_settings() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+					'unit' => $logotitle_font_size_tablet_unit,
 					'size' => $logotitle_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $logotitle_font_size_mobile_unit,
 					'size' => $logotitle_font_size_mobile,
 					'sizes' => []
 				],
@@ -1836,7 +1896,7 @@ function solace_font_save_customizer_settings() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $accent,
 				'typography_font_size' => [
-					'unit' => 'px',
+					'unit' => $button_font_size_desktop_unit,
 					'size' => isset($button_font_size_desktop)?$button_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -1853,12 +1913,12 @@ function solace_font_save_customizer_settings() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+					'unit' => $button_font_size_tablet_unit,
 					'size' => $button_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $button_font_size_mobile_unit,
 					'size' => $button_font_size_mobile,
 					'sizes' => []
 				],
@@ -1942,7 +2002,7 @@ function solace_font_save_customizer_settings() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_h1_font_family_general,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $h1_font_size_desktop_unit,
 					'size' => isset($h1_font_size_desktop)?$h1_font_size_desktop:'68',
 					'sizes' => []
 				],
@@ -1959,12 +2019,12 @@ function solace_font_save_customizer_settings() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+				'unit' => $h1_font_size_tablet_unit,
 					'size' => $h1_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $h1_font_size_mobile_unit,
 					'size' => $h1_font_size_mobile,
 					'sizes' => []
 				],
@@ -1995,7 +2055,7 @@ function solace_font_save_customizer_settings() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_h2_font_family_general,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $h2_font_size_desktop_unit,
 					'size' => isset($h2_font_size_desktop)?$h2_font_size_desktop:'50',
 					'sizes' => []
 				],
@@ -2012,12 +2072,12 @@ function solace_font_save_customizer_settings() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+				'unit' => $h2_font_size_tablet_unit,
 					'size' => $h2_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $h2_font_size_mobile_unit,
 					'size' => $h2_font_size_mobile,
 					'sizes' => []
 				],
@@ -2048,7 +2108,7 @@ function solace_font_save_customizer_settings() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_h3_font_family_general,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $h3_font_size_desktop_unit,
 					'size' => isset($h3_font_size_desktop)?$h3_font_size_desktop:'38',
 					'sizes' => []
 				],
@@ -2065,12 +2125,12 @@ function solace_font_save_customizer_settings() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+				'unit' => $h3_font_size_tablet_unit,
 					'size' => $h3_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $h3_font_size_mobile_unit,
 					'size' => $h3_font_size_mobile,
 					'sizes' => []
 				],
@@ -2101,7 +2161,7 @@ function solace_font_save_customizer_settings() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_h4_font_family_general,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $h4_font_size_desktop_unit,
 					'size' => isset($h4_font_size_desktop)?$h4_font_size_desktop:'28',
 					'sizes' => []
 				],
@@ -2118,12 +2178,12 @@ function solace_font_save_customizer_settings() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+				'unit' => $h4_font_size_tablet_unit,
 					'size' => $h4_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $h4_font_size_mobile_unit,
 					'size' => $h4_font_size_mobile,
 					'sizes' => []
 				],
@@ -2154,7 +2214,7 @@ function solace_font_save_customizer_settings() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_h5_font_family_general,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $h5_font_size_desktop_unit,
 					'size' => isset($h5_font_size_desktop)?$h5_font_size_desktop:'21',
 					'sizes' => []
 				],
@@ -2171,12 +2231,12 @@ function solace_font_save_customizer_settings() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+				'unit' => $h5_font_size_tablet_unit,
 					'size' => $h5_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $h5_font_size_mobile_unit,
 					'size' => $h5_font_size_mobile,
 					'sizes' => []
 				],
@@ -2207,7 +2267,7 @@ function solace_font_save_customizer_settings() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_h6_font_family_general,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $h6_font_size_desktop_unit,
 					'size' => isset($h6_font_size_desktop)?$h6_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -2224,12 +2284,12 @@ function solace_font_save_customizer_settings() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+				'unit' => $h6_font_size_tablet_unit,
 					'size' => $h6_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $h6_font_size_mobile_unit,
 					'size' => $h6_font_size_mobile,
 					'sizes' => []
 				],
@@ -2260,7 +2320,7 @@ function solace_font_save_customizer_settings() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_smaller_font_family,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $smaller_font_size_desktop_unit,
 					'size' => isset($smaller_font_size_desktop)?$smaller_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -2277,12 +2337,12 @@ function solace_font_save_customizer_settings() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+					'unit' => $smaller_font_size_tablet_unit,
 					'size' => $smaller_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $smaller_font_size_mobile_unit,
 					'size' => $smaller_font_size_mobile,
 					'sizes' => []
 				],
@@ -2313,7 +2373,7 @@ function solace_font_save_customizer_settings() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_logotitle_font_family,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $logotitle_font_size_desktop_unit,
 					'size' => isset($logotitle_font_size_desktop)?$logotitle_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -2330,12 +2390,12 @@ function solace_font_save_customizer_settings() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+					'unit' => $logotitle_font_size_tablet_unit,
 					'size' => $logotitle_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $logotitle_font_size_mobile_unit,
 					'size' => $logotitle_font_size_mobile,
 					'sizes' => []
 				],
@@ -2366,7 +2426,7 @@ function solace_font_save_customizer_settings() {
 				'typography_typography' => 'custom',
 				'typography_font_family' => $solace_button_font_family,
 				'typography_font_size' => [
-					'unit' => 'px',
+				'unit' => $button_font_size_desktop_unit,
 					'size' => isset($button_font_size_desktop)?$button_font_size_desktop:'16',
 					'sizes' => []
 				],
@@ -2383,12 +2443,12 @@ function solace_font_save_customizer_settings() {
 					'sizes' => []
 				],
 				'typography_font_size_tablet' => [
-					'unit' => 'px',
+					'unit' => $button_font_size_tablet_unit,
 					'size' => $button_font_size_tablet,
 					'sizes' => []
 				],
 				'typography_font_size_mobile' => [
-					'unit' => 'px',
+					'unit' => $button_font_size_mobile_unit,
 					'size' => $button_font_size_mobile,
 					'sizes' => []
 				],

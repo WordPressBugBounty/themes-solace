@@ -257,7 +257,7 @@ class Lifter {
 	public function load_styles() {
 		$path = solace_is_new_skin() ? 'lifter' : 'lifter-legacy';
 
-		wp_enqueue_style( 'solace-lifter', SOLACE_ASSETS_URL . 'css/' . $path . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css', array(), apply_filters( 'solace_version_filter', SOLACE_VERSION ) );
+		wp_enqueue_style( 'solace-lifter', SOLACE_ASSETS_URL . 'css/' . $path . ( ( SOLACE_DEBUG ) ? '' : '.min' ) . '.css?v=' . time(), array(), apply_filters( 'solace_version_filter', SOLACE_VERSION ) );
 	}
 
 	/**

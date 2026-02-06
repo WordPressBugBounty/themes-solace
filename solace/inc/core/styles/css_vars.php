@@ -549,7 +549,7 @@ trait Css_Vars {
 			'--logotitlefontsize'       => [
 				Dynamic_Selector::META_KEY           => $logotitle_key . '.fontSize',
 				Dynamic_Selector::META_DEFAULT       => $logotitle_default['fontSize'],
-				// Dynamic_Selector::META_IS_RESPONSIVE => true,
+				Dynamic_Selector::META_IS_RESPONSIVE => true,
 				Dynamic_Selector::META_SUFFIX        => 'px',
 			],
 			'--logotitlelineheight'     => [

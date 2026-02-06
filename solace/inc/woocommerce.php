@@ -43,7 +43,7 @@ add_action( 'after_setup_theme', 'solace_woocommerce_setup' );
  * @return void
  */
 function solace_woocommerce_scripts() {
-	wp_enqueue_style( 'solace-woocommerce-style', get_template_directory_uri() . '/assets/css/woocommerce.min.css', array(), SOLACE_VERSION );
+	wp_enqueue_style( 'solace-woocommerce-style', get_template_directory_uri() . '/assets/css/woocommerce.min.css?v=' . time(), array(), SOLACE_VERSION );
 
 	$font_path   = WC()->plugin_url() . '/assets/fonts/';
 	$inline_font = '@font-face {

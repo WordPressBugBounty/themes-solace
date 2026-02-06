@@ -94,9 +94,9 @@ final class Solace_Register_Tab_Header
 	public function enqueue_control_scripts()
 	{
 
-		// wp_enqueue_style('solace-customize-controls-style', get_theme_file_uri('/inc/customizer/style.css'));
+		// 	wp_enqueue_style( 'solace-customize-controls-style', get_template_directory_uri() . '/inc/customizer/style.css?v=' . time(), array(), SOLACE_VERSION, 'all' );
 
-		wp_enqueue_script('solace-customize-controls-script', get_theme_file_uri('/inc/customizer/tab-header/scripts.js'), array('jquery'), '1.0.1', true);
+		wp_enqueue_script( 'solace-customize-controls-script', get_template_directory_uri() . '/inc/customizer/tab-header/scripts.js?v=' . time(), array( 'jquery' ), SOLACE_VERSION, true );
 	}
 }
 

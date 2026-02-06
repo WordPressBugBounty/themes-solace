@@ -49,6 +49,11 @@ function solace_get_woocommerce_page_title() {
 }
 
 function solace_content_before_woocommerce_pages() {
+	$body_classes = get_body_class();
+
+	if (in_array('woocommerce-page', $body_classes)) {
+		return;
+	} 
 	$sol_page_title = get_theme_mod('solace_blog_page_title_blog_title',true );
 	$sol_page_header = get_theme_mod('solace_blog_page_title_page_header',false);
 	$sol_page_breadcrumb = get_theme_mod('solace_blog_page_title_breadcrumb',true);
@@ -136,31 +141,28 @@ function solace_content_before_woocommerce_pages() {
 						<?php woocommerce_breadcrumb(); ?>
 					</div>   
 				<?php
-				}
+				}?>
+				<?php if ( $sol_page_title ) : ?>
+					<?php echo !empty( $css_sol_page_title ) ? $css_sol_page_title : ''; ?>
+					<h1 class="solace-header solace-blog-title">
+						<?php echo $woocommerce_page_title; ?>
+					</h1>
+				<?php endif; ?>
 
-				if ( $sol_page_title ){
-					
-					echo !empty( $css_sol_page_title )? $css_sol_page_title:''?>
-						<h1 class='solace-header solace-blog-title'>
-							<?php
-							
-							// $blog_title = get_the_title(get_option('page_for_posts'));
-							echo $woocommerce_page_title;?>
-						</h1>
-				<?php }
-				if ( $sol_page_description  && !is_search() && !is_category()){
-					$page_for_posts_id = get_option('page_for_posts');
-					$page_for_posts = get_post($page_for_posts_id);
-					echo !empty( $css_sol_page_description )? $css_sol_page_description:''?>
-					<div class='solace-header solace-description'>
-						<?php
-						//  echo apply_filters('the_content', $page_for_posts->post_content);
-							echo apply_filters('the_content', $shop_page->post_content);
-							
-							?>
-					</div>
-				<?php }
-				?>
+				<?php if ( $sol_page_description && !is_search() && !is_category() ) : ?>
+					<?php
+						$page_for_posts_id = get_option('page_for_posts');
+						$page_for_posts = get_post( $page_for_posts_id );
+						echo !empty( $css_sol_page_description ) ? $css_sol_page_description : '';
+					?>
+
+					<?php if ( !is_woocommerce() && !is_cart() && !is_checkout() && !is_account_page() ) : ?>
+						<div class="solace-header solace-description">
+							<?php echo apply_filters( 'the_content', $shop_page->post_content ); ?>
+						</div>
+					<?php endif; ?>
+				<?php endif; ?>
+
 			</header>
 			<style>
 				.solace-header:last-child {
@@ -170,7 +172,6 @@ function solace_content_before_woocommerce_pages() {
 		<?php }
 	} 	
 }
-
 add_action('woocommerce_before_cart', 'solace_content_before_woocommerce_pages', 10);
 add_action('woocommerce_before_checkout_form', 'solace_content_before_woocommerce_pages', 10);
 add_action('woocommerce_before_my_account', 'solace_content_before_woocommerce_pages', 10);

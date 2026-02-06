@@ -1713,6 +1713,13 @@ li.customize-control-solace_toggle_control_flex .components-flex {
 .solace-hfg-builder button.popover-item .dashicon {
   margin: 0 0 10px !important;
 }
+.solace-hfg-builder button.popover-item.active {
+  opacity: 0.5;
+}
+.solace-hfg-builder button.popover-item:focus:not(:disabled) {
+  box-shadow: none;
+  outline: none;
+}
 .solace-hfg-builder .ext.popover-item {
   position: relative;
   opacity: 0.45;
@@ -2469,14 +2476,14 @@ ul[id^=sub-accordion-panel-hfg_] #accordion-section-solace_header_presets {
   cursor: pointer;
 }
 
-#sub-accordion-section-solace_blog_archive_layout .customize-control:not(#customize-control-solace_blog_archive_layout):not(.customize-control-customizer-heading) {
+#sub-accordion-section-solace_blog_archive_layout .customize-control:not(#customize-control-solace_blog_archive_layout):not(.customize-control-customizer-heading):not(li#customize-control-solace_archive_maximum_excerpt_length) {
   margin-bottom: -1px !important;
   background-color: #fff;
   padding: 12px 15px;
   margin-left: -15px;
   position: relative;
 }
-#sub-accordion-section-solace_blog_archive_layout .customize-control:not(#customize-control-solace_blog_archive_layout):not(.customize-control-customizer-heading) .solace-white-background-control {
+#sub-accordion-section-solace_blog_archive_layout .customize-control:not(#customize-control-solace_blog_archive_layout):not(.customize-control-customizer-heading):not(li#customize-control-solace_archive_maximum_excerpt_length) .solace-white-background-control {
   margin: 0;
 }
 #sub-accordion-section-solace_blog_archive_layout .customize-control-customizer-heading {
@@ -2488,6 +2495,9 @@ ul[id^=sub-accordion-panel-hfg_] #accordion-section-solace_header_presets {
 #sub-accordion-section-solace_blog_archive_layout .solace-white-background-control {
   border: none !important;
   padding: 0;
+}
+#sub-accordion-section-solace_blog_archive_layout li#customize-control-solace_archive_maximum_excerpt_length .solace-range-control {
+  margin: unset;
 }
 
 #sub-accordion-section-solace_form_fields_section #customize-control-solace_form_fields_padding,

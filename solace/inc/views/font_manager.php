@@ -248,7 +248,7 @@ class Font_Manager extends Base_View {
 			return $url;
 		}
 
-		wp_enqueue_style( 'solace-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), SOLACE_VERSION );
+		wp_enqueue_style( 'solace-google-font-' . str_replace( ' ', '-', strtolower( $font ) ), $url, array(), time() );
 	}
 
 	/**

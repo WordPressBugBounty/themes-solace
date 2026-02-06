@@ -793,6 +793,32 @@ class Mods {
 					'bottom' => $new ? 2 : 1,
 					'unit'   => 'px',
 				];
+			case Config::MODS_TYPEFACE_CHECKOUT_TITLE:
+					return [
+						'fontSize'      => [
+							'suffix'  => [
+								'mobile'  => 'px',
+								'tablet'  => 'px',
+								'desktop' => 'px',
+							],
+							'mobile'  => 21,
+							'tablet'  => 28,
+							'desktop' => 38,
+						],
+						'lineHeight'    => [
+							'mobile'  => 1.5,
+							'tablet'  => 1.5,
+							'desktop' => 1.5,
+							'suffix'  => $lineheight_sufix,
+						],
+						'letterSpacing' => [
+							'mobile'  => 0,
+							'tablet'  => 0,
+							'desktop' => 0,
+						],
+						'fontWeight'    => '600',
+						'textTransform' => 'uppercase',
+					];				
 			default:
 				return false;
 		}
