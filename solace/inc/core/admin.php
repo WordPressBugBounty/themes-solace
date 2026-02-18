@@ -639,13 +639,39 @@ class Admin {
 	 * Remove notice;
 	 */
 	public function remove_notice() {
-		if ( ! isset( $_POST['nonce'] ) ) {
-			return;
+		// Ensure only administrators can dismiss admin notices.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				array(
+					'message' => 'Insufficient permissions.',
+					'status'  => 'error',
+				)
+			);
 		}
-		if ( ! wp_verify_nonce( sanitize_text_field( $_POST['nonce'] ), 'remove_notice_confirmation' ) ) {
-			return;
+
+		if ( ! isset( $_POST['nonce'] ) ) {
+			wp_send_json_error(
+				array(
+					'message' => 'Security check failed. Missing nonce',
+					'status'  => 'error',
+				)
+			);
+		}
+		if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'remove_notice_confirmation' ) ) {
+			wp_send_json_error(
+				array(
+					'message' => 'Security check failed. Invalid nonce',
+					'status'  => 'error',
+				)
+			);
 		}
 		update_option( $this->dismiss_notice_key, 'yes' );
+		wp_send_json_success(
+			array(
+				'success' => true,
+				'status'  => 'success',
+			)
+		);
 		wp_die();
 	}
 

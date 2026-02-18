@@ -74,6 +74,7 @@ ul.customize-pane-child.open .range-slider span {
 #accordion-section-solace_colors_background_section.hide,
 #accordion-section-solace_typography_headings.hide,
 #accordion-section-solace_wc_custom_general_buttons.hide,
+#accordion-section-solace_features_scroll_to_top.hide,
 #accordion-section-solace_container.hide,
 #accordion-section-sidebar_sidebar.hide,
 #accordion-section-solace_blog_archive_layout.hide,
@@ -87,9 +88,7 @@ ul.customize-pane-child.open .range-slider span {
 #accordion-section-solace_wc_product_page.hide,
 #accordion-section-solace_wc_single_product.hide,
 #accordion-panel-solace_panel_wc_product_page.hide,
-#accordion-panel-solace_wc_custom_single_product.hide,
-#accordion-section-solace_features_scroll_to_top.hide
- {
+#accordion-panel-solace_wc_custom_single_product.hide {
    
     overflow: hidden;
     transition: visibility 0s, opacity 0.5s linear;
@@ -110,6 +109,7 @@ ul.customize-pane-child.open .range-slider span {
 #accordion-section-solace_colors_background_section,
 #accordion-section-solace_typography_headings,
 #accordion-section-solace_wc_custom_general_buttons,
+#accordion-section-solace_features_scroll_to_top,
 #accordion-section-solace_container,
 #accordion-section-solace_blog_archive_layout,
 #accordion-section-solace_single_post_layout,
@@ -122,8 +122,7 @@ ul.customize-pane-child.open .range-slider span {
 #accordion-section-solace_wc_product_page,
 #accordion-section-solace_wc_single_product,
 #accordion-panel-solace_panel_wc_product_page,
-#accordion-panel-solace_wc_custom_single_product,
-#accordion-section-solace_features_scroll_to_top {
+#accordion-panel-solace_wc_custom_single_product {
     transition: all .3s ease-out;
     display: list-item !important;
     
@@ -166,6 +165,7 @@ ul.customize-pane-child.open .range-slider span {
 #accordion-section-solace_colors_background_section .accordion-section-title,
 #accordion-section-solace_typography_headings .accordion-section-title,
 #accordion-section-solace_wc_custom_general_buttons .accordion-section-title,
+#accordion-section-solace_features_scroll_to_top .accordion-section-title,
 #accordion-section-solace_single_page_layout .accordion-section-title,
 #accordion-section-solace_container .accordion-section-title,
 #accordion-section-solace_sidebar .accordion-section-title,
@@ -180,7 +180,6 @@ ul.customize-pane-child.open .range-slider span {
 #accordion-section-solace_wc_single_product .accordion-section-title,
 #accordion-panel-solace_panel_wc_product_page .accordion-section-title,
 #accordion-panel-solace_wc_custom_single_product .accordion-section-title,
-#accordion-section-solace_features_scroll_to_top .accordion-section-title,
 #accordion-section-solace_typography_headings .accordion-section-title,
 #accordion-section-solace_single_page_layout .accordion-section-title,
 #accordion-panel-widgets .accordion-section-title,
@@ -197,6 +196,7 @@ ul.customize-pane-child.open .range-slider span {
 #accordion-section-solace_colors_background_section .accordion-section-title button.accordion-trigger,
 #accordion-section-solace_typography_headings .accordion-section-title button.accordion-trigger,
 #accordion-section-solace_wc_custom_general_buttons .accordion-section-title button.accordion-trigger,
+#accordion-section-solace_features_scroll_to_top .accordion-section-title button.accordion-trigger,
 #accordion-section-solace_single_page_layout .accordion-section-title button.accordion-trigger,
 #accordion-section-solace_container .accordion-section-title button.accordion-trigger,
 #accordion-section-solace_sidebar .accordion-section-title button.accordion-trigger,
@@ -211,7 +211,6 @@ ul.customize-pane-child.open .range-slider span {
 #accordion-section-solace_wc_custom_general_account .accordion-section-title button.accordion-trigger,
 #accordion-panel-solace_panel_wc_product_page .accordion-section-title button.accordion-trigger,
 #accordion-panel-solace_wc_custom_single_product .accordion-section-title button.accordion-trigger,
-#accordion-section-solace_features_scroll_to_top .accordion-section-title button.accordion-trigger,
 #accordion-section-solace_typography_headings .accordion-section-title button.accordion-trigger,
 #accordion-section-solace_single_page_layout .accordion-section-title button.accordion-trigger,
 #accordion-panel-widgets .accordion-section-title button.accordion-trigger,
@@ -226,18 +225,8 @@ ul.customize-pane-child.open .range-slider span {
     overflow: hidden !important;
 }
 
-
-li#accordion-section-solace_general_options,
-li#accordion-section-solace_page_settings,
-li#accordion-section-solace_features {
-    /* display: list-item !important; */
-}
-
 #customize-controls #accordion-section-solace_page_settings .accordion-section-title::before {
     content: url(../../../assets/img/customizer/sol-icon-page-settings.svg);
-}
-#customize-controls #accordion-section-solace_features .accordion-section-title::before {
-    content: url(../../../assets/img/customizer/sol-icon-features.svg);
 }
 #customize-theme-controls .customize-pane-parent>.control-section .accordion-section-title {
     margin-top: 0;
@@ -248,7 +237,6 @@ li#accordion-section-solace_features {
 #customize-controls #accordion-section-solace_page_settings,
 #customize-controls #accordion-panel-hfg_header,
 #customize-controls #accordion-panel-hfg_footer,
-#customize-controls #accordion-section-solace_features,
 #customize-controls #accordion-panel-solace_wc_custom,
 #customize-controls #accordion-panel-woocommerce,
 #customize-controls #accordion-section-solace_core_options {
@@ -266,21 +254,18 @@ li#accordion-section-solace_features {
 #customize-controls #accordion-panel-hfg_header:hover::after,
 #customize-controls #accordion-panel-hfg_footer:hover::after,
 #customize-controls #accordion-panel-solace_wc_custom:hover::after,
-#customize-controls #accordion-section-solace_core_options:hover::after,
-#customize-controls #accordion-section-solace_features:hover::after {
+#customize-controls #accordion-section-solace_core_options:hover::after {
     color: var(--sol-customizer-panel-bg-color);
 }
 
 #customize-controls #accordion-section-solace_general_options.up:hover::after,
 #customize-controls #accordion-section-solace_page_settings.up:hover::after,
-#customize-controls #accordion-section-solace_features.up:hover::after,
 #customize-controls #accordion-section-solace_core_options.up:hover::after,
 #customize-controls #accordion-section-solace_general_options.down:hover::after,
 #customize-controls #accordion-section-solace_page_settings.down:hover::after,
 #customize-controls #accordion-section-solace_core_options.down:hover::after,
 #customize-controls #accordion-panel-solace_wc_custom.up:hover::after,
-#customize-controls #accordion-panel-solace_wc_custom.down:hover::after,
-#customize-controls #accordion-section-solace_features.down:hover::after {
+#customize-controls #accordion-panel-solace_wc_custom.down:hover::after {
     color: var(--sol-customizer-panel-bg-color);
 }
 
@@ -288,7 +273,6 @@ li#accordion-section-solace_features {
 #customize-controls #accordion-section-solace_page_settings.up::after,
 #customize-controls #accordion-panel-solace_wc_custom.up::after,
 #customize-controls #accordion-panel-solace_wc_custom.up::after,
-#customize-controls #accordion-section-solace_features.up::after,
 #customize-controls #accordion-panel-solace_wc_custom.up::after,
 #customize-controls #accordion-section-solace_core_options.up::after {
     content: '\f343';
@@ -310,17 +294,15 @@ li#accordion-section-solace_features {
 }
 
 /* #customize-controls li#accordion-section-solace_typography_headings, */
-#customize-controls li#accordion-section-solace_features_scroll_to_top,
 #customize-controls li#accordion-section-solace_single_page_layout,
-#customize-controls li#accordion-section-solace_wc_custom_general_buttons {
+#customize-controls li#accordion-section-solace_features_scroll_to_top {
     margin-bottom: 15px;
 }
 
 #customize-controls #accordion-section-solace_general_options::after,
 #customize-controls #accordion-section-solace_page_settings::after,
 #customize-controls #accordion-panel-solace_wc_custom::after,
-#customize-controls #accordion-section-solace_core_options::after,
-#customize-controls #accordion-section-solace_features::after {
+#customize-controls #accordion-section-solace_core_options::after {
 	/* content: '\f140'; */
     /* content: '\f345'; */
     all: unset;
@@ -354,6 +336,7 @@ li#accordion-section-solace_features {
 #accordion-section-solace_colors_background_section .accordion-section-title::before,
 #accordion-section-solace_typography_headings .accordion-section-title::before,
 #accordion-section-solace_wc_custom_general_buttons .accordion-section-title::before,
+#accordion-section-solace_features_scroll_to_top .accordion-section-title::before,
 #accordion-section-solace_container .accordion-section-title::before,
 #accordion-section-solace_sidebar .accordion-section-title::before,
 #accordion-section-solace_blog_archive_layout .accordion-section-title::before,
@@ -367,7 +350,6 @@ li#accordion-section-solace_features {
 #accordion-section-solace_wc_product_page .accordion-section-title::before,
 #accordion-section-solace_wc_single_product .accordion-section-title::before,
 #accordion-panel-solace_panel_wc_product_page .accordion-section-title::before,
-#accordion-section-solace_features_scroll_to_top .accordion-section-title::before,
 #accordion-panel-solace_wc_custom_single_product .accordion-section-title::before{
     content: "" !important;
 }
@@ -384,6 +366,7 @@ li#accordion-section-solace_features {
 #accordion-section-solace_colors_background_section .accordion-section-title,
 #accordion-section-solace_typography_headings .accordion-section-title,
 #accordion-section-solace_wc_custom_general_buttons .accordion-section-title,
+#accordion-section-solace_features_scroll_to_top .accordion-section-title,
 #accordion-section-solace_container .accordion-section-title,
 #accordion-section-solace_sidebar .accordion-section-title,
 #accordion-section-solace_blog_archive_layout .accordion-section-title,
@@ -397,8 +380,7 @@ li#accordion-section-solace_features {
 #accordion-section-solace_wc_product_page .accordion-section-title,
 #accordion-section-solace_wc_single_product .accordion-section-title,
 #accordion-panel-solace_panel_wc_product_page .accordion-section-title,
-#accordion-panel-solace_wc_custom_single_product .accordion-section-title,
-#accordion-section-solace_features_scroll_to_top .accordion-section-title {
+#accordion-panel-solace_wc_custom_single_product .accordion-section-title {
     background-color: transparent;
     font-size: 16px !important;
     font-weight: 400 !important;

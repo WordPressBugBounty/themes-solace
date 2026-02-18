@@ -3,7 +3,6 @@ jQuery(document).ready(function($) {
 
 	$( "#accordion-section-solace_general_options" ).addClass( "down" );
 	$( "#accordion-section-solace_page_settings" ).addClass( "down" );
-	$( "#accordion-section-solace_features" ).addClass( "down" );
 	$( "#accordion-panel-solace_wc_custom" ).addClass( "down" );
 	$( "#accordion-section-solace_core_options" ).addClass( "down" );
 	
@@ -11,6 +10,7 @@ jQuery(document).ready(function($) {
 	$( "#accordion-section-solace_colors_background_section" ).addClass( "hide" );
 	$( "#accordion-section-solace_typography_headings" ).addClass( "hide" );
 	$( "#accordion-section-solace_wc_custom_general_buttons" ).addClass( "hide" );
+	$( "#accordion-section-solace_features_scroll_to_top" ).addClass( "hide" );
 
 	$( "#accordion-section-solace_container" ).addClass( "hide" );
 	$( "#accordion-section-solace_sidebar" ).addClass( "hide" );
@@ -18,7 +18,6 @@ jQuery(document).ready(function($) {
 	$( "#accordion-section-solace_blog_page_title" ).addClass( "hide" );
 	$( "#accordion-section-solace_single_post_layout" ).addClass( "hide" );
 	$( "#accordion-section-solace_single_page_layout" ).addClass( "hide" );
-	$( "#accordion-section-solace_features_scroll_to_top" ).addClass( "hide" );
 	$( "#accordion-panel-solace_wc_custom_general" ).addClass( "hide" );
 	$( "#accordion-section-solace_wc_custom_general_cart_pages" ).addClass( "hide" );
 	$( "#accordion-section-solace_wc_custom_general_checkout" ).addClass( "hide" );
@@ -54,6 +53,7 @@ jQuery(document).ready(function($) {
 			$( "#accordion-section-solace_typography_headings" ).removeClass( "hide" );
 			$( "#accordion-section-solace_colors_background_section" ).removeClass( "hide" );
 			$( "#accordion-section-solace_wc_custom_general_buttons" ).removeClass( "hide" );
+			$( "#accordion-section-solace_features_scroll_to_top" ).removeClass( "hide" );
 			$( "#accordion-section-solace_general_options" ).removeClass( "down" );
 			$( "#accordion-section-solace_general_options" ).addClass( "up" );
 			
@@ -61,6 +61,7 @@ jQuery(document).ready(function($) {
 			$( "#accordion-section-solace_typography_headings" ).addClass( "hide" );
 			$( "#accordion-section-solace_colors_background_section" ).addClass( "hide" );
 			$( "#accordion-section-solace_wc_custom_general_buttons" ).addClass( "hide" );
+			$( "#accordion-section-solace_features_scroll_to_top" ).addClass( "hide" );
 			$( "#accordion-section-solace_general_options" ).removeClass( "up" );
 			$( "#accordion-section-solace_general_options" ).addClass( "down" );
 		}
@@ -174,25 +175,6 @@ jQuery(document).ready(function($) {
 
 			$( "#accordion-section-solace_blog_archive_layout" ).removeClass( "up" );
 			$( "#accordion-section-solace_blog_archive_layout" ).addClass( "down" );
-		}
-		return false;
-
-	});
-
-	$('#accordion-section-solace_features').on('click', function(e) {
-		
-		e.preventDefault();
-
-		if ($("#accordion-section-solace_features_scroll_to_top").hasClass('hide')) {
-			$( "#accordion-section-solace_features_scroll_to_top" ).removeClass( "hide" );
-
-			$( "#accordion-section-solace_features" ).removeClass( "down" );
-			$( "#accordion-section-solace_features" ).addClass( "up" );
-		} else {
-			$( "#accordion-section-solace_features_scroll_to_top" ).addClass( "hide" );
-
-			$( "#accordion-section-solace_features" ).removeClass( "up" );
-			$( "#accordion-section-solace_features" ).addClass( "down" );
 		}
 		return false;
 

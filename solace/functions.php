@@ -18,7 +18,7 @@ if (!defined('SOLACE_DEBUG')) {
 
 if (!defined('SOLACE_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('SOLACE_VERSION', '2.1.16');
+	define('SOLACE_VERSION', '2.1.17');
 }
 
 require_once 'inc/compatibility/class-solace-starter-content.php';

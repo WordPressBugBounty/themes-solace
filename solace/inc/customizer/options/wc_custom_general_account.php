@@ -125,7 +125,7 @@ class WC_Custom_General_Account extends Base_Customizer {
 					),
 					'type'                  => 'solace_typeface_control',
 					'font_family_control'   => 'solace_wc_custom_general_account_title_font_family',
-					'live_refresh_selector' => 'body.woocommerce-account .woocommerce th, body.woocommerce-account .woocommerce h2, body.woocommerce-account .woocommerce p label',
+					'live_refresh_selector' => 'body.woocommerce-account:not(.elementor-page) .woocommerce th, body.woocommerce-account .woocommerce h2, body.woocommerce-account .woocommerce p label',
 					'live_refresh_css_prop' => [
 						'cssVar' => [
 							'vars'     => [
@@ -186,7 +186,7 @@ class WC_Custom_General_Account extends Base_Customizer {
 									'device'     => 'desktop',
 								],
 							],
-							'selector' => 'body.woocommerce-account .woocommerce th, body.woocommerce-account .woocommerce h2, body.woocommerce-account .woocommerce p label',
+							'selector' => 'body.woocommerce-account:not(.elementor-page) .woocommerce th, body.woocommerce-account .woocommerce h2, body.woocommerce-account:not(.elementor-page) .woocommerce p label',
 						],
 					],
 				],
@@ -377,7 +377,7 @@ class WC_Custom_General_Account extends Base_Customizer {
 							'vars'     => [
 								'--sol-account-description-color' => 'color', 
 							],
-							'selector' => 'body.woocommerce-account .woocommerce td, body.woocommerce-account .woocommerce p, body.woocommerce-account .woocommerce p label',
+							'selector' => 'body.woocommerce-account:not(.elementor-page) .woocommerce td, body.woocommerce-account .woocommerce p, body.woocommerce-account:not(.elementor-page) .woocommerce p label',
 						),
 					],
 				)

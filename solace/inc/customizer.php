@@ -158,7 +158,7 @@ add_action( 'customize_register', 'solace_post_layout' );
 function solace_page_settings( $wp_customize ) {
 	$wp_customize->add_section( 'solace_page_settings', array(
 		'title' => __( 'Page Settings', 'solace' ),
-		'priority' => 13,
+		'priority' => 14,
 	  ) );
 	
 	// $wp_customize->remove_section( 'static_front_page' );
@@ -339,14 +339,6 @@ function solace_move_core_controls( $wp_customize ) {
 	
 }
 add_action( 'customize_register', 'solace_move_core_controls', 20 );
-
-function solace_features( $wp_customize ) {
-	$wp_customize->add_section( 'solace_features', array(
-		'title' => __( 'Features', 'solace' ),
-		'priority' => 100, 
-	  ) );
-}
-add_action( 'customize_register', 'solace_features' );
 
 function solace_duplicate_title_tagline_controls( $wp_customize ) {
     // Check if the target section exists

@@ -744,6 +744,7 @@ li.customize-control-interface-tabs-custom .solace-tabs-custom-control .solace-c
   font-size: 14px;
   text-align: center;
   color: #37527E;
+  display: none;
 }
 
 /* Layout & Spacing */
@@ -1143,10 +1144,6 @@ div.solace-color-component .components-button:focus:not(:disabled) {
 
 #customize-theme-controls .customize-pane-parent > #accordion-panel-solace_layout .accordion-section-title::before {
   content: url("../img/customizer/sol-icon-page-settings.svg");
-}
-
-#customize-theme-controls .customize-pane-parent > #accordion-section-solace_features .accordion-section-title::before {
-  content: url("../img/customizer/sol-icon-features.svg");
 }
 
 #customize-theme-controls .customize-pane-parent > #accordion-panel-solace_wc_custom .accordion-section-title::before {

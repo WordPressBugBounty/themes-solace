@@ -43,7 +43,7 @@ class Features_Scroll_To_Top extends Base_Customizer {
 			new Section(
 				'solace_features_scroll_to_top',
 				array(
-					'priority' => 102,
+					'priority' => 13,
 					'title'    => esc_html__( 'Scroll To Top', 'solace' ),
 					// 'panel'	   => 'solace_features',
 				)

@@ -59,10 +59,28 @@ function solace_style_page_settings()
     }
     
     if (is_archive() || is_search() || is_home() || is_404() || $solace_is_product || $solace_is_shop || $solace_is_cart) {
+
+        $is_elementor_fullwidth = false;
+
+        if ( did_action('elementor/loaded') ) {
+            $document = \Elementor\Plugin::$instance->documents->get( get_the_ID() );
+            if ( $document ) {
+                $settings = $document->get_settings();
+                if ( ! empty($settings['template']) 
+                    && $settings['template'] === 'elementor-full-width' ) {
+                    $is_elementor_fullwidth = true;
+                }
+            }
+        }
+
+        if ( $is_elementor_fullwidth ) {
+            return;
+        }
         if ($container_list_layout === 'fullwidth') {
             $container = "main.main-all {max-width: $fullwidth;}";
             $container .= "body.single-product .container.shop-container {max-width: $fullwidth;}";
             $container .= "body.post-type-archive-product .container.shop-container {max-width: $fullwidth;}";
+            $container .= "body.woocommerce.archive .container.shop-container {max-width: $fullwidth;}";
             $container .= ".container-404 {max-width: $fullwidth;}";
 
             // Remove Sidebar Shop
@@ -72,6 +90,7 @@ function solace_style_page_settings()
             $container = "main.main-all {max-width: $boxed; margin: 0 auto;}";
             $container .= "body.single-product .container.shop-container {max-width: $boxed; margin: 0 auto;}";
             $container .= "body.post-type-archive-product .container.shop-container {max-width: $boxed; margin: 0 auto;}";
+            $container .= "body.woocommerce.archive .container.shop-container {max-width: $boxed; margin: 0 auto;}";
             $container .= ".container-404 {max-width: $boxed; margin: 0 auto;}";
 
             // Remove Sidebar Shop
@@ -82,6 +101,7 @@ function solace_style_page_settings()
             $container .= "main.main-all .container-all .row1 {flex-direction: row-reverse; gap: 20px;}";
             $container .= "main.main-all .container-all .row1 aside {width: 30%;}";
             $container .= "body.single-product .container.shop-container {max-width: $left; margin: 0 auto;}";
+            $container .= "body.woocommerce.archive .container.shop-container {max-width: $left; margin: 0 auto;}";
             $container .= "body.post-type-archive-product .container.shop-container {max-width: $left; margin: 0 auto;}";
             $container .= ".container-404 {max-width: $left; margin: 0 auto;}";
 
@@ -100,6 +120,7 @@ function solace_style_page_settings()
             $container .= "main.main-all .container-all .row1 {gap: 20px;}";
             $container .= "main.main-all .container-all .row1 aside {width: 30%;}";       
             $container .= "body.single-product .container.shop-container {max-width: $right; margin: 0 auto;}";
+            $container .= "body.woocommerce.archive .container.shop-container {max-width: $right; margin: 0 auto;}";
             $container .= ".container-404 {max-width: $right; margin: 0 auto;}";
 
             // Shop WC

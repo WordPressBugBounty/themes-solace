@@ -4,8 +4,8 @@ Contributors: SolaceWP
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
 Requires at least: 5.9
-Tested up to: 6.1
-Requires PHP: 7.0
+Tested up to: 6.9
+Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
@@ -29,6 +29,12 @@ Solace is a minimalist, and lightweight WordPress theme for creating beautiful, 
 Solace includes support for WooCommerce.
 
 == Changelog ==
+
+= 2.1.17 - 19 February 2026 =
+* [Fix] : Fixed issues on fullwidth container header & customizer page layout
+* [Fix] : Fixed issues on WooCommerce default button 
+* [Fix] : Fixed issues on patchstack broken access control
+* [Refactor] : Improved the appearance of customizer section 
 
 = 2.1.16 - 24 November 2025 =
 * [Fix] : Fixed issues on the shop page for product variants.

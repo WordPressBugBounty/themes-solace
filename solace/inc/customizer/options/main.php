@@ -63,10 +63,6 @@ class Main extends Base_Customizer {
 				'priority' => 35,
 				'title'    => __( 'Typography', 'solace' ),
 			),
-			'solace_features' => array(
-				'priority' => 45,
-				'title'    => __( 'Features', 'solace' ),
-			),
 		);
 
 		foreach ( $panels as $panel_id => $panel ) {

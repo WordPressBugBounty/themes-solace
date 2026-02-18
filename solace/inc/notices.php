@@ -74,6 +74,14 @@ add_action( 'admin_notices', 'solace_display_admin_notice' );
  * @return void
  */
 function solace_ajax_check_plugins_status() {
+	// Ensure only users with plugin management capabilities can check plugin status.
+	if ( ! current_user_can( 'activate_plugins' ) ) {
+		wp_send_json_error( [
+			'message' => 'Insufficient permissions.',
+			'status'  => 'error',
+		] );
+	}
+
 	// Verify the security nonce.
 	if (
 		! isset( $_POST['solace_nonce'] ) ||
@@ -85,6 +93,14 @@ function solace_ajax_check_plugins_status() {
 			'status'  => 'error',
 		] );
 	}
+
+	if ( ! current_user_can( 'activate_plugins' ) ) {
+        wp_send_json_error( [
+            'message' => 'Unauthorized access.',
+            'status'  => 'error',
+        ], 403 );
+        return;
+    }
 
 	// Check if plugin_slugs parameter is provided and is an array.
 	if ( empty( $_POST['plugin_slugs'] ) || ! is_array( $_POST['plugin_slugs'] ) ) {
@@ -161,6 +177,14 @@ add_action( 'wp_ajax_solace_check_plugin_status', 'solace_ajax_check_plugins_sta
  * Handle AJAX request to install plugins from WordPress.org.
  */
 function solace_ajax_install_plugins_from_wporg() {
+	// Ensure only users with plugin installation capabilities can install plugins.
+	if ( ! current_user_can( 'install_plugins' ) ) {
+		wp_send_json_error( [
+			'message' => 'Insufficient permissions.',
+			'status'  => 'error',
+		] );
+	}
+
 	// Validate nonce.
 	if (
 		! isset( $_POST['solace_nonce'] ) ||
@@ -171,6 +195,14 @@ function solace_ajax_install_plugins_from_wporg() {
 			'status'  => 'error',
 		] );
 	}
+
+	if ( ! current_user_can( 'install_plugins' ) ) {
+        wp_send_json_error( [
+            'message' => 'Unauthorized: You do not have permission to install plugins.',
+            'status'  => 'error',
+        ], 403 );
+        return;
+    }
 
 	// Validate input.
 	if ( empty( $_POST['plugin_slugs'] ) || ! is_array( $_POST['plugin_slugs'] ) ) {

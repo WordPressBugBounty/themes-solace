@@ -1463,6 +1463,7 @@ li.customize-control-solace_toggle_control_flex .components-flex {
 }
 .solace-hfg-builder .solace-builder-sidebar-content {
   padding: 15px;
+  padding-top: 0;
 }
 .solace-hfg-builder .solace-builder-sidebar-content .no-components {
   border: 1px dashed #cecece;
@@ -1471,7 +1472,7 @@ li.customize-control-solace_toggle_control_flex .components-flex {
   padding: 15px;
 }
 .solace-hfg-builder .sidebar-items {
-  margin-top: 10px;
+  margin-top: 0;
 }
 .solace-hfg-builder .sidebar-items .droppable {
   display: grid;

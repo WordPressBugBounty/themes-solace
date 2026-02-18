@@ -439,7 +439,7 @@ function solace_customizer_css() {
     $SELECTOR_CHECKOUT_DESCRIPTION = "body.woocommerce-checkout p.wc-block-components-checkout-step__description, body.woocommerce-checkout .wc-block-checkout__terms span";
     $SELECTOR_CHECKOUT_BUTTON = "body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained .wc-block-components-checkout-place-order-button__text,body.woocommerce-checkout:not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button, body.woocommerce-checkout:not(body.has-solace-checkout-widget) #payment #place_order, body.woocommerce-checkout:not(.elementor-page) .woocommerce-billing-fields form.checkout_coupon button";
 
-    $SELECTOR_ACCOUNT_TITLE = "body.woocommerce-account .woocommerce th, body.woocommerce-account .woocommerce h2, body.woocommerce-account .woocommerce p label";
+    $SELECTOR_ACCOUNT_TITLE = "body.woocommerce-account:not(.elementor-page) .woocommerce th, body.woocommerce-account .woocommerce h2, body.woocommerce-account:not(.elementor-page) .woocommerce p label";
     $SELECTOR_ACCOUNT_DESCRIPTION = "body.woocommerce-account .woocommerce td, body.woocommerce-account .woocommerce p";
     $SELECTOR_ACCOUNT_PRICE = "body.woocommerce-account .woocommerce td.woocommerce-table__product-total.product-total, body.woocommerce-account .woocommerce td span.woocommerce-Price-amount.amount, body.woocommerce-account .woocommerce .woocommerce-orders-table__cell-order-total span.woocommerce-Price-amount.amount";
     $SELECTOR_ACCOUNT_BUTTON = "body.woocommerce-account .woocommerce button, body.woocommerce-account:not(.elementor-default) .woocommerce form.woocommerce-EditAccountForm button[type=submit], body.woocommerce-account:not(.elementor-default) .woocommerce a.button:not(header a.button):not(footer a.button), body.woocommerce-account:not(.elementor-default) .woocommerce .button:not(header .button):not(footer .button)";
@@ -1089,14 +1089,55 @@ function solace_toggle_store_notice_based_on_setting2() {
 }
 
 
+/**
+ * Update WooCommerce Store Notice via AJAX.
+ * Security patch: Added authorization check to prevent unauthorized access (CVE-2025-68911).
+ */
 add_action('wp_ajax_update_store_notice', 'update_store_notice');
 function update_store_notice() {
+    // Check if the current user has permission to modify theme options
+    if ( ! current_user_can( 'edit_theme_options' ) ) {
+        wp_send_json_error( 'Unauthorized: You do not have permission to perform this action.', 403 );
+        return;
+    }
+
+    // Validate input and update the WooCommerce store notice option
     if (isset($_POST['status']) && in_array($_POST['status'], array('yes', 'no'))) {
         update_option('woocommerce_demo_store', sanitize_text_field($_POST['status']));
         wp_send_json_success();
     } else {
-        wp_send_json_error();
+        wp_send_json_error( 'Invalid status value.' );
     }
+
+    // Verify nonce to prevent CSRF and unauthorized requests.
+    if (
+        ! isset( $_POST['solace_nonce'] ) ||
+        ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['solace_nonce'] ) ), 'solace-ajax-verification' )
+    ) {
+        wp_send_json_error(
+            array(
+                'message' => 'Security check failed. Invalid or missing nonce',
+                'status'  => 'error',
+            )
+        );
+    }
+
+    if ( isset( $_POST['status'] ) && in_array( $_POST['status'], array( 'yes', 'no' ), true ) ) {
+        update_option( 'woocommerce_demo_store', sanitize_text_field( wp_unslash( $_POST['status'] ) ) );
+        wp_send_json_success(
+            array(
+                'success' => true,
+                'status'  => 'success',
+            )
+        );
+    }
+
+    wp_send_json_error(
+        array(
+            'message' => 'Invalid or missing status value.',
+            'status'  => 'error',
+        )
+    );
 }
 
 function solace_enqueue_dokan_style() {
@@ -1351,16 +1392,47 @@ function hide_billing_required_asterisk_conditionally() {
     }
 }
 
-// add_filter( 'woocommerce_billing_fields', 'customize_billing_address_2_placeholder', 20, 1 );
-// function customize_billing_address_2_placeholder( $fields ) {
-//     $address_2_control = get_theme_mod( 'woocommerce_checkout_address_2_field', 'optional' );
+add_filter( 'body_class', 'detect_all_woocommerce_pages_and_shortcodes', 20 );
+function detect_all_woocommerce_pages_and_shortcodes( $classes ) {
 
-//     if ( isset( $fields['billing_address_2'] ) ) {
-//         if ( $address_2_control === 'required' ) {
-//             $fields['billing_address_2']['placeholder'] = 'Apartment, suite, unit, etc. (required)';
-//             $fields['billing_address_2']['required']    = true;
-//         }
-//     }
+    if ( ! function_exists( 'WC' ) ) {
+        return $classes;
+    }
 
-//     return $fields;
-// }
+    $is_wc = false;
+
+    if ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {
+        $is_wc = true;
+    }
+
+    if ( function_exists( 'wc_get_page_id' ) && is_page() ) {
+        $wc_pages = array(
+            wc_get_page_id( 'shop' ),
+            wc_get_page_id( 'cart' ),
+            wc_get_page_id( 'checkout' ),
+            wc_get_page_id( 'myaccount' ),
+        );
+
+        if ( in_array( get_queried_object_id(), $wc_pages, true ) ) {
+            $is_wc = true;
+        }
+    }
+
+    if ( is_page() ) {
+        $post = get_post();
+        if ( $post && has_shortcode( $post->post_content, 'woocommerce_cart' ) ||
+             $post && has_shortcode( $post->post_content, 'woocommerce_checkout' ) ||
+             $post && has_shortcode( $post->post_content, 'woocommerce_my_account' ) ||
+             $post && has_shortcode( $post->post_content, 'products' ) ||
+             $post && has_shortcode( $post->post_content, 'product_page' )
+        ) {
+            $is_wc = true;
+        }
+    }
+
+    if ( $is_wc ) {
+        $classes[] = 'woocommerce-block-theme-has-button-styles';
+    }
+
+    return $classes;
+}

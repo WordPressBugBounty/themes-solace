@@ -201,7 +201,7 @@ class FooterHtml4 extends Abstract_Component {
 				</style>
 			<div id="mc_embed_shell">
 			<div class="sol-mce" id="mc_embed_signup">
-			<form action="https://djavaweb.us20.list-manage.com/subscribe/post?u=9d1baaf7ecaf34ad1179ddb50&amp;id=2fb133fc3a&amp;f_id=009807eaf0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self" novalidate="">
+			<form action="" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_self" novalidate="">
 			<div id="mc_embed_signup_scroll"><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" placeholder="Your email"><span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span></div>
 			<div id="mce-responses" class="clear foot">
 			<div class="response" id="mce-error-response" style="display: none;"></div>

@@ -155,6 +155,7 @@ define('SELECTOR_WC_BUTTON_BG',"
 	.woocommerce-page a.wp-block-button__link,
 	.wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained,
 	.widget-search .search-submit:not(.header .widget-search .search-submit),
+	body.woocommerce .elementor-button,
 	.selector_wc_button_bg");
 
 define('SELECTOR_WC_BUTTON_BG_HOVER',"
@@ -1424,8 +1425,7 @@ function solace_apply_elementor_woocommerce_button_styles() {
 		}
 		
 		wp_add_inline_style( 'solace-elementor-woocommerce', $gaya );
-
-		wp_add_inline_style( 'solace-elementor-woocommerce', $style );
+		wp_add_inline_style( 'solace-elementor-woocommerce-default', $style );
 		
 	}
 }
@@ -2609,11 +2609,11 @@ add_action('wp_enqueue_scripts', 'solace_apply_default_button_styles');
 
 				// error_log('customizer - true');
 			} else {
-				if (! is_singular() && is_page()) {
-					if (class_exists('\Elementor\Plugin')) {
+				// if (! is_singular() && is_page()) {
+					// if (class_exists('\Elementor\Plugin')) {
 						\Elementor\Plugin::$instance->frontend->enqueue_styles();
-					}
-				}
+					// }
+				// }
 
 				wp_register_style('solace-elementor-woocommerce', false);
 				wp_enqueue_style('solace-elementor-woocommerce');
