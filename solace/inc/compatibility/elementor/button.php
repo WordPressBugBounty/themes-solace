@@ -2535,8 +2535,6 @@ function solace_apply_default_button_styles() {
 		$button_default_header_footer .= "}";
 	}
 
-	// error_log('style: '.$button_default_header_footer);
-
 	wp_add_inline_style('solace-theme', $button_default_header_footer);
 
 } 
@@ -2554,10 +2552,6 @@ function solace_is_elementor_page() {
 
     $is_elementor = get_post_meta($post->ID, '_elementor_edit_mode', true) === 'builder';
 
-    // error_log('Current Page ID: ' . $post->ID);
-    // error_log('Post Meta _elementor_edit_mode: ' . get_post_meta($post->ID, '_elementor_edit_mode', true));
-    // error_log('Page is Elementor: ' . ($is_elementor ? 'YES' : 'NO'));
-
     return $is_elementor;
 }
 
@@ -2567,65 +2561,53 @@ function solace_is_elementor_page_customizer() {
 
 add_action('wp_enqueue_scripts', 'solace_apply_default_button_styles');
 
-// add_action('wp', function () {
-//     if (!solace_is_elementor_page() && !solace_is_elementor_page_customizer()) {
-	add_action('wp_enqueue_scripts', function () {
+add_action('wp_enqueue_scripts', function () {
 
-		if (is_customize_preview()) {
-			// Customizer Preview Logic
-			if (get_theme_mod('solace_wc_custom_general_buttons_elementor', false) === true) {
-				wp_register_style('solace-customizer-woocommerce', false);
-				wp_enqueue_style('solace-customizer-woocommerce');
+	if (is_customize_preview()) {
+		// Customizer Preview Logic
+		if (get_theme_mod('solace_wc_custom_general_buttons_elementor', false) === true) {
+			wp_register_style('solace-customizer-woocommerce', false);
+			wp_enqueue_style('solace-customizer-woocommerce');
 
-				// Apply Customizer-specific styles
-				solace_apply_customizer_woocommerce_button_styles();
-				solace_apply_customizer_default_button_styles();
+			// Apply Customizer-specific styles
+			solace_apply_customizer_woocommerce_button_styles();
+			solace_apply_customizer_default_button_styles();
 
-				// error_log('customizer preview - true');
-			} else {
-				// if (! is_singular() && is_page()) {
-					if (class_exists('\Elementor\Plugin')) {
-						\Elementor\Plugin::$instance->frontend->enqueue_styles();
-					}
-				// }
-
-				wp_register_style('solace-elementor-woocommerce', false);
-				wp_enqueue_style('solace-elementor-woocommerce');
-
-				// Apply Elementor-specific styles
-				solace_apply_elementor_woocommerce_button_styles();
-				solace_apply_elementor_default_button_styles();
-
-				// error_log('customizer preview - false');
-			}
 		} else {
-			// Frontend Logic
-			if (get_theme_mod('solace_wc_custom_general_buttons_elementor', false) === true) {
-				wp_register_style('solace-customizer-woocommerce', false);
-				wp_enqueue_style('solace-customizer-woocommerce');
-
-				solace_apply_customizer_woocommerce_button_styles();
-				solace_apply_customizer_default_button_styles();
-
-				// error_log('customizer - true');
-			} else {
-				// if (! is_singular() && is_page()) {
-					// if (class_exists('\Elementor\Plugin')) {
-						\Elementor\Plugin::$instance->frontend->enqueue_styles();
-					// }
-				// }
-
-				wp_register_style('solace-elementor-woocommerce', false);
-				wp_enqueue_style('solace-elementor-woocommerce');
-
-				solace_apply_elementor_woocommerce_button_styles();
-				solace_apply_elementor_default_button_styles();
-
-				// error_log('elementor - false');
+			if (class_exists('\Elementor\Plugin')) {
+				\Elementor\Plugin::$instance->frontend->enqueue_styles();
 			}
+
+			wp_register_style('solace-elementor-woocommerce', false);
+			wp_enqueue_style('solace-elementor-woocommerce');
+
+			// Apply Elementor-specific styles
+			solace_apply_elementor_woocommerce_button_styles();
+			solace_apply_elementor_default_button_styles();
+
 		}
-	},99);
-// }});
+	} else {
+		// Frontend Logic
+		if (get_theme_mod('solace_wc_custom_general_buttons_elementor', false) === true) {
+			wp_register_style('solace-customizer-woocommerce', false);
+			wp_enqueue_style('solace-customizer-woocommerce');
+
+			solace_apply_customizer_woocommerce_button_styles();
+			solace_apply_customizer_default_button_styles();
+
+		} else {
+			if (class_exists('\Elementor\Plugin')) {
+				\Elementor\Plugin::$instance->frontend->enqueue_styles();
+			}
+
+			wp_register_style('solace-elementor-woocommerce', false);
+			wp_enqueue_style('solace-elementor-woocommerce');
+
+			solace_apply_elementor_woocommerce_button_styles();
+			solace_apply_elementor_default_button_styles();
+		}
+	}
+},99);
 
 
 // set default value after theme installed
