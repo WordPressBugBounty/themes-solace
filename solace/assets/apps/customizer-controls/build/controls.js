@@ -11350,12 +11350,13 @@ const ResponsiveRangeComponent = ({
     min,
     max
   } = control.params.input_attrs;
+  const parsedDefaultVal = (0,_solace_wp_components__WEBPACK_IMPORTED_MODULE_2__.maybeParseJson)(defaultVal);
   const suffixValue = () => {
     const fallbackSuffix = null;
     if (!units) {
       return fallbackSuffix;
     }
-    const defaultSuffix = defaultVal.suffix && defaultVal.suffix[currentDevice] ? defaultVal.suffix[currentDevice] : fallbackSuffix;
+    const defaultSuffix = parsedDefaultVal.suffix && parsedDefaultVal.suffix[currentDevice] ? parsedDefaultVal.suffix[currentDevice] : fallbackSuffix;
     return value.suffix && value.suffix[currentDevice] ? value.suffix[currentDevice] : defaultSuffix;
   };
   const isRelativeUnit = () => ['em', 'rem'].includes(suffixValue());
@@ -11398,8 +11399,9 @@ const ResponsiveRangeComponent = ({
   const updateValues = newValue => {
     // This happens when the reset button is pressed
     if (newValue === undefined) {
-      setValue(defaultVal);
-      control.setting.set(JSON.stringify(defaultVal));
+      const responsiveDefaultValue = (0,_solace_wp_components__WEBPACK_IMPORTED_MODULE_2__.getIntValAsResponsive)(parsedDefaultVal);
+      setValue(responsiveDefaultValue);
+      control.setting.set(JSON.stringify(responsiveDefaultValue));
       return;
     }
     const nextValue = {
@@ -11410,7 +11412,7 @@ const ResponsiveRangeComponent = ({
     control.setting.set(JSON.stringify(nextValue));
   };
   let displayValue = parseFloat(value[currentDevice]);
-  displayValue = displayValue === 0 ? 0 : displayValue || defaultVal.currentDevice;
+  displayValue = displayValue === 0 ? 0 : displayValue || parsedDefaultVal[currentDevice];
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "solace-white-background-control solace-range-control"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -20632,8 +20634,8 @@ function _extends() {
 /******/ 			if (chunkId === "vendors-node_modules_wordpress_icons_build-module_library_close_js-node_modules_wordpress_ico-2c346b") return "818e2d8f5c89ab4f8b69.js";
 /******/ 			if (chunkId === "assets_apps_customizer-controls_src_font-family_FontFamilySelector_js") return "ca29e9e505ec82e3d3ec.js";
 /******/ 			if (chunkId === "order") return "16c88f5a2452054a8ff6.js";
-/******/ 			if (chunkId === "assets_apps_customizer-controls_src_builder_components_Builder_tsx") return "917c4258c538145c5d2b.js";
-/******/ 			if (chunkId === "assets_apps_customizer-controls_src_builder_components_SidebarContent_tsx") return "ed78f16e5c0af7fd30ce.js";
+/******/ 			if (chunkId === "assets_apps_customizer-controls_src_builder_components_Builder_tsx") return "a2a12cb4309e627d16de.js";
+/******/ 			if (chunkId === "assets_apps_customizer-controls_src_builder_components_SidebarContent_tsx") return "1d5f9b8bdb24de0196b8.js";
 /******/ 			if (chunkId === "assets_apps_customizer-controls_src_repeater_IconsContent_js") return "d4ed0e0bdd0de3b845ef.js";
 /******/ 			if (chunkId === "assets_apps_customizer-controls_src_rich-text_RichText_js") return "14b55e7046b4f8e4c7e8.js";
 /******/ 			// return url for filenames based on template

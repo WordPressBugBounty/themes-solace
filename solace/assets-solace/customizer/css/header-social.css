@@ -324,7 +324,6 @@ li#customize-control-header_social_header_social_setting .add-new-label {
     padding-top: 19px;
     margin-bottom: 14px;
     display: block;
-    font-weight: 700;
 }
 
 .container-dropdown-header-social {
@@ -453,10 +452,6 @@ li#customize-control-header_social_header_social_setting .add-new-label {
     border-left: none;
     border-right: none;
 } */
-
-li#customize-control-header_social_toggle_icon span.title-customize {
-    font-weight: 700;
-}
 
 li#customize-control-header_social_toggle_icon .components-dropdown-menu {
     display: none;

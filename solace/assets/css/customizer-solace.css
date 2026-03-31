@@ -126,6 +126,7 @@ li#customize-control-solace_wc_custom_general_checkout_coupon .components-flex l
 li#customize-control-solace_wc_custom_general_buttons_elementor .components-flex label,
 li#customize-control-solace_wc_custom_general_store_notice_show .components-flex label {
   font-size: 18px;
+  font-weight: var(--sol-customizer--font-weight-section) !important;
 }
 
 li#customize-control-solace_wc_custom_general_buttons_text_color,
@@ -1479,6 +1480,35 @@ li#customize-control-solace_wc_custom_general_account_button_typeface .solace-ty
   top: 40px;
 }
 
+.button-link .reorder {
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.customize-control-dropdown-pages .add-new-toggle {
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.customize-control-dropdown-pages .new-content-item-wrapper {
+  background: var(--sol-customizer-bg-color);
+}
+
+.customize-control-dropdown-pages .new-content-item-wrapper label {
+  padding: 16px 0 8px 0;
+  display: block;
+}
+
+#available-menu-items .new-content-item .add-content,
+.customize-control-dropdown-pages .new-content-item .add-content {
+  background-color: var(--sol-customizer-panel-bg-color);
+  color: var(--sol-customizer-text-color);
+  border: 2px solid var(--sol-customizer-panel-bg-color);
+  font-size: 14px;
+  outline: 2px solid var(--sol-customizer-panel-bg-color);
+  margin-left: 12px;
+}
+
 .solace-remove-style-popover-transform {
   transform: none !important;
 }
@@ -1542,7 +1572,13 @@ li#customize-control-solace_jump_to_container a {
 body.solace-wp-customizer-controls #customize-controls li.control-section h3.accordion-section-title button.accordion-trigger,
 body.solace-wp-customizer-controls #customize-controls li.control-section.control-section-default h3.accordion-section-title button.accordion-trigger,
 body.solace-wp-customizer-controls #customize-controls li.control-panel.control-panel-default h3.accordion-section-title button.accordion-trigger {
-  font-weight: 300;
+  font-weight: var(--sol-customizer--font-weight-section) !important;
+}
+
+body.solace-wp-customizer-controls #customize-controls li.control-section h3.accordion-section-title button.accordion-trigger .menu-in-location,
+body.solace-wp-customizer-controls #customize-controls li.control-section.control-section-default h3.accordion-section-title button.accordion-trigger .menu-in-location,
+body.solace-wp-customizer-controls #customize-controls li.control-panel.control-panel-default h3.accordion-section-title button.accordion-trigger .menu-in-location {
+  font-weight: var(--sol-customizer--font-weight-section) !important;
 }
 
 body.solace-wp-customizer-controls #customize-controls li.control-section h3.accordion-section-title button.accordion-trigger:focus,
@@ -2342,7 +2378,6 @@ li#customize-control-solace_global_colors .solace-global-colors-wrap .solace-pal
   margin-left: 5px;
   padding: 0;
   font-size: 15px;
-  font-weight: 500;
   color: #50575e;
 }
 
@@ -2524,7 +2559,6 @@ li#customize-control-solace_smaller_font_family span.dropdown-smaller-font {
   border-radius: 25px;
   margin: 0;
   height: 30px;
-  font-weight: 700;
   border-left: none;
   cursor: pointer;
   text-transform: capitalize;
@@ -2616,7 +2650,6 @@ li#customize-control-solace_logotitle_font_family span.dropdown-logotitle-font {
   border-radius: 25px;
   margin: 0;
   height: 30px;
-  font-weight: 700;
   border-left: none;
   cursor: pointer;
   text-transform: capitalize;
@@ -2708,7 +2741,6 @@ li#customize-control-solace_button_font_family span.dropdown-button-font {
   border-radius: 25px;
   margin: 0;
   height: 30px;
-  font-weight: 700;
   border-left: none;
   cursor: pointer;
   text-transform: capitalize;
@@ -2804,7 +2836,6 @@ li#customize-control-solace_body_font_family span.dropdown-base-font {
   border-radius: 25px;
   margin: 0;
   height: 30px;
-  font-weight: 700;
   border-left: none;
   cursor: pointer;
   text-transform: capitalize;
@@ -2928,7 +2959,6 @@ li#customize-control-solace_h6_accordion_wrap .solace-customizer-heading {
   margin: 0;
   margin-bottom: 7px;
   height: 30px;
-  font-weight: 700;
   border-left: none;
   text-transform: capitalize;
   position: relative;
@@ -3214,7 +3244,6 @@ li#customize-control-primary-menu_shortcut-header-menu-one button {
 li#customize-control-primary-menu_shortcut-header-menu-one label {
   font-family: 'Poppins';
   font-style: normal;
-  font-weight: 700;
   font-size: 18px;
   line-height: 27px;
   color: #FFFFFF;
@@ -3248,8 +3277,17 @@ li#customize-control-primary-menu_color,
 li#customize-control-primary-menu_active_color,
 li#customize-control-primary-menu_hover_color,
 li#customize-control-primary-menu_submenu_background_color,
-li#customize-control-primary-menu_submenu_text_color {
+li#customize-control-primary-menu_submenu_text_color,
+li#customize-control-primary-menu_menu_mobile_width {
   display: block !important;
+}
+
+.preview-desktop li#customize-control-primary-menu_menu_mobile_width {
+  display: none !important;
+}
+
+li#customize-control-primary-menu_menu_mobile_width .solace-responsive-control-bar {
+  display: none;
 }
 
 li#customize-control-primary-menu_font_family > .customize-control-title {
@@ -3269,7 +3307,6 @@ li#customize-control-primary-menu_font_family span.dropdown-font {
   border-radius: 25px;
   margin: 0;
   height: 30px;
-  font-weight: 700;
   border-left: none;
   cursor: pointer;
   text-transform: capitalize;
@@ -3359,7 +3396,6 @@ li#customize-control-secondary-menu_shortcut button {
 li#customize-control-secondary-menu_shortcut label {
   font-family: 'Poppins';
   font-style: normal;
-  font-weight: 700;
   font-size: 18px;
   line-height: 27px;
   color: #FFFFFF;
@@ -3400,7 +3436,6 @@ li#customize-control-secondary-menu_shortcut-header-two button {
 li#customize-control-secondary-menu_shortcut-header-two label {
   font-family: 'Poppins';
   font-style: normal;
-  font-weight: 700;
   font-size: 18px;
   line-height: 27px;
   color: #FFFFFF;
@@ -3455,7 +3490,6 @@ li#customize-control-secondary-menu_font_family span.dropdown-font {
   border-radius: 25px;
   margin: 0;
   height: 30px;
-  font-weight: 700;
   border-left: none;
   cursor: pointer;
   text-transform: capitalize;
@@ -3549,7 +3583,6 @@ li#customize-control-footer-menu_shortcut-footer-menu-one button {
 li#customize-control-footer-menu_shortcut-footer-menu-one label {
   font-family: 'Poppins';
   font-style: normal;
-  font-weight: 700;
   font-size: 18px;
   line-height: 27px;
   color: #FFFFFF;
@@ -3604,7 +3637,6 @@ li#customize-control-footer-menu_font_family span.dropdown-font {
   border-radius: 25px;
   margin: 0;
   height: 30px;
-  font-weight: 700;
   border-left: none;
   cursor: pointer;
   text-transform: capitalize;
@@ -3718,7 +3750,6 @@ ul.customize-pane-child li .customize-section-title h3 {
   height: 49px;
   font-family: "Poppins";
   font-style: normal;
-  font-weight: 700 !important;
   font-size: 18px !important;
   line-height: 27px !important;
   color: #fff !important;
@@ -3727,10 +3758,12 @@ ul.customize-pane-child li .customize-section-title h3 {
   align-items: center;
   padding: 0;
   border-radius: 0 5px 5px 0;
+  font-weight: var(--sol-customizer--font-weight-section) !important;
 }
 
 ul.customize-pane-child li .customize-section-title h3 span.customize-action {
   display: none !important;
+  font-weight: var(--sol-customizer--font-weight-section) !important;
 }
 
 ul.customize-pane-child#sub-accordion-section-woo_thank_you_page_design_general .customize-section-back, ul.customize-pane-child#sub-accordion-section-woo_thank_you_page_design_order_confirmation .customize-section-back, ul.customize-pane-child#sub-accordion-section-woo_thank_you_page_design_customer_information .customize-section-back {
@@ -4011,7 +4044,6 @@ li#accordion-section-solace_tabs_header span.right {
 }
 
 li#accordion-section-solace_tabs_header span.active {
-  font-weight: 700;
   background: #102C5F;
 }
 
@@ -4406,7 +4438,7 @@ li#customize-control-solace_container_hide_title .components-flex {
 
 li#customize-control-solace_container_hide_title .components-flex label {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: var(--sol-customizer--font-weight-section) !important;
 }
 
 li#customize-control-solace_blog_layout_hide_title {
@@ -4419,7 +4451,7 @@ li#customize-control-solace_blog_layout_hide_title .components-flex {
 
 li#customize-control-solace_blog_layout_hide_title .components-flex label {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: var(--sol-customizer--font-weight-section) !important;
 }
 
 li#customize-control-solace_jump_to_blog_page_title {
@@ -4433,7 +4465,6 @@ li#customize-control-solace_jump_to_blog_page_title .solace-customizer-link {
 li#customize-control-solace_jump_to_blog_page_title .solace-customizer-link a {
   width: 100%;
   font-size: 18px;
-  font-weight: 600;
   text-decoration: none;
   color: #fff;
   position: relative;
@@ -4475,7 +4506,7 @@ li#customize-control-solace_post_layout_hide_title .components-flex {
 
 li#customize-control-solace_post_layout_hide_title .components-flex label {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: var(--sol-customizer--font-weight-section) !important;
 }
 
 li#customize-control-solace_post_layout_hide_title .components-flex .disabled-checkbox input {
@@ -4496,7 +4527,7 @@ li#customize-control-solace_page_layout_hide_title .components-flex {
 
 li#customize-control-solace_page_layout_hide_title .components-flex label {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: var(--sol-customizer--font-weight-section) !important;
 }
 
 li#customize-control-solace_page_layout_hide_title .components-flex .disabled-checkbox input {
@@ -4744,7 +4775,6 @@ li#accordion-section-solace_tabs_footer span.right {
 }
 
 li#accordion-section-solace_tabs_footer span.active {
-  font-weight: 700;
   background: #102C5F;
 }
 
@@ -5210,7 +5240,6 @@ ul#sub-accordion-section-header_button li#customize-control-button_base_link_set
 }
 
 ul#sub-accordion-section-header_button .customize-control-title {
-  font-weight: 400;
   font-size: 16px;
 }
 
@@ -5358,7 +5387,6 @@ ul#sub-accordion-section-header_button2 li#customize-control-button_base2_link_s
 }
 
 ul#sub-accordion-section-header_button2 .customize-control-title {
-  font-weight: 400;
   font-size: 16px;
 }
 
@@ -5534,7 +5562,6 @@ li#customize-control-solace_single_only_available_for_custom_layout .customize-c
 
 li#customize-control-solace_single_only_available_for_custom_layout label {
   font-size: 14px;
-  font-weight: 400;
   position: absolute;
   bottom: 50px;
   color: var(--sol-customizer-link-color);
@@ -5593,7 +5620,6 @@ ul#sub-accordion-section-logo_footer li#customize-control-logo-footer_show_title
 }
 
 ul#sub-accordion-section-logo_footer li#customize-control-logo-footer_show_title label {
-  font-weight: 700;
   font-size: 18px;
 }
 
@@ -5636,17 +5662,9 @@ ul#sub-accordion-section-logo_footer li#customize-control-logo-footer_show_title
   flex-direction: row-reverse;
 }
 
-ul#sub-accordion-section-logo_footer li#customize-control-logo-footer_max_width .customize-control-title {
-  font-weight: 700;
-}
-
 ul#sub-accordion-section-logo_footer li#customize-control-logo-footer_max_width .solace-responsive-control-bar,
 ul#sub-accordion-section-logo_footer li#customize-control-logo-footer_max_width .solace-units {
   display: none;
-}
-
-ul#sub-accordion-section-logo_footer li#customize-control-logo-footer_display .customize-control-title {
-  font-weight: 700;
 }
 
 ul#sub-accordion-section-logo_footer li#customize-control-logo-footer_display button {
@@ -5795,7 +5813,6 @@ li#customize-control-footer-four-widgets_component_margin button.link {
 #single-hide-title h2 {
   padding: 16px !important;
   font-size: 13px;
-  font-weight: 500 !important;
 }
 
 #single-hide-title button {
@@ -5823,14 +5840,12 @@ li#customize-control-footer-four-widgets_component_margin button.link {
 
 #single-hide-title.postbox .toggle-indicator::before {
   content: "\f343";
-  font-weight: 500;
   color: #000;
   font-size: 16px;
 }
 
 #single-hide-title.postbox.closed .toggle-indicator::before {
   content: "\f347";
-  font-weight: 500;
   color: #000;
   font-size: 16px;
 }
@@ -5849,14 +5864,12 @@ li#customize-control-footer-four-widgets_component_margin button.link {
 
 #sol_sidebar_layout.postbox .toggle-indicator::before {
   content: "\f343";
-  font-weight: 500;
   color: #000;
   font-size: 16px;
 }
 
 #sol_sidebar_layout.postbox.closed .toggle-indicator::before {
   content: "\f347";
-  font-weight: 500;
   color: #000;
   font-size: 16px;
 }
@@ -5868,7 +5881,6 @@ li#customize-control-footer-four-widgets_component_margin button.link {
 #sol_sidebar_layout h2 {
   padding: 16px !important;
   font-size: 13px;
-  font-weight: 500 !important;
 }
 
 #sol_sidebar_layout .inside {
@@ -6041,7 +6053,6 @@ ul#sub-accordion-section-footer_button li#customize-control-button_base3_link_se
 }
 
 ul#sub-accordion-section-footer_button .customize-control-title {
-  font-weight: 400;
   font-size: 16px;
 }
 
@@ -6189,7 +6200,6 @@ ul#sub-accordion-section-footer_button2 li#customize-control-button_base4_link_s
 }
 
 ul#sub-accordion-section-footer_button2 .customize-control-title {
-  font-weight: 400;
   font-size: 16px;
 }
 

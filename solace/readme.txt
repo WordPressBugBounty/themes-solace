@@ -30,6 +30,11 @@ Solace includes support for WooCommerce.
 
 == Changelog ==
 
+= 2.1.19 - 25 March 2026 =
+* [Fix]: Improved styling for customizer section
+* [Fix]: Fixed issues on posts_per_page
+* [Fix]: Fixed issues styling blog
+
 = 2.1.18 - 23 February 2026 =
 * [Fix]: Resolved a PHP Fatal Error on theme preview by adding class existence checks for WooCommerce.
 * [Fix]: Improved compatibility for environments with no active plugins.

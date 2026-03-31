@@ -1416,14 +1416,15 @@ body.woocommerce-checkout .boxes-content .the-content > .alignfull {
 .main-all.main-index.main-layout-blog-default .row1 .left {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   width: 100%;
-  gap: 0;
+  justify-content: flex-start;
+  gap: 20px;
   flex-basis: 100%;
 }
 
 .main-all.main-index.main-layout-blog-default .row1 .left article {
   width: calc(33.33% - 32px);
+  flex: 0 0 calc((100% - 40px) / 3);
 }
 
 @media (max-width: 1024px) {
@@ -1520,9 +1521,9 @@ body.woocommerce-checkout .boxes-content .the-content > .alignfull {
 .main-all.main-index.main-layout-blog-5 .row1 .left {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   width: 100%;
   gap: 2%;
+  justify-content: flex-start;
 }
 
 @media (max-width: 1024px) {

@@ -258,6 +258,10 @@ mark {
   margin: 0 -15px;
 }
 
+.solace-sitebuilder-singleproduct .row {
+  margin: 0;
+}
+
 .col {
   padding: 0 15px;
   margin: 0 auto;
@@ -2079,7 +2083,6 @@ audio {
 .gallery {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .gallery-item {

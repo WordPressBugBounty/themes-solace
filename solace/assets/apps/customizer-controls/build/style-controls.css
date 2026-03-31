@@ -485,7 +485,6 @@
   margin-top: -1px;
 }
 .solace-sortable-item .label {
-  font-weight: 600;
   font-size: 13px;
   margin: 0 5px;
 }
@@ -1856,7 +1855,6 @@ ul[id^=sub-accordion-panel-hfg_] #accordion-section-solace_header_presets {
 }
 .solace-post-meta-control.solace-white-background-control span.title-post-meta {
   font-size: 16px;
-  font-weight: 700;
   text-align: left;
   margin-bottom: 19px;
 }
@@ -2244,7 +2242,6 @@ ul[id^=sub-accordion-panel-hfg_] #accordion-section-solace_header_presets {
   gap: 15px;
 }
 .solace-popup-payment-methods-control.solace-white-background-control .items-list .solace-sortable-item .left span.label {
-  font-weight: 500;
   font-size: 13px;
   margin: 0;
 }
@@ -2357,7 +2354,6 @@ ul[id^=sub-accordion-panel-hfg_] #accordion-section-solace_header_presets {
   gap: 15px;
 }
 .solace-popup-additional-info-control.solace-white-background-control .items-list .solace-sortable-item .left span.label {
-  font-weight: 500;
   font-size: 13px;
   margin: 0;
 }

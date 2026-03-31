@@ -3,7 +3,7 @@
   /* Typography */
   --sol-customizer--font-family: "Poppins", sans-serif;
   --sol-customizer--font-family-secondary: "Poppins", sans-serif;
-  --sol-customizer--font-weight-section: 400;
+  --sol-customizer--font-weight-section: 300;
   --sol-customizer--font-size-section: 16px;
   --sol-customizer--font-weight-panel: 700;
   --sol-customizer--font-size-panel: 18px;
@@ -109,6 +109,11 @@
 
 #customize-controls .customize-info .preview-notice {
   color: var(--sol-customizer-text-color);
+  font-weight: var(--sol-customizer--font-weight-section) !important;
+}
+
+#customize-controls .customize-info .panel-title {
+  font-weight: var(--sol-customizer--font-weight-section) !important;
 }
 
 #customize-controls .customize-info .accordion-section-title {
@@ -195,6 +200,10 @@ div#available-menu-items .open .accordion-section-title button.accordion-trigger
   background-color: var(--sol-customizer-panel-bg-color);
   color: var(--sol-customizer-text-color);
   border-color: var(--sol-customizer-border-color);
+}
+
+#customize-theme-controls .control-panel-themes > .accordion-section-title {
+  font-weight: var(--sol-customizer--font-weight-section);
 }
 
 .outer-section-open #customize-controls .wp-full-overlay-sidebar-content {
@@ -488,6 +497,7 @@ div.solace-responsive-sizing button.reset svg {
 
 .customize-control-widget_form .widget-top h3 {
   color: inherit;
+  font-weight: var(--sol-customizer--font-weight-section) !important;
 }
 
 .customize-control-widget_form .widget-top h3 .in-widget-title {
@@ -628,7 +638,6 @@ div.solace-tabs-control div.solace-customizer-tab label {
   color: var(--sol-customizer-text-color);
   background-color: var(--sol-customizer-bg-color);
   box-shadow: none;
-  font-weight: 400;
   text-align: center;
   display: block;
 }
@@ -641,7 +650,6 @@ div.solace-tabs-control div.solace-customizer-tab.active label {
   color: var(--sol-customizer-text-color);
   background-color: var(--sol-customizer-panel-bg-color);
   box-shadow: none;
-  font-weight: 600;
 }
 
 .only-label-toggle-wrap {
@@ -650,7 +658,6 @@ div.solace-tabs-control div.solace-customizer-tab.active label {
 
 .only-label-toggle-wrap label {
   font-size: 18px;
-  font-weight: 700;
 }
 
 li.customize-control-interface-tabs-custom {
@@ -684,7 +691,6 @@ li.customize-control-interface-tabs-custom .solace-tabs-custom-control .solace-c
   font-family: Poppins;
   font-size: 18px;
   font-size: 16px;
-  font-weight: 400;
   text-align: center;
   display: block;
   border: none;
@@ -701,7 +707,6 @@ li.customize-control-interface-tabs-custom .solace-tabs-custom-control .solace-c
 
 li.customize-control-interface-tabs-custom .solace-tabs-custom-control .solace-customizer-tab.active label {
   color: var(--sol-customizer-text-color);
-  font-weight: 600;
   background: transparent;
 }
 

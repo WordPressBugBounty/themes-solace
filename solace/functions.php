@@ -18,7 +18,7 @@ if (!defined('SOLACE_DEBUG')) {
 
 if (!defined('SOLACE_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('SOLACE_VERSION', '2.1.18');
+	define('SOLACE_VERSION', '2.1.19');
 }
 
 require_once 'inc/compatibility/class-solace-starter-content.php';
@@ -172,58 +172,104 @@ add_action('init', 'solace_register_block_patterns');
 /**
  * Solace set posts per page […]
  */
-if (!function_exists('solace_set_posts_per_page')) :
-	function solace_set_posts_per_page( $query ) {
-		if (is_single()) {
-			return;
-		}
+// if (!function_exists('solace_set_posts_per_page')) :
+// 	function solace_set_posts_per_page( $query ) {
+// 		if (
+// 			defined( 'REST_REQUEST' ) && REST_REQUEST
+// 			&& isset( $_SERVER['REQUEST_URI'] )
+// 			&& strpos( $_SERVER['REQUEST_URI'], '/wp-json/elementor/v1/import-export-customization/export' ) !== false
+// 		) {
+// 			return;
+// 		}
 
-		if ( is_admin() && !is_customize_preview() ) {
-			return;
-		}
+// 		if ( is_admin() && !is_customize_preview() ) {
+// 			return;
+// 		}
 
-		if ( class_exists( 'WooCommerce' ) ) {
-			if ( is_shop() || is_product_category() || is_product_taxonomy() || is_product_tag() ) { 
-				return;
-			}
-		}
+// 		if ( class_exists( 'WooCommerce' ) ) {
+// 			if ( is_shop() || is_product_category() || is_product_taxonomy() || is_product_tag() ) { 
+// 				return;
+// 			}
+// 		}
 
-		if ( class_exists( 'Solace_Extra' ) && function_exists('solace_is_run_in_shortcode') ) {
-			if ( solace_is_run_in_shortcode() ) {
-				return;
-			}
-		}
+// 		if ( class_exists( 'Solace_Extra' ) && function_exists('solace_is_run_in_shortcode') ) {
+// 			if ( solace_is_run_in_shortcode() ) {
+// 				return;
+// 			}
+// 		}
 
-		if ( is_admin() && is_customize_preview() ) {
-			return;
-		}
+// 		if ( is_admin() && is_customize_preview() ) {
+// 			return;
+// 		}
 
-		$layout_blog = get_theme_mod('solace_blog_archive_layout', '3x3');
-		$layout_blog_posts = get_theme_mod('solace_blog_layout_custom_posts', 10);
+// 		// Only apply to the main query (not sidebars, widgets, etc.).
+// 		if ( ! $query->is_main_query() ) {
+// 			return;
+// 		}
 
-		switch ( $layout_blog ) {
-			case '3x3':
-				$posts_per_page = 9;
-				break;
-			case '2x3':
-				$posts_per_page = 6;
-				break;
-			case '1x3':
-				$posts_per_page = 3;
-				break;
-			case 'custom':
-				$posts_per_page = absint($layout_blog_posts);
-				break;			
-			default:
-				$posts_per_page = -1;
-				break;
-		}
+// 		// Only for post archives (category, tag, author, date). Not blog home.
+// 		if ( ! $query->is_archive() ) {
+// 			return;
+// 		}
+
+// 		$post_type = $query->get( 'post_type' );
+// 		if ( $post_type && $post_type !== 'post' ) {
+// 			return; // Leave custom post type archives (e.g. products) unchanged.
+// 		}
+
+// 		$layout_blog = get_theme_mod('solace_blog_archive_layout', '3x3');
+// 		$layout_blog_posts = get_theme_mod('solace_blog_layout_custom_posts', 10);
+
+// 		switch ( $layout_blog ) {
+// 			case '3x3':
+// 				$posts_per_page = 9;
+// 				break;
+// 			case '2x3':
+// 				$posts_per_page = 6;
+// 				break;
+// 			case '1x3':
+// 				$posts_per_page = 3;
+// 				break;
+// 			case 'custom':
+// 				$posts_per_page = absint($layout_blog_posts);
+// 				break;			
+// 			default:
+// 				$posts_per_page = -1;
+// 				break;
+// 		}
 		
-		$query->set( 'posts_per_page', $posts_per_page );
-	}
+// 		$query->set( 'posts_per_page', $posts_per_page );
+// 	}
 	
-	add_action( 'pre_get_posts', 'solace_set_posts_per_page' );
-endif;
+// 	add_action( 'pre_get_posts', 'solace_set_posts_per_page' );
+// endif;
+
+function solace_custom_blog_posts_per_page( $posts_per_page ) {
+    if ( is_admin() ) {
+        return $posts_per_page;
+    }
+
+    if ( is_home() || is_archive() || is_search() ) {
+        
+        if ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {
+            return $posts_per_page;
+        }
+
+        $layout_blog = get_theme_mod( 'solace_blog_archive_layout', '3x3' );
+        $layout_blog_posts = get_theme_mod( 'solace_blog_layout_custom_posts', 10 );
+
+        switch ( $layout_blog ) {
+            case '3x3': return 9;
+            case '2x3': return 6;
+            case '1x3': return 3;
+            case 'custom': return absint( $layout_blog_posts );
+            default: return $posts_per_page;
+        }
+    }
+
+    return $posts_per_page;
+}
+add_filter( 'option_posts_per_page', 'solace_custom_blog_posts_per_page' );
 
 /**
  * Remove excerpt text […]

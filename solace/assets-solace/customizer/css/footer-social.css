@@ -324,7 +324,6 @@ li#customize-control-footer_social_footer_social_setting .add-new-label {
     padding-top: 19px;
     margin-bottom: 14px;
     display: block;
-    font-weight: 700;
 }
 
 .container-dropdown-footer-social {
@@ -452,10 +451,6 @@ li#customize-control-footer_social_toggle_icon {
     border: none;
     border-left: none;
     border-right: none;
-}
-
-li#customize-control-footer_social_toggle_icon span.title-customize {
-    font-weight: 700;
 }
 
 li#customize-control-footer_social_toggle_icon .components-dropdown-menu {

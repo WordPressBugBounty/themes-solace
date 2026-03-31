@@ -16,6 +16,7 @@ use HFG\Main;
 use Solace\Core\Settings\Config;
 use Solace\Core\Settings\Mods;
 use Solace\Core\Styles\Dynamic_Selector;
+use Solace\Core\Dynamic_Css;
 
 /**
  * Class Nav
@@ -39,6 +40,7 @@ class Nav extends Abstract_Component {
 	const DROPDOWNS_EXPANDED_CLASS = 'dropdowns-expanded';
 	const FONT_SIZE = 'font-size';
 	const DEFAULT_FONT_SIZE = 16;
+	const MENU_MOBILE_WIDTH        = 'menu_mobile_width';
 	Const SUBMENU_BG_COLOR_ID = 'submenu_background_color';
 	Const SUBMENU_TEXT_COLOR_ID = 'submenu_text_color';
 	Const FONT_FAMILY = 'font_family';
@@ -91,7 +93,7 @@ class Nav extends Abstract_Component {
 			}
 		);
 
-
+		add_action('wp_enqueue_scripts', [$this, 'load_scripts']);
 		add_action( 'init', [ $this, 'run_nav_init' ] );
 	}
 
@@ -156,6 +158,32 @@ class Nav extends Abstract_Component {
 
 		return $slug;
 	}
+
+	/**
+	 * Load Component Scripts
+	 *
+	 * @return void
+	 */
+	public function load_scripts()
+	{
+		if ($this->is_component_active() || is_customize_preview()) {
+			wp_add_inline_style('solace-style', $this->toggle_style());
+		}
+	}	
+
+	/**
+	 * Get CSS to use as inline script
+	 *
+	 * @return string
+	 */
+	public function toggle_style()
+	{
+		$css           = '';
+
+		$css .= 'div.header-menu-sidebar {width: var(--menu-mobile-width);}';
+
+		return Dynamic_Css::minify_css($css);
+	}	
 
 	/**
 	 * Called to register component controls.
@@ -323,6 +351,37 @@ class Nav extends Abstract_Component {
 						'selector' => '.builder-item--' . $this->get_id() . ' .sub-menu li a',
 					],
 				],
+			]
+		);		
+
+		SettingsManager::get_instance()->add(
+			[
+				'id'                    => self::MENU_MOBILE_WIDTH,
+				'group'                 => $this->get_id(),
+				'tab'                   => SettingsManager::TAB_STYLE,
+				'transport'             => 'post' . $this->get_class_const( 'COMPONENT_ID' ),
+				'sanitize_callback'     => array( $this, 'sanitize_responsive_int_json' ),
+				'label'                 => __( 'Menu Width Mobile', 'solace' ),
+				'type'                  => 'Solace\Customizer\Controls\React\Responsive_Range',
+				'default'               => '{ "mobile": "85", "tablet": "85", "desktop": "85" }',
+				'options'               => [
+					'input_attrs' => [
+						'min'        => 20,
+						'max'        => 100,
+						'defaultVal' => '{ "mobile": "85", "tablet": "85", "desktop": "85" }',
+						'units'      => [ '%' ],
+					],
+				],
+				'live_refresh_selector' => true,
+				'live_refresh_css_prop' => array(
+					'cssVar'  => [
+						'vars'       => '--menu-mobile-width',
+						'responsive' => true,
+						'suffix'     => '%',
+						'selector'   => 'div.header-menu-sidebar',
+					],
+				),
+				'section'               => $this->section,
 			]
 		);		
 
@@ -758,6 +817,20 @@ class Nav extends Abstract_Component {
 			Dynamic_Selector::KEY_RULES    => $rules,
 		];
 
+		// Sidebar is an ancestor of .builder-item--primary-menu; CSS variables must be set here (or higher) so width: var(--menu-mobile-width) resolves.
+		$menu_mobile_width_mod = $this->get_id() . '_' . self::MENU_MOBILE_WIDTH;
+		$css_array[]           = [
+			Dynamic_Selector::KEY_SELECTOR => 'div.header-menu-sidebar',
+			Dynamic_Selector::KEY_RULES    => [
+				'--menu-mobile-width' => [
+					Dynamic_Selector::META_KEY           => $menu_mobile_width_mod,
+					Dynamic_Selector::META_SUFFIX        => '%',
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $menu_mobile_width_mod ),
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
+				],
+			],
+		];
+
 		$css_array = apply_filters( 'solace_nav_filter_css', $css_array, $this->get_id() );
 
 
@@ -889,6 +962,19 @@ class Nav extends Abstract_Component {
 					Dynamic_Selector::META_KEY           => $this->get_id() . '_' . self::ITEM_HEIGHT,
 					Dynamic_Selector::META_IS_RESPONSIVE => true,
 					Dynamic_Selector::META_DEFAULT       => $this->get_default_for_responsive_from_intval( self::ITEM_HEIGHT, 25 ),
+				],
+			],
+		];
+
+		$menu_mobile_width_mod = $this->get_id() . '_' . self::MENU_MOBILE_WIDTH;
+		$css_array[]           = [
+			Dynamic_Selector::KEY_SELECTOR => 'div.header-menu-sidebar',
+			Dynamic_Selector::KEY_RULES    => [
+				'--menu-mobile-width' => [
+					Dynamic_Selector::META_KEY           => $menu_mobile_width_mod,
+					Dynamic_Selector::META_SUFFIX        => '%',
+					Dynamic_Selector::META_DEFAULT       => SettingsManager::get_instance()->get_default( $menu_mobile_width_mod ),
+					Dynamic_Selector::META_IS_RESPONSIVE => true,
 				],
 			],
 		];
