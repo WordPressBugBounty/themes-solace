@@ -30,6 +30,14 @@ Solace includes support for WooCommerce.
 
 == Changelog ==
 
+= 2.1.20 - 7 May 2026 =
+* [Fix]: Fixed issues on gallery layout 
+* [Fix]: Fixed issues responsive menu
+* [Fix]: Fixed issues footer layout
+* [Fix]: Fixed issues styling conflict with elementor
+* [Fix]: Fixed issues page layout on fullwidth and single product 
+* [Fix]: Improved compatibility for Atomic
+
 = 2.1.19 - 25 March 2026 =
 * [Fix]: Improved styling for customizer section
 * [Fix]: Fixed issues on posts_per_page

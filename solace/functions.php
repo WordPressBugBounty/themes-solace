@@ -18,7 +18,7 @@ if (!defined('SOLACE_DEBUG')) {
 
 if (!defined('SOLACE_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('SOLACE_VERSION', '2.1.19');
+	define('SOLACE_VERSION', '2.1.20');
 }
 
 require_once 'inc/compatibility/class-solace-starter-content.php';
@@ -365,9 +365,6 @@ function solace_scripts()
 
 	wp_enqueue_style('solace-theme', get_template_directory_uri() . '/assets-solace/css/theme.min.css?v=' . time(), array(), SOLACE_VERSION);
 	wp_style_add_data('solace-theme', 'rtl', 'replace');
-
-	// Font Awesome
-	wp_enqueue_style('solace-fontawesome', get_template_directory_uri() . '/assets-solace/fontawesome/css/all.min.css?v=' . time(), array(), '5.15.4', 'all');
 
 	wp_enqueue_script('solace-navigation', get_template_directory_uri() . '/js/navigation.js?v=' . time(), array(), SOLACE_VERSION, true);
 	

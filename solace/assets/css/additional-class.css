@@ -1,3 +1,13 @@
+.elementor-widget-text-editor p,
+.elementor-widget-text-editor li,
+.elementor-widget-text-editor ul {
+    font-size: unset;
+    line-height: unset;
+    letter-spacing: unset;
+    text-transform: unset;
+    font-weight: unset;
+}
+
 .solace-gutenberg-full-width {
     width: 100% !important;
     max-width: 100% !important;

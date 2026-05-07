@@ -78,7 +78,7 @@ function solace_style_page_settings()
         }
         if ($container_list_layout === 'fullwidth') {
             $container = "main.main-all {max-width: $fullwidth;}";
-            $container .= "body.single-product .container.shop-container {max-width: $fullwidth;}";
+            $container .= "body.single-product:not(.solace-sitebuilder-singleproduct) .container.shop-container {max-width: $fullwidth;}";
             $container .= "body.post-type-archive-product .container.shop-container {max-width: $fullwidth;}";
             $container .= "body.woocommerce.archive .container.shop-container {max-width: $fullwidth;}";
             $container .= ".container-404 {max-width: $fullwidth;}";
@@ -88,7 +88,7 @@ function solace_style_page_settings()
             wp_add_inline_style('solace-theme', $container);
         } else if ($container_list_layout === 'boxed') {
             $container = "main.main-all {max-width: $boxed; margin: 0 auto;}";
-            $container .= "body.single-product .container.shop-container {max-width: $boxed; margin: 0 auto;}";
+            $container .= "body.single-product:not(.solace-sitebuilder-singleproduct) .container.shop-container {max-width: $boxed; margin: 0 auto;}";
             $container .= "body.post-type-archive-product .container.shop-container {max-width: $boxed; margin: 0 auto;}";
             $container .= "body.woocommerce.archive .container.shop-container {max-width: $boxed; margin: 0 auto;}";
             $container .= ".container-404 {max-width: $boxed; margin: 0 auto;}";
@@ -100,7 +100,7 @@ function solace_style_page_settings()
             $container = "main.main-all {max-width: $left; margin: 0 auto;}";
             $container .= "main.main-all .container-all .row1 {flex-direction: row-reverse; gap: 20px;}";
             $container .= "main.main-all .container-all .row1 aside {width: 30%;}";
-            $container .= "body.single-product .container.shop-container {max-width: $left; margin: 0 auto;}";
+            $container .= "body.single-product:not(.solace-sitebuilder-singleproduct) .container.shop-container {max-width: $left; margin: 0 auto;}";
             $container .= "body.woocommerce.archive .container.shop-container {max-width: $left; margin: 0 auto;}";
             $container .= "body.post-type-archive-product .container.shop-container {max-width: $left; margin: 0 auto;}";
             $container .= ".container-404 {max-width: $left; margin: 0 auto;}";
@@ -119,7 +119,7 @@ function solace_style_page_settings()
             $container = "main.main-all {max-width: $right; margin: 0 auto;}";
             $container .= "main.main-all .container-all .row1 {gap: 20px;}";
             $container .= "main.main-all .container-all .row1 aside {width: 30%;}";       
-            $container .= "body.single-product .container.shop-container {max-width: $right; margin: 0 auto;}";
+            $container .= "body.single-product:not(.solace-sitebuilder-singleproduct) .container.shop-container {max-width: $right; margin: 0 auto;}";
             $container .= "body.woocommerce.archive .container.shop-container {max-width: $right; margin: 0 auto;}";
             $container .= ".container-404 {max-width: $right; margin: 0 auto;}";
 
@@ -136,8 +136,14 @@ function solace_style_page_settings()
         } else if ($container_list_layout === 'custom') {
             $arrayDataCustom = json_decode($container_custom_layout_width, true);
             $container = "main.main-all {width: 100%; max-width: {$arrayDataCustom['desktop']}px; margin: 0 auto;}";
-            $container .= "body.single-product .container.shop-container {max-width: {$arrayDataCustom['desktop']}px; margin: 0 auto;}";
-            $container .= "body.post-type-archive-product .container.shop-container {max-width: {$arrayDataCustom['desktop']}px; margin: 0 auto;}";
+            $container .= "body.single-product:not(.solace-sitebuilder-singleproduct) .container.shop-container {max-width: {$arrayDataCustom['desktop']}px; margin: 0 auto;}";
+
+            $container .= "body.single-product.solace-sitebuilder-singleproduct .container.shop-container {
+                max-width: 100% !important;
+                width: 100%;
+                padding-left: 0;
+                padding-right: 0;
+            }";
             $container .= ".container-404 {max-width: {$arrayDataCustom['desktop']}px; margin: 0 auto;}";
 
             // Remove Sidebar Shop

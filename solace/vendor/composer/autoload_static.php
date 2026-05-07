@@ -13,31 +13,31 @@ class ComposerStaticInit90f2c2372e1787be6873331e3e07b6f9
     );
 
     public static $prefixLengthsPsr4 = array (
-        'e' => 
+        'e' =>
         array (
             'eftec\\bladeone\\' => 15,
         ),
-        'W' => 
+        'W' =>
         array (
             'WP_CLI\\I18n\\' => 12,
         ),
-        'S' => 
+        'S' =>
         array (
             'Symfony\\Component\\Finder\\' => 25,
         ),
-        'P' => 
+        'P' =>
         array (
             'Peast\\' => 6,
         ),
-        'M' => 
+        'M' =>
         array (
             'Mustangostang\\' => 14,
         ),
-        'H' => 
+        'H' =>
         array (
             'HFG\\' => 4,
         ),
-        'G' => 
+        'G' =>
         array (
             'Gettext\\Languages\\' => 18,
             'Gettext\\' => 8,
@@ -45,60 +45,60 @@ class ComposerStaticInit90f2c2372e1787be6873331e3e07b6f9
     );
 
     public static $prefixDirsPsr4 = array (
-        'eftec\\bladeone\\' => 
+        'eftec\\bladeone\\' =>
         array (
             0 => __DIR__ . '/..' . '/eftec/bladeone/lib',
         ),
-        'WP_CLI\\I18n\\' => 
+        'WP_CLI\\I18n\\' =>
         array (
             0 => __DIR__ . '/..' . '/wp-cli/i18n-command/src',
         ),
-        'Symfony\\Component\\Finder\\' => 
+        'Symfony\\Component\\Finder\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/finder',
         ),
-        'Peast\\' => 
+        'Peast\\' =>
         array (
             0 => __DIR__ . '/..' . '/mck89/peast/lib/Peast',
         ),
-        'Mustangostang\\' => 
+        'Mustangostang\\' =>
         array (
             0 => __DIR__ . '/..' . '/wp-cli/mustangostang-spyc/src',
         ),
-        'HFG\\' => 
+        'HFG\\' =>
         array (
             0 => __DIR__ . '/../..' . '/header-footer-grid',
         ),
-        'Gettext\\Languages\\' => 
+        'Gettext\\Languages\\' =>
         array (
             0 => __DIR__ . '/..' . '/gettext/languages/src',
         ),
-        'Gettext\\' => 
+        'Gettext\\' =>
         array (
             0 => __DIR__ . '/..' . '/gettext/gettext/src',
         ),
     );
 
     public static $prefixesPsr0 = array (
-        'c' => 
+        'c' =>
         array (
-            'cli' => 
+            'cli' =>
             array (
                 0 => __DIR__ . '/..' . '/wp-cli/php-cli-tools/lib',
             ),
         ),
-        'W' => 
+        'W' =>
         array (
-            'WP_CLI\\' => 
+            'WP_CLI\\' =>
             array (
                 0 => __DIR__ . '/..' . '/wp-cli/wp-cli/php',
             ),
         ),
-        'M' => 
+        'M' =>
         array (
-            'Mustache' => 
+            'Mustache' =>
             array (
-                0 => __DIR__ . '/..' . '/mustache/mustache/src',
+                0 => __DIR__ . '/..' . '/wp-cli/mustache/src',
             ),
         ),
     );
@@ -141,7 +141,6 @@ class ComposerStaticInit90f2c2372e1787be6873331e3e07b6f9
         'Gettext\\GettextTranslator' => __DIR__ . '/..' . '/gettext/gettext/src/GettextTranslator.php',
         'Gettext\\Languages\\Category' => __DIR__ . '/..' . '/gettext/languages/src/Category.php',
         'Gettext\\Languages\\CldrData' => __DIR__ . '/..' . '/gettext/languages/src/CldrData.php',
-        'Gettext\\Languages\\Exporter\\Docs' => __DIR__ . '/..' . '/gettext/languages/src/Exporter/Docs.php',
         'Gettext\\Languages\\Exporter\\Exporter' => __DIR__ . '/..' . '/gettext/languages/src/Exporter/Exporter.php',
         'Gettext\\Languages\\Exporter\\Html' => __DIR__ . '/..' . '/gettext/languages/src/Exporter/Html.php',
         'Gettext\\Languages\\Exporter\\Json' => __DIR__ . '/..' . '/gettext/languages/src/Exporter/Json.php',
@@ -188,6 +187,7 @@ class ComposerStaticInit90f2c2372e1787be6873331e3e07b6f9
         'HFG\\Core\\Components\\FooterHtml1' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/FooterHtml1.php',
         'HFG\\Core\\Components\\FooterHtml2' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/FooterHtml2.php',
         'HFG\\Core\\Components\\FooterHtml3' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/FooterHtml3.php',
+        'HFG\\Core\\Components\\FooterHtml4' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/FooterHtml4.php',
         'HFG\\Core\\Components\\FooterSearch' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/FooterSearch.php',
         'HFG\\Core\\Components\\FooterSocial' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/FooterSocial.php',
         'HFG\\Core\\Components\\FooterWidgetFour' => __DIR__ . '/../..' . '/header-footer-grid/Core/Components/FooterWidgetFour.php',
@@ -219,40 +219,40 @@ class ComposerStaticInit90f2c2372e1787be6873331e3e07b6f9
         'HFG\\Core\\Settings\\Manager' => __DIR__ . '/../..' . '/header-footer-grid/Core/Settings/Manager.php',
         'HFG\\Main' => __DIR__ . '/../..' . '/header-footer-grid/Main.php',
         'HFG\\Traits\\Core' => __DIR__ . '/../..' . '/header-footer-grid/Traits/Core.php',
-        'Mustache_Autoloader' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Autoloader.php',
-        'Mustache_Cache' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Cache.php',
-        'Mustache_Cache_AbstractCache' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Cache/AbstractCache.php',
-        'Mustache_Cache_FilesystemCache' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Cache/FilesystemCache.php',
-        'Mustache_Cache_NoopCache' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Cache/NoopCache.php',
-        'Mustache_Compiler' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Compiler.php',
-        'Mustache_Context' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Context.php',
-        'Mustache_Engine' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Engine.php',
-        'Mustache_Exception' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Exception.php',
-        'Mustache_Exception_InvalidArgumentException' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Exception/InvalidArgumentException.php',
-        'Mustache_Exception_LogicException' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Exception/LogicException.php',
-        'Mustache_Exception_RuntimeException' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Exception/RuntimeException.php',
-        'Mustache_Exception_SyntaxException' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Exception/SyntaxException.php',
-        'Mustache_Exception_UnknownFilterException' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Exception/UnknownFilterException.php',
-        'Mustache_Exception_UnknownHelperException' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Exception/UnknownHelperException.php',
-        'Mustache_Exception_UnknownTemplateException' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Exception/UnknownTemplateException.php',
-        'Mustache_HelperCollection' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/HelperCollection.php',
-        'Mustache_LambdaHelper' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/LambdaHelper.php',
-        'Mustache_Loader' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Loader.php',
-        'Mustache_Loader_ArrayLoader' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Loader/ArrayLoader.php',
-        'Mustache_Loader_CascadingLoader' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Loader/CascadingLoader.php',
-        'Mustache_Loader_FilesystemLoader' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Loader/FilesystemLoader.php',
-        'Mustache_Loader_InlineLoader' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Loader/InlineLoader.php',
-        'Mustache_Loader_MutableLoader' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Loader/MutableLoader.php',
-        'Mustache_Loader_ProductionFilesystemLoader' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Loader/ProductionFilesystemLoader.php',
-        'Mustache_Loader_StringLoader' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Loader/StringLoader.php',
-        'Mustache_Logger' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Logger.php',
-        'Mustache_Logger_AbstractLogger' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Logger/AbstractLogger.php',
-        'Mustache_Logger_StreamLogger' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Logger/StreamLogger.php',
-        'Mustache_Parser' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Parser.php',
-        'Mustache_Source' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Source.php',
-        'Mustache_Source_FilesystemSource' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Source/FilesystemSource.php',
-        'Mustache_Template' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Template.php',
-        'Mustache_Tokenizer' => __DIR__ . '/..' . '/mustache/mustache/src/Mustache/Tokenizer.php',
+        'Mustache_Autoloader' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Autoloader.php',
+        'Mustache_Cache' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Cache.php',
+        'Mustache_Cache_AbstractCache' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Cache/AbstractCache.php',
+        'Mustache_Cache_FilesystemCache' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Cache/FilesystemCache.php',
+        'Mustache_Cache_NoopCache' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Cache/NoopCache.php',
+        'Mustache_Compiler' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Compiler.php',
+        'Mustache_Context' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Context.php',
+        'Mustache_Engine' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Engine.php',
+        'Mustache_Exception' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Exception.php',
+        'Mustache_Exception_InvalidArgumentException' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Exception/InvalidArgumentException.php',
+        'Mustache_Exception_LogicException' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Exception/LogicException.php',
+        'Mustache_Exception_RuntimeException' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Exception/RuntimeException.php',
+        'Mustache_Exception_SyntaxException' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Exception/SyntaxException.php',
+        'Mustache_Exception_UnknownFilterException' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Exception/UnknownFilterException.php',
+        'Mustache_Exception_UnknownHelperException' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Exception/UnknownHelperException.php',
+        'Mustache_Exception_UnknownTemplateException' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Exception/UnknownTemplateException.php',
+        'Mustache_HelperCollection' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/HelperCollection.php',
+        'Mustache_LambdaHelper' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/LambdaHelper.php',
+        'Mustache_Loader' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Loader.php',
+        'Mustache_Loader_ArrayLoader' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Loader/ArrayLoader.php',
+        'Mustache_Loader_CascadingLoader' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Loader/CascadingLoader.php',
+        'Mustache_Loader_FilesystemLoader' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Loader/FilesystemLoader.php',
+        'Mustache_Loader_InlineLoader' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Loader/InlineLoader.php',
+        'Mustache_Loader_MutableLoader' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Loader/MutableLoader.php',
+        'Mustache_Loader_ProductionFilesystemLoader' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Loader/ProductionFilesystemLoader.php',
+        'Mustache_Loader_StringLoader' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Loader/StringLoader.php',
+        'Mustache_Logger' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Logger.php',
+        'Mustache_Logger_AbstractLogger' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Logger/AbstractLogger.php',
+        'Mustache_Logger_StreamLogger' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Logger/StreamLogger.php',
+        'Mustache_Parser' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Parser.php',
+        'Mustache_Source' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Source.php',
+        'Mustache_Source_FilesystemSource' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Source/FilesystemSource.php',
+        'Mustache_Template' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Template.php',
+        'Mustache_Tokenizer' => __DIR__ . '/..' . '/wp-cli/mustache/src/Mustache/Tokenizer.php',
         'Mustangostang\\Spyc' => __DIR__ . '/..' . '/wp-cli/mustangostang-spyc/src/Spyc.php',
         'Peast\\Formatter\\Base' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Formatter/Base.php',
         'Peast\\Formatter\\Compact' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Formatter/Compact.php',
@@ -284,6 +284,8 @@ class ComposerStaticInit90f2c2372e1787be6873331e3e07b6f9
         'Peast\\Syntax\\ES2021\\Features' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/ES2021/Features.php',
         'Peast\\Syntax\\ES2022\\Features' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/ES2022/Features.php',
         'Peast\\Syntax\\ES2023\\Features' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/ES2023/Features.php',
+        'Peast\\Syntax\\ES2024\\Features' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/ES2024/Features.php',
+        'Peast\\Syntax\\ES2025\\Features' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/ES2025/Features.php',
         'Peast\\Syntax\\EncodingException' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/EncodingException.php',
         'Peast\\Syntax\\EventsEmitter' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/EventsEmitter.php',
         'Peast\\Syntax\\Exception' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/Exception.php',
@@ -332,6 +334,7 @@ class ComposerStaticInit90f2c2372e1787be6873331e3e07b6f9
         'Peast\\Syntax\\Node\\Function_' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/Node/Function_.php',
         'Peast\\Syntax\\Node\\Identifier' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/Node/Identifier.php',
         'Peast\\Syntax\\Node\\IfStatement' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/Node/IfStatement.php',
+        'Peast\\Syntax\\Node\\ImportAttribute' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/Node/ImportAttribute.php',
         'Peast\\Syntax\\Node\\ImportDeclaration' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/Node/ImportDeclaration.php',
         'Peast\\Syntax\\Node\\ImportDefaultSpecifier' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/Node/ImportDefaultSpecifier.php',
         'Peast\\Syntax\\Node\\ImportExpression' => __DIR__ . '/..' . '/mck89/peast/lib/Peast/Syntax/Node/ImportExpression.php',
@@ -431,6 +434,7 @@ class ComposerStaticInit90f2c2372e1787be6873331e3e07b6f9
         'WP_CLI\\Bootstrap\\AutoloaderStep' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Bootstrap/AutoloaderStep.php',
         'WP_CLI\\Bootstrap\\BootstrapState' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Bootstrap/BootstrapState.php',
         'WP_CLI\\Bootstrap\\BootstrapStep' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Bootstrap/BootstrapStep.php',
+        'WP_CLI\\Bootstrap\\CheckRoot' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Bootstrap/CheckRoot.php',
         'WP_CLI\\Bootstrap\\ConfigureRunner' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Bootstrap/ConfigureRunner.php',
         'WP_CLI\\Bootstrap\\DeclareAbstractBaseCommand' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Bootstrap/DeclareAbstractBaseCommand.php',
         'WP_CLI\\Bootstrap\\DeclareFallbackFunctions' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Bootstrap/DeclareFallbackFunctions.php',
@@ -451,9 +455,6 @@ class ComposerStaticInit90f2c2372e1787be6873331e3e07b6f9
         'WP_CLI\\Bootstrap\\RegisterDeferredCommands' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Bootstrap/RegisterDeferredCommands.php',
         'WP_CLI\\Bootstrap\\RegisterFrameworkCommands' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Bootstrap/RegisterFrameworkCommands.php',
         'WP_CLI\\Bootstrap\\RunnerInstance' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Bootstrap/RunnerInstance.php',
-        'WP_CLI\\Compat\\FeedbackMethodTrait' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Compat/FeedbackMethodTrait.php',
-        'WP_CLI\\Compat\\Min_PHP_5_4\\FeedbackMethodTrait' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Compat/Min_PHP_5_4/FeedbackMethodTrait.php',
-        'WP_CLI\\Compat\\Min_PHP_5_6\\FeedbackMethodTrait' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Compat/Min_PHP_5_6/FeedbackMethodTrait.php',
         'WP_CLI\\Completions' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Completions.php',
         'WP_CLI\\ComposerIO' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/ComposerIO.php',
         'WP_CLI\\Configurator' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Configurator.php',
@@ -470,15 +471,18 @@ class ComposerStaticInit90f2c2372e1787be6873331e3e07b6f9
         'WP_CLI\\Dispatcher\\RootCommand' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Dispatcher/RootCommand.php',
         'WP_CLI\\Dispatcher\\Subcommand' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Dispatcher/Subcommand.php',
         'WP_CLI\\DocParser' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/DocParser.php',
+        'WP_CLI\\Exception\\NonExistentKeyException' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Exception/NonExistentKeyException.php',
         'WP_CLI\\ExitException' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/ExitException.php',
         'WP_CLI\\Extractor' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Extractor.php',
         'WP_CLI\\Fetchers\\Base' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Fetchers/Base.php',
         'WP_CLI\\Fetchers\\Comment' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Fetchers/Comment.php',
         'WP_CLI\\Fetchers\\Post' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Fetchers/Post.php',
+        'WP_CLI\\Fetchers\\Signup' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Fetchers/Signup.php',
         'WP_CLI\\Fetchers\\Site' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Fetchers/Site.php',
         'WP_CLI\\Fetchers\\User' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Fetchers/User.php',
         'WP_CLI\\FileCache' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/FileCache.php',
         'WP_CLI\\Formatter' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Formatter.php',
+        'WP_CLI\\I18n\\AuditCommand' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/AuditCommand.php',
         'WP_CLI\\I18n\\BladeCodeExtractor' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/BladeCodeExtractor.php',
         'WP_CLI\\I18n\\BladeGettextExtractor' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/BladeGettextExtractor.php',
         'WP_CLI\\I18n\\BlockExtractor' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/BlockExtractor.php',
@@ -488,15 +492,17 @@ class ComposerStaticInit90f2c2372e1787be6873331e3e07b6f9
         'WP_CLI\\I18n\\JedGenerator' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/JedGenerator.php',
         'WP_CLI\\I18n\\JsCodeExtractor' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/JsCodeExtractor.php',
         'WP_CLI\\I18n\\JsFunctionsScanner' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/JsFunctionsScanner.php',
+        'WP_CLI\\I18n\\JsStringFilterTrait' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/JsStringFilterTrait.php',
         'WP_CLI\\I18n\\JsonSchemaExtractor' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/JsonSchemaExtractor.php',
         'WP_CLI\\I18n\\MakeJsonCommand' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/MakeJsonCommand.php',
         'WP_CLI\\I18n\\MakeMoCommand' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/MakeMoCommand.php',
+        'WP_CLI\\I18n\\MakePhpCommand' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/MakePhpCommand.php',
         'WP_CLI\\I18n\\MakePotCommand' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/MakePotCommand.php',
         'WP_CLI\\I18n\\MapCodeExtractor' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/MapCodeExtractor.php',
+        'WP_CLI\\I18n\\PhpArrayGenerator' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/PhpArrayGenerator.php',
         'WP_CLI\\I18n\\PhpCodeExtractor' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/PhpCodeExtractor.php',
         'WP_CLI\\I18n\\PhpFunctionsScanner' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/PhpFunctionsScanner.php',
         'WP_CLI\\I18n\\PotGenerator' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/PotGenerator.php',
-        'WP_CLI\\I18n\\ThemeJsonExtractor' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/ThemeJsonExtractor.php',
         'WP_CLI\\I18n\\UpdatePoCommand' => __DIR__ . '/..' . '/wp-cli/i18n-command/src/UpdatePoCommand.php',
         'WP_CLI\\Inflector' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Inflector.php',
         'WP_CLI\\Iterators\\CSV' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Iterators/CSV.php',
@@ -516,6 +522,7 @@ class ComposerStaticInit90f2c2372e1787be6873331e3e07b6f9
         'WP_CLI\\Runner' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Runner.php',
         'WP_CLI\\SynopsisParser' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/SynopsisParser.php',
         'WP_CLI\\SynopsisValidator' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/SynopsisValidator.php',
+        'WP_CLI\\Traverser\\RecursiveDataStructureTraverser' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/Traverser/RecursiveDataStructureTraverser.php',
         'WP_CLI\\UpgraderSkin' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/UpgraderSkin.php',
         'WP_CLI\\WpHttpCacheManager' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/WpHttpCacheManager.php',
         'WP_CLI\\WpOrgApi' => __DIR__ . '/..' . '/wp-cli/wp-cli/php/WP_CLI/WpOrgApi.php',

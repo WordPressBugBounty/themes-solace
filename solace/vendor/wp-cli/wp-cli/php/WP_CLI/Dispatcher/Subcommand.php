@@ -480,7 +480,16 @@ class Subcommand extends CompositeCommand {
 				sprintf(
 					'wp %s %s',
 					$cmd,
-					ltrim( Utils\assoc_args_to_str( $actual_args ), ' ' )
+					ltrim(
+						implode(
+							' ',
+							[
+								ltrim( Utils\args_to_str( $args ), ' ' ),
+								ltrim( Utils\assoc_args_to_str( $actual_args ), ' ' ),
+							]
+						),
+						' '
+					)
 				)
 			);
 		}
@@ -497,7 +506,7 @@ class Subcommand extends CompositeCommand {
 	 * Get an array of parameter names, by merging the command-specific and the
 	 * global parameters.
 	 *
-	 * @param array  $spec Optional. Specification of the current command.
+	 * @param array $spec Optional. Specification of the current command.
 	 *
 	 * @return array Array of parameter names
 	 */

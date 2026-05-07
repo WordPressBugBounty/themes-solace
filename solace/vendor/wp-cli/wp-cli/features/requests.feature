@@ -1,5 +1,8 @@
 Feature: Requests integration with both v1 and v2
 
+  # This test downgrades to WordPress 5.8, but the SQLite plugin requires 6.0+
+  # WP-CLI 2.7 causes deprecation warnings on PHP 8.2
+  @require-mysql @less-than-php-8.2
   Scenario: Composer stack with Requests v1
     Given an empty directory
     And a composer.json file:
@@ -44,6 +47,8 @@ Feature: Requests integration with both v1 and v2
       """
     And STDERR should be empty
 
+  # This test downgrades to WordPress 5.8, but the SQLite plugin requires 6.0+
+  @require-mysql
   Scenario: Current version with WordPress-bundled Requests v1
     Given a WP installation
     And I run `wp core update --version=5.8 --force`
@@ -66,14 +71,18 @@ Feature: Requests integration with both v1 and v2
       """
     And STDERR should be empty
 
-    When I run `wp plugin install duplicate-post`
+    When I run `wp plugin install debug-bar`
     Then STDOUT should contain:
       """
       Success: Installed 1 of 1 plugins.
       """
 
-    Scenario: Current version with WordPress-bundled Requests v2
+  Scenario: Current version with WordPress-bundled Requests v2
     Given a WP installation
+    # Switch themes because twentytwentyfive requires a version newer than 6.2
+    # and it would otherwise cause a fatal error further down.
+    And I try `wp theme install twentyten`
+    And I try `wp theme activate twentyten`
     And I run `wp core update --version=6.2 --force`
 
     When I run `wp core version`
@@ -93,12 +102,14 @@ Feature: Requests integration with both v1 and v2
       """
     And STDERR should be empty
 
-    When I run `wp plugin install duplicate-post`
+    When I run `wp plugin install debug-bar`
     Then STDOUT should contain:
       """
       Success: Installed 1 of 1 plugins.
       """
 
+  # This test downgrades to WordPress 5.8, but the SQLite plugin requires 6.0+
+  @require-mysql
   Scenario: Current version with WordPress-bundled Request v1 and an alias
     Given a WP installation in 'foo'
     And I run `wp --path=foo core download --version=5.8 --force`

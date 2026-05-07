@@ -176,8 +176,16 @@ final class JsFunctionsScanner extends GettextJsFunctionsScanner {
 				}
 
 				$translation = $translations->insert( $context, $original, $plural );
+
 				if ( $add_reference ) {
 					$translation->addReference( $file, $line );
+				}
+
+				if (
+					1 === preg_match( MakePotCommand::SPRINTF_PLACEHOLDER_REGEX, $original ) ||
+					1 === preg_match( MakePotCommand::UNORDERED_SPRINTF_PLACEHOLDER_REGEX, $original )
+				) {
+					$translation->addFlag( 'js-format' );
 				}
 
 				/** @var Node\Comment $comment */
@@ -360,7 +368,7 @@ final class JsFunctionsScanner extends GettextJsFunctionsScanner {
 	}
 
 	/**
-	 * Returns wether or not a comment precedes a node.
+	 * Returns whether or not a comment precedes a node.
 	 * The comment must be before the node and on the same line or the one before.
 	 *
 	 * @param Node\Comment $comment The comment.

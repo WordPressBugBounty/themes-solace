@@ -3,7 +3,6 @@
 namespace WP_CLI\I18n;
 
 use Gettext\Extractors\Po as PoExtractor;
-use Gettext\Generators\Po as PoGenerator;
 use Gettext\Translation;
 use Gettext\Translations;
 use WP_CLI;
@@ -38,12 +37,11 @@ class MakeJsonCommand extends WP_CLI_Command {
 	 * [<destination>]
 	 * : Path to the destination directory for the resulting JSON files. Defaults to the source directory.
 	 *
-	 * [--purge]
-	 * : Whether to purge the strings that were extracted from the original source file. Defaults to true, use `--no-purge` to skip the removal.
+	 * [--domain=<domain>]
+	 * : Text domain to use for the JSON file name. Overrides the default one extracted from the PO file.
 	 *
-	 * [--update-mo-files]
-	 * : Whether MO files should be updated as well after updating PO files.
-	 * Only has an effect when used in combination with `--purge`.
+	 * [--extensions=<extensions>]
+	 * : Additional custom JS extensions, comma separated list. By default searches for .min.js and .js extensions.
 	 *
 	 * [--pretty-print]
 	 * : Pretty-print resulting JSON files.
@@ -57,8 +55,8 @@ class MakeJsonCommand extends WP_CLI_Command {
 	 *     # Create JSON files for all PO files in the languages directory
 	 *     $ wp i18n make-json languages
 	 *
-	 *     # Create JSON files for my-plugin-de_DE.po and leave the PO file untouched.
-	 *     $ wp i18n make-json my-plugin-de_DE.po /tmp --no-purge
+	 *     # Create JSON files for my-plugin-de_DE.po
+	 *     $ wp i18n make-json my-plugin-de_DE.po /tmp
 	 *
 	 *     # Create JSON files with mapping
 	 *     $ wp i18n make-json languages --use-map=build/map.json
@@ -74,10 +72,15 @@ class MakeJsonCommand extends WP_CLI_Command {
 	 * @throws WP_CLI\ExitException
 	 */
 	public function __invoke( $args, $assoc_args ) {
-		$assoc_args      = Utils\parse_shell_arrays( $assoc_args, array( 'use-map' ) );
-		$purge           = Utils\get_flag_value( $assoc_args, 'purge', true );
-		$update_mo_files = Utils\get_flag_value( $assoc_args, 'update-mo-files', true );
-		$map_paths       = Utils\get_flag_value( $assoc_args, 'use-map', false );
+		$assoc_args = Utils\parse_shell_arrays( $assoc_args, array( 'use-map' ) );
+		$map_paths  = Utils\get_flag_value( $assoc_args, 'use-map', false );
+		$domain     = Utils\get_flag_value( $assoc_args, 'domain', '' );
+		$extensions = array_map(
+			function ( $extension ) {
+				return trim( $extension, ' .' );
+			},
+			explode( ',', Utils\get_flag_value( $assoc_args, 'extensions', '' ) )
+		);
 
 		if ( Utils\get_flag_value( $assoc_args, 'pretty-print', false ) ) {
 			$this->json_options |= JSON_PRETTY_PRINT;
@@ -86,7 +89,7 @@ class MakeJsonCommand extends WP_CLI_Command {
 		$source = realpath( $args[0] );
 
 		if ( ! $source || ( ! is_file( $source ) && ! is_dir( $source ) ) ) {
-			WP_CLI::error( 'Source file or directory does not exist!' );
+			WP_CLI::error( 'Source file or directory does not exist.' );
 		}
 
 		$destination = is_file( $source ) ? dirname( $source ) : $source;
@@ -100,12 +103,8 @@ class MakeJsonCommand extends WP_CLI_Command {
 			WP_CLI::error( 'No valid keys found. No file was created.' );
 		}
 
-		// Two is_dir() checks in case of a race condition.
-		if ( ! is_dir( $destination )
-			&& ! mkdir( $destination, 0777, true )
-			&& ! is_dir( $destination )
-		) {
-			WP_CLI::error( 'Could not create destination directory!' );
+		if ( ! is_dir( $destination ) && ! mkdir( $destination, 0777, true ) ) {
+			WP_CLI::error( 'Could not create destination directory.' );
 		}
 
 		$result_count = 0;
@@ -119,27 +118,8 @@ class MakeJsonCommand extends WP_CLI_Command {
 		/** @var DirectoryIterator $file */
 		foreach ( $files as $file ) {
 			if ( $file->isFile() && $file->isReadable() && 'po' === $file->getExtension() ) {
-				$result        = $this->make_json( $file->getRealPath(), $destination, $map );
+				$result        = $this->make_json( $file->getRealPath(), $destination, $map, $domain, $extensions );
 				$result_count += count( $result );
-
-				if ( $purge ) {
-					$removed = $this->remove_js_strings_from_po_file( $file->getRealPath() );
-
-					if ( ! $removed ) {
-						WP_CLI::warning( sprintf( 'Could not update file %s', basename( $source ) ) );
-						continue;
-					}
-
-					if ( $update_mo_files ) {
-						$file_basename    = basename( $file->getFilename(), '.po' );
-						$destination_file = "{$destination}/{$file_basename}.mo";
-
-						$translations = Translations::fromPoFile( $file->getPathname() );
-						if ( ! $translations->toMoFile( $destination_file ) ) {
-							WP_CLI::warning( "Could not create file {$destination_file}" );
-						}
-					}
-				}
 			}
 		}
 
@@ -226,20 +206,23 @@ class MakeJsonCommand extends WP_CLI_Command {
 	 *
 	 * @param string     $source_file Path to the source file.
 	 * @param string     $destination Path to the destination directory.
-	 * @param array|null $map               Source to build file mapping.
+	 * @param array|null $map         Source to build file mapping.
+	 * @param string     $domain      Override text domain to use.
+	 * @param array      $extensions  Additional extensions.
 	 * @return array     List of created JSON files.
 	 */
-	protected function make_json( $source_file, $destination, $map ) {
+	protected function make_json( $source_file, $destination, $map, $domain, $extensions ) {
 		/** @var Translations[] $mapping */
 		$mapping      = [];
 		$translations = new Translations();
 		$result       = [];
+		$extensions   = array_merge( [ 'js' ], $extensions );
 
 		PoExtractor::fromFile( $source_file, $translations );
 
 		$base_file_name = basename( $source_file, '.po' );
 
-		$domain = $translations->getDomain();
+		$domain = ( ! empty( $domain ) ) ? $domain : $translations->getDomain();
 
 		if ( $domain && 0 !== strpos( $base_file_name, $domain ) ) {
 			$base_file_name = "{$domain}-{$base_file_name}";
@@ -250,18 +233,13 @@ class MakeJsonCommand extends WP_CLI_Command {
 
 			// Find all unique sources this translation originates from.
 			$sources = array_map(
-				static function ( $reference ) {
-					$file = $reference[0];
+				static function ( $reference ) use ( $extensions ) {
+					$file      = $reference[0];
+					$extension = pathinfo( $file, PATHINFO_EXTENSION );
 
-					if ( substr( $file, - 7 ) === '.min.js' ) {
-						return substr( $file, 0, - 7 ) . '.js';
-					}
-
-					if ( substr( $file, - 3 ) === '.js' ) {
-						return $file;
-					}
-
-					return null;
+					return in_array( $extension, $extensions, true )
+						? preg_replace( "/\.min\.{$extension}$/", ".{$extension}", $file )
+						: null;
 				},
 				$this->reference_map( $translation->getReferences(), $map )
 			);
@@ -377,38 +355,5 @@ class MakeJsonCommand extends WP_CLI_Command {
 		}
 
 		return $result;
-	}
-
-	/**
-	 * Removes strings from PO file that only occur in JavaScript file.
-	 *
-	 * @param string $source_file Path to the PO file.
-	 * @return bool True on success, false otherwise.
-	 */
-	protected function remove_js_strings_from_po_file( $source_file ) {
-		/** @var Translations[] $mapping */
-		$translations = new Translations();
-
-		PoExtractor::fromFile( $source_file, $translations );
-
-		foreach ( $translations->getArrayCopy() as $translation ) {
-			/** @var Translation $translation */
-
-			if ( ! $translation->hasReferences() ) {
-				continue;
-			}
-
-			foreach ( $translation->getReferences() as $reference ) {
-				$file = $reference[0];
-
-				if ( substr( $file, - 3 ) !== '.js' ) {
-					continue 2;
-				}
-			}
-
-			unset( $translations[ $translation->getId() ] );
-		}
-
-		return PoGenerator::toFile( $translations, $source_file );
 	}
 }

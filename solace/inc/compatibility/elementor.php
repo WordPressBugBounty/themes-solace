@@ -98,15 +98,15 @@ class Elementor extends Page_Builder_Base {
 		 * p
 		 * ul
 		 */
-		$css .= 'body.elementor-page .elementor li,';
-		$css .= 'body.elementor-page .elementor p,';
-		$css .= 'body.elementor-page .elementor ul {';
-			$css .= 'font-size: unset;';
-			$css .= 'line-height: unset;';
-			$css .= 'letter-spacing: unset;';
-			$css .= 'text-transform: unset;';
-			$css .= 'font-weight: unset;';
-		$css .= '}';
+		// $css .= 'body.elementor-page .elementor li,';
+		// $css .= 'body.elementor-page .elementor p,';
+		// $css .= 'body.elementor-page .elementor ul {';
+		// 	$css .= 'font-size: unset;';
+		// 	$css .= 'line-height: unset;';
+		// 	$css .= 'letter-spacing: unset;';
+		// 	$css .= 'text-transform: unset;';
+		// 	$css .= 'font-weight: unset;';
+		// $css .= '}';
 
 		/**
 		 * Filters the css with base vars for elementor colors.

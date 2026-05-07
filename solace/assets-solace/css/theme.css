@@ -4532,6 +4532,10 @@ h1.site-title {
   color: var(--sol-color-selection-initial);
 }
 
+main.main-page.main-singular {
+  flex: 1 auto;
+}
+
 .entry-meta {
   color: var(--sol-color-base-font);
 }
