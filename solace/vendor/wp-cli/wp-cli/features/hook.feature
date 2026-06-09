@@ -24,9 +24,6 @@ Feature: Tests `WP_CLI::add_hook()`
       """
     And the return code should be 0
 
-  # `wp db check` does not yet work on SQLite,
-  # See https://github.com/wp-cli/db-command/issues/234
-  @require-mysql
   Scenario: Add callback to the `before_invoke:db check`
     Given a WP installation
     And a before-invoke.php file:
@@ -147,7 +144,7 @@ Feature: Tests `WP_CLI::add_hook()`
       """
       `add_hook()` to the `custom_hook` is working.
       """
-    And STDOUT should not contain:
+    Then STDOUT should not contain:
       """
       First argument is not being passed in to callback properly
       """
@@ -204,7 +201,7 @@ Feature: Tests `WP_CLI::add_hook()`
       """
       `add_hook()` to the `custom_hook` is working.
       """
-    And STDOUT should not contain:
+    Then STDOUT should not contain:
       """
       First argument is not being passed in to callback properly
       """

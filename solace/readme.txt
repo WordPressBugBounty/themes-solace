@@ -30,6 +30,14 @@ Solace includes support for WooCommerce.
 
 == Changelog ==
 
+= 2.1.21 - 8 June 2026 =
+* [Fix]: Fixed issues on Customizer scroll to top feature
+* [Fix]: Fixed issues on Customizer live preview
+* [Fix]: Fixed issues on customizer font and button override elementor page
+* [Fix]: Improved compatibility for WordPress 7
+* [Style]: Customizer Style for WordPress 7
+* [Style]: Gutenberg Cart Block for WordPress 7
+
 = 2.1.20 - 7 May 2026 =
 * [Fix]: Fixed issues on gallery layout 
 * [Fix]: Fixed issues responsive menu

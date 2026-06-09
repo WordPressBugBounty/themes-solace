@@ -60,11 +60,6 @@ class MakePotCommand extends WP_CLI_Command {
 	protected $main_file_data = [];
 
 	/**
-	 * @var string
-	 */
-	protected $main_file_path;
-
-	/**
 	 * @var bool
 	 */
 	protected $skip_js = false;
@@ -273,14 +268,12 @@ class MakePotCommand extends WP_CLI_Command {
 	 *
 	 * ## EXAMPLES
 	 *
-	 *     # Create a POT file for the WordPress plugin/theme in the current directory.
+	 *     # Create a POT file for the WordPress plugin/theme in the current directory
 	 *     $ wp i18n make-pot . languages/my-plugin.pot
 	 *
 	 *     # Create a POT file for the continents and cities list in WordPress core.
-	 *     $ wp i18n make-pot . continents-and-cities.pot --include="wp-admin/includes/continents-cities.php" --ignore-domain
-	 *
-	 *     # Create a POT file for the WordPress theme in the current directory with custom headers.
-	 *     $ wp i18n make-pot . languages/my-theme.pot --headers='{"Report-Msgid-Bugs-To":"https://github.com/theme-author/my-theme/","POT-Creation-Date":""}'
+	 *     $ wp i18n make-pot . continents-and-cities.pot --include="wp-admin/includes/continents-cities.php"
+	 *     --ignore-domain
 	 *
 	 * @when before_wp_load
 	 *
@@ -304,10 +297,10 @@ class MakePotCommand extends WP_CLI_Command {
 		}
 
 		if ( ! PotGenerator::toFile( $translations, $this->destination ) ) {
-			WP_CLI::error( 'Could not generate a POT file.' );
+			WP_CLI::error( 'Could not generate a POT file!' );
 		}
 
-		WP_CLI::success( 'POT file successfully generated.' );
+		WP_CLI::success( 'POT file successfully generated!' );
 	}
 
 	/**
@@ -338,7 +331,7 @@ class MakePotCommand extends WP_CLI_Command {
 		$ignore_domain = Utils\get_flag_value( $assoc_args, 'ignore-domain', false );
 
 		if ( ! $this->source || ! is_dir( $this->source ) ) {
-			WP_CLI::error( 'Not a valid source directory.' );
+			WP_CLI::error( 'Not a valid source directory!' );
 		}
 
 		$this->main_file_data = $this->get_main_file_data();
@@ -350,8 +343,8 @@ class MakePotCommand extends WP_CLI_Command {
 		if ( ! $ignore_domain ) {
 			$this->domain = $this->slug;
 
-			if ( ! empty( $this->main_file_data['Text Domain']['value'] ) ) {
-				$this->domain = $this->main_file_data['Text Domain']['value'];
+			if ( ! empty( $this->main_file_data['Text Domain'] ) ) {
+				$this->domain = $this->main_file_data['Text Domain'];
 			}
 
 			$this->domain = Utils\get_flag_value( $assoc_args, 'domain', $this->domain );
@@ -362,12 +355,12 @@ class MakePotCommand extends WP_CLI_Command {
 		// Determine destination.
 		$this->destination = "{$this->source}/{$this->slug}.pot";
 
-		if ( ! empty( $this->main_file_data['Domain Path']['value'] ) ) {
+		if ( ! empty( $this->main_file_data['Domain Path'] ) ) {
 			// Domain Path inside source folder.
 			$this->destination = sprintf(
 				'%s/%s/%s.pot',
 				$this->source,
-				$this->unslashit( $this->main_file_data['Domain Path']['value'] ),
+				$this->unslashit( $this->main_file_data['Domain Path'] ),
 				$this->slug
 			);
 		}
@@ -378,8 +371,12 @@ class MakePotCommand extends WP_CLI_Command {
 
 		WP_CLI::debug( sprintf( 'Destination: %s', $this->destination ), 'make-pot' );
 
-		if ( ! is_dir( dirname( $this->destination ) ) && ! mkdir( dirname( $this->destination ), 0777, true ) ) {
-			WP_CLI::error( 'Could not create destination directory.' );
+		// Two is_dir() checks in case of a race condition.
+		if ( ! is_dir( dirname( $this->destination ) )
+			&& ! mkdir( dirname( $this->destination ), 0777, true )
+			&& ! is_dir( dirname( $this->destination ) )
+		) {
+			WP_CLI::error( 'Could not create destination directory!' );
 		}
 
 		if ( isset( $assoc_args['merge'] ) ) {
@@ -480,12 +477,11 @@ class MakePotCommand extends WP_CLI_Command {
 				);
 
 				// Stop when it contains a valid Theme Name header.
-				if ( ! empty( $theme_data['Theme Name']['value'] ) ) {
+				if ( ! empty( $theme_data['Theme Name'] ) ) {
 					WP_CLI::log( 'Theme stylesheet detected.' );
 					WP_CLI::debug( sprintf( 'Theme stylesheet: %s', $file->getRealPath() ), 'make-pot' );
 
-					$this->project_type   = 'theme';
-					$this->main_file_path = $file->getRealPath();
+					$this->project_type = 'theme';
 
 					return $theme_data;
 				}
@@ -502,12 +498,11 @@ class MakePotCommand extends WP_CLI_Command {
 				);
 
 				// Stop when it contains a valid Theme Name header.
-				if ( ! empty( $theme_data['Theme Name']['value'] ) ) {
+				if ( ! empty( $theme_data['Theme Name'] ) ) {
 					WP_CLI::log( 'Theme stylesheet detected.' );
 					WP_CLI::debug( sprintf( 'Theme stylesheet: %s', $file->getRealPath() . '/style.css' ), 'make-pot' );
 
-					$this->project_type   = 'theme';
-					$this->main_file_path = $file->getRealPath();
+					$this->project_type = 'theme';
 
 					return $theme_data;
 				}
@@ -524,12 +519,11 @@ class MakePotCommand extends WP_CLI_Command {
 				);
 
 				// Stop when we find a file with a valid Plugin Name header.
-				if ( ! empty( $plugin_data['Plugin Name']['value'] ) ) {
+				if ( ! empty( $plugin_data['Plugin Name'] ) ) {
 					WP_CLI::log( 'Plugin file detected.' );
 					WP_CLI::debug( sprintf( 'Plugin file: %s', $file->getRealPath() ), 'make-pot' );
 
-					$this->project_type   = 'plugin';
-					$this->main_file_path = $file->getRealPath();
+					$this->project_type = 'plugin';
 
 					return $plugin_data;
 				}
@@ -616,26 +610,16 @@ class MakePotCommand extends WP_CLI_Command {
 
 		// Set entries from main file data.
 		foreach ( $this->main_file_data as $header => $data ) {
-			if ( empty( $data['value'] ) ) {
+			if ( empty( $data ) ) {
 				continue;
 			}
 
-			$translation = new Translation( '', $data['value'] );
+			$translation = new Translation( '', $data );
 
 			if ( $is_theme ) {
 				$translation->addExtractedComment( sprintf( '%s of the theme', $header ) );
 			} else {
 				$translation->addExtractedComment( sprintf( '%s of the plugin', $header ) );
-			}
-
-			if ( $this->main_file_path && $this->location ) {
-				$file_reference = ltrim( str_replace( Utils\normalize_path( "$this->source/" ), '', Utils\normalize_path( $this->main_file_path ) ), '/' );
-				// Add line number if available
-				if ( ! empty( $data['line'] ) ) {
-					$translation->addReference( $file_reference, $data['line'] );
-				} else {
-					$translation->addReference( $file_reference );
-				}
 			}
 
 			$translations[] = $translation;
@@ -697,7 +681,7 @@ class MakePotCommand extends WP_CLI_Command {
 					[
 						'schema'            => JsonSchemaExtractor::BLOCK_JSON_SOURCE,
 						'schemaFallback'    => JsonSchemaExtractor::BLOCK_JSON_FALLBACK,
-						// Only look for block.json files in any folder, nothing else.
+						// Only look for block.json files, nothing else.
 						'restrictFileNames' => [ 'block.json' ],
 						'include'           => $this->include,
 						'exclude'           => $this->exclude,
@@ -708,38 +692,20 @@ class MakePotCommand extends WP_CLI_Command {
 			}
 
 			if ( ! $this->skip_theme_json ) {
-				JsonSchemaExtractor::fromDirectory(
+				// This will look for the top-level theme.json file, as well as
+				// any JSON file within the top-level styles/ directory.
+				ThemeJsonExtractor::fromDirectory(
 					$this->source,
 					$translations,
 					[
-						// Only look for theme.json files in any folder, nothing else.
-						'restrictFileNames' => [ 'theme.json' ],
-						'schema'            => JsonSchemaExtractor::THEME_JSON_SOURCE,
-						'schemaFallback'    => JsonSchemaExtractor::THEME_JSON_FALLBACK,
-						'include'           => $this->include,
-						'exclude'           => $this->exclude,
-						'extensions'        => [ 'json' ],
-						'addReferences'     => $this->location,
+						'schema'         => JsonSchemaExtractor::THEME_JSON_SOURCE,
+						'schemaFallback' => JsonSchemaExtractor::THEME_JSON_FALLBACK,
+						'include'        => $this->include,
+						'exclude'        => $this->exclude,
+						'extensions'     => [ 'json' ],
+						'addReferences'  => $this->location,
 					]
 				);
-
-				// Themes can have style variations in the top-level "styles" folder.
-				// They're like theme.json but can have any name.
-				if ( $is_theme ) {
-					JsonSchemaExtractor::fromDirectory(
-						$this->source,
-						$translations,
-						[
-							'restrictDirectories' => [ 'styles' ],
-							'schema'              => JsonSchemaExtractor::THEME_JSON_SOURCE,
-							'schemaFallback'      => JsonSchemaExtractor::THEME_JSON_FALLBACK,
-							'include'             => $this->include,
-							'exclude'             => $this->exclude,
-							'extensions'          => [ 'json' ],
-							'addReferences'       => $this->location,
-						]
-					);
-				}
 			}
 		} catch ( \Exception $e ) {
 			WP_CLI::error( $e->getMessage() );
@@ -924,38 +890,38 @@ class MakePotCommand extends WP_CLI_Command {
 		}
 
 		if ( isset( $this->main_file_data['Theme Name'] ) ) {
-			if ( ! empty( $this->main_file_data['License']['value'] ) ) {
+			if ( isset( $this->main_file_data['License'] ) ) {
 				return sprintf(
 					"Copyright (C) %1\$s %2\$s\nThis file is distributed under the %3\$s.",
 					date( 'Y' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
-					$this->main_file_data['Author']['value'],
-					$this->main_file_data['License']['value']
+					$this->main_file_data['Author'],
+					$this->main_file_data['License']
 				);
 			}
 
 			return sprintf(
 				"Copyright (C) %1\$s %2\$s\nThis file is distributed under the same license as the %3\$s theme.",
 				date( 'Y' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
-				$this->main_file_data['Author']['value'],
-				$this->main_file_data['Theme Name']['value']
+				$this->main_file_data['Author'],
+				$this->main_file_data['Theme Name']
 			);
 		}
 
 		if ( isset( $this->main_file_data['Plugin Name'] ) ) {
-			if ( ! empty( $this->main_file_data['License']['value'] ) ) {
+			if ( isset( $this->main_file_data['License'] ) && ! empty( $this->main_file_data['License'] ) ) {
 				return sprintf(
 					"Copyright (C) %1\$s %2\$s\nThis file is distributed under the %3\$s.",
 					date( 'Y' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
-					$this->main_file_data['Author']['value'],
-					$this->main_file_data['License']['value']
+					$this->main_file_data['Author'],
+					$this->main_file_data['License']
 				);
 			}
 
 			return sprintf(
 				"Copyright (C) %1\$s %2\$s\nThis file is distributed under the same license as the %3\$s plugin.",
 				date( 'Y' ), // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
-				$this->main_file_data['Author']['value'],
-				$this->main_file_data['Plugin Name']['value']
+				$this->main_file_data['Author'],
+				$this->main_file_data['Plugin Name']
 			);
 		}
 
@@ -973,14 +939,14 @@ class MakePotCommand extends WP_CLI_Command {
 		$bugs_address = null;
 
 		if ( ! $version && isset( $this->main_file_data['Version'] ) ) {
-			$version = $this->main_file_data['Version']['value'];
+			$version = $this->main_file_data['Version'];
 		}
 
 		if ( isset( $this->main_file_data['Theme Name'] ) ) {
-			$name         = $this->main_file_data['Theme Name']['value'];
+			$name         = $this->main_file_data['Theme Name'];
 			$bugs_address = sprintf( 'https://wordpress.org/support/theme/%s', $this->slug );
 		} elseif ( isset( $this->main_file_data['Plugin Name'] ) ) {
-			$name         = $this->main_file_data['Plugin Name']['value'];
+			$name         = $this->main_file_data['Plugin Name'];
 			$bugs_address = sprintf( 'https://wordpress.org/support/plugin/%s', $this->slug );
 		}
 

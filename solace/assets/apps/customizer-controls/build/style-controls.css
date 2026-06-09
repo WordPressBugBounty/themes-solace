@@ -24,6 +24,7 @@
 }
 .solace-white-background-control input[type=number] {
   padding-right: 0;
+  min-height: 30px;
 }
 .solace-white-background-control button.reset {
   display: flex;
@@ -2699,6 +2700,7 @@ ul[id^=sub-accordion-panel-hfg_] #accordion-section-solace_header_presets {
 }
 #solace-customize-search button {
   text-decoration: none;
+  width: 24px;
 }
 #solace-customize-search button:focus:not(:disabled) {
   box-shadow: none;
@@ -2725,10 +2727,15 @@ ul[id^=sub-accordion-panel-hfg_] #accordion-section-solace_header_presets {
   align-items: center;
   margin-top: 6px;
 }
+#solace-customize-search-field .nv-search-wrap .components-button {
+  padding: 15px;
+  height: 40px;
+}
 #solace-customize-search-field .nv-customizer-search-input {
   font-size: 12px;
   min-height: 24px;
   width: 100%;
+  padding: 10px;
 }
 
 #solace-customize-search-results .hl {

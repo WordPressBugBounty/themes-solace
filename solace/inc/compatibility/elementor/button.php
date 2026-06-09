@@ -5,6 +5,40 @@ use Elementor\Core\Kits\Controls\Repeater as Global_Style_Repeater;
 use Elementor\Repeater;
 use Elementor\Plugin;
 
+function get_elementor_kit_id(): int {
+    if ( class_exists( '\Elementor\Plugin' ) && isset( \Elementor\Plugin::$instance->kits_manager ) ) {
+        $kit_id = \Elementor\Plugin::$instance->kits_manager->get_active_id();
+        if ( $kit_id ) {
+            return (int) $kit_id;
+        }
+    }
+
+    $kit_id = (int) get_option( 'elementor_active_kit', 3 );
+    return $kit_id > 0 ? $kit_id : 3;
+}
+
+function build_default_button_selector(): string {
+    $kit_id = get_elementor_kit_id();
+
+    return "
+		body .button:not(header .button):not(footer .button),
+		body .button-primary:not(header .button-primary):not(footer .button-primary),
+		body .button-secondary:not(header .button-secondary):not(footer .button-secondary),body .button-link,
+		body .comments-area .form-submit .submit,
+		input[type='submit']:not(.solace-mc-embedded-subscribe),
+		body.single a.wp-block-button__link,
+		body .solaceform-form-button,
+        body.elementor-kit-{$kit_id} .elementor-button,
+		.SELECTOR_DEFAULT_BUTTON_BG
+    ";
+}
+
+add_action( 'init', function() {
+    if ( ! defined( 'SELECTOR_DEFAULT_BUTTON_BG' ) ) {
+        define( 'SELECTOR_DEFAULT_BUTTON_BG', build_default_button_selector() );
+    }
+}, 20 );
+
 define('SELECTOR_DEFAULT_BUTTON_TEXT',"
 	body .button:not(header .button):not(footer .button),
 	body .button-primary:not(header .button-primary):not(footer .button-primary),
@@ -14,6 +48,7 @@ define('SELECTOR_DEFAULT_BUTTON_TEXT',"
 	body.single a.wp-block-button__link,
 	body footer .solace-mc-embedded-subscribe.elementor-button,
 	body .solaceform-form-button,
+	body .elementor-button,
 	.SELECTOR_DEFAULT_BUTTON_TEXT
 ");
 
@@ -27,19 +62,21 @@ define('SELECTOR_DEFAULT_BUTTON_TEXT_HOVER',"
 	body .solaceform-form-button:hover,
 	body footer .solace-mc-embedded-subscribe.elementor-button:hover,
 	:where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce button.button:hover,
+	body .elementor-button:hover,
 	.SELECTOR_DEFAULT_BUTTON_TEXT_HOVER
 ");
 
-define('SELECTOR_DEFAULT_BUTTON_BG',"
-	body .button:not(header .button):not(footer .button),
-	body .button-primary:not(header .button-primary):not(footer .button-primary),
-	body .button-secondary:not(header .button-secondary):not(footer .button-secondary),body .button-link,
-	body .comments-area .form-submit .submit,
-	input[type='submit']:not(.solace-mc-embedded-subscribe),
-	body.single a.wp-block-button__link,
-	body .solaceform-form-button,
-	.SELECTOR_DEFAULT_BUTTON_BG
-");
+// define('SELECTOR_DEFAULT_BUTTON_BG',"
+// 	body .button:not(header .button):not(footer .button),
+// 	body .button-primary:not(header .button-primary):not(footer .button-primary),
+// 	body .button-secondary:not(header .button-secondary):not(footer .button-secondary),body .button-link,
+// 	body .comments-area .form-submit .submit,
+// 	input[type='submit']:not(.solace-mc-embedded-subscribe),
+// 	body.single a.wp-block-button__link,
+// 	body .solaceform-form-button,
+// 	body .elementor-button,
+// 	.SELECTOR_DEFAULT_BUTTON_BG
+// ");
 
 // define('SELECTOR_DEFAULT_BUTTON_BG_HOVER',"
 // 	body .button:not(header .button):not(footer .button):hover,
@@ -61,6 +98,7 @@ define('SELECTOR_DEFAULT_BUTTON_BG_HOVER',"
 	body:not(.single-solace-sitebuilder) input[type='submit']:not(.solace-mc-embedded-subscribe):hover,
 	body:not(.single-solace-sitebuilder).single a.wp-block-button__link:hover,
 	body:not(.single-solace-sitebuilder) .solaceform-form-button:hover,
+	body:not(.single-solace-sitebuilder) .elementor-button:hover,
 	body:not(.single-solace-sitebuilder) .SELECTOR_DEFAULT_BUTTON_BG_HOVER
 ");
 
@@ -1722,10 +1760,7 @@ function solace_apply_customizer_woocommerce_button_styles() {
 
 function solace_apply_customizer_default_button_styles() {
 
-	// error_log('solace_apply_customizer_default_button_styles');
 	$style = "";
-	// Button Background Selector
-	// SET BUTTON FONT WITH GENERAL OPTIONS BUTTON
 	$style .= SELECTOR_DEFAULT_BUTTON_TEXT . " {";
 	$style .= "font-family: var(--buttonfontfamily);}";
 	$button_bg_styles = "";
@@ -1809,7 +1844,7 @@ function solace_apply_customizer_default_button_styles() {
 		}
 
 		// Apply the custom styles
-		wp_add_inline_style('solace-customizer-woocommerce', $border_width_css);
+		wp_add_inline_style('solace-customizer-default', $border_width_css);
 	}
 
 	if (!empty($border_width_data)) {
@@ -1855,7 +1890,8 @@ function solace_apply_customizer_default_button_styles() {
 		$button_text_styles .= "color: {$solace_custom_general_buttons_text_color} !important;";
 	}
 	if (!empty($button_text_styles)) {
-		$style .= SELECTOR_DEFAULT_BUTTON_TEXT . " {" . $button_text_styles . "}";
+		// $style .= SELECTOR_DEFAULT_BUTTON_TEXT . " {" . $button_text_styles . "}";
+		$style .= SELECTOR_DEFAULT_BUTTON_TEXT . " {color: {$solace_custom_general_buttons_text_color} !important;}";
 		$style .= ":root {";
 		$style .= "--solel-color-button-text: {$solace_custom_general_buttons_text_color};";
 		$style .= "}";
@@ -1883,7 +1919,7 @@ function solace_apply_customizer_default_button_styles() {
 	}
 
 	// Apply styles
-	wp_add_inline_style('solace-customizer-woocommerce', $style);
+	wp_add_inline_style('solace-customizer-default', $style);
 
 	$border_radius_data = get_theme_mod('solace_wc_custom_general_buttons_border_radius');
 
@@ -1951,7 +1987,7 @@ function solace_apply_customizer_default_button_styles() {
 			";
 		}
 	
-		wp_add_inline_style('solace-customizer-woocommerce', $style);
+		wp_add_inline_style('solace-customizer-default', $style);
 	}
 	$padding_data = get_theme_mod('solace_wc_custom_general_buttons_padding');
 
@@ -2020,13 +2056,13 @@ function solace_apply_customizer_default_button_styles() {
 			";
 		}
 
-		wp_add_inline_style('solace-customizer-woocommerce', $style);
+		wp_add_inline_style('solace-customizer-default', $style);
 	}else {
 		$style .= SELECTOR_DEFAULT_BUTTON_BG .", body .wp-block-button__link {";
 		$style .= "padding: 12px 24px";
 		$style .= "}";
 		// error_log('masuk default gutenberg button padding');
-		wp_add_inline_style('solace-customizer-woocommerce', $style);
+		wp_add_inline_style('solace-customizer-default', $style);
 	}
 
 
@@ -2565,32 +2601,41 @@ add_action('wp_enqueue_scripts', function () {
 
 	if (is_customize_preview()) {
 		// Customizer Preview Logic
-		if (get_theme_mod('solace_wc_custom_general_buttons_elementor', false) === true) {
+		$use_custom_buttons = get_theme_mod('solace_wc_custom_general_buttons_elementor', false);
+		if ($use_custom_buttons === true) {
 			wp_register_style('solace-customizer-woocommerce', false);
 			wp_enqueue_style('solace-customizer-woocommerce');
-
+			
 			// Apply Customizer-specific styles
 			solace_apply_customizer_woocommerce_button_styles();
+			
+			wp_register_style('solace-customizer-default', false);
+			wp_enqueue_style('solace-customizer-default');
 			solace_apply_customizer_default_button_styles();
 
 		} else {
 			if (class_exists('\Elementor\Plugin')) {
+				error_log('[Solace Debug] Elementor\Plugin class exists, enqueuing frontend styles');
 				\Elementor\Plugin::$instance->frontend->enqueue_styles();
-			}
+			} 
 
 			wp_register_style('solace-elementor-woocommerce', false);
 			wp_enqueue_style('solace-elementor-woocommerce');
 
 			// Apply Elementor-specific styles
 			solace_apply_elementor_woocommerce_button_styles();
-			solace_apply_elementor_default_button_styles();
 
+			wp_register_style('solace-customizer-default', false);
+			wp_enqueue_style('solace-customizer-default');
+			solace_apply_elementor_default_button_styles();
 		}
 	} else {
 		// Frontend Logic
 		if (get_theme_mod('solace_wc_custom_general_buttons_elementor', false) === true) {
 			wp_register_style('solace-customizer-woocommerce', false);
 			wp_enqueue_style('solace-customizer-woocommerce');
+			wp_register_style('solace-customizer-default', false);
+			wp_enqueue_style('solace-customizer-default');
 
 			solace_apply_customizer_woocommerce_button_styles();
 			solace_apply_customizer_default_button_styles();
@@ -2602,6 +2647,8 @@ add_action('wp_enqueue_scripts', function () {
 
 			wp_register_style('solace-elementor-woocommerce', false);
 			wp_enqueue_style('solace-elementor-woocommerce');
+			wp_register_style('solace-customizer-default', false);
+			wp_enqueue_style('solace-customizer-default');
 
 			solace_apply_elementor_woocommerce_button_styles();
 			solace_apply_elementor_default_button_styles();

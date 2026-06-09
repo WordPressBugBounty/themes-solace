@@ -18,7 +18,6 @@ class CompositeCommand {
 	protected $shortdesc;
 	protected $longdesc;
 	protected $synopsis;
-	protected $hook;
 	protected $docparser;
 
 	protected $parent;
@@ -39,11 +38,9 @@ class CompositeCommand {
 		$this->shortdesc = $docparser->get_shortdesc();
 		$this->longdesc  = $docparser->get_longdesc();
 		$this->docparser = $docparser;
-		$this->hook      = $parent->get_hook();
 
 		$when_to_invoke = $docparser->get_tag( 'when' );
 		if ( $when_to_invoke ) {
-			$this->hook = $when_to_invoke;
 			WP_CLI::get_runner()->register_early_invoke( $when_to_invoke, $this );
 		}
 	}
@@ -123,16 +120,6 @@ class CompositeCommand {
 	 */
 	public function get_shortdesc() {
 		return $this->shortdesc;
-	}
-
-	/**
-	 * Get the hook name for this composite
-	 * command.
-	 *
-	 * @return string
-	 */
-	public function get_hook() {
-		return $this->hook;
 	}
 
 	/**
@@ -277,7 +264,7 @@ class CompositeCommand {
 	/**
 	 * Composite commands can only be known by one name.
 	 *
-	 * @return string|false
+	 * @return false
 	 */
 	public function get_alias() {
 		return false;

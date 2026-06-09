@@ -59,7 +59,7 @@ Feature: Skipping themes
     And I run `wp theme install moina moina-blog`
 
     When I run `wp theme activate moina`
-    And I run `wp eval 'var_export( function_exists( "moina_setup" ) );'`
+    When I run `wp eval 'var_export( function_exists( "moina_setup" ) );'`
     Then STDOUT should be:
       """
       true
@@ -72,8 +72,9 @@ Feature: Skipping themes
       """
     And STDERR should be empty
 
+
     When I run `wp theme activate moina-blog`
-    And I run `wp eval 'var_export( function_exists( "moina_setup" ) );'`
+    When I run `wp eval 'var_export( function_exists( "moina_setup" ) );'`
     Then STDOUT should be:
       """
       true
@@ -167,7 +168,7 @@ Feature: Skipping themes
       bool(false)
       """
 
-  @require-wp-6.1 @require-php-7.2
+  @require-wp-6.1 @require-php-7.0
   Scenario: Skip a theme using block patterns with Gutenberg active
     Given a WP installation
     And I run `wp plugin install gutenberg --activate`

@@ -19,9 +19,9 @@ use cli\Arguments;
  */
 class HelpScreen {
 	protected $_flags = array();
-	protected $_flagMax = 0;
+	protected $_maxFlag = 0;
 	protected $_options = array();
-	protected $_optionMax = 0;
+	protected $_maxOption = 0;
 
 	public function __construct(Arguments $arguments) {
 		$this->setArguments($arguments);

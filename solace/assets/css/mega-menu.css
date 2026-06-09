@@ -7,24 +7,20 @@
 .solace-mega-menu .sub-menu .sub-menu {
   max-height: none;
 }
-
 .solace-mega-menu .solace-mm-col {
   cursor: default;
   flex: 1;
 }
-
 .solace-mega-menu .solace-mm-col .sub-menu .sub-menu {
   left: 0;
   top: 100%;
 }
-
 .solace-mega-menu li.solace-mm-divider {
   height: 1px;
   margin: 10px auto;
   width: 100%;
   background-color: currentColor;
 }
-
 .solace-mega-menu .solace-mm-heading > span {
   cursor: default;
 }

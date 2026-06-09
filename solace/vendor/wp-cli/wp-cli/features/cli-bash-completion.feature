@@ -101,16 +101,7 @@ Feature: `wp cli completions` tasks
       """
 
     When I run `wp cli completions --line='wp config create --dbname=' --point=100`
-    Then STDOUT should not contain:
-      """
-      --dbname=
-      """
-
-    When I run `wp cli completions --line='wp config create --dbname' --point=100`
-    Then STDOUT should contain:
-      """
-      --dbname=
-      """
+    Then STDOUT should be empty
 
     When I run `wp cli completions --line='wp config create --dbname=foo ' --point=100`
     Then STDOUT should not contain:
@@ -324,16 +315,13 @@ Feature: `wp cli completions` tasks
       """
       --prompt=
       """
-    And STDOUT should not contain:
+    Then STDOUT should not contain:
       """
       --path
       """
 
     When I run `wp cli completions --line="wp core download --no-color" --point=100`
-    Then STDOUT should contain:
+    Then STDOUT should not contain:
       """
       --no-color
       """
-
-    When I run `wp cli completions --line="wp core download --no-color --no-color" --point=100`
-    Then STDOUT should be empty

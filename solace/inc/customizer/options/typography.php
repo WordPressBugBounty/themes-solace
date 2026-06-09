@@ -151,15 +151,16 @@ class Typography extends Base_Customizer
 					'type'                  => 'solace_font_family_control',
 					'live_refresh_selector' => apply_filters('solace_smaller_font_family_selectors', 'h1:not(.site-title), small'),
 					'live_refresh_css_prop' => [
+						
 						'cssVar' => [
-							'vars'     => '--smallerfontfamily',
-							'selector' => 'body',
-						],
-						// 'type'   => 'svg-icon-size',
+							'vars'     => [
+								'--e-global-typography-primary-font-family',
+								'--smallerfontfamily',
+							],
+							'selector' => '[class*="elementor-kit-"], body',
+							'fallback' => Mods::get_alternative_mod_default(Config::MODS_FONT_SMALLER),
+						],	
 					],
-					// 'input_attrs'           => [
-					// 	'default_is_inherit' => true,
-					// ],
 				),
 				'\Solace\Customizer\Controls\React\Font_Family'
 			)
@@ -200,24 +201,25 @@ class Typography extends Base_Customizer
 					'live_refresh_selector' => 'body, .site-title',
 					'live_refresh_css_prop' => [
 						'cssVar' => [
+							
 							'vars'     => [
-								'--smallertexttransform' => 'textTransform',
-								'--smallerfontweight'    => 'fontWeight',
-								'--smallerfontsize'      => [
+								'--e-global-typography-primary-text-transform' => 'textTransform',
+								'--e-global-typography-primary-font-weight'    => 'fontWeight',
+								'--e-global-typography-primary-font-size'      => [
 									'key'        => 'fontSize',
 									'responsive' => true,
 								],
-								'--smallerlineheight'    => [
+								'--e-global-typography-primary-line-height'    => [
 									'key'        => 'lineHeight',
 									'responsive' => true,
 								],
-								'--smallerletterspacing' => [
+								'--e-global-typography-primary-letter-spacing' => [
 									'key'        => 'letterSpacing',
 									'suffix'     => 'px',
 									'responsive' => true,
 								],
 							],
-							'selector' => 'body',
+							'selector' => '[class*="elementor-kit-"], body',
 						],
 					],
 				],
@@ -275,13 +277,17 @@ class Typography extends Base_Customizer
 					'type'                  => 'solace_font_family_control',
 					'live_refresh_selector' => apply_filters('solace_logotitle_font_family_selectors', 'h1.site-title, p.site-title'),
 					'live_refresh_css_prop' => [
+						
+
 						'cssVar' => [
-							'vars'     => '--logotitlefontfamily',
-							'selector' => 'body',
+							'vars'     => [
+								'--e-global-typography-secondary-font-family',
+								'--logotitlefontfamily',
+							],
+							'selector' => '[class*="elementor-kit-"], body',
 							'fallback' => Mods::get_alternative_mod_default(Config::MODS_FONT_LOGOTITLE),
-							'suffix'   => ', var(--nv-fallback-ff)',
 						],
-						// 'type'   => 'svg-icon-size',
+						
 					],
 					// 'input_attrs'           => [
 					// 	'default_is_inherit' => true,
@@ -326,24 +332,25 @@ class Typography extends Base_Customizer
 					'live_refresh_selector' => 'body, .site-title',
 					'live_refresh_css_prop' => [
 						'cssVar' => [
+							
 							'vars'     => [
-								'--logotitletexttransform' => 'textTransform',
-								'--logotitlefontweight'    => 'fontWeight',
-								'--logotitlefontsize'      => [
+								'--e-global-typography-secondary-text-transform' => 'textTransform',
+								'--e-global-typography-secondary-font-weight'    => 'fontWeight',
+								'--e-global-typography-secondary-font-size'      => [
 									'key'        => 'fontSize',
 									'responsive' => true,
 								],
-								'--logotitlelineheight'    => [
+								'--e-global-typography-secondary-line-height'    => [
 									'key'        => 'lineHeight',
 									'responsive' => true,
 								],
-								'--logotitleletterspacing' => [
+								'--e-global-typography-secondary-letter-spacing' => [
 									'key'        => 'letterSpacing',
 									'suffix'     => 'px',
 									'responsive' => true,
 								],
 							],
-							'selector' => 'body',
+							'selector' => '[class*="elementor-kit-"]',
 						],
 					],
 				],
@@ -403,8 +410,11 @@ class Typography extends Base_Customizer
 					'live_refresh_selector' => apply_filters('solace_button_font_family_selectors', '.elementor-button,.wp-block-button__link'),
 					'live_refresh_css_prop' => [
 						'cssVar' => [
-							'vars'     => '--buttonfontfamily',
-							'selector' => 'body',
+							'vars'     => [
+								'--e-global-typography-accent-font-family',
+								'--buttonfontfamily',
+							],
+							'selector' => '[class*="elementor-kit-"], body',
 							'fallback' => Mods::get_alternative_mod_default(Config::MODS_FONT_BUTTON),
 							'suffix'   => ', var(--nv-fallback-ff)',
 						],
@@ -469,8 +479,23 @@ class Typography extends Base_Customizer
 									'suffix'     => 'px',
 									'responsive' => true,
 								],
+								'--e-global-typography-accent-text-transform' => 'textTransform',
+								'--e-global-typography-accent-font-weight'    => 'fontWeight',
+								'--e-global-typography-accent-font-size'      => [
+									'key'        => 'fontSize',
+									'responsive' => true,
+								],
+								'--e-global-typography-accent-line-height'    => [
+									'key'        => 'lineHeight',
+									'responsive' => true,
+								],
+								'--e-global-typography-accent-letter-spacing' => [
+									'key'        => 'letterSpacing',
+									'suffix'     => 'px',
+									'responsive' => true,
+								],
 							],
-							'selector' => 'body',
+							'selector' => '[class*="elementor-kit-"], body',
 						],
 					],
 				],
@@ -533,8 +558,11 @@ class Typography extends Base_Customizer
 					'live_refresh_selector' => apply_filters('solace_body_font_family_selectors', 'body, .site-title'),
 					'live_refresh_css_prop' => [
 						'cssVar' => [
-							'vars'     => '--bodyfontfamily',
-							'selector' => 'body',
+							'vars'     => [
+								'--e-global-typography-text-font-family',
+								'--buttonfontfamily',
+							],
+							'selector' => '[class*="elementor-kit-"],body',
 							'fallback' => Mods::get_alternative_mod_default(Config::MODS_FONT_GENERAL),
 							'suffix'   => ', var(--nv-fallback-ff)',
 						],
@@ -595,8 +623,23 @@ class Typography extends Base_Customizer
 									'suffix'     => 'px',
 									'responsive' => true,
 								],
+								'--e-global-typography-text-text-transform' => 'textTransform',
+								'--e-global-typography-text-font-weight'    => 'fontWeight',
+								'--e-global-typography-text-font-size'      => [
+									'key'        => 'fontSize',
+									'responsive' => true,
+								],
+								'--e-global-typography-text-line-height'    => [
+									'key'        => 'lineHeight',
+									'responsive' => true,
+								],
+								'--e-global-typography-text-letter-spacing' => [
+									'key'        => 'letterSpacing',
+									'suffix'     => 'px',
+									'responsive' => true,
+								],
 							],
-							'selector' => 'body',
+							'selector' => '[class*="elementor-kit-"],body',
 						],
 					],
 				],
@@ -660,6 +703,9 @@ class Typography extends Base_Customizer
 						'cssVar' => [
 							'vars'     => '--headingsfontfamily',
 							'selector' => 'body',
+							'vars'     => [
+								'--smallerfontfamily',
+							],
 						],
 						'type'   => 'svg-icon-size',
 					],
@@ -830,6 +876,7 @@ class Typography extends Base_Customizer
 			} else {
 				$font_weight = esc_attr__('Unknown', 'solace');
 			}
+			$font_weight = '';
 
 			$label_heading = '';
 			$label_heading .= esc_html($fonts_family) . '|';
@@ -838,8 +885,8 @@ class Typography extends Base_Customizer
 			$label_heading .= esc_html($font_size_mobile) . '|';
 			$label_heading .= esc_html($font_size_suffix_desktop) . '|';
 			$label_heading .= esc_html($font_size_suffix_tablet) . '|';
-			$label_heading .= esc_html($font_size_suffix_mobile) . '|';
-			$label_heading .= esc_html($font_weight);
+			$label_heading .= esc_html($font_size_suffix_mobile);
+			// $label_heading .= esc_html($font_weight);
 
 			$this->add_control(
 				new Control(
@@ -874,10 +921,6 @@ class Typography extends Base_Customizer
 						'default'           => Mods::get_alternative_mod_default(Config::MODS_FONT_GENERAL),
 					],
 					array(
-						// 'settings'              => [
-						// 	'default'  => Config::MODS_FONT_GENERAL,
-						// 	'variants' => Config::MODS_FONT_GENERAL_VARIANTS,
-						// ],
 						'label'                 => esc_html__('Font', 'solace'),
 						'section'               => 'solace_typography_headings',
 						'priority'              => $priority += 1,
@@ -885,8 +928,11 @@ class Typography extends Base_Customizer
 						'live_refresh_selector' => apply_filters('solace_body_font_family_selectors', 'body, .site-title'),
 						'live_refresh_css_prop' => [
 							'cssVar' => [
-								'vars'     => '--bodyfontfamily',
-								'selector' => $heading_id,
+								'vars'     => [
+									'--e-global-typography-solace_' . $heading_id . '_font_family_general-font-family',
+									'--headingsfontfamily',
+								],
+								'selector' => '[class*="elementor-kit-"], ' . $heading_id,
 								'fallback' => Mods::get_alternative_mod_default(Config::MODS_FONT_GENERAL),
 								'suffix'   => ', var(--nv-fallback-ff)',
 							],
@@ -919,6 +965,21 @@ class Typography extends Base_Customizer
 						'live_refresh_css_prop' => [
 							'cssVar' => [
 								'vars'     => [
+									'--e-global-typography-solace_' . $heading_id . '_font_family_general-text-transform' => 'textTransform',
+									'--e-global-typography-solace_' . $heading_id . '_font_family_general-font-weight'    => 'fontWeight',
+									'--e-global-typography-solace_' . $heading_id . '_font_family_general-font-size'      => [
+										'key'        => 'fontSize',
+										'responsive' => true,
+									],
+									'--e-global-typography-solace_' . $heading_id . '_font_family_general-line-height'    => [
+										'key'        => 'lineHeight',
+										'responsive' => true,
+									],
+									'--e-global-typography-solace_' . $heading_id . '_font_family_general-letter-spacing' => [
+										'key'        => 'letterSpacing',
+										'suffix'     => 'px',
+										'responsive' => true,
+									],
 									'--' . $heading_id . 'texttransform' => 'textTransform',
 									'--' . $heading_id . 'fontweight'    => 'fontWeight',
 									'--' . $heading_id . 'fontsize'      => [
@@ -935,7 +996,7 @@ class Typography extends Base_Customizer
 										'responsive' => true,
 									],
 								],
-								'selector' => 'body',
+								'selector' => '[class*="elementor-kit-"], body',
 							],
 						],
 					],

@@ -3,10 +3,6 @@
 namespace WP_CLI;
 
 use Mustangostang\Spyc;
-use SplFileInfo;
-
-use function WP_CLI\Utils\is_path_absolute;
-use function WP_CLI\Utils\normalize_path;
 
 /**
  * Handles file- and runtime-based configuration values.
@@ -84,17 +80,6 @@ class Configurator {
 
 			$this->config[ $key ] = $details['default'];
 		}
-
-		$env_files = getenv( 'WP_CLI_REQUIRE' )
-		? array_filter( array_map( 'trim', explode( ',', getenv( 'WP_CLI_REQUIRE' ) ) ) )
-		: [];
-
-		if ( ! empty( $env_files ) ) {
-			if ( ! isset( $this->config['require'] ) ) {
-				$this->config['require'] = [];
-			}
-			$this->config['require'] = array_unique( array_merge( $env_files, $this->config['require'] ) );
-		}
 	}
 
 	/**
@@ -159,8 +144,8 @@ class Configurator {
 	/**
 	 * Splits a list of arguments into positional, associative and config.
 	 *
-	 * @param array<string> $arguments
-	 * @return array<array<string>>
+	 * @param array(string) $arguments
+	 * @return array(array)
 	 */
 	public function parse_args( $arguments ) {
 		list( $positional_args, $mixed_args, $global_assoc, $local_assoc ) = self::extract_assoc( $arguments );
@@ -171,8 +156,8 @@ class Configurator {
 	/**
 	 * Splits positional args from associative args.
 	 *
-	 * @param array<string> $arguments
-	 * @return array{0: array<string>, 1: array<array{0: string, 1: string|bool}>, 2: array<array{0: string, 1: string|bool}>, 3: array<array{0: string, 1: string|bool}>}
+	 * @param array $arguments
+	 * @return array(array)
 	 */
 	public static function extract_assoc( $arguments ) {
 		$positional_args = [];
@@ -268,13 +253,7 @@ class Configurator {
 	public function merge_yml( $path, $current_alias = null ) {
 		$yaml = self::load_yml( $path );
 		if ( ! empty( $yaml['_']['inherit'] ) ) {
-			// Refactor with the WP-CLI `Path` class, once it's available.
-			// See: https://github.com/wp-cli/wp-cli/issues/5007
-			$inherit_path = is_path_absolute( $yaml['_']['inherit'] )
-				? $yaml['_']['inherit']
-				: ( new SplFileInfo( normalize_path( dirname( $path ) . '/' . $yaml['_']['inherit'] ) ) )->getRealPath();
-
-			$this->merge_yml( $inherit_path, $current_alias );
+			$this->merge_yml( $yaml['_']['inherit'], $current_alias );
 		}
 		// Prepare the base path for absolutized alias paths.
 		$yml_file_dir = $path ? dirname( $path ) : false;

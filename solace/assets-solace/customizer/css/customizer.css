@@ -1,3 +1,57 @@
+span.dashicon.dashicons.dashicons-search {
+    color: var(--sol-customizer-bg-color);
+    background-color: var(--sol-customizer-icon-color);
+    width: 11px !important;
+    height: 11px !important;
+    border-radius: 100px;
+}
+span.dashicon.dashicons.dashicons-search::before {
+    font-size: 10px;
+}
+
+.accordion-section-title #solace-customize-search {
+    top: 11px;
+    right: 33px;
+}
+
+button.customize-partial-edit-shortcut-button {
+    display: none;
+}
+
+#customize-controls .control-section .accordion-section-title button:hover,
+#customize-controls .control-section .accordion-section-title button:focus {
+    background: none;
+    border: none;
+}
+
+#customize-controls .customize-info .customize-help-toggle:focus:before,
+.wp-core-ui #customize-controls .customize-info .customize-help-toggle:focus:before {
+    box-shadow: none;
+}
+
+button.customize-help-toggle.dashicons.dashicons-editor-help {
+    color: var(--sol-customizer-icon-color) !important;
+}
+
+.solace-fonts-list .dropdown-font-list span {
+    color: #fff;
+}
+.solace-fonts-list a.dropdown-font-list:hover {
+    background-color: #f6f7f7;
+}
+.solace-fonts-list a.dropdown-font-list:hover span {
+    color: #3858e9;
+}
+
+.components-popover .components-popover__content a.dropdown-font-list:hover {
+    background-color: #f6f7f7;
+}
+
+.components-popover .components-popover__content a.dropdown-font-list {
+    background: var(--sol-customizer-panel-bg-color);
+    border-bottom: 1px solid var(--sol-customizer-border-color);
+}
+
 ul.customize-pane-child.open .range-slider span {
     display: flex;
     align-items: center;
@@ -133,13 +187,18 @@ ul.customize-pane-child.open .range-slider span {
 
 .accordion-section-title #solace-customize-search {
     position: absolute;
-    top: 6px;
-    right: 8px;
-    right: 33px;
+    top: 11px;
+    right: 30px;
     width: 28px;
     height: 28px;
     background: var(--sol-customizer-panel-bg-color);
     border-radius: 100%;
+}
+
+span.dashicon.dashicons.dashicons-search::before {
+    font-size: 11px;
+    position: relative;
+    right: .5px;
 }
 
 #solace-customize-search-results .accordion-section h3.accordion-section-title {

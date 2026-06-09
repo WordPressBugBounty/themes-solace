@@ -513,7 +513,8 @@
             let font = '';
             font = data[0];
 
-            label_heading = font + ' | ' + data[1] + ' ' + data[4] + ' | ' + data[7];
+            // label_heading = font + ' | ' + data[1] + ' ' + data[4] + ' | ' + data[7];
+            label_heading = font + ' | ' + data[1] + ' ' + data[4];
             elemen.text(label_heading);
 
             // desktop
@@ -523,7 +524,8 @@
                     font = attrFonts;
                 }
 
-                label_heading = font + ' | ' + data[1] + ' ' + data[4] + ' | ' + data[7];
+                // label_heading = font + ' | ' + data[1] + ' ' + data[4] + ' | ' + data[7];
+                label_heading = font + ' | ' + data[1] + ' ' + data[4];
                 elemen.text(label_heading);
             });
 
@@ -534,7 +536,8 @@
                     font = attrFonts;
                 }
 
-                label_heading = font + ' | ' + data[2] + ' ' + data[5] + ' | ' + data[7];
+                // label_heading = font + ' | ' + data[2] + ' ' + data[5] + ' | ' + data[7];
+                label_heading = font + ' | ' + data[2] + ' ' + data[5];
                 elemen.text(label_heading);
             });
 
@@ -545,7 +548,8 @@
                     font = attrFonts;
                 }
                 
-                label_heading = font + ' | ' + data[3] + ' ' + data[6] + ' | ' + data[7];
+                // label_heading = font + ' | ' + data[3] + ' ' + data[6] + ' | ' + data[7];
+                label_heading = font + ' | ' + data[3] + ' ' + data[6];
                 elemen.text(label_heading);
             });
         }
@@ -861,7 +865,11 @@
     // ------------- Logotitle Font -------------
     // Change Logotitle Font (Font-Text) Trigger Dropdown
     wp.customize('solace_logotitle_font_family', function (setting) {
+        // console.log('✅ solace_logotitle_font_family setting registered');
+        
         setting.bind(function (value) {
+            // console.log('🔄 value changed:', value);
+            
             fontInDropdown = $('li#customize-control-solace_logotitle_font_family .dropdown-logotitle-font').text();
             let fontString = fontInDropdown;
             let fontArray = fontString.split(" | ");
@@ -874,6 +882,21 @@
             let newArray = [fontArray.join(" | ")];
             $('li#customize-control-solace_logotitle_font_family .dropdown-logotitle-font').attr('fonts', fontArray[0]);
             $('li#customize-control-solace_logotitle_font_family .dropdown-logotitle-font').text(newArray);
+
+            var fontFamily = value.split(",")[0].trim();
+            // console.log('🎨 fontFamily extracted:', fontFamily);
+            // console.log('🌍 document.documentElement:', document.documentElement);
+            
+            document.documentElement.style.setProperty(
+                '--logotitlefontfamily',
+                fontFamily
+            );
+            
+            // console.log('✅ --logotitlefontfamily set to:', document.documentElement.style.getPropertyValue('--logotitlefontfamily'));
+
+            var fontFamily = value.split(",")[0].trim();
+            wp.customize.previewer.send('solace_logotitle_font_update', { fontFamily: fontFamily });
+
         });
     });
 
@@ -1161,10 +1184,10 @@
         return weightMap[fontWeight] || "Unknown";
     }
 
-    function updateFontDropdown(fontDropdown, fontSize, fontSizeSuffix, fontWeightName) {
+    function updateFontDropdown(fontDropdown, fontSize, fontSizeSuffix) {
         const newFontDropdown = fontDropdown.split(" | ");
         newFontDropdown[1] = `${fontSize} ${fontSizeSuffix}`;
-        newFontDropdown[2] = fontWeightName;
+        // newFontDropdown[2] = fontWeightName;
         return newFontDropdown.join(" | ");
     }
 
@@ -1185,22 +1208,19 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.desktop,
-                    fontSizeSuffix.desktop,
-                    fontWeightName
+                    fontSizeSuffix.desktop
                 );
             } else if (getMode.classList.contains("preview-tablet")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.tablet,
-                    fontSizeSuffix.tablet,
-                    fontWeightName
+                    fontSizeSuffix.tablet
                 );
             } else if (getMode.classList.contains("preview-mobile")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.mobile,
-                    fontSizeSuffix.mobile,
-                    fontWeightName
+                    fontSizeSuffix.mobile
                 );
             }
 
@@ -1211,8 +1231,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.desktop,
-                    fontSizeSuffix.desktop,
-                    fontWeightName
+                    fontSizeSuffix.desktop
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1221,8 +1240,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.tablet,
-                    fontSizeSuffix.tablet,
-                    fontWeightName
+                    fontSizeSuffix.tablet
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1231,8 +1249,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.mobile,
-                    fontSizeSuffix.mobile,
-                    fontWeightName
+                    fontSizeSuffix.mobile
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1249,29 +1266,24 @@
             let fontDropdown = fontDropdownElement.text();
             let fontSize = value.fontSize;
             let fontSizeSuffix = value.fontSize.suffix;
-            let fontWeight = value.fontWeight;
-            let fontWeightName = fontWeightToName(fontWeight);
-
+            
             if (getMode.classList.contains("preview-desktop")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.desktop,
-                    fontSizeSuffix.desktop,
-                    fontWeightName
+                    fontSizeSuffix.desktop
                 );
             } else if (getMode.classList.contains("preview-tablet")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.tablet,
-                    fontSizeSuffix.tablet,
-                    fontWeightName
+                    fontSizeSuffix.tablet
                 );
             } else if (getMode.classList.contains("preview-mobile")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.mobile,
-                    fontSizeSuffix.mobile,
-                    fontWeightName
+                    fontSizeSuffix.mobile
                 );
             }
 
@@ -1282,8 +1294,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.desktop,
-                    fontSizeSuffix.desktop,
-                    fontWeightName
+                    fontSizeSuffix.desktop
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1292,8 +1303,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.tablet,
-                    fontSizeSuffix.tablet,
-                    fontWeightName
+                    fontSizeSuffix.tablet
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1302,8 +1312,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.mobile,
-                    fontSizeSuffix.mobile,
-                    fontWeightName
+                    fontSizeSuffix.mobile
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1320,29 +1329,24 @@
             let fontDropdown = fontDropdownElement.text();
             let fontSize = value.fontSize;
             let fontSizeSuffix = value.fontSize.suffix;
-            let fontWeight = value.fontWeight;
-            let fontWeightName = fontWeightToName(fontWeight);
-
+            
             if (getMode.classList.contains("preview-desktop")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.desktop,
-                    fontSizeSuffix.desktop,
-                    fontWeightName
+                    fontSizeSuffix.desktop
                 );
             } else if (getMode.classList.contains("preview-tablet")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.tablet,
-                    fontSizeSuffix.tablet,
-                    fontWeightName
+                    fontSizeSuffix.tablet
                 );
             } else if (getMode.classList.contains("preview-mobile")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.mobile,
-                    fontSizeSuffix.mobile,
-                    fontWeightName
+                    fontSizeSuffix.mobile
                 );
             }
 
@@ -1353,8 +1357,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.desktop,
-                    fontSizeSuffix.desktop,
-                    fontWeightName
+                    fontSizeSuffix.desktop
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1363,8 +1366,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.tablet,
-                    fontSizeSuffix.tablet,
-                    fontWeightName
+                    fontSizeSuffix.tablet
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1373,8 +1375,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.mobile,
-                    fontSizeSuffix.mobile,
-                    fontWeightName
+                    fontSizeSuffix.mobile
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1391,29 +1392,24 @@
             let fontDropdown = fontDropdownElement.text();
             let fontSize = value.fontSize;
             let fontSizeSuffix = value.fontSize.suffix;
-            let fontWeight = value.fontWeight;
-            let fontWeightName = fontWeightToName(fontWeight);
-
+            
             if (getMode.classList.contains("preview-desktop")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.desktop,
-                    fontSizeSuffix.desktop,
-                    fontWeightName
+                    fontSizeSuffix.desktop
                 );
             } else if (getMode.classList.contains("preview-tablet")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.tablet,
-                    fontSizeSuffix.tablet,
-                    fontWeightName
+                    fontSizeSuffix.tablet
                 );
             } else if (getMode.classList.contains("preview-mobile")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.mobile,
-                    fontSizeSuffix.mobile,
-                    fontWeightName
+                    fontSizeSuffix.mobile
                 );
             }
 
@@ -1424,8 +1420,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.desktop,
-                    fontSizeSuffix.desktop,
-                    fontWeightName
+                    fontSizeSuffix.desktop
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1434,8 +1429,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.tablet,
-                    fontSizeSuffix.tablet,
-                    fontWeightName
+                    fontSizeSuffix.tablet
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1444,8 +1438,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.mobile,
-                    fontSizeSuffix.mobile,
-                    fontWeightName
+                    fontSizeSuffix.mobile
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1462,29 +1455,24 @@
             let fontDropdown = fontDropdownElement.text();
             let fontSize = value.fontSize;
             let fontSizeSuffix = value.fontSize.suffix;
-            let fontWeight = value.fontWeight;
-            let fontWeightName = fontWeightToName(fontWeight);
-
+            
             if (getMode.classList.contains("preview-desktop")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.desktop,
-                    fontSizeSuffix.desktop,
-                    fontWeightName
+                    fontSizeSuffix.desktop
                 );
             } else if (getMode.classList.contains("preview-tablet")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.tablet,
-                    fontSizeSuffix.tablet,
-                    fontWeightName
+                    fontSizeSuffix.tablet
                 );
             } else if (getMode.classList.contains("preview-mobile")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.mobile,
-                    fontSizeSuffix.mobile,
-                    fontWeightName
+                    fontSizeSuffix.mobile
                 );
             }
 
@@ -1495,8 +1483,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.desktop,
-                    fontSizeSuffix.desktop,
-                    fontWeightName
+                    fontSizeSuffix.desktop
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1505,8 +1492,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.tablet,
-                    fontSizeSuffix.tablet,
-                    fontWeightName
+                    fontSizeSuffix.tablet
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1515,8 +1501,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.mobile,
-                    fontSizeSuffix.mobile,
-                    fontWeightName
+                    fontSizeSuffix.mobile
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1533,29 +1518,24 @@
             let fontDropdown = fontDropdownElement.text();
             let fontSize = value.fontSize;
             let fontSizeSuffix = value.fontSize.suffix;
-            let fontWeight = value.fontWeight;
-            let fontWeightName = fontWeightToName(fontWeight);
-
+            
             if (getMode.classList.contains("preview-desktop")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.desktop,
-                    fontSizeSuffix.desktop,
-                    fontWeightName
+                    fontSizeSuffix.desktop
                 );
             } else if (getMode.classList.contains("preview-tablet")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.tablet,
-                    fontSizeSuffix.tablet,
-                    fontWeightName
+                    fontSizeSuffix.tablet
                 );
             } else if (getMode.classList.contains("preview-mobile")) {
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.mobile,
-                    fontSizeSuffix.mobile,
-                    fontWeightName
+                    fontSizeSuffix.mobile
                 );
             }
 
@@ -1566,8 +1546,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.desktop,
-                    fontSizeSuffix.desktop,
-                    fontWeightName
+                    fontSizeSuffix.desktop
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1576,8 +1555,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.tablet,
-                    fontSizeSuffix.tablet,
-                    fontWeightName
+                    fontSizeSuffix.tablet
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -1586,8 +1564,7 @@
                 fontDropdown = updateFontDropdown(
                     fontDropdown,
                     fontSize.mobile,
-                    fontSizeSuffix.mobile,
-                    fontWeightName
+                    fontSizeSuffix.mobile
                 );
                 fontDropdownElement.text(fontDropdown);
             });
@@ -2657,3 +2634,14 @@
     });    
 
 })(jQuery);
+
+( function() {
+    wp.customize.bind('preview-ready', function() {
+        wp.customize.preview.bind('solace_logotitle_font_update', function(data) {
+            document.documentElement.style.setProperty(
+                '--logotitlefontfamily',
+                data.fontFamily
+            );
+        });
+    });
+} )();

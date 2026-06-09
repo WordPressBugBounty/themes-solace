@@ -84,9 +84,6 @@ Feature: Load WP-CLI
       Error: This does not seem to be a WordPress installation.
       """
 
-  # `wp db create` does not yet work on SQLite,
-  # See https://github.com/wp-cli/db-command/issues/234
-  @require-mysql
   Scenario: Globalize global variables in wp-config.php
     Given an empty directory
     And WP files
@@ -95,7 +92,7 @@ Feature: Load WP-CLI
       $redis_server = 'foo';
       """
 
-    When I run `wp config create {CORE_CONFIG_SETTINGS} --skip-check --extra-php < wp-config-extra.php`
+    When I run `wp core config {CORE_CONFIG_SETTINGS} --extra-php < wp-config-extra.php`
     Then the wp-config.php file should contain:
       """
       $redis_server = 'foo';
@@ -182,7 +179,6 @@ Feature: Load WP-CLI
       https://example.com
       """
 
-  @require-mysql
   Scenario: Handle error when WordPress cannot connect to the database host
     Given a WP installation
     And a invalid-host.php file:
@@ -269,9 +265,6 @@ Feature: Load WP-CLI
       https://example.com/
       """
 
-  # `wp db reset` does not yet work on SQLite,
-  # See https://github.com/wp-cli/db-command/issues/234
-  @require-mysql
   Scenario: Show error message when site isn't found and there aren't additional prefixes.
     Given a WP installation
     And I run `wp db reset --yes`
@@ -316,9 +309,7 @@ Feature: Load WP-CLI
       """
     And STDOUT should be empty
 
-  # `wp db query` does not yet work on SQLite,
-  # See https://github.com/wp-cli/db-command/issues/234
-  @require-wp-3.9 @require-mysql
+  @require-wp-3.9
   Scenario: Display a more helpful error message when site can't be found
     Given a WP multisite installation
     And "define( 'DOMAIN_CURRENT_SITE', 'example.com' );" replaced with "define( 'DOMAIN_CURRENT_SITE', 'example.org' );" in the wp-config.php file

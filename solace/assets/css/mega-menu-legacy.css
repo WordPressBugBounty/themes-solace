@@ -2,37 +2,30 @@
 .nav-ul > .solace-mega-menu > .sub-menu {
   cursor: default;
 }
-
 .nav-ul > .solace-mega-menu .sub-menu .sub-menu {
   max-height: none;
 }
-
 .nav-ul > .solace-mega-menu .solace-mm-col {
   text-align: left;
   cursor: default;
   flex: 1;
 }
-
 .nav-ul > .solace-mega-menu .solace-mm-col .sub-menu {
   border: none;
   padding-left: 0;
 }
-
 .nav-ul > .solace-mega-menu .solace-mm-col .sub-menu .sub-menu {
   left: 0;
   top: 100%;
 }
-
 .nav-ul > .solace-mega-menu a {
   display: flex;
   align-items: center;
 }
-
 .nav-ul > .solace-mega-menu a i {
   margin-top: 0;
   vertical-align: unset;
 }
-
 .nav-ul > .solace-mega-menu li.solace-mm-divider {
   height: 1px;
   margin: 10px auto;
@@ -41,12 +34,10 @@
   padding: 0;
   cursor: default;
 }
-
 .nav-ul > .solace-mega-menu .solace-mm-description {
   text-align: left;
   justify-content: flex-start;
 }
-
 .nav-ul > .solace-mega-menu .solace-mm-heading > span {
   padding: 7px 14px;
   display: flex;
@@ -54,13 +45,12 @@
   cursor: default;
   align-items: center;
 }
-
 .nav-ul > .solace-mega-menu .solace-mm-heading > span i {
   margin-right: 10px;
 }
 
 .solace-mm-description {
-  font-size: .8em;
+  font-size: 0.8em;
   padding: 0 0 7px;
   width: 100%;
   display: flex;
@@ -84,29 +74,23 @@
 .header-menu-sidebar-inner .sub-menu, .header-menu-sidebar-inner .sub-menu li {
   background-color: transparent !important;
 }
-
 .header-menu-sidebar-inner .solace-mega-menu .solace-mm-col > .sub-menu .sub-menu {
   max-height: 0;
 }
-
 .header-menu-sidebar-inner .solace-mega-menu .solace-mm-col > .sub-menu .sub-menu.dropdown-open {
   max-height: 3000px;
 }
-
 .header-menu-sidebar-inner .nav-ul > .solace-mega-menu .solace-mm-heading > span {
   padding: 3px 0;
 }
-
 .header-menu-sidebar-inner .mobile-center .solace-mm-heading > a, .header-menu-sidebar-inner .mobile-center .solace-mm-heading > span, .header-menu-sidebar-inner .mobile-center .solace-mm-description {
   text-align: center;
   justify-content: center;
 }
-
 .header-menu-sidebar-inner .mobile-left .solace-mm-heading > a, .header-menu-sidebar-inner .mobile-left .solace-mm-heading > span, .header-menu-sidebar-inner .mobile-left .solace-mm-description {
   text-align: left;
   justify-content: flex-start;
 }
-
 .header-menu-sidebar-inner .mobile-right .solace-mm-heading > a, .header-menu-sidebar-inner .mobile-right .solace-mm-heading > span, .header-menu-sidebar-inner .mobile-right .solace-mm-description {
   text-align: right;
   justify-content: flex-end;
@@ -130,7 +114,6 @@
     justify-content: flex-end;
   }
 }
-
 @media (min-width: 960px) {
   .header--row .nv-nav-wrap .primary-menu-ul > .solace-mega-menu {
     position: relative;
@@ -152,7 +135,7 @@
     visibility: visible;
     pointer-events: all;
   }
-  .header--row .nv-nav-wrap .primary-menu-ul .solace-mega-menu li > > a, .header--row .nv-nav-wrap .primary-menu-ul .solace-mega-menu li > > span {
+  .header--row .nv-nav-wrap .primary-menu-ul .solace-mega-menu li > a, .header--row .nv-nav-wrap .primary-menu-ul .solace-mega-menu li > span {
     padding: 7px 0;
     margin: 0 14px;
   }
@@ -200,7 +183,6 @@
     justify-content: flex-end;
   }
 }
-
 @media (min-width: 1200px) {
   .header--row .nv-nav-wrap .primary-menu-ul .solace-mega-menu > .sub-menu {
     width: 1170px;

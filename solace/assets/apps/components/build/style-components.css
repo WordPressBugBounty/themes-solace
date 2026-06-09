@@ -259,6 +259,25 @@
   color: #037FB8;
 }
 
+.wp-editor-wrap .wp-editor-tools .wp-media-buttons button {
+  line-height: 2.15384615;
+  min-height: 30px;
+  margin: 0;
+  padding: 0 10px;
+  background: #f6f7f7;
+  margin-right: 5px;
+  margin-bottom: 4px;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+.wp-editor-wrap .wp-editor-tools .wp-editor-tabs button {
+  margin-top: 0;
+}
+
+.solace-rich-text .components-button.has-icon {
+  color: #f6f7f7;
+}
+
 .nv-custom-palette-wrap .header {
   display: flex;
   align-items: center;
@@ -610,7 +629,9 @@
   justify-content: center !important;
   border: 1px solid #ccc !important;
   padding: 0;
-  min-width: unset;
+  min-height: 32px;
+  position: relative;
+  bottom: 1px;
 }
 .solace-responsive-sizing button.active, .solace-responsive-sizing button.active:hover, .solace-responsive-sizing button.active:focus:enabled {
   box-shadow: none !important;

@@ -156,15 +156,11 @@ class FileCache {
 	 * Copy a file into the cache
 	 *
 	 * @param string $key    cache key
-	 * @param string $source source filename; tmp file filepath from HTTP response
+	 * @param string $source source filename
 	 * @return bool
 	 */
 	public function import( $key, $source ) {
 		$filename = $this->prepare_write( $key );
-
-		if ( ! is_readable( $source ) ) {
-			return false;
-		}
 
 		if ( $filename ) {
 			return copy( $source, $filename ) && touch( $filename );
@@ -328,7 +324,7 @@ class FileCache {
 			if ( ! @mkdir( $dir, 0777, true ) ) {
 				$message = "Failed to create directory '{$dir}'";
 				$error   = error_get_last();
-				if ( is_array( $error ) ) {
+				if ( is_array( $error ) && array_key_exists( 'message', $error ) ) {
 					$message .= ": {$error['message']}";
 				}
 				WP_CLI::warning( "{$message}." );
@@ -343,7 +339,7 @@ class FileCache {
 	 * Prepare cache write
 	 *
 	 * @param string $key cache key
-	 * @return bool|string The destination filename or false when cache disabled or directory creation fails.
+	 * @return bool|string filename or false
 	 */
 	protected function prepare_write( $key ) {
 		if ( ! $this->enabled ) {
@@ -381,11 +377,11 @@ class FileCache {
 
 		$parts = preg_replace( "#[^{$this->whitelist}]#i", '-', $parts );
 
-		return rtrim( implode( '/', $parts ), '.' );
+		return implode( '/', $parts );
 	}
 
 	/**
-	 * Destination filename from key
+	 * Filename from key
 	 *
 	 * @param string $key
 	 * @return string filename

@@ -68,12 +68,10 @@ body:not(.modal-open) html:not(.wtypc-noscroll) .llms-button-secondary:hover {
 .llms-pagination {
   margin: 10px auto;
 }
-
 .llms-pagination ul {
   list-style-type: none;
   padding: 0;
 }
-
 .llms-pagination ul li .page-numbers {
   text-decoration: none;
   display: inline-block;
@@ -83,11 +81,9 @@ body:not(.modal-open) html:not(.wtypc-noscroll) .llms-button-secondary:hover {
 .llms-button-primary, .llms-button-action {
   display: inline-block;
 }
-
 .llms-button-secondary {
   display: inline-block;
 }
-
 .llms-loop-item-footer .avatar, .llms-loop-item-footer .llms-author-info {
   vertical-align: middle;
 }
@@ -100,17 +96,14 @@ body:not(.modal-open) html:not(.wtypc-noscroll) .llms-button-secondary:hover {
   background-color: var(--nv-light-bg);
   padding: 40px;
 }
-
 .single-course .review_box input:read-write, .single-course .review_box textarea {
   max-width: 100%;
   width: 100%;
   display: block;
 }
-
 .single-course .review_box textarea {
   height: 200px;
 }
-
 .single-course .llms-lesson-counter {
   display: inline-block;
   margin-bottom: 0;
@@ -123,11 +116,9 @@ body:not(.modal-open) html:not(.wtypc-noscroll) .llms-button-secondary:hover {
 .llms-loop-item-content {
   background: var(--nv-light-bg);
 }
-
 .llms-loop-item-content:hover {
   background: var(--nv-light-bg);
 }
-
 .llms-loop-item-content .llms-loop-link, .llms-loop-item-content .llms-meta, .llms-loop-item-content .llms-author {
   color: var(--sol-color-base-font) !important;
 }
@@ -136,7 +127,6 @@ body:not(.modal-open) html:not(.wtypc-noscroll) .llms-button-secondary:hover {
   background: var(--nv-light-bg);
   color: var(--sol-color-base-font) !important;
 }
-
 .llms-lesson-preview .llms-lesson-link:hover {
   background: var(--nv-light-bg);
   color: var(--sol-color-base-font);
@@ -145,7 +135,6 @@ body:not(.modal-open) html:not(.wtypc-noscroll) .llms-button-secondary:hover {
 .llms-table tbody tr:nth-child(odd) td, .llms-table tbody tr:nth-child(odd) th {
   background: var(--nv-light-bg);
 }
-
 .llms-table tfoot tr {
   background: var(--nv-light-bg);
 }
@@ -158,7 +147,6 @@ body:not(.modal-open) html:not(.wtypc-noscroll) .llms-button-secondary:hover {
 .llms-notification {
   background: var(--nv-light-bg) !important;
 }
-
 .llms-notification .llms-notification-body .llms-mini-cert {
   background: var(--nv-light-bg) !important;
 }
@@ -204,7 +192,6 @@ td .llms-progress .llms-progress-bar {
 .llms-donut {
   color: var(--llmsprimarycolor, var(--sol-color-link-button-initial));
 }
-
 .llms-donut svg path {
   stroke: var(--llmsprimarycolor, var(--sol-color-link-button-initial));
 }
