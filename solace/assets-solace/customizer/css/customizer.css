@@ -797,3 +797,8 @@ li#customize-control-woocommerce_checkout_main_address_field label span:hover,
 li#customize-control-woocommerce_checkout_phone_field label span:hover {
    background-color: var(--sol-builder-active-color);
 }
+
+li#customize-control-solace_blog_archive_layout [data-option=custom] #solace_blog_layout_custom_posts .count,
+li#customize-control-solace_blog_archive_layout [data-option=custom] #solace_blog_layout_custom_columns .count {
+    min-height: 30px;
+}

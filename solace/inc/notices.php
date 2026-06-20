@@ -10,6 +10,9 @@ if ( class_exists( 'Solace_Extra_Admin' ) ) {
  */
 function solace_display_admin_notice() {
 	$active_plugins = get_option( 'active_plugins' );
+	if ( ! is_array( $active_plugins ) ) {
+        $active_plugins = [];
+    }
 	if ( in_array( 'solace-extra/solace-extra.php', $active_plugins ) ) {
 		return;
 	}
@@ -334,18 +337,55 @@ function handle_solace_plugin_activation_ajax() {
 			// Plugin is already active.
 			$results[ $slug ] = [ 'status' => 'already_active' ];
 		} else {
-			// Attempt to activate the plugin.
-			$activated = activate_plugin( $plugin_file );
 
-			if ( is_wp_error( $activated ) ) {
-				// Activation failed, return the error message.
+			$active_plugins = get_option( 'active_plugins', [] );
+
+			if ( ! is_array( $active_plugins ) ) {
+				update_option( 'active_plugins', [] );
+			}
+
+			if ( is_multisite() ) {
+				$sitewide_plugins = get_site_option( 'active_sitewide_plugins', [] );
+
+				if ( ! is_array( $sitewide_plugins ) ) {
+					update_site_option( 'active_sitewide_plugins', [] );
+				}
+			}
+
+			try {
+
+				$activated = activate_plugin( $plugin_file );
+
+				if ( is_wp_error( $activated ) ) {
+
+					$results[ $slug ] = [
+						'status'  => 'failed',
+						'message' => $activated->get_error_message(),
+					];
+
+				} else {
+
+					$results[ $slug ] = [
+						'status' => 'activated',
+					];
+
+				}
+
+			} catch ( Throwable $e ) {
+
+				error_log(
+					sprintf(
+						'Solace activation error for %s: %s',
+						$plugin_file,
+						$e->getMessage()
+					)
+				);
+
 				$results[ $slug ] = [
 					'status'  => 'failed',
-					'message' => $activated->get_error_message()
+					'message' => $e->getMessage(),
 				];
-			} else {
-				// Plugin successfully activated.
-				$results[ $slug ] = [ 'status' => 'activated' ];
+
 			}
 		}
 	}

@@ -34,6 +34,7 @@ class Gutenberg extends Generator {
 		$this->setup_card_options_title();
 		$this->setup_card_options_product_image();
 		$this->setup_typography();
+		// $this->print_dynamic_styles();
 		$this->setup_single_post_featured_image();
 		$this->add_editor_color_palette_styles();
 	}

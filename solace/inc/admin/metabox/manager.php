@@ -53,7 +53,6 @@ final class Manager {
 		 */
 		add_action( 'init', array( $this, 'solace_register_meta' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'meta_sidebar_script_enqueue' ) );
-
 		add_action( 'save_post', array( $this, 'set_page_width' ), 10, 2 );
 	}
 
@@ -393,10 +392,20 @@ final class Manager {
 			$localized_data
 		);
 
+		
+	}
+
+	public function meta_sidebar_style_enqueue() {
+		global $post_type;
+
+		if ( ! in_array( $post_type, Supported_Post_Types::get( 'block_editor' ) ) ) {
+			return false;
+		}
+
 		wp_enqueue_style(
-			'solace-meta-sidebar-css', // Handle.
+			'solace-meta-sidebar-css',
 			trailingslashit( get_template_directory_uri() ) . 'assets/apps/metabox/build/index.css?v=' . time(),
-			array( 'wp-edit-blocks' ),
+			array(),
 			SOLACE_VERSION
 		);
 	}

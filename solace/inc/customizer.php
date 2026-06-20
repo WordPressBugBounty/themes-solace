@@ -898,6 +898,7 @@ function solace_block_editor_styles() {
 	
 	// Block styles.
 	wp_enqueue_style( 'solace-block-editor-style', get_template_directory_uri() . '/assets/css/editor-block.min.css&v=' . time(), array(), '1.0.0' );
+
 }
 add_action( 'enqueue_block_editor_assets', 'solace_block_editor_styles' );
 
@@ -1395,3 +1396,14 @@ function solace_filter_excerpt_length( $length ) {
 	return 55;
 }
 add_filter( 'excerpt_length', 'solace_filter_excerpt_length' );
+
+function solace_editor_iframe_css() {
+    $css = '
+    .editor-styles-wrapper,
+    .editor-styles-wrapper * {
+        background: transparent !important;
+    }';
+
+    wp_add_inline_style( 'wp-block-library', $css );
+}
+add_action( 'enqueue_block_editor_assets', 'solace_editor_iframe_css' );

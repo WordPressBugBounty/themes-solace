@@ -64,7 +64,7 @@ class Dynamic_Css {
 	 */
 	public function enqueue() {
 		$is_for_gutenberg = (current_action() === self::EDITOR_ACTION);
-		if ( ! class_exists( ' Solace_Pro\Core\Generic_Style', true ) ) {
+		if ( ! class_exists( 'Solace_Pro\Core\Generic_Style', true ) ) {
 			$this->legacy_style();
 		}
 

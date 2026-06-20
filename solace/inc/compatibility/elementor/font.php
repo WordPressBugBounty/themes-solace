@@ -40,26 +40,31 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 			set_theme_mod('solace_logotitle_font_family',$logotitle_font);
 			set_theme_mod('solace_button_font_family',$button_font);
 
-			$base_font_size 		= $system_typography[2]['typography_font_size']['size'];
-			$base_font_size_tablet 	= $system_typography[2]['typography_font_size_tablet']['size'];
-			$base_font_size_mobile 	= $system_typography[2]['typography_font_size_mobile']['size'];
-			$base_font_size_unit 	= $system_typography[2]['typography_font_size']['unit'];
-			$base_font_size_tablet_unit = $system_typography[2]['typography_font_size_tablet']['unit'];
-			$base_font_size_mobile_unit = $system_typography[2]['typography_font_size_mobile']['unit'];
-			$font_weights 			= $system_typography[2]['typography_font_weight'];
-			$font_transform 		= $system_typography[2]['typography_text_transform'];
-			$font_line_height		= $system_typography[2]['typography_line_height']['size'];
-			$font_line_height_unit	= $system_typography[2]['typography_line_height']['unit'];
-			$font_letter_spacing	= $system_typography[2]['typography_letter_spacing']['size'];
-			$font_size_tablet 		= $system_typography[2]['typography_font_size_tablet']['size'];
-			$font_size_mobile 		= $system_typography[2]['typography_font_size_mobile']['size'];
-			$font_line_height_tablet= $system_typography[2]['typography_line_height_tablet']['size'];
-			$font_line_height_mobile= $system_typography[4]['typography_line_height_mobile']['size'];
-			$font_line_height_tablet_unit= $system_typography[2]['typography_line_height_tablet']['unit'];
-			$font_line_height_mobile_unit= $system_typography[2]['typography_line_height_mobile']['unit'];
-			$font_letter_spacing_tablet	= !empty($system_typography[2]['typography_letter_spacing_tablet']['size'])?$system_typography[2]['typography_letter_spacing_tablet']['size']:'0';
-			$font_letter_spacing_mobile	= !empty($system_typography[2]['typography_letter_spacing_mobile']['size'])?$system_typography[2]['typography_letter_spacing_mobile']['size']:'0';
+			$t = $system_typography[2] ?? [];
 
+			$base_font_size              = $t['typography_font_size']['size'] ?? '';
+			$base_font_size_unit         = $t['typography_font_size']['unit'] ?? '';
+			$base_font_size_tablet       = $t['typography_font_size_tablet']['size'] ?? '';
+			$base_font_size_tablet_unit  = $t['typography_font_size_tablet']['unit'] ?? '';
+			$base_font_size_mobile       = $t['typography_font_size_mobile']['size'] ?? '';
+			$base_font_size_mobile_unit  = $t['typography_font_size_mobile']['unit'] ?? '';
+
+			$font_weights                = $t['typography_font_weight'] ?? '';
+			$font_transform              = $t['typography_text_transform'] ?? '';
+
+			$font_line_height            = $t['typography_line_height']['size'] ?? '';
+			$font_line_height_unit       = $t['typography_line_height']['unit'] ?? '';
+			$font_line_height_tablet     = $t['typography_line_height_tablet']['size'] ?? '';
+			$font_line_height_tablet_unit= $t['typography_line_height_tablet']['unit'] ?? '';
+			$font_line_height_mobile     = $t['typography_line_height_mobile']['size'] ?? '';
+			$font_line_height_mobile_unit= $t['typography_line_height_mobile']['unit'] ?? '';
+
+			$font_letter_spacing         = $t['typography_letter_spacing']['size'] ?? '';
+			$font_letter_spacing_tablet  = $t['typography_letter_spacing_tablet']['size'] ?? '0';
+			$font_letter_spacing_mobile  = $t['typography_letter_spacing_mobile']['size'] ?? '0';
+
+			$font_size_tablet            = $base_font_size_tablet;
+			$font_size_mobile            = $base_font_size_mobile;
 			// Synchronize Above (Text) with (Solace Base)
 			$sync_text_to_solace_base = [
 				[
@@ -124,10 +129,13 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 
 			set_theme_mod('solace_body_font_family', $base_font);
 			$current_values = get_theme_mod('solace_typeface_general');
+			if (!is_array($current_values)) {
+				$current_values = [];
+			}
 			$defaults_base = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_GENERAL );
 
 			// Update fontSize values
-			$current_values['fontSize']['mobile'] = isset($base_font_size_mobile)?$base_font_size_mobile:$defaults_base['fontSize']['mobile'];
+			$current_values['fontSize']['mobile'] = !empty($base_font_size_mobile) ? $base_font_size_mobile : ($defaults_base['fontSize']['mobile'] ?? '');
 			$current_values['fontSize']['tablet'] = isset($base_font_size_tablet)?$base_font_size_tablet:$defaults_base['fontSize']['tablet'];
 			$current_values['fontSize']['desktop'] = isset($base_font_size)?$base_font_size:$defaults_base['fontSize']['desktop'];
 
@@ -182,29 +190,32 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 
 			for ($i = 0; $i <= 10; $i++) {
 				if (isset($system_typography[$i])) {
-					$font_families[$i] 			= $system_typography[$i]['typography_font_family'];
-					$font_sizes[$i] 			= $system_typography[$i]['typography_font_size']['size'];
-					$font_sizes_unit[$i] 		= $system_typography[$i]['typography_font_size']['unit'];
-					$font_sizes_tablet[$i] 		= $system_typography[$i]['typography_font_size_tablet']['size'];
-					$font_sizes_mobile[$i] 		= $system_typography[$i]['typography_font_size_mobile']['size'];
-					$font_sizes_tablet_unit[$i] = $system_typography[$i]['typography_font_size_tablet']['unit'];
-					$font_sizes_mobile_unit[$i] = $system_typography[$i]['typography_font_size_mobile']['unit'];
-					$font_weights[$i] 			= $system_typography[$i]['typography_font_weight'];
-					$font_transform[$i] 		= $system_typography[$i]['typography_text_transform'];
-					
-					$font_line_height[$i]		= $system_typography[$i]['typography_line_height']['size'];
-					$font_line_height_tablet[$i]= $system_typography[$i]['typography_line_height_tablet']['size'];
-					$font_line_height_mobile[$i]= $system_typography[$i]['typography_line_height_mobile']['size'];
-					$font_line_height_unit[$i]	= $system_typography[$i]['typography_line_height']['unit'];
-					$font_line_height_unit_tablet[$i]	= $system_typography[$i]['typography_line_height_tablet']['unit'];
-					$font_line_height_unit_mobile[$i]	= $system_typography[$i]['typography_line_height_mobile']['unit'];
+					$t = $system_typography[$i];
 
-					$font_letter_spacing[$i]	= $system_typography[$i]['typography_letter_spacing']['size'];
-					$font_letter_spacing_tablet[$i]	= !empty($system_typography[$i]['typography_letter_spacing_tablet']['size'])?$system_typography[$i]['typography_letter_spacing_tablet']['size']:'0';
-					$font_letter_spacing_mobile[$i]	= !empty($system_typography[$i]['typography_letter_spacing_mobile']['size'])?$system_typography[$i]['typography_letter_spacing_mobile']['size']:'0';
-					$font_letter_spacing_unit[$i]= $system_typography[$i]['typography_letter_spacing']['unit'];
-					$font_letter_spacing_tablet_unit[$i]	= !empty($system_typography[$i]['typography_letter_spacing_tablet']['unit'])?$system_typography[$i]['typography_letter_spacing_tablet']['unit']:'px';
-					$font_letter_spacing_mobile_unit[$i]	= !empty($system_typography[$i]['typography_letter_spacing_mobile']['unit'])?$system_typography[$i]['typography_letter_spacing_mobile']['unit']:'px';
+					$font_families[$i]            = $t['typography_font_family'] ?? '';
+					$font_sizes[$i]                = $t['typography_font_size']['size'] ?? '';
+					$font_sizes_unit[$i]           = $t['typography_font_size']['unit'] ?? '';
+					$font_sizes_tablet[$i]         = $t['typography_font_size_tablet']['size'] ?? '';
+					$font_sizes_mobile[$i]         = $t['typography_font_size_mobile']['size'] ?? '';
+					$font_sizes_tablet_unit[$i]    = $t['typography_font_size_tablet']['unit'] ?? '';
+					$font_sizes_mobile_unit[$i]    = $t['typography_font_size_mobile']['unit'] ?? '';
+
+					$font_weights[$i]              = $t['typography_font_weight'] ?? '';
+					$font_transform[$i]            = $t['typography_text_transform'] ?? '';
+
+					$font_line_height[$i]          = $t['typography_line_height']['size'] ?? '';
+					$font_line_height_tablet[$i]   = $t['typography_line_height_tablet']['size'] ?? '';
+					$font_line_height_mobile[$i]   = $t['typography_line_height_mobile']['size'] ?? '';
+					$font_line_height_unit[$i]         = $t['typography_line_height']['unit'] ?? '';
+					$font_line_height_unit_tablet[$i]  = $t['typography_line_height_tablet']['unit'] ?? '';
+					$font_line_height_unit_mobile[$i]  = $t['typography_line_height_mobile']['unit'] ?? '';
+
+					$font_letter_spacing[$i]              = $t['typography_letter_spacing']['size'] ?? '';
+					$font_letter_spacing_tablet[$i]       = $t['typography_letter_spacing_tablet']['size'] ?? '0';
+					$font_letter_spacing_mobile[$i]       = $t['typography_letter_spacing_mobile']['size'] ?? '0';
+					$font_letter_spacing_unit[$i]         = $t['typography_letter_spacing']['unit'] ?? '';
+					$font_letter_spacing_tablet_unit[$i]  = $t['typography_letter_spacing_tablet']['unit'] ?? 'px';
+					$font_letter_spacing_mobile_unit[$i]  = $t['typography_letter_spacing_mobile']['unit'] ?? 'px';
 				}
 			}
 
@@ -213,14 +224,17 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 			set_theme_mod('solace_body_font_family',$font_families[2]);
 			set_theme_mod('solace_button_font_family',$font_families[3]);
 
-			set_theme_mod('solace_h1_font_family_general',$font_families[5]);
-			set_theme_mod('solace_h2_font_family_general',$font_families[6]);
-			set_theme_mod('solace_h3_font_family_general',$font_families[7]);
-			set_theme_mod('solace_h4_font_family_general',$font_families[8]);
-			set_theme_mod('solace_h5_font_family_general',$font_families[9]);
-			set_theme_mod('solace_h6_font_family_general',$font_families[10]);
+			set_theme_mod('solace_h1_font_family_general', $font_families[5]  ?? '');
+			set_theme_mod('solace_h2_font_family_general', $font_families[6]  ?? '');
+			set_theme_mod('solace_h3_font_family_general', $font_families[7]  ?? '');
+			set_theme_mod('solace_h4_font_family_general', $font_families[8]  ?? '');
+			set_theme_mod('solace_h5_font_family_general', $font_families[9]  ?? '');
+			set_theme_mod('solace_h6_font_family_general', $font_families[10] ?? '');
 
 			$current_values = get_theme_mod('solace_h1_typeface_general');
+			if (!is_array($current_values)) {
+				$current_values = [];
+			}
 			$defaults_h1 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H1 );
 			$current_values['fontSize']['desktop'] = isset($font_sizes[5])?$font_sizes[5]:$defaults_h1['fontSize']['desktop'];
 			$current_values['fontSize']['tablet'] = isset($font_sizes_tablet[5])?$font_sizes_tablet[5]:$defaults_h1['fontSize']['tablet'];
@@ -242,6 +256,9 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 			set_theme_mod('solace_h1_typeface_general', $current_values);
 
 			$current_values = get_theme_mod('solace_h2_typeface_general');
+			if (!is_array($current_values)) {
+				$current_values = [];
+			}
 			$defaults_h2 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H2 );
 			$current_values['fontSize']['desktop'] = isset($font_sizes[6])?$font_sizes[6]:$defaults_h2['fontSize']['desktop'];
 			$current_values['fontSize']['tablet'] = isset($font_sizes_tablet[6])?$font_sizes_tablet[6]:$defaults_h2['fontSize']['tablet'];
@@ -263,6 +280,9 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 			set_theme_mod('solace_h2_typeface_general', $current_values);
 
 			$current_values = get_theme_mod('solace_h3_typeface_general');
+			if (!is_array($current_values)) {
+				$current_values = [];
+			}
 			$defaults_h3 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H3 );
 			$current_values['fontSize']['desktop'] = isset($font_sizes[7])?$font_sizes[7]:$defaults_h3['fontSize']['desktop'];
 			$current_values['fontSize']['tablet'] = isset($font_sizes_tablet[7])?$font_sizes_tablet[7]:$defaults_h3['fontSize']['tablet'];
@@ -284,6 +304,9 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 			set_theme_mod('solace_h3_typeface_general', $current_values);
 
 			$current_values = get_theme_mod('solace_h4_typeface_general');
+			if (!is_array($current_values)) {
+				$current_values = [];
+			}
 			$defaults_h4 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H4 );
 			$current_values['fontSize']['desktop'] = isset($font_sizes[8])?$font_sizes[8]:$defaults_h4['fontSize']['desktop'];
 			$current_values['fontSize']['tablet'] = isset($font_sizes_tablet[8])?$font_sizes_tablet[8]:$defaults_h4['fontSize']['tablet'];
@@ -305,6 +328,9 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 			set_theme_mod('solace_h4_typeface_general', $current_values);
 
 			$current_values = get_theme_mod('solace_h5_typeface_general');
+			if (!is_array($current_values)) {
+				$current_values = [];
+			}
 			$defaults_h5 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H5 );
 			$current_values['fontSize']['desktop'] = isset($font_sizes[9])?$font_sizes[9]:$defaults_h5['fontSize']['desktop'];
 			$current_values['fontSize']['tablet'] = isset($font_sizes_tablet[9])?$font_sizes_tablet[9]:$defaults_h5['fontSize']['tablet'];
@@ -326,6 +352,9 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 			set_theme_mod('solace_h5_typeface_general', $current_values);
 
 			$current_values = get_theme_mod('solace_h6_typeface_general');
+			if (!is_array($current_values)) {
+				$current_values = [];
+			}
 			$defaults_h6 = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_H6 );
 			$current_values['fontSize']['desktop'] = isset($font_sizes[10])?$font_sizes[10]:$defaults_h6['fontSize']['desktop'];
 			$current_values['fontSize']['tablet'] = isset($font_sizes_tablet[10])?$font_sizes_tablet[10]:$defaults_h6['fontSize']['tablet'];
@@ -347,6 +376,9 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 			set_theme_mod('solace_h6_typeface_general', $current_values);
 
 			$current_values = get_theme_mod('solace_typeface_smaller');
+			if (!is_array($current_values)) {
+				$current_values = [];
+			}
 			$defaults_smaller = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_SMALLER );
 			$current_values['fontSize']['desktop'] = isset($font_sizes[0])?$font_sizes[0]:$defaults_smaller['fontSize']['desktop'];
 			$current_values['fontSize']['tablet'] = isset($font_sizes_tablet[0])?$font_sizes_tablet[0]:$defaults_smaller['fontSize']['tablet'];
@@ -368,6 +400,9 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 			set_theme_mod('solace_typeface_smaller', $current_values);
 
 			$current_values = get_theme_mod('solace_typeface_logotitle');
+			if (!is_array($current_values)) {
+				$current_values = [];
+			}
 			$defaults_logotitle = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_LOGOTITLE );
 			$current_values['fontSize']['desktop'] = isset($font_sizes[1])?$font_sizes[1]:$defaults_logotitle['fontSize']['desktop'];
 			$current_values['fontSize']['tablet'] = isset($font_sizes_tablet[1])?$font_sizes_tablet[1]:$defaults_logotitle['fontSize']['tablet'];
@@ -393,6 +428,9 @@ function solace_font_elementor_after_save( $elementor_element, $data ) {
 			// $font_letter_spacing_tablet_unit[$i]	= !empty($system_typography[$i]['typography_letter_spacing_tablet']['unit'])?$system_typography[$i]['typography_letter_spacing_tablet']['unit']:'px';
 
 			$current_values = get_theme_mod('solace_typeface_button');
+			if (!is_array($current_values)) {
+				$current_values = [];
+			}
 			$defaults_button = Mods::get_alternative_mod_default( Config::MODS_TYPEFACE_BUTTON );
 			$current_values['fontSize']['desktop'] = isset($font_sizes[3])?$font_sizes[3]:$defaults_button['fontSize']['desktop'];
 			$current_values['fontSize']['tablet'] = isset($font_sizes_tablet[3])?$font_sizes_tablet[3]:$defaults_button['fontSize']['tablet'];
