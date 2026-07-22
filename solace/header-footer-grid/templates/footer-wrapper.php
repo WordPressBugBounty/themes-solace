@@ -13,7 +13,13 @@ namespace HFG;
 use HFG\Core\Builder\Footer as FooterBuilder;
 // Check if custom footer is active and display it if it is
 
-$custom_footer_content = false; 
+// When a Site Builder part is open in the Elementor editor/preview, suppress the
+// footer entirely so only the part being edited shows on the canvas.
+if ( function_exists( 'solace_get_editing_header_or_footer_part_id' ) && solace_get_editing_header_or_footer_part_id() ) {
+    return;
+}
+
+$custom_footer_content = false;
 
 if (function_exists('solace_display_custom_footer')) {
     $footer_conditions = get_solace_footer_conditions();

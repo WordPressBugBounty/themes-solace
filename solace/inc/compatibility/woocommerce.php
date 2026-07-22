@@ -928,7 +928,13 @@ class Woocommerce {
 	 * Move the coupon field and message info after the order table.
 	 */
 	public function move_coupon() {
-		wc_enqueue_js( '$( $( ".woocommerce-checkout div.woocommerce-info, .checkout_coupon, .woocommerce-form-login" ).detach() ).appendTo( "#solace-checkout-coupon" );' );
+		$js_code = '$( $( ".woocommerce-checkout div.woocommerce-info, .checkout_coupon, .woocommerce-form-login" ).detach() ).appendTo( "#solace-checkout-coupon" );';
+
+		if ( defined( 'WC_VERSION' ) && version_compare( WC_VERSION, '10.4.0', '>=' ) ) {
+			wp_add_inline_script( 'wc-checkout', 'jQuery(function($) { ' . $js_code . ' });' );
+		} else {
+			wc_enqueue_js( $js_code );
+		}
 	}
 
 	/**

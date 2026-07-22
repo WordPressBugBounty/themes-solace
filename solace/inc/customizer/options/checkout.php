@@ -81,7 +81,9 @@ class Checkout extends Base_Customizer {
 	private function group_controls() {
 		$checkout_section = $this->wpc->get_section( 'woocommerce_checkout' );
 		
-		$this->wpc->add_section( $checkout_section );
+		if ( null !== $checkout_section ) {
+			$this->wpc->add_section( $checkout_section );
+		}
 
 		$this->add_control(
 			new Control(

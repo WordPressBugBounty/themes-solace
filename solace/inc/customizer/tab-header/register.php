@@ -55,6 +55,22 @@ final class Solace_Register_Tab_Header
 
 		// Register scripts and styles for the controls.
 		add_action('customize_controls_enqueue_scripts', array($this, 'enqueue_control_scripts'), 99);
+
+		// Register the preview helper that reports the Site Builder status of the
+		// page currently being previewed (covers both header and footer).
+		add_action('customize_preview_init', array($this, 'enqueue_preview_scripts'));
+	}
+
+	/**
+	 * Enqueue the customizer preview helper for the Site Builder notice.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function enqueue_preview_scripts()
+	{
+		wp_enqueue_script( 'solace-sitebuilder-notice-preview', get_template_directory_uri() . '/inc/customizer/sitebuilder-notice-preview.js?v=' . time(), array( 'customize-preview' ), SOLACE_VERSION, true );
 	}
 
 	/**
@@ -97,6 +113,21 @@ final class Solace_Register_Tab_Header
 		// 	wp_enqueue_style( 'solace-customize-controls-style', get_template_directory_uri() . '/inc/customizer/style.css?v=' . time(), array(), SOLACE_VERSION, 'all' );
 
 		wp_enqueue_script( 'solace-customize-controls-script', get_template_directory_uri() . '/inc/customizer/tab-header/scripts.js?v=' . time(), array( 'jquery' ), SOLACE_VERSION, true );
+
+		// Notice text shown when the preview reports that the Solace Extra Site
+		// Builder is overriding the header on the page being previewed. Whether
+		// it actually applies (per the Site Builder conditions) is decided by the
+		// preview helper, not here.
+		wp_localize_script(
+			'solace-customize-controls-script',
+			'solaceHeaderSiteBuilder',
+			array(
+				'title'    => esc_html__( 'Site Builder Header is active', 'solace' ),
+				'message'  => esc_html__( 'The Solace Extra Site Builder is overriding the theme header. The builder and presets below are disabled.', 'solace' ),
+				'linkText' => esc_html__( 'Manage Site Builder Header', 'solace' ),
+				'linkUrl'  => admin_url( 'admin.php?page=dashboard-sitebuilder&part=header' ),
+			)
+		);
 	}
 }
 

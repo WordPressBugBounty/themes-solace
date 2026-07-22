@@ -94,6 +94,21 @@ final class Solace_Register_Tab_Footer
 	public function enqueue_control_scripts()
 	{
 		wp_enqueue_script( 'solace-customize-controls-footer-script', get_template_directory_uri() . '/inc/customizer/tab-footer/scripts.js?v=' . time(), array( 'jquery' ), SOLACE_VERSION, true );
+
+		// Notice text shown when the preview reports that the Solace Extra Site
+		// Builder is overriding the footer on the page being previewed. Whether
+		// it actually applies (per the Site Builder conditions) is decided by the
+		// preview helper, not here.
+		wp_localize_script(
+			'solace-customize-controls-footer-script',
+			'solaceFooterSiteBuilder',
+			array(
+				'title'    => esc_html__( 'Site Builder Footer is active', 'solace' ),
+				'message'  => esc_html__( 'The Solace Extra Site Builder is overriding the theme footer. The builder and presets below are disabled.', 'solace' ),
+				'linkText' => esc_html__( 'Manage Site Builder Footer', 'solace' ),
+				'linkUrl'  => admin_url( 'admin.php?page=dashboard-sitebuilder&part=footer' ),
+			)
+		);
 	}
 }
 

@@ -30,6 +30,11 @@ Solace includes support for WooCommerce.
 
 == Changelog ==
 
+= 2.1.23 - 21 July 2026 =
+* [Fix]: Fixed a fatal error on WooCommerce add_section
+* [Fix]: Fixed Customizer disable/enable logic based on active Sitebuilder
+* [Fix]: Fixed previous Sitebuilder header/footer template failing to load in Elementor Editor
+
 = 2.1.22 - 19 June 2026 =
 * [Fix]: Fixed issues Gutenberg Editor
 * [Fix]: Fixed issues deprecated with PHP 8.5
