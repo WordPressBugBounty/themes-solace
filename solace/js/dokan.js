@@ -41,7 +41,7 @@ jQuery(document).ready(function($){
             });
         },
         function() {
-            // Kembali ke gaya awal
+            // Revert to the original style.
             $(this).css({
                 'color': hexColor,
                 'background-color': hexBackgroundColor,

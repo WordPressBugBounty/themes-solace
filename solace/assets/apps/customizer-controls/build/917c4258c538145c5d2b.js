@@ -373,7 +373,7 @@ const Builder = ({ value, hidden, portalMount }) => {
             }
         }
         fetchData();
-    }, []); // Memastikan hanya dijalankan sekali saat komponen did mount
+    }, []); // Ensures it only runs once when the component is mounted
     var headerTopValue = "";
     var headerTopState = window.wp.customize('solace_pro_global_header_settings_top_shortcut', function (value) {
         headerTopValue = value();
@@ -398,7 +398,7 @@ const Builder = ({ value, hidden, portalMount }) => {
         window.wp.customize('solace_pro_global_header_settings_main_shortcut', function (setting) {
             setting.set(!isRowHeaderMainVisible);
             setting.preview();
-            window.wp.customize.previewer.send('changeset-update', { transport: 'auto' }); // Menyimpan perubahan ke dalam customizer
+            window.wp.customize.previewer.send('changeset-update', { transport: 'auto' }); // Save changes to the customizer
             window.wp.customize.previewer.refresh();
         });
     };
@@ -412,8 +412,8 @@ const Builder = ({ value, hidden, portalMount }) => {
         window.wp.customize('solace_pro_global_header_settings_bottom_shortcut', function (setting) {
             setting.set(!isRowHeaderBottomVisible);
             setting.preview();
-            // setting.save(); // Menyimpan perubahan ke dalam customizer
-            window.wp.customize.previewer.send('changeset-update', { transport: 'auto' }); // Menyimpan perubahan ke dalam customizer
+            // setting.save(); // Save changes to the customizer
+            window.wp.customize.previewer.send('changeset-update', { transport: 'auto' }); // Save changes to the customizer
             window.wp.customize.previewer.refresh();
         });
     };
@@ -427,8 +427,8 @@ const Builder = ({ value, hidden, portalMount }) => {
         window.wp.customize('solace_pro_global_footer_settings_top_shortcut', function (setting) {
             setting.set(!isRowFooterTopVisible);
             setting.preview();
-            // setting.save(); // Menyimpan perubahan ke dalam customizer
-            window.wp.customize.previewer.send('changeset-update', { transport: 'auto' }); // Menyimpan perubahan ke dalam customizer
+            // setting.save(); // Save changes to the customizer
+            window.wp.customize.previewer.send('changeset-update', { transport: 'auto' }); // Save changes to the customizer
             window.wp.customize.previewer.refresh();
         });
     };
@@ -442,8 +442,8 @@ const Builder = ({ value, hidden, portalMount }) => {
         window.wp.customize('solace_pro_global_footer_settings_main_shortcut', function (setting) {
             setting.set(!isRowFooterMainVisible);
             setting.preview();
-            // setting.save(); // Menyimpan perubahan ke dalam customizer
-            window.wp.customize.previewer.send('changeset-update', { transport: 'auto' }); // Menyimpan perubahan ke dalam customizer
+            // setting.save(); // Save changes to the customizer
+            window.wp.customize.previewer.send('changeset-update', { transport: 'auto' }); // Save changes to the customizer
             window.wp.customize.previewer.refresh();
         });
     };
@@ -457,8 +457,8 @@ const Builder = ({ value, hidden, portalMount }) => {
         window.wp.customize('solace_pro_global_footer_settings_bottom_shortcut', function (setting) {
             setting.set(!isRowFooterBottomVisible);
             setting.preview();
-            // setting.save(); // Menyimpan perubahan ke dalam customizer
-            window.wp.customize.previewer.send('changeset-update', { transport: 'auto' }); // Menyimpan perubahan ke dalam customizer
+            // setting.save(); // Save changes to the customizer
+            window.wp.customize.previewer.send('changeset-update', { transport: 'auto' }); // Save changes to the customizer
             window.wp.customize.previewer.refresh();
         });
     };
@@ -841,7 +841,7 @@ const ResponsiveSwitches = ({ device }) => {
     };
     const [isActive, setIsActive] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(false);
     const handleButtonHide = () => {
-        builderHide(builder); // Panggil fungsi builderHide dengan parameter builder di dalam fungsi ini
+        builderHide(builder); // Call the builderHide function with the builder parameter inside this function
     };
     const builderHide = (e) => {
         const bodyElement = document.body;

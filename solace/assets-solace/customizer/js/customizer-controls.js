@@ -218,7 +218,7 @@
     setTimeout(function () {
 
         $(document).on('click', function(event) {
-            // Cek apakah event target memiliki salah satu dari class yang ditentukan
+            // Check whether the event target has one of the specified classes
             if (
                 $(event.target).hasClass('sol-color-base-font') || 
                 $(event.target).hasClass('sol-color-heading') ||

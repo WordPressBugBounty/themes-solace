@@ -219,7 +219,12 @@ class Woocommerce {
 			return null;
 		}
 
-		$payment_method = WC()->session->get( 'chosen_payment_method' );
+		// WC()->session is not available on every request (e.g. admin list
+		// pages), and get_payment_method() is reachable from should_load()
+		// whenever is_checkout() is true — guard against a null session.
+		$wc_object     = WC();
+		$session       = $wc_object ? $wc_object->session : null;
+		$payment_method = ( $session instanceof \WC_Session ) ? $session->get( 'chosen_payment_method' ) : null;
 		if ( ! $payment_method ) {
 			// If payment method is null, see if there is only one option;
 			$payment_gateways          = new WC_Payment_Gateways();
@@ -1172,24 +1177,24 @@ class Woocommerce {
 		if ( $sol_page_header ){ ?>
 			<?php
 				if ( is_shop()) {
-					// Mendapatkan ID halaman shop
+					// Get the shop page ID.
 					$shop_page_id = wc_get_page_id('shop');
 
-					// Mendapatkan post object halaman shop
+					// Get the shop page post object.
 					$shop_page = get_post($shop_page_id);
 
-					// Memeriksa apakah halaman shop valid
+					// Check whether the shop page is valid.
 					if ($shop_page) {
-						// Mengambil title halaman shop
+						// Get the shop page title.
 						$shop_page_title = get_the_title($shop_page_id);
 						
-						// Menampilkan title halaman shop
+						// Display the shop page title.
 						// echo '<h1>' . esc_html($shop_page_title) . '</h1>';
 						
-						// Mengambil dan memfilter konten halaman shop
+						// Get and filter the shop page content.
 						$shop_page_content = apply_filters('the_content', $shop_page->post_content);
 						
-						// Menampilkan konten halaman shop
+						// Display the shop page content.
 						// echo '<div class="shop-page-content">' . $shop_page_content . '</div>';
 					}
 

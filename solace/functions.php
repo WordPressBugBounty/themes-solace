@@ -18,7 +18,7 @@ if (!defined('SOLACE_DEBUG')) {
 
 if (!defined('SOLACE_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('SOLACE_VERSION', '2.1.23');
+	define('SOLACE_VERSION', '2.1.24');
 }
 
 require_once 'inc/compatibility/class-solace-starter-content.php';
@@ -406,7 +406,7 @@ function solace_scripts()
 		$fontVariable = 'h' . $i;
 		
 		if (!in_array($$fontVariable, $fonts)) {
-			wp_enqueue_style('google-fonts-' . $heading, 'https://fonts.googleapis.com/css?family=' . $$fontVariable . '&display=swap&v=' . time());
+			wp_enqueue_style('google-fonts-' . $heading, 'https://fonts.googleapis.com/css?family=' . $$fontVariable . '&display=swap');
 		}
 	}
 }
@@ -1046,3 +1046,27 @@ add_action( 'upgrader_process_complete', function ($upgrader_object, $options) {
         }
     }
 }, 10, 2);
+/**
+ * Elementor WooCommerce widgets compatibility stylesheet.
+ * Loaded only when Elementor is active and the current page is WooCommerce.
+ */
+add_action( 'wp_enqueue_scripts', function () {
+	if ( ! did_action( 'elementor/loaded' ) || ! function_exists( 'is_woocommerce' ) ) {
+		return;
+	}
+	if ( ! ( is_woocommerce() || is_cart() || is_checkout() || is_account_page() ) ) {
+		return;
+	}
+	wp_enqueue_style(
+		'solace-elementor-woo-widgets',
+		get_stylesheet_directory_uri() . '/elementor-woo-widgets.css',
+		array(),
+		'1.0.2'
+	);
+	wp_enqueue_style(
+		'solace-elementor-wc-elements',
+		get_stylesheet_directory_uri() . '/elementor-wc-elements.css',
+		array( 'solace-elementor-woo-widgets', 'woocommerce-general', 'woocommerce-layout' ),
+		'1.0.0'
+	);
+}, 20 );

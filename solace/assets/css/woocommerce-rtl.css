@@ -1069,8 +1069,8 @@ body.woocommerce-cart .wc-block-components-sidebar .wc-block-cart__submit span {
   font-size: var(--h4fontsize);
 }
 
-.woocommerce .cart_totals td,
-.woocommerce .cart_totals th {
+body:not(.elementor-page) .woocommerce .cart_totals td,
+body:not(.elementor-page) .woocommerce .cart_totals th {
   background: 100% !important;
   padding: 20px 15px !important;
   border-bottom: 2px solid var(--sol-color-border);

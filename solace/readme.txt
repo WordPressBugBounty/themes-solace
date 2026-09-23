@@ -6,7 +6,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 Requires at least: 5.9
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 2.1.23
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -30,7 +30,25 @@ Solace includes support for WooCommerce.
 
 == Changelog ==
 
-= 2.1.23 - 21 July 2026 =
+= 2.1.24 - 23 September 2026 =
+* [Security]: Fixed unauthorized content exposure in the Site Builder template preview — private parts are now served only to logged-in users who can edit the requested post
+* [Fix]: Fixed a fatal error on WooCommerce add_section
+* [Fix]: Fixed a fatal error when is_checkout is null
+* [Fix]: Fixed Customizer disable/enable logic based on active Sitebuilder
+* [Fix]: Fixed previous Sitebuilder header/footer template failing to load in Elementor Editor
+* [Fix]: Fixed Elementor Pro WooCommerce Cart and Checkout widget styling — theme button, hover, disabled, and title overrides no longer conflict with widget styles
+* [Fix]: Fixed Elementor Pro WooCommerce Notices widget conflicting with global list typography
+* [Fix]: Fixed Elementor Pro Products widget conflicting with theme button overrides
+* [Fix]: Removed Elementor CSS preload that caused header flash of unstyled content (FOUC)
+* [Fix]: Fixed WooCommerce default widget styling in the shop sidebar
+* [Fix]: Fixed WooCommerce widget brand thumbnail, title, and tag cloud styling
+* [Fix]: Fixed product review list numbering and avatar alignment
+* [Fix]: Fixed brand taxonomy archive to use the WooCommerce archive template
+* [Fix]: Fixed active category/tag font color and product category link font weight
+* [Style]: Added global Elementor kit theming for the WooCommerce elements widget
+* [Refactor]: Translated remaining Indonesian comments to English
+
+= 2.1.23 - 23 September 2026 =
 * [Fix]: Fixed a fatal error on WooCommerce add_section
 * [Fix]: Fixed Customizer disable/enable logic based on active Sitebuilder
 * [Fix]: Fixed previous Sitebuilder header/footer template failing to load in Elementor Editor

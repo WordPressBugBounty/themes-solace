@@ -21,14 +21,14 @@ function build_default_button_selector(): string {
     $kit_id = get_elementor_kit_id();
 
     return "
-		body .button:not(header .button):not(footer .button),
+		body .button:not(header .button):not(footer .button):not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 		body .button-primary:not(header .button-primary):not(footer .button-primary),
 		body .button-secondary:not(header .button-secondary):not(footer .button-secondary),body .button-link,
 		body .comments-area .form-submit .submit,
 		input[type='submit']:not(.solace-mc-embedded-subscribe),
 		body.single a.wp-block-button__link,
 		body .solaceform-form-button,
-        body.elementor-kit-{$kit_id} .elementor-button,
+        body.elementor-kit-{$kit_id} .elementor-button:not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 		.SELECTOR_DEFAULT_BUTTON_BG
     ";
 }
@@ -40,7 +40,7 @@ add_action( 'init', function() {
 }, 20 );
 
 define('SELECTOR_DEFAULT_BUTTON_TEXT',"
-	body .button:not(header .button):not(footer .button),
+	body .button:not(header .button):not(footer .button):not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 	body .button-primary:not(header .button-primary):not(footer .button-primary),
 	body .button-secondary:not(header .button-secondary):not(footer .button-secondary),
 	body .button-link,
@@ -48,12 +48,12 @@ define('SELECTOR_DEFAULT_BUTTON_TEXT',"
 	body.single a.wp-block-button__link,
 	body footer .solace-mc-embedded-subscribe.elementor-button,
 	body .solaceform-form-button,
-	body .elementor-button,
+	body .elementor-button:not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 	.SELECTOR_DEFAULT_BUTTON_TEXT
 ");
 
 define('SELECTOR_DEFAULT_BUTTON_TEXT_HOVER',"
-	body .button:not(header .button):not(footer .button):hover,
+	body .button:not(header .button):not(footer .button):hover:not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 	body .button-primary:not(header .button-primary):not(footer .button-primary):hover,
 	body .button-secondary:not(header .button-secondary):not(footer .button-secondary):hover,
 	body .button-link:hover,
@@ -62,7 +62,7 @@ define('SELECTOR_DEFAULT_BUTTON_TEXT_HOVER',"
 	body .solaceform-form-button:hover,
 	body footer .solace-mc-embedded-subscribe.elementor-button:hover,
 	:where(body:not(.woocommerce-block-theme-has-button-styles)):where(:not(.edit-post-visual-editor)) .woocommerce button.button:hover,
-	body .elementor-button:hover,
+	body .elementor-button:hover:not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 	.SELECTOR_DEFAULT_BUTTON_TEXT_HOVER
 ");
 
@@ -90,7 +90,7 @@ define('SELECTOR_DEFAULT_BUTTON_TEXT_HOVER',"
 // 	.SELECTOR_DEFAULT_BUTTON_BG_HOVER
 // ");
 define('SELECTOR_DEFAULT_BUTTON_BG_HOVER',"
-	body:not(.single-solace-sitebuilder) .button:not(header .button):not(footer .button):hover,
+	body:not(.single-solace-sitebuilder) .button:not(header .button):not(footer .button):hover:not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 	body:not(.single-solace-sitebuilder) .button-primary:not(header .button-primary):not(footer .button-primary):hover,
 	body:not(.single-solace-sitebuilder) .button-secondary:not(header .button-secondary):not(footer .button-secondary):hover,
 	body:not(.single-solace-sitebuilder) .button-link:hover,
@@ -98,13 +98,13 @@ define('SELECTOR_DEFAULT_BUTTON_BG_HOVER',"
 	body:not(.single-solace-sitebuilder) input[type='submit']:not(.solace-mc-embedded-subscribe):hover,
 	body:not(.single-solace-sitebuilder).single a.wp-block-button__link:hover,
 	body:not(.single-solace-sitebuilder) .solaceform-form-button:hover,
-	body:not(.single-solace-sitebuilder) .elementor-button:hover,
+	body:not(.single-solace-sitebuilder) .elementor-button:hover:not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 	body:not(.single-solace-sitebuilder) .SELECTOR_DEFAULT_BUTTON_BG_HOVER
 ");
 
 define('SELECTOR_WC_BUTTON_TEXT',"
 	body .add_to_cart_button,
-	body.woocommerce a.button:not(header a.button):not(footer a.button),
+	body.woocommerce a.button:not(header a.button):not(footer a.button):not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 	body:not(.dokan-theme-solace) .woocommerce a.button,
 	body .woocommerce a.button.alt,
 	body.woocommerce-cart:not(.elementor-page) table.cart td.actions .button:disabled,
@@ -114,9 +114,9 @@ define('SELECTOR_WC_BUTTON_TEXT',"
 	body .woocommerce .woocommerce-message .button,
 	body:not(.woocommerce-cart) .woocommerce .cart .button,
 	body .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button,
-	body .woocommerce-page .woocommerce-info a,
+	body .woocommerce-page .woocommerce-info a:not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 	body:not(.elementor-page) .woocommerce button.button,
-	body .woocommerce button.button.alt,
+	body .woocommerce button.button.alt:not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 	body .woocommerce-account a.button.wc-forward,
 	.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt,
 	body .wc-block-components-totals-coupon__content button.wc-block-components-button,
@@ -140,7 +140,7 @@ define('SELECTOR_WC_BUTTON_TEXT_HOVER',"
 	:where(body:not(.woocommerce-block-theme-has-button-styles)) .woocommerce a.button.alt:hover,
 	.woocommerce:where(body:not(.woocommerce-block-theme-has-button-styles)) button.button.alt:hover,
 	body .add_to_cart_button:hover,
-	body.woocommerce a.button:not(header a.button):not(footer a.button):hover,
+	body.woocommerce a.button:not(header a.button):not(footer a.button):hover:not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 	body.woocommerce ul.products li.product .button:hover,
 	body .woocommerce div.product form.cart .button:hover,
 	body .woocommerce .woocommerce-message .button:hover,
@@ -193,7 +193,7 @@ define('SELECTOR_WC_BUTTON_BG',"
 	.woocommerce-page a.wp-block-button__link,
 	.wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained,
 	.widget-search .search-submit:not(.header .widget-search .search-submit),
-	body.woocommerce .elementor-button,
+	body.woocommerce .elementor-button:not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 	.selector_wc_button_bg");
 
 define('SELECTOR_WC_BUTTON_BG_HOVER',"
@@ -210,8 +210,8 @@ define('SELECTOR_WC_BUTTON_BG_HOVER',"
 	body.woocommerce a.button:not(header a.button):not(footer a.button):hover,
 	body:not(.dokan-theme-solace) .woocommerce a.button:hover, .woocommerce a.button.alt:hover,
 	body .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button:hover,
-	body .woocommerce-page .woocommerce-info a:hover,
-	body .woocommerce button.button:hover, .woocommerce button.button.alt:hover,
+	body .woocommerce-page .woocommerce-info a:hover:not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
+	body .woocommerce button.button:hover:not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *), .woocommerce button.button.alt:hover:not(.elementor-widget-woocommerce-cart *):not(.elementor-widget-woocommerce-checkout-page *):not(.elementor-widget-woocommerce-products *),
 	body .woocommerce-account a.button.wc-forward:hover,
 	body .wc-block-components-totals-coupon__content button.wc-block-components-button:hover,
 	body .wp-block-woocommerce-cart .wp-block-button__link.add_to_cart_button.ajax_add_to_cart:hover,

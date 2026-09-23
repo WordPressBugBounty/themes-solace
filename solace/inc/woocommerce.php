@@ -37,29 +37,28 @@ function solace_woocommerce_setup() {
 }
 add_action( 'after_setup_theme', 'solace_woocommerce_setup' );
 
+
 /**
- * WooCommerce specific scripts & stylesheets.
+ * Enqueue the WooCommerce sidebar-widget tidy-up stylesheet.
+ *
+ * Loads after the theme + WooCommerce stylesheets so the targeted resets
+ * inside wc-widgets-tidy.css always win.
  *
  * @return void
  */
-function solace_woocommerce_scripts() {
-	wp_enqueue_style( 'solace-woocommerce-style', get_template_directory_uri() . '/assets/css/woocommerce.min.css?v=' . time(), array(), SOLACE_VERSION );
+function solace_enqueue_wc_widgets_tidy_styles() {
+	if ( ! class_exists( 'WooCommerce' ) ) {
+		return;
+	}
 
-	$font_path   = WC()->plugin_url() . '/assets/fonts/';
-	$inline_font = '@font-face {
-			font-family: "star";
-			src: url("' . $font_path . 'star.eot");
-			src: url("' . $font_path . 'star.eot?#iefix") format("embedded-opentype"),
-				url("' . $font_path . 'star.woff") format("woff"),
-				url("' . $font_path . 'star.ttf") format("truetype"),
-				url("' . $font_path . 'star.svg#star") format("svg");
-			font-weight: normal;
-			font-style: normal;
-		}';
-
-	wp_add_inline_style( 'solace-woocommerce-style', $inline_font );
+	wp_enqueue_style(
+		'solace-wc-widgets-tidy',
+		get_template_directory_uri() . '/assets/css/wc-widgets-tidy.css',
+		array( 'solace-woocommerce-style', 'woocommerce-general' ),
+		SOLACE_VERSION
+	);
 }
-add_action( 'wp_enqueue_scripts', 'solace_woocommerce_scripts' );
+add_action( 'wp_enqueue_scripts', 'solace_enqueue_wc_widgets_tidy_styles', 20 );
 
 /**
  * Disable the default WooCommerce stylesheet.

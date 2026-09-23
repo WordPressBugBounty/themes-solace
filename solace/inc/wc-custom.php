@@ -427,17 +427,17 @@ function solace_customizer_css() {
         'font-weight' => (get_theme_mod('solace_wc_custom_general_account_button_typeface')['fontWeight'] ?? '400'),
     ];
 
-    // body.woocommerce-cart:not(.elementor-page) .wc-block-components-totals-coupon__content label
-    // body.woocommerce-cart:not(.elementor-page) .wc-block-components-totals-coupon__content input#wc-block-components-totals-coupon__input-coupon,
+    // body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-totals-coupon__content label
+    // body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-totals-coupon__content input#wc-block-components-totals-coupon__input-coupon,
 
-    $SELECTOR_CART_TITLE = "body.woocommerce-cart:not(.elementor-page) .wc-block-cart-items .wc-block-components-product-name,  .woocommerce-cart .cross-sells-product .wc-block-components-product-name, .woocommerce-cart .wc-block-cart table th span, .woocommerce-cart .wc-block-cart .wp-block-woocommerce-cart-cross-sells-block h2, .woocommerce-cart .wc-block-cart .wc-block-cart__totals-title, .woocommerce-cart .wc-block-cart .wc-block-components-totals-item__label, body.woocommerce-cart .wc-block-components-totals-coupon .wc-block-components-panel__button, body.woocommerce-cart:not(.elementor-page) .is-large.wc-block-cart .wc-block-cart__totals-title, body.woocommerce-cart:not(.elementor-page) .woocommerce .woocommerce-cart-form .shop_table th, body.woocommerce-cart:not(.elementor-page) .woocommerce-cart-form .shop_table td.product-name a, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cross-sells h2, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cross-sells ul.products li.product a.woocommerce-loop-product__link>h2, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cart_totals h2, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cart_totals th";
-    $SELECTOR_CART_DESCRIPTION = "body.woocommerce-cart:not(.elementor-page) .wc-block-components-product-metadata__description>p";
-    $SELECTOR_CART_PRICE = "body.woocommerce-cart:not(.elementor-page) .wc-block-components-product-price__regular, body.woocommerce-cart:not(.elementor-page) .wc-block-components-product-price__value.is-discounted, body.woocommerce-cart:not(.elementor-page) .wc-block-components-product-price__value, body.woocommerce-cart:not(.elementor-page) .cross-sells-product .wc-block-components-product-price__value, body.woocommerce-cart:not(.elementor-page) .wc-block-components-sale-badge, body.woocommerce-cart:not(.elementor-page) .cross-sells-product .wc-block-components-quantity-selector input,body.woocommerce-cart:not(.elementor-page) .wc-block-cart-items .wc-block-cart-item__total .wc-block-components-formatted-money-amount, body.woocommerce-cart:not(.elementor-page) .woocommerce-cart-form .shop_table .product-price .woocommerce-Price-amount, body.woocommerce-cart:not(.elementor-page) .woocommerce-cart-form .shop_table .product-subtotal .woocommerce-Price-amount, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cross-sells ul.products li.product .price .woocommerce-Price-amount, body.woocommerce-cart:not(.elementor-page) .wc-block-components-formatted-money-amount, body.woocommerce-cart:not(.elementor-page) .woocommerce-Price-amount.amount";
-    $SELECTOR_CART_BUTTON = "body.woocommerce-cart:not(.elementor-page) .cross-sells-product button.add_to_cart_button, body.woocommerce-cart:not(.elementor-page) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained span, body.woocommerce-cart:not(.elementor-page) .wc-block-components-totals-coupon__content button.wc-block-components-button span, body.woocommerce-cart:not(.elementor-page) .shop_table .coupon .button, body.woocommerce-cart:not(.elementor-page) .shop_table .button, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cart_totals .checkout-button, body.woocommerce-cart:not(.elementor-page) .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button, body.woocommerce-cart:not(.elementor-page) a.button:not(header a.button):not(footer a.button),body.woocommerce-cart:not(.elementor-page) .button:not(header .button):not(footer .button),body.woocommerce-cart:not(.elementor-page) table.cart td.actions .button:disabled, body.woocommerce-cart:not(.elementor-page) ul.products li.product .button, body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace) .woocommerce ul.products li.product .button";
+    $SELECTOR_CART_TITLE = "body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-cart-items .wc-block-components-product-name,  .woocommerce-cart .cross-sells-product .wc-block-components-product-name, .woocommerce-cart .wc-block-cart table th span, .woocommerce-cart .wc-block-cart .wp-block-woocommerce-cart-cross-sells-block h2, .woocommerce-cart .wc-block-cart .wc-block-cart__totals-title, .woocommerce-cart .wc-block-cart .wc-block-components-totals-item__label, body.woocommerce-cart .wc-block-components-totals-coupon .wc-block-components-panel__button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .is-large.wc-block-cart .wc-block-cart__totals-title, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .woocommerce .woocommerce-cart-form .shop_table th, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .woocommerce-cart-form .shop_table td.product-name a, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cart-collaterals .cross-sells h2, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cart-collaterals .cross-sells ul.products li.product a.woocommerce-loop-product__link>h2, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cart-collaterals .cart_totals h2, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cart-collaterals .cart_totals th";
+    $SELECTOR_CART_DESCRIPTION = "body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-product-metadata__description>p";
+    $SELECTOR_CART_PRICE = "body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-product-price__regular, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-product-price__value.is-discounted, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-product-price__value, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cross-sells-product .wc-block-components-product-price__value, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-sale-badge, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cross-sells-product .wc-block-components-quantity-selector input,body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-cart-items .wc-block-cart-item__total .wc-block-components-formatted-money-amount, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .woocommerce-cart-form .shop_table .product-price .woocommerce-Price-amount, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .woocommerce-cart-form .shop_table .product-subtotal .woocommerce-Price-amount, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cart-collaterals .cross-sells ul.products li.product .price .woocommerce-Price-amount, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-formatted-money-amount, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .woocommerce-Price-amount.amount";
+    $SELECTOR_CART_BUTTON = "body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cross-sells-product button.add_to_cart_button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained span, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-totals-coupon__content button.wc-block-components-button span, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .shop_table .coupon .button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .shop_table .button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cart-collaterals .cart_totals .checkout-button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) a.button:not(header a.button):not(footer a.button),body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .button:not(header .button):not(footer .button),body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) table.cart td.actions .button:disabled, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) ul.products li.product .button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(.dokan-theme-solace) .woocommerce ul.products li.product .button";
 
-    $SELECTOR_CHECKOUT_TITLE = "body.woocommerce-checkout h2, body.woocommerce-checkout form.checkout .nv-customer-details h3, body.woocommerce-checkout .nv-order-review h3";
+    $SELECTOR_CHECKOUT_TITLE = "body.woocommerce-checkout:not(.elementor-page) h2, body.woocommerce-checkout:not(.elementor-page) form.checkout .nv-customer-details h3, body.woocommerce-checkout:not(.elementor-page) .nv-order-review h3";
     $SELECTOR_CHECKOUT_DESCRIPTION = "body.woocommerce-checkout p.wc-block-components-checkout-step__description, body.woocommerce-checkout .wc-block-checkout__terms span";
-    $SELECTOR_CHECKOUT_BUTTON = "body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained .wc-block-components-checkout-place-order-button__text,body.woocommerce-checkout:not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button, body.woocommerce-checkout:not(body.has-solace-checkout-widget) #payment #place_order, body.woocommerce-checkout:not(.elementor-page) .woocommerce-billing-fields form.checkout_coupon button";
+    $SELECTOR_CHECKOUT_BUTTON = "body.woocommerce-checkout:not(.elementor-page) button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained .wc-block-components-checkout-place-order-button__text,body.woocommerce-checkout:not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button, body.woocommerce-checkout:not(body.has-solace-checkout-widget) #payment #place_order, body.woocommerce-checkout:not(.elementor-page) .woocommerce-billing-fields form.checkout_coupon button";
 
     $SELECTOR_ACCOUNT_TITLE = "body.woocommerce-account:not(.elementor-page) .woocommerce th, body.woocommerce-account .woocommerce h2, body.woocommerce-account:not(.elementor-page) .woocommerce p label";
     $SELECTOR_ACCOUNT_DESCRIPTION = "body.woocommerce-account .woocommerce td, body.woocommerce-account .woocommerce p";
@@ -899,29 +899,29 @@ function solace_customizer_css() {
             }
         }
 
-        body.woocommerce-cart:not(.elementor-page) .wc-block-cart-items .wc-block-components-product-name:hover,body.woocommerce-cart:not(.elementor-page) .cross-sells-product .wc-block-components-product-name:hover,
-        body.woocommerce-cart:not(.elementor-page) .woocommerce-cart-form .shop_table td.product-name a:hover {
+        body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-cart-items .wc-block-components-product-name:hover,body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cross-sells-product .wc-block-components-product-name:hover,
+        body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .woocommerce-cart-form .shop_table td.product-name a:hover {
             color: <?php echo $cart_title_color_hover;?>;
         }
         
         
-        body.woocommerce-cart:not(.elementor-page) .cross-sells-product button.add_to_cart_button:hover, body.woocommerce-cart:not(.elementor-page) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained:hover span, body.woocommerce-cart:not(.elementor-page) .wc-block-components-totals-coupon__content button.wc-block-components-button:hover span, body.woocommerce-cart:not(.elementor-page) .shop_table .coupon .button:hover, body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .button:hover, body.woocommerce-cart:not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button:hover, body.woocommerce-cart:not(.elementor-page) .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button:hover, body.woocommerce-cart:not(body.has-solace-cart-widget) a.button:not(header a.button):not(footer a.button):hover, body.woocommerce-cart:not(body.has-solace-cart-widget) table.cart td.actions .button:disabled:hover {
+        body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cross-sells-product button.add_to_cart_button:hover:not(.elementor-widget-woocommerce-cart *), body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained:hover span:not(.elementor-widget-woocommerce-cart *), body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-totals-coupon__content button.wc-block-components-button:hover span:not(.elementor-widget-woocommerce-cart *), body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .shop_table .coupon .button:hover:not(.elementor-widget-woocommerce-cart *), body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .button:hover:not(.elementor-widget-woocommerce-cart *), body.woocommerce-cart:not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button:hover:not(.elementor-widget-woocommerce-cart *), body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button:hover:not(.elementor-widget-woocommerce-cart *), body.woocommerce-cart:not(body.has-solace-cart-widget) a.button:not(header a.button):not(footer a.button):hover:not(.elementor-widget-woocommerce-cart *), body.woocommerce-cart:not(body.has-solace-cart-widget) table.cart td.actions .button:disabled:hover:not(.elementor-widget-woocommerce-cart *) {
             color: <?php echo "var(--sol-cart-button-color-hover)";?> !important;
         }
-        body.woocommerce-cart:not(.elementor-page) .cross-sells-product button.add_to_cart_button, body.woocommerce-cart:not(.elementor-page) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained, body.woocommerce-cart:not(.elementor-page) .wc-block-components-totals-coupon__content button.wc-block-components-button, body.woocommerce-cart:not(.elementor-page) .shop_table .coupon .button, body.woocommerce-cart:not(.elementor-page) .shop_table .button, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cart_totals .checkout-button, body.woocommerce-cart:not(.elementor-page)  .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button, body.woocommerce-cart:not(.elementor-page)  a.button:not(header a.button):not(footer a.button), body.woocommerce-cart:not(.elementor-page) .button:not(header .button):not(footer .button), body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace) .woocommerce ul.products li.product .button, body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace) .woocommerce a.button {
+        body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cross-sells-product button.add_to_cart_button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-totals-coupon__content button.wc-block-components-button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .shop_table .coupon .button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .shop_table .button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cart-collaterals .cart_totals .checkout-button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart))  .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart))  a.button:not(header a.button):not(footer a.button), body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .button:not(header .button):not(footer .button), body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(.dokan-theme-solace) .woocommerce ul.products li.product .button, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(.dokan-theme-solace) .woocommerce a.button {
             background-color: <?php echo $cart_button_color_bg;?>;
         }
-        body.woocommerce-cart:not(.elementor-page) .cross-sells-product button.add_to_cart_button:hover, body.woocommerce-cart:not(.elementor-page) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained:hover, body.woocommerce-cart:not(.elementor-page) .wc-block-components-totals-coupon__content button.wc-block-components-button:hover, body.woocommerce-cart:not(.elementor-page) .shop_table .coupon .button:hover, body.woocommerce-cart:not(.elementor-page) .shop_table .button:hover, body.woocommerce-cart:not(.elementor-page) .cart-collaterals .cart_totals .checkout-button:hover, body.woocommerce-cart:not(.elementor-page)  .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button:hover, body.woocommerce-cart:not(.elementor-page)  a.button:not(header a.button):not(footer a.button):hover, body.woocommerce-cart:not(.elementor-page) .button:not(header .button):not(footer .button):hover, body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace) .woocommerce ul.products li.product .button:hover, body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace) .woocommerce a.button:hover {
+        body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cross-sells-product button.add_to_cart_button:hover:not(.elementor-widget-woocommerce-cart *), body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained:hover, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-totals-coupon__content button.wc-block-components-button:hover, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .shop_table .coupon .button:hover:not(.elementor-widget-woocommerce-cart *), body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .shop_table .button:hover:not(.elementor-widget-woocommerce-cart *), body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cart-collaterals .cart_totals .checkout-button:hover:not(.elementor-widget-woocommerce-cart *), body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart))  .woocommerce table.cart td.actions .coupon .input-text#coupon_code+.button:hover, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart))  a.button:not(header a.button):not(footer a.button):hover, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .button:not(header .button):not(footer .button):hover, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(.dokan-theme-solace) .woocommerce ul.products li.product .button:hover, body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(.dokan-theme-solace) .woocommerce a.button:hover {
             background-color: <?php echo $cart_button_color_bg_hover;?>;
         }
 
-        body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained:hover .wc-block-components-checkout-place-order-button__text,body.woocommerce-cart:not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button:hover,body.woocommerce-checkout:not(.elementor-page) .woocommerce-checkout-payment button:hover {
+        body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained:hover .wc-block-components-checkout-place-order-button__text,body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .woocommerce-billing-fields .checkout_coupon button:hover,body.woocommerce-checkout:not(.elementor-page) .woocommerce-checkout-payment button:hover {
             color: <?php echo "var(--sol-checkout-button-color-hover);"?>;
         }
         body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained,body.woocommerce-checkout:not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button,body.woocommerce-checkout:not(.elementor-page) .woocommerce-checkout-payment button {
             background-color: <?php echo "var(--sol-checkout-button-color-bg);"?>;
         }
-        body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained:hover,body.woocommerce-cart:not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button:hover,body.woocommerce-checkout:not(.elementor-page) .woocommerce-checkout-payment button:hover {
+        body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained:hover,body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .woocommerce-billing-fields .checkout_coupon button:hover,body.woocommerce-checkout:not(.elementor-page) .woocommerce-checkout-payment button:hover {
             background-color: <?php echo "var(--sol-checkout-button-color-bg-hover);"?>;
         }
 
@@ -1175,6 +1175,72 @@ function solace_enqueue_dokan_style() {
 }
 
 add_action( 'wp_enqueue_scripts', 'solace_enqueue_dokan_style' );
+
+/**
+ * Enqueue the WooCommerce sidebar-widget tidy-up stylesheet.
+ *
+ * Also restores the WooCommerce "star" @font-face. The glyph font is only
+ * declared inside inc/woocommerce.php, which is NOT loaded (functions.php
+ * requires inc/wc-custom.php instead), so every .star-rating on the site
+ * falls back to generic text and looks distorted.
+ *
+ * Dependencies force this file to print after the theme + WooCommerce CSS.
+ *
+ * @return void
+ */
+function solace_enqueue_wc_widgets_tidy_styles() {
+	if ( ! class_exists( 'WooCommerce' ) ) {
+		return;
+	}
+
+	$font_path = WC()->plugin_url() . '/assets/fonts/';
+	$star_font = '@font-face {
+		font-family: "star";
+		src: url("' . $font_path . 'star.woff") format("woff"),
+			url("' . $font_path . 'star.ttf") format("truetype");
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}';
+
+	$tidy_style_version = file_exists( get_template_directory() . '/assets/css/wc-widgets-tidy.css' )
+		? (string) filemtime( get_template_directory() . '/assets/css/wc-widgets-tidy.css' )
+		: SOLACE_VERSION;
+
+	wp_enqueue_style(
+		'solace-wc-widgets-tidy',
+		get_template_directory_uri() . '/assets/css/wc-widgets-tidy.css',
+		array( 'solace-woocommerce', 'woocommerce-general' ),
+		$tidy_style_version
+	);
+	wp_add_inline_style( 'solace-wc-widgets-tidy', $star_font );
+}
+add_action( 'wp_enqueue_scripts', 'solace_enqueue_wc_widgets_tidy_styles', 20 );
+
+/**
+ * Elementor "WordPress Widgets" — used by the Site Builder shop archive sidebar —
+ * render without the standard `.widget` wrapper, so the theme's widget tidy
+ * styles and WooCommerce's widget styles never match. Wrap them like a real
+ * sidebar widget (`<div class="widget …">`) so every `.widget …` rule applies.
+ */
+add_filter(
+	'elementor/widgets/wordpress/widget_args',
+	function ( $args, $widget ) {
+		if ( ! is_object( $widget ) || ! method_exists( $widget, 'get_widget_instance' ) ) {
+			return $args;
+		}
+		$instance  = $widget->get_widget_instance();
+		$classname = $instance && isset( $instance->widget_options['classname'] ) ? $instance->widget_options['classname'] : '';
+		if ( ! $classname ) {
+			return $args;
+		}
+		$args['before_widget'] = '<div class="widget ' . esc_attr( $classname ) . '">';
+		$args['after_widget']  = '</div>';
+		return $args;
+	},
+	10,
+	2
+);
 
 /**
  * Add a wrapper div before the WooCommerce products shortcode output.
@@ -1436,3 +1502,123 @@ function detect_all_woocommerce_pages_and_shortcodes( $classes ) {
 
     return $classes;
 }
+
+/**
+ * Redefine the mini-cart widget buttons ("View cart" / "Checkout") to add
+ * Elementor button classes.
+ *
+ * WooCommerce wraps these in `function_exists()`, and its definitions load at
+ * `after_setup_theme` priority 11 — after the theme has loaded — so defining
+ * them here wins.
+ */
+if ( ! function_exists( 'woocommerce_widget_shopping_cart_button_view_cart' ) ) {
+	/**
+	 * Output the widget "View cart" button with Elementor button classes.
+	 *
+	 * @return void
+	 */
+	function woocommerce_widget_shopping_cart_button_view_cart() {
+		$wp_button_class = wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '';
+		echo '<a href="' . esc_url( wc_get_cart_url() ) . '" class="button wc-forward elementor-button elementor-button--default' . esc_attr( $wp_button_class ) . '">' . esc_html__( 'View cart', 'woocommerce' ) . '</a>';
+	}
+}
+
+if ( ! function_exists( 'woocommerce_widget_shopping_cart_proceed_to_checkout' ) ) {
+	/**
+	 * Output the widget "Checkout" button with Elementor button classes.
+	 *
+	 * @return void
+	 */
+	function woocommerce_widget_shopping_cart_proceed_to_checkout() {
+		$wp_button_class = wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '';
+		echo '<a href="' . esc_url( wc_get_checkout_url() ) . '" class="button checkout wc-forward elementor-button elementor-button--default' . esc_attr( $wp_button_class ) . '">' . esc_html__( 'Checkout', 'woocommerce' ) . '</a>';
+	}
+}
+
+/**
+ * Product Tags Cloud: mark the currently-viewed product tag with an
+ * `is-active` class so CSS can style it like the button hover state.
+ *
+ * @param string $html Tag cloud HTML.
+ * @param array  $args Tag cloud args.
+ * @return string
+ */
+add_filter(
+	'wp_tag_cloud',
+	function ( $html, $args ) {
+		if ( ! is_tax( 'product_tag' ) ) {
+			return $html;
+		}
+
+		$term = get_queried_object();
+		if ( ! $term || empty( $term->term_id ) ) {
+			return $html;
+		}
+
+		$needle   = 'tag-link-' . (int) $term->term_id;
+		$replaced = 0;
+		if ( false !== strpos( $html, $needle ) ) {
+			$html = str_replace( $needle, $needle . ' is-active', $html, $replaced );
+		}
+
+		return $html;
+	},
+	10,
+	2
+);
+
+/**
+ * WooCommerce brand widgets read `$instance['title']` without a default
+ * (class-wc-widget-brand-nav.php, -thumbnails.php, -description.php). An empty
+ * instance saved by the customizer triggers "Undefined array key 'title'" plus
+ * a str_contains() null deprecation. Backfill a default title on load.
+ */
+foreach ( array( 'widget_woocommerce_brand_nav', 'widget_wc_brands_brand_thumbnails', 'widget_wc_brands_brand_description' ) as $brand_widget_option ) {
+	add_filter( 'option_' . $brand_widget_option,
+		static function ( $value ) {
+			if ( ! is_array( $value ) ) {
+				return $value;
+			}
+
+			foreach ( $value as $key => $instance ) {
+				if ( '_multiwidget' === $key || ! is_array( $instance ) ) {
+					continue;
+				}
+				if ( ! isset( $instance['title'] ) ) {
+					$instance['title'] = '';
+					$value[ $key ]     = $instance;
+				}
+			}
+
+			return $value;
+		}
+	);
+}
+/**
+ * Brand taxonomy archives must use the WooCommerce archive template.
+ *
+ * WooCommerce Brands registers taxonomy-product_brand.php (which loads
+ * archive-product.php) via template_loader at priority 10, but
+ * Solace Extra Pro's override_archive_template runs at 99999 and only
+ * exempts product_cat/product_tag/shop — product_brand falls through to
+ * the blog archive template. Re-assert the WC brands template afterwards.
+ */
+add_filter(
+	'template_include',
+	function ( $template ) {
+		if ( function_exists( 'is_tax' ) && is_tax( 'product_brand' ) ) {
+			// Let the Solace Extra Shop Product Archive part win when its
+			// conditions match this brand archive; only re-assert the plain
+			// WooCommerce Brands template when no override applies.
+			if ( function_exists( 'solace_extra_pro_resolve_shopproduct_post_id' ) && solace_extra_pro_resolve_shopproduct_post_id() ) {
+				return $template;
+			}
+			$brand_template = WC()->plugin_path() . '/templates/brands/taxonomy-product_brand.php';
+			if ( file_exists( $brand_template ) ) {
+				return $brand_template;
+			}
+		}
+		return $template;
+	},
+	100000
+);

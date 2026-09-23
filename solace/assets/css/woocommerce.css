@@ -1977,7 +1977,7 @@ body.woocommerce-cart .wc-block-components-sidebar .wc-block-cart__submit span {
 .woocommerce table.cart td.actions .input-text#coupon_code + .button {
   float: none;
 }
-.woocommerce-cart table.cart td.actions .button:disabled {
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) table.cart td.actions .button:disabled {
   color: #fff;
 }
 .woocommerce-cart table.cart td.actions .coupon {
@@ -2103,8 +2103,8 @@ body.woocommerce-cart .wc-block-components-sidebar .wc-block-cart__submit span {
 .woocommerce .cart_totals > h2 {
   font-size: var(--h4fontsize);
 }
-.woocommerce .cart_totals td,
-.woocommerce .cart_totals th {
+body:not(.elementor-page) .woocommerce .cart_totals td,
+body:not(.elementor-page) .woocommerce .cart_totals th {
   background: 0 !important;
   padding: 20px 15px !important;
   border-bottom: 2px solid var(--sol-color-border);
@@ -2184,8 +2184,8 @@ body.woocommerce-cart .is-large.wc-block-cart .wc-block-cart__totals-title {
   color: var(--sol-cart-title-color) !important;
 }
 
-body.woocommerce-cart .wc-block-cart-items .wc-block-components-product-name:hover, body.woocommerce-cart .cross-sells-product .wc-block-components-product-name:hover,
-body.woocommerce-cart .woocommerce-cart-form .shop_table td.product-name a:hover {
+body.woocommerce-cart .wc-block-cart-items .wc-block-components-product-name:hover:not(.elementor-widget-woocommerce-cart *), body.woocommerce-cart .cross-sells-product .wc-block-components-product-name:hover:not(.elementor-widget-woocommerce-cart *),
+body.woocommerce-cart .woocommerce-cart-form .shop_table td.product-name a:hover:not(.elementor-widget-woocommerce-cart *) {
   color: var(--sol-cart-title-color-hover) !important;
 }
 
@@ -2205,58 +2205,58 @@ body.woocommerce-cart .woocommerce-cart-form .shop_table .product-price del {
   color: var(--sol-cart-price-color) !important;
 }
 
-body.woocommerce-cart:not(body.has-solace-cart-widget) .cross-sells-product button.add_to_cart_button,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained:hover span,
-body.woocommerce-cart .wc-block-components-totals-coupon__content button.wc-block-components-button span,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .coupon .button,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .button,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce table.cart td.actions .coupon .input-text#coupon_code + .button,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce a.button:not(header a.button):not(footer a.button),
-body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce .button:not(header .button):not(footer .button),
-body.woocommerce-cart:not(body.has-solace-cart-widget) table.cart td.actions .button:disabled,
-body.woocommerce-cart:not(body.has-solace-cart-widget) ul.products li.product .button,
-body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce ul.products li.product .button {
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .cross-sells-product button.add_to_cart_button,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained:hover span,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-totals-coupon__content button.wc-block-components-button span,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .shop_table .coupon .button,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .shop_table .button,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .woocommerce table.cart td.actions .coupon .input-text#coupon_code + .button,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .woocommerce a.button:not(header a.button):not(footer a.button),
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .woocommerce .button:not(header .button):not(footer .button),
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) table.cart td.actions .button:disabled,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) ul.products li.product .button,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce ul.products li.product .button {
   color: var(--sol-cart-button-color) !important;
 }
 
-body.woocommerce-cart:not(body.has-solace-cart-widget) .cross-sells-product button.add_to_cart_button:hover,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained span:hover,
-body.woocommerce-cart .wc-block-components-totals-coupon__content button.wc-block-components-button:hover span,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .coupon .button:hover,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .button:hover,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button:hover,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce table.cart td.actions .coupon .input-text#coupon_code + .button:hover,
-body.woocommerce-cart:not(body.has-solace-cart-widget) a.button:not(header a.button):not(footer a.button):hover,
-body.woocommerce-cart:not(body.has-solace-cart-widget) table.cart td.actions .button:disabled:hover {
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .cross-sells-product button.add_to_cart_button:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained span:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-totals-coupon__content button.wc-block-components-button:hover span,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .shop_table .coupon .button:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .shop_table .button:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .woocommerce table.cart td.actions .coupon .input-text#coupon_code + .button:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) a.button:not(header a.button):not(footer a.button):hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) table.cart td.actions .button:disabled:hover {
   color: var(--sol-cart-button-color-hover) !important;
 }
 
-body.woocommerce-cart .cross-sells-product button.add_to_cart_button,
-body.woocommerce-cart .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained,
-body.woocommerce-cart .wc-block-components-totals-coupon__content button.wc-block-components-button,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .coupon .button,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .button,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce table.cart td.actions .coupon .input-text#coupon_code + .button,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce a.button:not(header a.button):not(footer a.button),
-body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce .button:not(header .button):not(footer .button),
-body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce ul.products li.product .button,
-body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce a.button {
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cross-sells-product button.add_to_cart_button,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-totals-coupon__content button.wc-block-components-button,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .shop_table .coupon .button,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .shop_table .button,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .woocommerce table.cart td.actions .coupon .input-text#coupon_code + .button,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .woocommerce a.button:not(header a.button):not(footer a.button),
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .woocommerce .button:not(header .button):not(footer .button),
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce ul.products li.product .button,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce a.button {
   background-color: var(--sol-cart-button-color-bg) !important;
 }
 
-body.woocommerce-cart .cross-sells-product button.add_to_cart_button:hover,
-body.woocommerce-cart .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained:hover,
-body.woocommerce-cart .wc-block-components-totals-coupon__content button.wc-block-components-button:hover,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .coupon .button:hover,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .shop_table .button:hover,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button:hover,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .woocommerce table.cart td.actions .coupon .input-text#coupon_code + .button:hover,
-body.woocommerce-cart:not(body.has-solace-cart-widget) a.button:not(header a.button):not(footer a.button):hover,
-body.woocommerce-cart:not(body.has-solace-cart-widget) .button:not(header .button):not(footer .button):hover,
-body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce ul.products li.product .button:hover,
-body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce a.button:hover {
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .cross-sells-product button.add_to_cart_button:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wp-block-woocommerce-cart-totals-block .wc-block-cart__submit-container a.wc-block-components-button.wp-element-button.wc-block-cart__submit-button.contained:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) .wc-block-components-totals-coupon__content button.wc-block-components-button:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .shop_table .coupon .button:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .shop_table .button:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .cart-collaterals .cart_totals .checkout-button:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .woocommerce table.cart td.actions .coupon .input-text#coupon_code + .button:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) a.button:not(header a.button):not(footer a.button):hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(body.has-solace-cart-widget) .button:not(header .button):not(footer .button):hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce ul.products li.product .button:hover,
+body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)):not(.dokan-theme-solace):not(body.has-solace-cart-widget) .woocommerce a.button:hover {
   background-color: var(--sol-cart-button-color-bg-hover) !important;
 }
 
@@ -2403,8 +2403,8 @@ body.woocommerce-cart:not(.elementor-page):not(.dokan-theme-solace):not(body.has
   --sol-checkout-button-color-bg-hover: var(--sol-color-button-hover);
 }
 
-body.woocommerce-checkout h2,
-body.woocommerce-checkout form.checkout .nv-customer-details h3 {
+body.woocommerce-checkout:not(.elementor-page) h2,
+body.woocommerce-checkout:not(.elementor-page) form.checkout .nv-customer-details h3 {
   color: var(--sol-checkout-title-color) !important;
 }
 
@@ -2417,28 +2417,28 @@ body.woocommerce-checkout .wc-block-components-product-name {
   font-size: 1em;
 }
 
-body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained .wc-block-components-checkout-place-order-button__text,
+body.woocommerce-checkout:not(.elementor-page) button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained .wc-block-components-checkout-place-order-button__text,
 body .wc-block-components-totals-coupon__content button.wc-block-components-button span,
 body.woocommerce-checkout:not(body.has-solace-checkout-widget):not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button,
 body.woocommerce-checkout:not(body.has-solace-checkout-widget):not(.elementor-page) .woocommerce-checkout-payment button {
   color: var(--sol-checkout-button-color) !important;
 }
 
-body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained:hover .wc-block-components-checkout-place-order-button__text,
+body.woocommerce-checkout:not(.elementor-page) button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained:hover .wc-block-components-checkout-place-order-button__text,
 body .wc-block-components-totals-coupon__content button.wc-block-components-button:hover span,
 body.woocommerce-checkout:not(body.has-solace-checkout-widget) .woocommerce-billing-fields .checkout_coupon button:hover,
 body.woocommerce-checkout:not(body.has-solace-checkout-widget) .woocommerce-checkout-payment button:hover {
   color: var(--sol-checkout-button-color-hover) !important;
 }
 
-body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained,
+body.woocommerce-checkout:not(.elementor-page) button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained,
 body .wc-block-components-totals-coupon__content button.wc-block-components-button,
 body.woocommerce-checkout:not(body.has-solace-checkout-widget):not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button,
 body.woocommerce-checkout:not(body.has-solace-checkout-widget):not(.elementor-page) .woocommerce-checkout-payment button {
   background-color: var(--sol-checkout-button-color-bg) !important;
 }
 
-body.woocommerce-checkout button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained:hover,
+body.woocommerce-checkout:not(.elementor-page) button.wc-block-components-button.wp-element-button.wc-block-components-checkout-place-order-button.contained:hover,
 body .wc-block-components-totals-coupon__content button.wc-block-components-button:hover,
 body.woocommerce-checkout:not(body.has-solace-checkout-widget):not(.elementor-page) .woocommerce-billing-fields .checkout_coupon button:hover,
 body.woocommerce-checkout:not(body.has-solace-checkout-widget):not(.elementor-page) .woocommerce-checkout-payment button:hover {
@@ -2918,7 +2918,7 @@ body.woocommerce-account:not(.elementor-default) .woocommerce:not(.solex-myaccou
     font-size: 30px;
     margin-left: 0;
   }
-  .woocommerce-cart table.cart td.actions .button:disabled {
+  body.woocommerce-cart:not(:has(.elementor-widget-woocommerce-cart)) table.cart td.actions .button:disabled {
     color: #fff;
   }
   .woocommerce-cart table.cart td.actions .coupon {

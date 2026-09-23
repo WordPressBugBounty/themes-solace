@@ -124,7 +124,7 @@
         value.bind( function( newval ) {
             console.log('Store Notice visibility changed:', newval);
 
-            // Pastikan elemen yang diubah sesuai dengan selector yang benar
+            // Ensure the changed element matches the correct selector.
             var noticeElements = document.querySelectorAll('.woocommerce-shop p.woocommerce-store-notice.demo_store');
             
             noticeElements.forEach(function(noticeElement) {

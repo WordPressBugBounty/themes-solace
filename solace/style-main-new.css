@@ -383,6 +383,25 @@ h6 {
 }
 
 ul,
+li,
+p {
+  font-size: var(--bodyfontsize);
+  line-height: var(--bodylineheight);
+  letter-spacing: var(--bodyletterspacing);
+  text-transform: var(--bodytexttransform);
+  font-weight: var(--bodyfontweight);
+}
+ul:not(.woocommerce-notices-wrapper *),
+li:not(.woocommerce-notices-wrapper *),
+p:not(.woocommerce-notices-wrapper *) {
+  font-size: var(--bodyfontsize);
+  line-height: var(--bodylineheight);
+  letter-spacing: var(--bodyletterspacing);
+  text-transform: var(--bodytexttransform);
+  font-weight: var(--bodyfontweight);
+}
+
+ul,
 ol {
   padding-left: 20px;
   margin: 30px 0;
