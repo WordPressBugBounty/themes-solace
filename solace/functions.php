@@ -18,7 +18,7 @@ if (!defined('SOLACE_DEBUG')) {
 
 if (!defined('SOLACE_VERSION')) {
 	// Replace the version number of the theme on each release.
-	define('SOLACE_VERSION', '2.1.24');
+	define('SOLACE_VERSION', '2.1.25');
 }
 
 require_once 'inc/compatibility/class-solace-starter-content.php';
@@ -763,7 +763,6 @@ function sola_width_gutenberg() {
 add_action('admin_head', 'sola_width_gutenberg');
 
 function custom_elementor_admin_styles() {
-    echo '<script>console.log("Masuk fungsi custom_elementor_admin_styles");</script>';
     ?>
     <style>
         .elementor-control-solace_colors .elementor-repeater-fields:nth-child(1),

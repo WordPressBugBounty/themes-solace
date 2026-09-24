@@ -6,7 +6,7 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 Requires at least: 5.9
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.1.23
+Stable tag: 2.1.25
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
@@ -29,6 +29,12 @@ Solace is a minimalist, and lightweight WordPress theme for creating beautiful, 
 Solace includes support for WooCommerce.
 
 == Changelog ==
+
+= 2.1.25 - 24 September 2026 =
+* [Fix]: Fixed fatal error on the front end — `Trait "HFG\Traits\Core" not found` — caused by the bundled Composer autoloader for the `HFG` namespace not being present in the distributed package. The theme now registers its own case-preserving PSR-4 autoloader for `HFG` classes, so it works without the `vendor` directory.
+* [Fix]: Restored the bundled WebFont Loader (`vendor/wptt/webfont-loader`) so the "Host Google Fonts locally" option works out of the box.
+* [Fix]: Corrected the `Stable tag` header in `readme.txt`.
+* [Cleanup]: Removed a leftover debug `console.log` from the Elementor admin styles function.
 
 = 2.1.24 - 23 September 2026 =
 * [Security]: Fixed unauthorized content exposure in the Site Builder template preview — private parts are now served only to logged-in users who can edit the requested post
